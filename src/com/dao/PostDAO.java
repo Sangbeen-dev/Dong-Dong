@@ -6,9 +6,9 @@ import com.dto.PostDTO;
 
 public class PostDAO {
 
-   public List<PostDTO> goodsList(SqlSession session, String gCategory) {
+   public List<PostDTO> postList(SqlSession session, String pCategory) {
 	   List<PostDTO> list = 
-			   session.selectList("PostMapper.PostList", gCategory);
+			   session.selectList("PostMapper.PostList", pCategory);
 	   return list;
    }
 }

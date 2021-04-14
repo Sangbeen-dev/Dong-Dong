@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
 	
 	<select id="PostList" parameterType="string" resultType="PostDTO">
-       select gCode,gCategory,gName,gContent,gPrice,gImage
+       select pNum,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate
        from post
 	</select>	
 	
