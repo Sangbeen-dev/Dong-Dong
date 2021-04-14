@@ -85,11 +85,11 @@
 <input type="hidden" value="<%= dto.getUserid() %>" name="userid">
 *아이디: <%= dto.getUserid() %><br>
 <!--프로필 이미지  -->
-<img src="/images/aaa.jpg" border="0" width="80"/><br>
+<img src="../images/aaa.jpg" border="0" width="80"/><br>
 *이름:<%= dto.getUsername() %>
 <br> 
 <!-- <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> -->
-<input type="text" value="<%= dto.getAddr() %>" name="addr" id="addr" placeholder="주소">
+주소:<input type="text" value="<%= dto.getAddr() %>" name="addr" id="addr" placeholder="주소입력">
 <span id="guide" style="color:#999"></span>
 <br>
 전화번호:<input type="text" value="<%= dto.getPhone() %>" name="phone" id="phone" placeholder="번호">
