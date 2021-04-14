@@ -13,6 +13,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getPostDetailByPNum" parameterType="String" resultType="HashMap">
 		select username,addr,pnum,ptitle,pCategory,pContent,pPrice,pImage,pHit,pDate 
 		from member m Join post p on m.userid = p.userid
-		WHERE pnum=${pNum};
+		WHERE pnum=${pNum}
 	</select>
 </mapper>

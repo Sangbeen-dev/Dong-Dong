@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
     	//form 서브밋
@@ -62,6 +62,10 @@
 			});//end ajax
 		});//end keyup
 		
+		$("#favorite").on("click", function() {
+			location.href ="../FavoriteServlet";
+		});
+		
  });
 </script>    
 <%
@@ -80,7 +84,7 @@
 	dto.setEmail1("1");
 	dto.setEmail2("1");
 %>
-<button id="favorite">관심목록</button>&nbsp;<button >거래내역</button>&nbsp;
+<button id="favorite">관심목록</button>&nbsp;<a href="../FavoriteServlet">거래내역</a> &nbsp;
 <form action="#" method="post">
 <input type="hidden" value="<%= dto.getUserid() %>" name="userid">
 *아이디: <%= dto.getUserid() %><br>
