@@ -20,22 +20,25 @@ public class MemberAddServlet extends HttpServlet {
 		String userid = request.getParameter("userid");
 		String passwd = request.getParameter("passwd");
 		String username = request.getParameter("username");
-		String nickname = request.getParameter("nickname ");
+		String nickName = request.getParameter("nickName");
 		String addr = request.getParameter("addr");
 		String phone = request.getParameter("phone");
 		String email1 = request.getParameter("email1");
 		String email2 = request.getParameter("email2");
 	
 		MemberDTO dto = new MemberDTO
-		(userid, passwd,username,nickname,addr ,phone ,email1 ,email2);
-				
+		(userid, passwd,username,nickName,addr ,phone ,email1 ,email2);
+		
+		System.out.println(dto);
+		
 		MemberService service = new MemberService();
 		int n = service.memberAdd(dto);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("memberAdd", "회원가입성공");
 		response.sendRedirect("main");
-	
+		
+		
 	
 	
 	}

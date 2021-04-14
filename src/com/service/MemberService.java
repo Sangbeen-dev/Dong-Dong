@@ -21,7 +21,6 @@ public class MemberService {
 	}//end mypage
 
 	 public int memberAdd(MemberDTO dto) {
-		  
 		  SqlSession session = MySqlSessionFactory.getSession();
 		  int n = 0;
 		  try {
