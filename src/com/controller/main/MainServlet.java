@@ -10,26 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dto.PostDTO;
 import com.service.PostService;
 
-/**
- * Servlet implementation class MainServlet
- */
+
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 		PostService service = new PostService();
-		List<PostDTO> list = service.PostList("top");
-			request.setAttribute("PostList", list);
+		List<PostDTO> list = service.postList("top");
+		request.setAttribute("PostList", list);
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 		dis.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
