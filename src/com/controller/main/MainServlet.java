@@ -21,6 +21,7 @@ public class MainServlet extends HttpServlet {
 				
 		PostService service = new PostService();
 		List<PostDTO> list = service.postList("top");
+		System.out.println("list->"+list);
 		request.setAttribute("PostList", list);
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 		dis.forward(request, response);
