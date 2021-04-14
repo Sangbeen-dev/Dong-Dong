@@ -12,7 +12,7 @@ public class postDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String pNum = request.getParameter("PNum");
+    	String pNum = request.getParameter("pNum");
     	
     	//PostService service = new PostService();
     	
