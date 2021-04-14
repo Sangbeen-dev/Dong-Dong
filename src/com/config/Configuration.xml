@@ -7,6 +7,7 @@
 <typeAliases>
 	<typeAlias type="com.dto.MemberDTO" alias="MemberDTO"></typeAlias><!-- Alias추가  -->
 	<typeAlias type="com.dto.PostDTO" alias="PostDTO"></typeAlias>
+	<typeAlias type="com.dto.FavoriteDTO" alias="FavoriteDTO"></typeAlias>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -22,5 +23,6 @@
   <mappers>
     <mapper resource="com/config/MemberMapper.xml"/>
     <mapper resource="com/config/PostMapper.xml"/>
+    <mapper resource="com/config/FavoriteMapper.xml"/>
   </mappers>
 </configuration>
