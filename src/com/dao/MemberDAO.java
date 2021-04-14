@@ -20,7 +20,6 @@ public class MemberDAO {
 	} //end login
 	
 
-
 	public int memberAdd(SqlSession session,MemberDTO dto) {
 		   int n = session.insert("MemberMapper.memberAdd", dto);
 		   return n;
