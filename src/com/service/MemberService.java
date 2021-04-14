@@ -22,6 +22,24 @@ public class MemberService {
 		return dto;
 	}//end mypage
 	
+	
+	 public int memberAdd(MemberDTO dto) {
+		  
+		  SqlSession session = MySqlSessionFactory.getSession();
+		  int n = 0;
+		  try {
+			  MemberDAO dao = new MemberDAO();
+			  n = dao.memberAdd(session, dto);
+			  session.commit();
+		  }finally {
+			session.close();
+		}
+		  return n;
+	   }//end memberAdd
+	
+	
+	
+	
 	public MemberDTO login(HashMap<String, String> map) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		MemberDTO dto = null;
