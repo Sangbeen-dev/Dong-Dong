@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where userid = #{userid}
 	</select>
 	
+<<<<<<< HEAD
 	<insert id="memberAdd" parameterType="MemberDTO">
      insert into member (userid, passwd,username,nickname,addr ,phone ,email1 ,email2)
      
@@ -18,4 +19,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
               #{email1},#{email2})
    </insert>
 
+=======
+>>>>>>> f240f1bb6a0296c3e004a1733c764244dffcdb15
 </mapper>
