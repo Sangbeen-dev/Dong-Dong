@@ -23,6 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      values( #{userid},#{passwd},#{username},#{nickname},#{addr},#{phone},
               #{email1},#{email2})
    </insert>
+   
+   <select id = "idSearch" resultType = "String" parameterType = "MemberDTO">
+	select userid from member
+	where username = #{username} and phone = #{phone}
+	
+	</select>
+   
 
 
 </mapper>

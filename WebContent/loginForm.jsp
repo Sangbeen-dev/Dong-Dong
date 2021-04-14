@@ -7,6 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	String mesg = (String)session.getAttribute("mesg");
+	if(mesg != null){
+%>
+	<script type = "text/javascript">
+		alert('<%=mesg %>');
+	</script>
+<%
+	//
+	session.removeAttribute("mesg");
+	}
+%>	
 <h1>Login 화면입니다.</h1>
 
 <jsp:include page = "common/top.jsp" flush = "true" /><br>

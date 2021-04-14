@@ -29,6 +29,6 @@ $(function(){
 비밀번호:<input type="text" name="passwd" id="passwd"><br> 
 <input type="submit" value="로그인"><br>
 
-<a href = "">아이디 찾기</a><br>
+<a href = "MemberIdSearchUIServlet">아이디 찾기</a><br>
 <a href = "">비밀번호 찾기</a>
 </form>
