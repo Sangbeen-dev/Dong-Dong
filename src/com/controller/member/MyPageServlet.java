@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dto.MemberDTO;
+import com.service.MemberService;
 
 /**
  * Servlet implementation class MyPageServlet
@@ -24,9 +25,9 @@ public class MyPageServlet extends HttpServlet {
 		String nextPage =null;
 		if(dto != null) { //로그인 정보가 있는경우
 			nextPage = "mypage.jsp";
-			//MemberService service = new MemberService();
-			//dto = service.mypage(dto.getUserid());
-			//System.out.println("변경된 dto = "+dto);
+			MemberService service = new MemberService();
+			dto = service.mypage(dto.getUserid());
+			System.out.println("변경된 dto = "+dto);
 			session.setAttribute("login", dto);
 		}else {
 			nextPage= "LoginUIServlet";
