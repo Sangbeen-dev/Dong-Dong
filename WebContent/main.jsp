@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>dongdong market-Home</title>
 
 </head>
 <body>
@@ -14,5 +14,7 @@
 
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 <jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
+<!-- content추가예정 -->
+<jsp:include page="post/postList.jsp" flush="true"></jsp:include><br>
 </body>
 </html>
