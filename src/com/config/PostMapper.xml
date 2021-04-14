@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PostMapper">   
+  
+	
+	<select id="PostList" parameterType="string" resultType="PostDTO">
+       select gCode,gCategory,gName,gContent,gPrice,gImage
+       from post
+       where gCategory = #{gCategory}
+	</select>	
+	
+</mapper>
