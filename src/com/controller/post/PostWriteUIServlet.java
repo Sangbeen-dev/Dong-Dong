@@ -1,29 +1,23 @@
-package com.controller.main;
+package com.controller.post;
 
 import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.PostDTO;
-import com.service.PostService;
 
+@WebServlet("/PostWriteUIServlet")
+public class PostWriteUIServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-@WebServlet("/main")
-public class MainServlet extends HttpServlet {
+    public PostWriteUIServlet() {
+        super();
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
-		PostService service = new PostService();
-		List<PostDTO> list = service.postList("top");
-		request.setAttribute("PostList", list);
-		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
-		dis.forward(request, response);
+		response.sendRedirect("post/postWrite.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,4 +26,3 @@ public class MainServlet extends HttpServlet {
 	}
 
 }
-
