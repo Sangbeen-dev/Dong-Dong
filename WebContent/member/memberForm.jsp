@@ -35,11 +35,15 @@ $("#passwd2").on("keyup",function(){
  
 </script>    
 <form action="MemberAddServlet" method="get">
-*아이디:<input type="text" name="userid" id="userid"><br> 
-*비밀번호:<input type="text" name="passwd" id="passwd"><br> 
+*아이디:<input type="text" name="userid" id="userid"><br>
+<span id="result"></span>
+
+*비밀번호:<input type="text" name="passwd" id="passwd"><br>
 비빌번호확인:<input type="text" name="passwd2" id="passwd2">
 <span id="result2"></span>
+
 <br>
+
 이름:<input type="text" name="username"><br> 
 닉네임:<input type="text" name="nickname"><br> 
 주소:<input type="text" name="addr" id="sample4_roadAddress" placeholder="주소입력">
@@ -47,6 +51,16 @@ $("#passwd2").on("keyup",function(){
 <br>
 전화번호:
 <input type="text" name="phone" >
+이름:<input type="text" name="username"><br>
+닉네임:<input type="text" name="nickName"><br>
+
+<br>
+<input type="text" name="addr" placeholder="주소">
+<br>
+
+전화번호:<input type="text" name="phone" >
+
+
 <br>
 이메일:<input type="text" name="email1" >@
        <input type="text" name="email2"  placeholder="직접입력">
