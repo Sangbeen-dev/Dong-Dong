@@ -8,7 +8,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="PostList" parameterType="string" resultType="PostDTO">
        select gCode,gCategory,gName,gContent,gPrice,gImage
        from post
-       where gCategory = #{gCategory}
 	</select>	
 	
 	<select id="getPostDetailByPNum" parameterType="String" resultType="HashMap">
