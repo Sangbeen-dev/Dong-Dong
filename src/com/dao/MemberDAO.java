@@ -24,5 +24,13 @@ public class MemberDAO {
 	   
 	
 	}//end memberAdd
+	
+	public String idSearch(SqlSession session, MemberDTO dto) {
+		
+		String userid = session.selectOne("MemberMapper.idSearch",dto);
+		
+		return userid;
+	}//end idSearch
+	
 }//end MemberDAO
 

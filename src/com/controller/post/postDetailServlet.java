@@ -14,11 +14,14 @@ public class postDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String pNum = request.getParameter("pNum");
     	
-    	//PostService service = new PostService();
+    	PostService service = new PostService();
     	
-    	//HashMap map = service.getPostDetailByPNum(pNum);
+    	//HashMap<String, String> map = service.getPostDetailByPNum(Integer.parseInt(pNum));
     	
     	// 데이터 파싱 후 페이지 이동
+    	
+    	RequestDispatcher dis = request.getRequestDispatcher("postDetailPage.jsp");
+    	dis.forward(request, response);
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
