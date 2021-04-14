@@ -11,13 +11,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where userid = #{userid}
 	</select>
 	
-
 	<select id = "login" parameterType ="HashMap" resultType = "MemberDTO">
 	select * from member where userid =#{userid} and passwd = #{passwd}
 	
 	</select>
 	
-
 
 	<insert id="memberAdd" parameterType="MemberDTO">
      insert into member (userid, passwd,username,nickname,addr ,phone ,email1 ,email2)
@@ -25,7 +23,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      values( #{userid},#{passwd},#{username},#{nickname},#{addr},#{phone},
               #{email1},#{email2})
    </insert>
-
 
 
 </mapper>

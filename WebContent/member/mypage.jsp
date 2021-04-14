@@ -80,7 +80,7 @@
 	dto.setEmail1("1");
 	dto.setEmail2("1");
 %>
-<a href="">관심목록</a>&nbsp;<a href="">거래내역</a>&nbsp;
+<button id="favorite">관심목록</button>&nbsp;<button >거래내역</button>&nbsp;
 <form action="#" method="post">
 <input type="hidden" value="<%= dto.getUserid() %>" name="userid">
 *아이디: <%= dto.getUserid() %><br>
