@@ -11,12 +11,12 @@ import com.dto.PostDTO;
 public class PostService {
 	 
 	  
-	  public List<PostDTO> postList(String gCategory) {
+	  public List<PostDTO> postList(String pCategory) {
 			SqlSession session = MySqlSessionFactory.getSession();
 			List<PostDTO> list = null;
 			try {
 				PostDAO dao = new PostDAO();
-				list = dao.goodsList(session, gCategory);
+				list = dao.postList(session, pCategory);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
