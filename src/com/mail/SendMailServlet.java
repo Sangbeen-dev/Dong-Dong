@@ -31,7 +31,7 @@ public class SendMailServlet extends HttpServlet {
 		
 		String host = "smtp.naver.com"; // 호스트 네이버 메일
 		String subject = ""; //메일제목
-	    String from = "sim2308@naver.com"; //보내는 사람 메일 주소  //이부분 채워주셔야 합니다.
+	    String from = "***"; //보내는 사람 메일 주소  //이부분 채워주셔야 합니다.
 	    String fromName = "DongDong"; //송신자명
 	    String to = mailTo; //받는 사람 메일 주소
 	    String content = "";
