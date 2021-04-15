@@ -1,9 +1,7 @@
 package com.controller.post;
 
 import java.io.IOException;
-
 import java.util.HashMap;
-
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,10 +22,21 @@ public class postDetailServlet extends HttpServlet {
     	
     	PostService service = new PostService();
     	
-    	HashMap<String, String> map = service.getPostDetailByPNum(Integer.parseInt(pNum));
+    	HashMap map = service.getPostDetailByPNum(Integer.parseInt(pNum));
     	
     	System.out.println(map);
     	// 데이터 파싱 후 페이지 이동
+    	System.out.println((String)map.get("PCONTENT"));
+    	
+    	request.setAttribute("pNum", String.valueOf(map.get("PNUM")));
+    	request.setAttribute("pCategory", map.get("PCATEGORY"));
+    	request.setAttribute("pHit", String.valueOf(map.get("PHIT")));
+    	request.setAttribute("pImage", map.get("PIMAGE"));
+    	request.setAttribute("pPrice", String.valueOf(map.get("PPRICE")));
+    	request.setAttribute("username", map.get("USERNAME"));
+    	request.setAttribute("pContent", map.get("PCONTENT"));
+    	request.setAttribute("pDate", String.valueOf(map.get("PDATE")));
+    	request.setAttribute("pTitle", map.get("PTITLE"));
     	
     	RequestDispatcher dis = request.getRequestDispatcher("postDetailPage.jsp");
     	dis.forward(request, response);
@@ -36,5 +45,4 @@ public class postDetailServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }
