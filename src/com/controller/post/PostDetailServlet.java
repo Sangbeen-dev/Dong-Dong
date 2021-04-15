@@ -31,6 +31,8 @@ public class PostDetailServlet extends HttpServlet {
     	request.setAttribute("pImage", map.get("PIMAGE"));
     	request.setAttribute("pPrice", String.valueOf(map.get("PPRICE")));
     	request.setAttribute("username", map.get("USERNAME"));
+    	request.setAttribute("userid", map.get("USERID"));
+    	request.setAttribute("addr", map.get("ADDR"));
     	request.setAttribute("pContent", map.get("PCONTENT"));
     	request.setAttribute("pDate", String.valueOf(map.get("PDATE")));
     	request.setAttribute("pTitle", map.get("PTITLE"));

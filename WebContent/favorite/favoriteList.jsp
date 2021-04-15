@@ -137,14 +137,6 @@
 	</tr>
 
 	<tr>
-		<td align="center" colspan="5"><a class="a_black"
-			href="#" id="orderAllConfirm" > 전체 주문하기 </a>&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a class="a_black" href="#" id="delAllCart" > 전체 삭제하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<a class="a_black" href="#" id="delAllCart2" > 전체 삭제하기2 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<a class="a_black" href="index.jsp"> 계속 쇼핑하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-		</td>
-	</tr>
-	<tr>
 		<td height="20">
 	</tr>
 
