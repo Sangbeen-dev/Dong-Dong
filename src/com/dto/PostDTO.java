@@ -3,6 +3,7 @@ package com.dto;
 public class PostDTO {
 	private int pNum;
 	private String userid;
+	private String addr;
 	private String pCategory;
 	private String pTitle;
 	private String pContent;
@@ -15,11 +16,12 @@ public class PostDTO {
 		super();
 	}
 
-	public PostDTO(int pNum, String userid, String pCategory, String pTitle, String pContent, int pPrice, String pImage,
-			int pHit, String pDate) {
+	public PostDTO(int pNum, String userid, String addr, String pCategory, String pTitle, String pContent, int pPrice,
+			String pImage, int pHit, String pDate) {
 		super();
 		this.pNum = pNum;
 		this.userid = userid;
+		this.addr = addr;
 		this.pCategory = pCategory;
 		this.pTitle = pTitle;
 		this.pContent = pContent;
@@ -101,11 +103,22 @@ public class PostDTO {
 		this.pDate = pDate;
 	}
 
+	
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
 	@Override
 	public String toString() {
-		return "PostDTO [pNum=" + pNum + ", userid=" + userid + ", pCategory=" + pCategory + ", pTitle=" + pTitle
-				+ ", pContent=" + pContent + ", pPrice=" + pPrice + ", pImage=" + pImage + ", pHit=" + pHit + ", pDate="
-				+ pDate + "]";
+		return "PostDTO [pNum=" + pNum + ", userid=" + userid + ", addr=" + addr + ", pCategory=" + pCategory
+				+ ", pTitle=" + pTitle + ", pContent=" + pContent + ", pPrice=" + pPrice + ", pImage=" + pImage
+				+ ", pHit=" + pHit + ", pDate=" + pDate + "]";
 	}
+
+	
 
 }
