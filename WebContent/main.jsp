@@ -10,6 +10,18 @@
 
 </head>
 <body>
+<%
+	String mesg = (String)session.getAttribute("mesg");
+	if(mesg != null){
+%>
+	<script type = "text/javascript">
+		alert('<%=mesg %>');
+	</script>
+<%
+	//
+	session.removeAttribute("mesg");
+	}
+%>
 <h1>Main</h1>
 
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
