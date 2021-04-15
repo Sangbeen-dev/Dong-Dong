@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관심목록</title>
 </head>
 <body>
-<h1>회원상세 페이지화면입니다.</h1>
+<h1>관심목록</h1>
 
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 <jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
 <hr>
-<jsp:include page="member/mypage.jsp" flush="true"></jsp:include>
+<jsp:include page="favorite/favoriteList.jsp" flush="true"></jsp:include>
 
 </body>
 </html>

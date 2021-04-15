@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import com.dto.PostDTO;
@@ -10,5 +11,11 @@ public class PostDAO {
 	   List<PostDTO> list = 
 			   session.selectList("PostMapper.PostList", pCategory);
 	   return list;
+   }
+   
+   
+   public HashMap<String, String> getPostDetailByPNum(SqlSession session, int pNum) {
+	   HashMap<String, String> map = session.selectOne("PostMapper.getPostDetailByPNum", pNum);
+	   return map;
    }
 }
