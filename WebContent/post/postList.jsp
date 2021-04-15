@@ -6,7 +6,7 @@
 
 
  <%
- 	List<PostDTO> list = (List<PostDTO>)request.getAttribute("PostList");
+ 	List<PostDTO> list = (List<PostDTO>)request.getAttribute("postList");
 	for(int i=1;i<=list.size();i++){
 		PostDTO dto = list.get(i-1);
 		String pTitle = dto.getpTitle();

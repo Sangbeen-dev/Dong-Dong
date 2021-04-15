@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.GoodsDTO;
-import com.service.GoodsService;
+import com.dto.PostDTO;
+import com.service.PostService;
+
 
 /**
  * Servlet implementation class GoodsListServlet
@@ -25,7 +26,7 @@ public class PostListServlet extends HttpServlet {
 			ADDR = "top";
 		}
 		PostService service = new PostService();
-		List<PostDTO> list = service.PostList(ADDR);
+		List<PostDTO> list = service.postListByAddr(ADDR);
 		
 		
 		request.setAttribute("PostList", list);

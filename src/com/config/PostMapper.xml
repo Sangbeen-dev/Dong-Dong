@@ -4,9 +4,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="PostMapper">   
   
+	<select id="postListByAddr" parameterType="string" resultType="PostDTO">
+		select pNum,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate
+       	from post
+       	where addr = #{addr}
+	</select>
 	
-	<select id="PostList" parameterType="string" resultType="PostDTO">
-       select pNum,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate
+	<select id="postListAll" resultType="PostDTO">
+       select *
        from post
 	</select>	
 	
