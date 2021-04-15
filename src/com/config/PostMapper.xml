@@ -5,25 +5,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="PostMapper">   
   
 
-	<select id="recentList" parameterType="string" resultType="PostDTO">
-	select pNum,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate,addr
-	from post
-	order by pDate asc
-	</select>
-	
-	<select id="PostList" parameterType="string" resultType="PostDTO">
-       select pNum,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate,addr
 
+	
 	<select id="postListByAddr" parameterType="string" resultType="PostDTO">
 		select pNum,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate
        	from post
        	where addr = #{addr}
+       	order by pDate desc 
 	</select>
 	
 	<select id="postListAll" resultType="PostDTO">
        select *
        from post
-       
+       order by pDate desc 
 	</select>	
 	
 	<select id="getPostDetailByPNum" parameterType="String" resultType="HashMap">

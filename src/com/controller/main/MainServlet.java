@@ -21,14 +21,6 @@ public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String pDate = request.getParameter("pDate");
-		if(pDate==null) {
-			pDate = "top";
-		}	
-		PostService service = new PostService();
-		List<PostDTO> list = service.recentList("top");
-
-		
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("login");
 		PostService service = new PostService();
