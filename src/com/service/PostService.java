@@ -11,6 +11,20 @@ import com.dto.PostDTO;
 
 public class PostService {
 
+	
+	public List<PostDTO> recentList(String pDate) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		List<PostDTO> list = null;
+		try {
+			PostDAO dao = new PostDAO();
+			list = dao.recentList(session, pDate);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}// end idCheck
 	public List<PostDTO> postList(String pCategory) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		List<PostDTO> list = null;
@@ -38,4 +52,5 @@ public class PostService {
 		}
 		return map;
 	}// end idCheck
-}// end class
+	
+}

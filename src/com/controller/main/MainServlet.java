@@ -18,9 +18,13 @@ import com.service.PostService;
 public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		String pDate = request.getParameter("pDate");
+		if(pDate==null) {
+			pDate = "top";
+		}	
 		PostService service = new PostService();
-		List<PostDTO> list = service.postList("top");
+		List<PostDTO> list = service.recentList("top");
+		
 		System.out.println("list->"+list);
 		request.setAttribute("PostList", list);
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");

@@ -18,4 +18,11 @@ public class PostDAO {
 	   HashMap<String, String> map = session.selectOne("PostMapper.getPostDetailByPNum", pNum);
 	   return map;
    }
+
+
+   public List<PostDTO> recentList(SqlSession session, String pDate) {
+	List<PostDTO> list = 
+			   session.selectList("PostMapper.recentList", pDate);
+	   return list;
+}
 }

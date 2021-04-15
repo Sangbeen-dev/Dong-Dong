@@ -4,14 +4,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="PostMapper">   
   
+	<select id="recentList" parameterType="string" resultType="PostDTO">
+	select pNum,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate,addr
+	from post
+	order by pDate asc
+	</select>
 	
 	<select id="PostList" parameterType="string" resultType="PostDTO">
-       select pNum,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate
+       select pNum,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate,addr
        from post
+       
 	</select>	
 	
 	<select id="getPostDetailByPNum" parameterType="String" resultType="HashMap">
-		select username,addr,pnum,ptitle,pCategory,pContent,pPrice,pImage,pHit,pDate 
+		select username,addr,pnum,ptitle,pCategory,pContent,pPrice,pImage,pHit,pDate,addr 
 		from member m Join post p on m.userid = p.userid
 		WHERE pnum=${pNum}
 	</select>
