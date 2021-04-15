@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dto.GoodsDTO;
+import com.dto.PostDTO;
 import com.service.GoodsService;
+import com.service.PostService;
 
 /**
  * Servlet implementation class GoodsListServlet
@@ -20,12 +22,12 @@ import com.service.GoodsService;
 public class PostListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String ADDR = request.getParameter("ADDR");
-		if(ADDR==null) {
-			ADDR = "top";
+		String addr = request.getParameter("addr");
+		if(addr==null) {
+			addr = "top";
 		}
 		PostService service = new PostService();
-		List<PostDTO> list = service.PostList(ADDR);
+		List<PostDTO> list = service.postList(addr);
 		
 		
 		request.setAttribute("PostList", list);
