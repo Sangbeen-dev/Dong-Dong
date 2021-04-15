@@ -7,7 +7,7 @@
 <title>관심목록</title>
 </head>
 <body>
-<h1>관심목록</h1>
+<h1>동동마켓</h1>
 
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 <jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
