@@ -17,7 +17,7 @@ import com.service.GoodsService;
  * Servlet implementation class GoodsListServlet
  */
 @WebServlet("/PostServlet")
-public class PostServlet extends HttpServlet {
+public class PostListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ADDR = request.getParameter("ADDR");
