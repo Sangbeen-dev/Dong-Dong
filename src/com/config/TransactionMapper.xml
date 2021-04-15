@@ -8,14 +8,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select *
 	from
 	purchase
-	where nickName = #{nickName}
+	where userid = #{userid}
 	</select>
 	
 	<select id="saleList" resultType="SaleDTO" parameterType="string">
 	select *
 	from
 	sale
-	where nickName = #{nickName}
+	where userid = #{userid}
 	</select>
 
 </mapper>

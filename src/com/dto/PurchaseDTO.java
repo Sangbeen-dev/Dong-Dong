@@ -6,10 +6,19 @@ public class PurchaseDTO {
 	private String pTitle;
 	private String pImage;
 	private int pPrice;
-	@Override
-	public String toString() {
-		return "PurchaseDTO [pNum=" + pNum + ", nickName=" + nickName + ", pTitle=" + pTitle + ", pImage=" + pImage
-				+ ", pPrice=" + pPrice + "]";
+	private String userid;
+	public PurchaseDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public PurchaseDTO(int pNum, String nickName, String pTitle, String pImage, int pPrice, String userid) {
+		super();
+		this.pNum = pNum;
+		this.nickName = nickName;
+		this.pTitle = pTitle;
+		this.pImage = pImage;
+		this.pPrice = pPrice;
+		this.userid = userid;
 	}
 	public int getpNum() {
 		return pNum;
@@ -41,16 +50,16 @@ public class PurchaseDTO {
 	public void setpPrice(int pPrice) {
 		this.pPrice = pPrice;
 	}
-	public PurchaseDTO(int pNum, String nickName, String pTitle, String pImage, int pPrice) {
-		super();
-		this.pNum = pNum;
-		this.nickName = nickName;
-		this.pTitle = pTitle;
-		this.pImage = pImage;
-		this.pPrice = pPrice;
+	public String getUserid() {
+		return userid;
 	}
-	public PurchaseDTO() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
+	@Override
+	public String toString() {
+		return "PurchaseDTO [pNum=" + pNum + ", nickName=" + nickName + ", pTitle=" + pTitle + ", pImage=" + pImage
+				+ ", pPrice=" + pPrice + ", userid=" + userid + "]";
+	}
+	
 }

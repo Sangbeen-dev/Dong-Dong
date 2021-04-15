@@ -6,17 +6,19 @@ public class SaleDTO {
 	private String pTitle;
 	private String pImage;
 	private int pPrice;
+	private String userid;
 	public SaleDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SaleDTO(int pNum, String nickName, String pTitle, String pImage, int pPrice) {
+	public SaleDTO(int pNum, String nickName, String pTitle, String pImage, int pPrice, String userid) {
 		super();
 		this.pNum = pNum;
 		this.nickName = nickName;
 		this.pTitle = pTitle;
 		this.pImage = pImage;
 		this.pPrice = pPrice;
+		this.userid = userid;
 	}
 	public int getpNum() {
 		return pNum;
@@ -48,10 +50,17 @@ public class SaleDTO {
 	public void setpPrice(int pPrice) {
 		this.pPrice = pPrice;
 	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	@Override
 	public String toString() {
 		return "SaleDTO [pNum=" + pNum + ", nickName=" + nickName + ", pTitle=" + pTitle + ", pImage=" + pImage
-				+ ", pPrice=" + pPrice + "]";
+				+ ", pPrice=" + pPrice + ", userid=" + userid + "]";
 	}
+	
 	
 }

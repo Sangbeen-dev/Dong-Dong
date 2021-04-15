@@ -11,24 +11,24 @@ import com.dto.SaleDTO;
 
 public class TransactionService {
 
-	public List<PurchaseDTO> purchaseList(String nickName) {
+	public List<PurchaseDTO> purchaseList(String userid) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		List<PurchaseDTO> plist = null;
 		try {
 			TransactionDAO dao = new TransactionDAO();
-			plist = dao.purchaseList(session, nickName);
+			plist = dao.purchaseList(session, userid);
 		} catch (Exception e) {
 			session.close();
 		}
 		return plist;
 	}
 
-	public List<SaleDTO> saleList(String nickName) {
+	public List<SaleDTO> saleList(String userid) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		List<SaleDTO> slist = null;
 		try {
 			TransactionDAO dao = new TransactionDAO();
-			slist = dao.saleList(session, nickName);
+			slist = dao.saleList(session, userid);
 		} catch (Exception e) {
 			session.close();
 		}

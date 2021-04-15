@@ -9,13 +9,13 @@ import com.dto.SaleDTO;
 
 public class TransactionDAO {
 
-	public List<PurchaseDTO> purchaseList(SqlSession session, String nickName) {
-		List<PurchaseDTO> plist = session.selectList("TransactionMapper.purchaseList", nickName);
+	public List<PurchaseDTO> purchaseList(SqlSession session, String userid) {
+		List<PurchaseDTO> plist = session.selectList("TransactionMapper.purchaseList", userid);
 		return plist;
 	}
 
-	public List<SaleDTO> saleList(SqlSession session, String nickName) {
-		List<SaleDTO> slist = session.selectList("TransactionMapper.saleList", nickName);
+	public List<SaleDTO> saleList(SqlSession session, String userid) {
+		List<SaleDTO> slist = session.selectList("TransactionMapper.saleList", userid);
 		return slist;
 	}
 

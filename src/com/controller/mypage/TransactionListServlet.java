@@ -26,15 +26,15 @@ public class TransactionListServlet extends HttpServlet {
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
 		String nextPage = null;
 		if(dto!=null) {
-			String nickName = dto.getNickName();
-			System.out.println(nickName);
+			String userid = dto.getUserid();
+			System.out.println(userid);
 			//구매내역
 			TransactionService service = new TransactionService();
-			List<PurchaseDTO> plist = service.purchaseList(nickName);
+			List<PurchaseDTO> plist = service.purchaseList(userid);
 			System.out.println("구매내역(서블릿)===="+plist); 
 			request.setAttribute("purchaseList", plist);
 			//판매내역 
-			List<SaleDTO> slist = service.saleList(nickName);
+			List<SaleDTO> slist = service.saleList(userid);
 			System.out.println("판매내역(서블릿)===="+slist); 
 			request.setAttribute("saleList", slist);
 			
