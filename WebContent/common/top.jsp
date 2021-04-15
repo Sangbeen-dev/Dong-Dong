@@ -16,7 +16,11 @@
 	} else{ //아닌경우
 %>
 	<a href="LoginUIServlet">로그인</a>
+<<<<<<< HEAD
 	<a href="MemberAddServlet">회원가입</a><!--MVC 패턴 -->
+=======
+	<a href="MemberAddUIServlet">회원가입</a><!--MVC 패턴 -->
+>>>>>>> 9c74206c537852585b7cfbe1637814f80dd76769
 	<a href="">장바구니</a>
 <%
 	}//end if~else
