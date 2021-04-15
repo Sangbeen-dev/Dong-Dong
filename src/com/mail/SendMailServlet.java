@@ -27,14 +27,26 @@ public class SendMailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mailTo= (String)request.getAttribute("mailTo");
 		String userid = (String)request.getAttribute("userid");
+		String passwd = (String)request.getAttribute("passwd");
 		
 		String host = "smtp.naver.com"; // 호스트 네이버 메일
-	    String subject = "동동에서 보내는 아이디 확인 메일입니다."; //메일 제목
-	    String from = "***"; //보내는 사람 메일 주소  //이부분 채워주셔야 합니다.
+		String subject = ""; //메일제목
+	    String from = "sim2308@naver.com"; //보내는 사람 메일 주소  //이부분 채워주셔야 합니다.
 	    String fromName = "DongDong"; //송신자명
 	    String to = mailTo; //받는 사람 메일 주소
-	    String content = "귀하의 아이디는:" + userid;//메일 내용
-	    String mesg = "회원가입 메일이 발송되었습니다.";
+	    String content = "";
+	    String mesg = "";
+	    if(userid != null) {
+	    	content = "귀하의 아이디는:" + userid;//메일 내용
+	    	subject = "동동에서 보내는 아이디 확인 메일입니다.";
+	    	mesg = "아이디가 발송되었습니다."; 
+	    }
+	    
+	    if(passwd != null) {
+	    	content = "귀하의 비밀번호는 : " + passwd;
+	    	subject = "동동에서 보내는 비밀번호 확인 메일입니다.";
+	    	mesg = "비밀번호가 발송되었습니다.";
+	    }
 	   try{
 	     //프로퍼티 값 인스턴스 생성과 기본세션(SMTP 서버 호스트 지정)
 	     Properties props = new Properties();
