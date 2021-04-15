@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.GoodsDTO;
 import com.dto.PostDTO;
-import com.service.GoodsService;
+
 import com.service.PostService;
 
 /**
