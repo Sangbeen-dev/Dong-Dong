@@ -5,9 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>관심목록</title>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#main").click(function() {
+			location.href="main";
+		})
+		
+	})//end ready
+	
+</script>
 </head>
 <body>
-<h1>동동마켓</h1>
+<h1 id="main">동동마켓</h1>
 
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 <jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>

@@ -35,7 +35,7 @@ public class MainServlet extends HttpServlet {
 			String addr = member.getAddr();
 			list = service.postListByAddr(addr);
 		}
-
+		
 		
 		System.out.println("list->"+list);
 		request.setAttribute("postList", list);
