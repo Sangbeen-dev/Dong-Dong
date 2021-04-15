@@ -14,7 +14,8 @@
 		int pPrice = dto.getpPrice();
 		String pImage = dto.getpImage();
 		String pDate = dto.getpDate();
-%>
+		String addr = dto.getAddr();
+		%>
 <%=pTitle%> 
 <%=pContent%> <hr>
 

@@ -45,23 +45,13 @@ $("#passwd2").on("keyup",function(){
 <br>
 
 이름:<input type="text" name="username"><br> 
-닉네임:<input type="text" name="nickname"><br> 
+닉네임:<input type="text" name="nickName"><br> 
 주소:<input type="text" name="addr" id="sample4_roadAddress" placeholder="주소입력">
 <span id="guide" style="color:#999"></span>
 <br>
 전화번호:
-<input type="text" name="phone" >
-이름:<input type="text" name="username"><br>
-닉네임:<input type="text" name="nickName"><br>
-
-<br>
-<input type="text" name="addr" placeholder="주소">
-<br>
-
-전화번호:<input type="text" name="phone" >
-
-
-<br>
+<input type="text" name="phone" ><br>
+<input type="text" name="addr" placeholder="주소"><br>
 이메일:<input type="text" name="email1" >@
        <input type="text" name="email2"  placeholder="직접입력">
        <select>
