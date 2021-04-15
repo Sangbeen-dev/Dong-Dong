@@ -35,9 +35,13 @@
 상품 이미지 주소 <%=pImage%><br>
 상품 Hit 수<%=pHit%><br>
 상품 등록 시간 <%=pDate%><br>
-<% if(dto!=null && userid.equals(dto.getUserid())) { %>
+
+<br>
+<% if(dto==null)  {%>
+	<a href="">구매시 로그인이 필요합니다.</a><br>
+<%} else if(userid.equals(dto.getUserid())) { %>
 	<a href="">상품 정보 수정</a><br>
-	<a href="">상품 삭제</a>
-<% } %>
-</body>
-</html>
+	<a href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
+<% } else  {%>
+	<a href="">상품 구매</a><br>
+<%} %>
