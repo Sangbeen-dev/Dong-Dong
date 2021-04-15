@@ -14,9 +14,27 @@
 		int pPrice = dto.getpPrice();
 		String pImage = dto.getpImage();
 		String pDate = dto.getpDate();
+		String addr = dto.getAddr();
 		%>
-<%=pTitle%> 
-<%=pContent%> <hr>
+		
+		
+		
+		
+            
+ <hr>
+  
+ <br>
+ 	<div id="top">
+ 	<img src="images/items/<%=pImage %>.gif">
+ 	<p><%=pTitle%></p>
+ 	</div>
+ 	 <%=pDate%>
+ 	 <%=addr%>
+ 		<br> <%= pPrice%>
+         
+        <br>
+        <br>
+        <%=pContent%> 
 
 <%
     }//end for
