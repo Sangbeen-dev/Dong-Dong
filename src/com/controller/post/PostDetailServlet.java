@@ -13,12 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.service.PostService;
 
 @WebServlet("/postDetailServlet")
-public class postDetailServlet extends HttpServlet {
+public class PostDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	//String pNum = request.getParameter("pNum");
-    	String pNum = "5"; // 테스트 값
+    	String pNum = request.getParameter("pNum");
     	
     	PostService service = new PostService();
     	
@@ -26,8 +25,6 @@ public class postDetailServlet extends HttpServlet {
     	
     	System.out.println(map);
     	// 데이터 파싱 후 페이지 이동
-    	System.out.println((String)map.get("PCONTENT"));
-    	
     	request.setAttribute("pNum", String.valueOf(map.get("PNUM")));
     	request.setAttribute("pCategory", map.get("PCATEGORY"));
     	request.setAttribute("pHit", String.valueOf(map.get("PHIT")));
