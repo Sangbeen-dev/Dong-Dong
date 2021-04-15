@@ -1,13 +1,6 @@
 <%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 <% 
 	MemberDTO dto = (MemberDTO)session.getAttribute("login");
 
@@ -32,7 +25,8 @@
 상품명 <%=pTitle%><br>
 게시글 내용 <%=pContent%><br>
 상품 가격 <%=pPrice%><br>
-상품 이미지 주소 <%=pImage%><br>
+상품 이미지 <br>
+<img src="images/items/<%=pImage%>.gif"><br>
 상품 Hit 수<%=pHit%><br>
 상품 등록 시간 <%=pDate%><br>
 

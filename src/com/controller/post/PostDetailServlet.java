@@ -37,7 +37,7 @@ public class PostDetailServlet extends HttpServlet {
     	request.setAttribute("pDate", String.valueOf(map.get("PDATE")));
     	request.setAttribute("pTitle", map.get("PTITLE"));
     	
-    	RequestDispatcher dis = request.getRequestDispatcher("postDetailPage.jsp");
+    	RequestDispatcher dis = request.getRequestDispatcher("postDetail.jsp");
     	dis.forward(request, response);
     }
 
