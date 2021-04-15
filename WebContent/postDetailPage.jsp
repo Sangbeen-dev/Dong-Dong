@@ -1,3 +1,4 @@
+<%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,6 +9,9 @@
 </head>
 <body>
 <% 
+	MemberDTO dto = (MemberDTO)session.getAttribute("login");
+
+	String userid = (String)request.getAttribute("userid");
  	String username = (String)request.getAttribute("username");
   	int pNum = Integer.parseInt((String)request.getAttribute("pNum"));
 	String pCategory = (String)request.getAttribute("pCategory");
@@ -28,5 +32,7 @@
 상품 이미지 주소 <%=pImage%><br>
 상품 Hit 수<%=pHit%><br>
 상품 등록 시간 <%=pDate%><br>
+<a href="">상품 정보 수정</a><br>
+<a href="">상품 삭제</a>
 </body>
 </html>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.service.PostService;
 
-@WebServlet("/postDetailServlet")
+@WebServlet("/PostDetailServlet")
 public class PostDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
