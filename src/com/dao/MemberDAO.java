@@ -20,7 +20,6 @@ public class MemberDAO {
 
 	public int memberAdd(SqlSession session,MemberDTO dto) {
 		   int n = session.insert("MemberMapper.memberAdd", dto);
-		  System.out.println(dto);
 		   return n;
 	   
 	
@@ -32,6 +31,11 @@ public class MemberDAO {
 		
 		return userid;
 	}//end idSearch
+
+	public String pwSearch(SqlSession session, MemberDTO dto) {
+		String passwd = session.selectOne("MemberMapper.pwSearch",dto);
+		return passwd;
+	}//end pwSearch
 	
 }//end MemberDAO
 

@@ -72,5 +72,22 @@ public class MemberService {
 		}
 		return userid;
 	}//end idSearch
+
+
+	public String pwSearch(MemberDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		String passwd = null;
+		try{
+			MemberDAO dao = new MemberDAO();
+			passwd = dao.pwSearch(session, dto);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			session.close();
+		}
+		return passwd;
+	}//end pwSerach
 	
 }

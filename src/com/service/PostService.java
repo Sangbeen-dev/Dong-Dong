@@ -11,6 +11,7 @@ import com.dto.PostDTO;
 
 public class PostService {
 
+<<<<<<< HEAD
 	
 	public List<PostDTO> recentList(String pDate) {
 		SqlSession session = MySqlSessionFactory.getSession();
@@ -26,19 +27,38 @@ public class PostService {
 		return list;
 	}// end idCheck
 	public List<PostDTO> postList(String pCategory) {
+=======
+	public List<PostDTO> postListAll() {
+>>>>>>> fe8d71e00738aab8488e0e1706f330d5dc1ebfd5
 		SqlSession session = MySqlSessionFactory.getSession();
 		List<PostDTO> list = null;
 		try {
 			PostDAO dao = new PostDAO();
-			list = dao.postList(session, pCategory);
+			System.out.println("service->postListAll불러짐");
+			list = dao.postListAll(session);
+			System.out.println("service->postListAll->list값 받아옴");
+			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
 		return list;
-	}// end idCheck
+	}
 
+	public List<PostDTO> postListByAddr(String addr){
+		SqlSession session = MySqlSessionFactory.getSession();
+		List<PostDTO> list = null;
+		try {
+			PostDAO dao = new PostDAO();
+			list = dao.postListByAddr(session, addr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 	public HashMap<String, String> getPostDetailByPNum(int pNum) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		HashMap<String, String> map = null;
@@ -51,6 +71,12 @@ public class PostService {
 			session.close();
 		}
 		return map;
+<<<<<<< HEAD
 	}// end idCheck
 	
 }
+=======
+	}
+
+}// end class
+>>>>>>> fe8d71e00738aab8488e0e1706f330d5dc1ebfd5

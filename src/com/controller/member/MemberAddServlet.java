@@ -29,13 +29,11 @@ public class MemberAddServlet extends HttpServlet {
 		MemberDTO dto = new MemberDTO
 		(userid, passwd,username,nickName,addr ,phone ,email1 ,email2);
 		
-		System.out.println(dto);
-		
 		MemberService service = new MemberService();
 		int n = service.memberAdd(dto);
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("memberAdd", "회원가입성공");
+		session.setAttribute("mesg", "회원가입성공");
 		response.sendRedirect("main");
 		
 		
