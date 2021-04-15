@@ -6,14 +6,14 @@
 
 	String userid = (String)request.getAttribute("userid");
  	String username = (String)request.getAttribute("username");
-  	int pNum = Integer.parseInt((String)request.getAttribute("pNum"));
+  	String pNum = (String)request.getAttribute("pNum");
 	String addr = (String)request.getAttribute("addr");
 	String pCategory = (String)request.getAttribute("pCategory");
 	String pTitle = (String)request.getAttribute("pTitle");
 	String pContent = (String)request.getAttribute("pContent");
-	int pPrice = Integer.parseInt((String)request.getAttribute("pPrice"));
+	String pPrice = (String)request.getAttribute("pPrice");
 	String pImage = (String)request.getAttribute("pImage");
-	int pHit = Integer.parseInt((String)request.getAttribute("pHit"));
+	String pHit = (String)request.getAttribute("pHit");
 	String pDate = (String)request.getAttribute("pDate");
 %>
 
@@ -34,7 +34,7 @@
 <% if(dto==null)  {%>
 	<a href="">구매시 로그인이 필요합니다.</a><br>
 <%} else if(userid.equals(dto.getUserid())) { %>
-	<a href="">상품 정보 수정</a><br>
+	<a href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a><br>
 	<a href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
 <% } else  {%>
 	<a href="">상품 구매</a><br>

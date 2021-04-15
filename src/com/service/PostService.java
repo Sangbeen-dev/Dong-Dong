@@ -39,18 +39,18 @@ public class PostService {
         }
         return list;
     }
-    public HashMap<String, String> getPostDetailByPNum(int pNum) {
+    public PostDTO getPostByPNum(int pNum) {
         SqlSession session = MySqlSessionFactory.getSession();
-        HashMap<String, String> map = null;
+        PostDTO dto = null;
         try {
             PostDAO dao = new PostDAO();
-            map = dao.getPostDetailByPNum(session, pNum);
+            dto = dao.getPostByPNum(session, pNum);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return map;
+        return dto;
     }
 }// end class
 

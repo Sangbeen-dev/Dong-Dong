@@ -13,9 +13,9 @@ public class PostDAO {
    }
    
    
-   public HashMap<String, String> getPostDetailByPNum(SqlSession session, int pNum) {
-	   HashMap<String, String> map = session.selectOne("PostMapper.getPostDetailByPNum", pNum);
-	   return map;
+   public PostDTO getPostByPNum(SqlSession session, int pNum) {
+	   PostDTO dto = session.selectOne("PostMapper.getPostByPNum", pNum);
+	   return dto;
    }
 
 

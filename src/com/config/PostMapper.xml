@@ -20,9 +20,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        order by pDate desc 
 	</select>	
 	
-	<select id="getPostDetailByPNum" parameterType="String" resultType="HashMap">
-		select username,m.userid,p.addr,pnum,ptitle,pCategory,pContent,pPrice,pImage,pHit,pDate 
-		from member m Join post p on m.userid = p.userid
-		WHERE pnum=${pNum}
+	<select id="getPostByPNum" parameterType="int" resultType="PostDTO">
+		select * 
+		from post
+		WHERE pNum=${pNum}
 	</select>
 </mapper>
