@@ -63,7 +63,7 @@
 		});//end keyup
 		
 		$("#favorite").on("click", function() {
-			location.href ="../FavoriteServlet";
+			location.href ="FavoriteListServlet";
 		});
 		
  });
@@ -84,12 +84,12 @@
 	dto.setEmail1("1");
 	dto.setEmail2("1");
 %>
-<button id="favorite">관심목록</button>&nbsp;<a href="../FavoriteServlet">거래내역</a> &nbsp;
+<button id="favorite">관심목록</button>&nbsp;<a href="FavoriteListServlet">거래내역</a> &nbsp;
 <form action="#" method="post">
 <input type="hidden" value="<%= dto.getUserid() %>" name="userid">
 *아이디: <%= dto.getUserid() %><br>
 <!--프로필 이미지  -->
-<img src="../images/aaa.jpg" border="0" width="80"/><br>
+<img src="images/aaa.jpg" border="0" width="80"/><br>
 *이름:<%= dto.getUsername() %>
 <br> 
 <!-- <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> -->
