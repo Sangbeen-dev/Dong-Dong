@@ -13,6 +13,16 @@
 		$("#transaction").on("click", function() {
 			location.href ="TransactionListServlet";
 		});
+		// 수정 정보 보내기
+		$("#submit").click(function() {
+			$("#myForm").attr("action","MemberUpdateServlet");
+		})
+		//닉네임 중복체크 //성수가 진행중 
+		var nickCheckWin;
+		$("#nickCheck").click(function() {
+			nickCheckWin = window.open("nickCheckWin.jsp", "" ,"width=15", "height=15");
+		})
+		
 		
  });
 </script>    
@@ -25,13 +35,16 @@
 	
 %>
 <button id="favorite">관심목록</button>&nbsp;<button id="transaction" >거래내역</button> &nbsp;
-<form action="MemberUpdateServlet" method="post">
+<form id="myForm" action="MemberUpdateServlet" method="post">
+<!-- <form id="myForm" action="#" method="post"> -->
 <input type="hidden" value="<%= dto.getUsername() %>" name="username">
 *이름:<%= dto.getUsername() %><br>
 <input type="hidden" value="<%= dto.getUserid() %>" name="userid">
 *아이디: <%= dto.getUserid() %><br>
 
-*닉네임:<input type="text" value="<%= dto.getNickName() %>" name="nickName"><br>
+*닉네임:<input type="text" value="<%= dto.getNickName() %>" id="nickName" name="nickName">
+<button id="nickCheck">중복확인</button>
+<br>
 <!--프로필 이미지  -->
 <img src="images/aaa.jpg" border="0" width="80"/><br>
 
@@ -51,6 +64,6 @@
         <option value="naver.com">naver.com</option>
        </select>
 <br>
-<input type="submit" value="수정">
+<input id="submit" type="submit" value="수정">
 <input type="reset" value="취소">
 </form>
