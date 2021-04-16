@@ -104,5 +104,18 @@ public class MemberService {
 		}
 		return num;
 	}
+
+
+	public int nickCheck(String nickName) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n= 0;
+		try{
+			MemberDAO dao = new MemberDAO();
+			n = dao.nickCheck(session, nickName);
+		}finally {
+			session.close();
+		}
+		return n;
+	}
 	
 }

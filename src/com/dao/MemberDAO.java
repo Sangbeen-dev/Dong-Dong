@@ -41,7 +41,13 @@ public class MemberDAO {
 		int num = session.update("MemberMapper.memberUpdate", dto2);
 		System.out.println("dao ==="+dto2);
 		return num;
-	}
+	}//end memberUpdate
+
+	public int nickCheck(SqlSession session, String nickName) {
+		int n = session.selectOne("MemberMapper.nickCheck", nickName);
+		System.out.println("dao=="+n);
+		return n;
+	}//end nickCHeck
 	
 }//end MemberDAO
 

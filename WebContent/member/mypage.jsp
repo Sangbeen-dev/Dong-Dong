@@ -17,12 +17,18 @@
 		$("#submit").click(function() {
 			$("#myForm").attr("action","MemberUpdateServlet");
 		})
-		//닉네임 중복체크 //성수가 진행중 
-		var nickCheckWin;
+		//닉네임 중복체크 버튼
+		function confirmNick() {
+			if($("#nickName").val() == ""){
+				alert("닉네임을 입력하세요");
+				return;
+			}
+		url = "confirmNick?nickName=" + $("#nickName").val();
+		open(url,"confirm", "width=300","height=200");
+		}
 		$("#nickCheck").click(function() {
-			nickCheckWin = window.open("nickCheckWin.jsp", "" ,"width=15", "height=15");
+			confirmNick();
 		})
-		
 		
  });
 </script>    
@@ -35,8 +41,8 @@
 	
 %>
 <button id="favorite">관심목록</button>&nbsp;<button id="transaction" >거래내역</button> &nbsp;
-<form id="myForm" action="MemberUpdateServlet" method="post">
-<!-- <form id="myForm" action="#" method="post"> -->
+<!-- <form id="myForm" action="MemberUpdateServlet" method="post"> -->
+<form id="myForm" action="#" method="post"> 
 <input type="hidden" value="<%= dto.getUsername() %>" name="username">
 *이름:<%= dto.getUsername() %><br>
 <input type="hidden" value="<%= dto.getUserid() %>" name="userid">
