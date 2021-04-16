@@ -50,7 +50,8 @@ $("#passwd2").on("keyup",function(){
 				userid : $("#userid").val()
 			}, 
 			success : function(responseData, status, xhr) {
-			    $("#result").text(responseData);
+			    console.log(responseData);
+				$("#result").text(responseData);
 			},
 			error : function(xhr, status, error) {
 				console.log("error");
@@ -68,7 +69,8 @@ $("#passwd2").on("keyup",function(){
 				nickName : $("#nickName").val()
 			}, 
 			success : function(responseData, status, xhr) {
-			    $("#result3").text(responseData);
+			    console.log(responseData);
+				$("#result3").text(responseData);
 			},
 			error : function(xhr, status, error) {
 				console.log("error");
