@@ -37,6 +37,7 @@
 상품 등록 시간 <%=pDate%><br>
 
 <br>
+<jsp:include page="post/postDetailPage.jsp" flush="true" />
 <% if(dto==null)  {%>
 	<a href="">구매시 로그인이 필요합니다.</a><br>
 <%} else if(userid.equals(dto.getUserid())) { %>
