@@ -72,5 +72,20 @@ public class PostService {
         }
         return deleteResult;
 	}
+
+	public int newPost(PostDTO post) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int result = 0;
+		try {
+			PostDAO dao = new PostDAO();
+			result = dao.newPost(session, post);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+		} finally {
+			session.close();
+		}
+		return result;
+	}
 }// end class
 
