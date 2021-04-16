@@ -37,6 +37,11 @@ public class PostDAO {
 	}
 
 
+	public int updatePost(SqlSession session, PostDTO dto) {
+		return session.update("PostMapper.updatePost",dto);
+	}
+
+
 
 
 }
