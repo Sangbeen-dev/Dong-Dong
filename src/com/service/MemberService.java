@@ -89,5 +89,20 @@ public class MemberService {
 		}
 		return passwd;
 	}//end pwSerach
+
+
+	public int memberUpdate(MemberDTO dto2) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int num = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+			num = dao.memberUpdate(session, dto2);
+			System.out.println("서비스==="+dto2);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return num;
+	}
 	
 }

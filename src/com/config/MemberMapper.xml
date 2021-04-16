@@ -31,8 +31,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id = "pwSearch" resultType = "String" parameterType = "MemberDTO">
 	select passwd from member
 	where username = #{username} and userid = #{userid} and phone = #{phone}
-	
 	</select>
+	
+	<update id="memberUpdate" parameterType="MemberDTO">
+	update member set
+	nickName = #{nickName},
+	addr = #{addr},
+	phone = #{phone},
+	email1 = #{email1},
+	email2 = #{email2}
+	where userid = #{userid}
+	</update>
    
 
 

@@ -36,6 +36,12 @@ public class MemberDAO {
 		String passwd = session.selectOne("MemberMapper.pwSearch",dto);
 		return passwd;
 	}//end pwSearch
+
+	public int memberUpdate(SqlSession session, MemberDTO dto2) {
+		int num = session.update("MemberMapper.memberUpdate", dto2);
+		System.out.println("dao ==="+dto2);
+		return num;
+	}
 	
 }//end MemberDAO
 
