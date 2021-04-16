@@ -27,9 +27,7 @@ public class MemberAddServlet extends HttpServlet {
 		String email2 = request.getParameter("email2");
 	
 		MemberDTO dto = new MemberDTO
-		(userid, passwd,username,nickName,addr ,phone ,email1 ,email2);
-		
-		System.out.println(dto);
+		(userid,passwd,username,nickName,addr,phone,email1,email2);
 		
 		MemberService service = new MemberService();
 		int n = service.memberAdd(dto);

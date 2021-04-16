@@ -19,6 +19,7 @@ public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
+		
 		PostService service = new PostService();
 		List<PostDTO> list = service.postList("top");
 		System.out.println("list->"+list);

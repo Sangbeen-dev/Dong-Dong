@@ -72,5 +72,35 @@ public class MemberService {
 		}
 		return userid;
 	}//end idSearch
+
+
+	public int idCheck(String userid) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int count = 0;
+		try {
+			 MemberDAO dao = new MemberDAO();
+			count = dao.idCheck(session, userid);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return count;	
+		}
+
+
+	public int nickNameCheck(String nickName) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int count = 0;
+		try {
+			 MemberDAO dao = new MemberDAO();
+			count = dao.nickNameCheck(session, nickName);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return count;	
+		}
 	
 }
