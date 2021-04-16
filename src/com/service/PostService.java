@@ -16,10 +16,7 @@ public class PostService {
 		List<PostDTO> list = null;
 		try {
 			PostDAO dao = new PostDAO();
-			System.out.println("service->postListAll불러짐");
 			list = dao.postListAll(session);
-			System.out.println("service->postListAll->list값 받아옴");
-			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

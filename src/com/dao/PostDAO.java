@@ -21,7 +21,6 @@ public class PostDAO {
 
    public List<PostDTO> postListAll(SqlSession session) {
 	   List<PostDTO> list = session.selectList("PostMapper.postListAll");
-	   System.out.println("DAO의 postListAll->"+list);
 	   return list;
    }
 
