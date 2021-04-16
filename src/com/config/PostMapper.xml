@@ -25,4 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from post
 		WHERE pNum=${pNum}
 	</select>
+	
+	<delete id="deletePostByPNum" parameterType="int">
+		delete 
+		from post
+		where pNum=${pNum}
+	</delete>
 </mapper>

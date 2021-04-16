@@ -11,5 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where userid = #{userid}
 	</select>
 
-
+	<delete id="deleteFavoriteByPNum" parameterType="int">
+		delete
+		from favorite
+		where pNum=#{pNum}
+	</delete>
 </mapper>

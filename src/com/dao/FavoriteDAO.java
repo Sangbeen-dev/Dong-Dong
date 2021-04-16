@@ -13,4 +13,8 @@ public class FavoriteDAO {
 		return list;
 	}
 
+	public int deleteFavoriteByPNum(SqlSession session, int pNum) {
+		return session.delete("FavoriteMapper.deleteFavoriteByPNum",pNum);
+	}
+
 }

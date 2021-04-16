@@ -52,5 +52,25 @@ public class PostService {
         }
         return dto;
     }
+
+	public int deletePostByPNum(int pNum) {
+		SqlSession session = MySqlSessionFactory.getSession();
+        int deleteResult = 0;
+        try {
+            PostDAO dao = new PostDAO();
+            deleteResult = dao.deletePostByPNum(session, pNum);
+            if(deleteResult!=1) {
+            	session.rollback();
+            } else {
+            	session.commit();
+            }
+        } catch (Exception e) {
+        	session.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return deleteResult;
+	}
 }// end class
 

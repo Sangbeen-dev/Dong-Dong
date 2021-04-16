@@ -22,4 +22,20 @@ public class FavoriteService {
 		return list;
 	}
 
+	public int deleteFavoriteByPNum(int pNum) {
+		SqlSession session = MySqlSessionFactory.getSession();
+        int deleteResult = 0;
+        try {
+        	FavoriteDAO dao = new FavoriteDAO();
+            deleteResult = dao.deleteFavoriteByPNum(session, pNum);
+            session.commit();
+        } catch (Exception e) {
+        	session.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return deleteResult;
+	}
+
 }
