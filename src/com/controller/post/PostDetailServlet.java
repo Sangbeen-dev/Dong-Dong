@@ -42,7 +42,7 @@ public class PostDetailServlet extends HttpServlet {
     	request.setAttribute("userid", mDTO.getUserid());
     	request.setAttribute("username", mDTO.getUsername());
     	
-    	RequestDispatcher dis = request.getRequestDispatcher("postDetail.jsp");
+    	RequestDispatcher dis = request.getRequestDispatcher("postDetailPage.jsp");
     	dis.forward(request, response);
     }
 

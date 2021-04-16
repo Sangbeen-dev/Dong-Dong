@@ -3,7 +3,6 @@
     pageEncoding="UTF-8"%>
 <% 
 	MemberDTO dto = (MemberDTO)session.getAttribute("login");
-
 	String userid = (String)request.getAttribute("userid");
  	String username = (String)request.getAttribute("username");
   	String pNum = (String)request.getAttribute("pNum");
