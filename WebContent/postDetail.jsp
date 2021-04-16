@@ -7,9 +7,9 @@
 		<title>상품 세부 페이지</title>
 	</head>
 	<body>
-		<jsp:include page = "common/top.jsp" flush = "true" /><br>
-		<jsp:include page = "common/menu.jsp" flush ="true" /><br>
+		<jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
+		<jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
 		<hr>
-		<jsp:include page = "post/postDetail.jsp" flush ="true" />
-</body>
+		<jsp:include page="post/postDetail.jsp" flush="true"></jsp:include>
+	</body>
 </html>

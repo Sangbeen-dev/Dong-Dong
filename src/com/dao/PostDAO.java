@@ -37,10 +37,15 @@ public class PostDAO {
 	}
 
 
+<<<<<<< HEAD
 	public int newPost(SqlSession session, PostDTO post) {
 		int n = session.insert("PostMapper.newPost", post);
 		System.out.println("DAO의 insert -> "+n);
 		return n;
+=======
+	public int updatePost(SqlSession session, PostDTO dto) {
+		return session.update("PostMapper.updatePost",dto);
+>>>>>>> 112e290dd1c1d202c1a11c3868380f0bc0702af7
 	}
 
 
