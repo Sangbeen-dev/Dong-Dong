@@ -1,7 +1,7 @@
 package com.dto;
 
 public class FavoriteDTO {
-	private String pNum;
+	private int pNum;
 	private String userId;
 	private String pCategory;
 	private String pTitle;
@@ -13,7 +13,7 @@ public class FavoriteDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public FavoriteDTO(String pNum, String userId, String pCategory, String pTitle, String pContent, int pPrice,
+	public FavoriteDTO(int pNum, String userId, String pCategory, String pTitle, String pContent, int pPrice,
 			String pImage, int pHIt) {
 		super();
 		this.pNum = pNum;
@@ -25,10 +25,10 @@ public class FavoriteDTO {
 		this.pImage = pImage;
 		this.pHIt = pHIt;
 	}
-	public String getpNum() {
+	public int getpNum() {
 		return pNum;
 	}
-	public void setpNum(String pNum) {
+	public void setpNum(int pNum) {
 		this.pNum = pNum;
 	}
 	public String getUserId() {

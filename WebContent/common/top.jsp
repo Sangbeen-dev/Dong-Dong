@@ -11,7 +11,6 @@
 	안녕하세요. 
 	<a href="LogoutServlet">로그아웃</a>
 	<a href="MyPageServlet">mypage</a><!--수정  -->
-	<a href="">장바구니 목록</a><!--수정  -->
 <%
 	} else{ //아닌경우
 %>

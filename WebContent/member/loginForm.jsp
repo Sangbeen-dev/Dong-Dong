@@ -30,5 +30,5 @@ $(function(){
 <input type="submit" value="로그인"><br>
 
 <a href = "MemberIdSearchUIServlet">아이디 찾기</a><br>
-<a href = "">비밀번호 찾기</a>
+<a href = "MemberPWSearchUIServlet">비밀번호 찾기</a>
 </form>

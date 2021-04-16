@@ -102,5 +102,35 @@ public class MemberService {
 		}
 		return count;	
 		}
+	public String pwSearch(MemberDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		String passwd = null;
+		try{
+			MemberDAO dao = new MemberDAO();
+			passwd = dao.pwSearch(session, dto);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			session.close();
+		}
+		return passwd;
+	}//end pwSerach
+
+
+	public int memberUpdate(MemberDTO dto2) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int num = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+			num = dao.memberUpdate(session, dto2);
+			System.out.println("서비스==="+dto2);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return num;
+	}
 	
 }

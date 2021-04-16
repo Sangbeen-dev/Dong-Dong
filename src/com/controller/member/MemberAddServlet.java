@@ -33,7 +33,7 @@ public class MemberAddServlet extends HttpServlet {
 		int n = service.memberAdd(dto);
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("memberAdd", "회원가입성공");
+		session.setAttribute("mesg", "회원가입성공");
 		response.sendRedirect("main");
 		
 		

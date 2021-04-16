@@ -7,15 +7,41 @@ import com.dto.PostDTO;
 
 public class PostDAO {
 
-   public List<PostDTO> postList(SqlSession session, String pCategory) {
-	   List<PostDTO> list = 
-			   session.selectList("PostMapper.PostList", pCategory);
+   public List<PostDTO> postListByAddr(SqlSession session, String addr) {
+	   List<PostDTO> list = session.selectList("PostMapper.postListByAddr", addr);
 	   return list;
    }
    
    
-   public HashMap<String, String> getPostDetailByPNum(SqlSession session, int pNum) {
-	   HashMap<String, String> map = session.selectOne("PostMapper.getPostDetailByPNum", pNum);
-	   return map;
+   public PostDTO getPostByPNum(SqlSession session, int pNum) {
+	   PostDTO dto = session.selectOne("PostMapper.getPostByPNum", pNum);
+	   return dto;
    }
+
+
+
+   public List<PostDTO> recentList(SqlSession session, String pDate) {
+	List<PostDTO> list = 
+			   session.selectList("PostMapper.recentList", pDate);
+	   return list;
+   }
+
+   public List<PostDTO> postListAll(SqlSession session) {
+	   List<PostDTO> list = session.selectList("PostMapper.postListAll");
+	   return list;
+   }
+
+
+	public int deletePostByPNum(SqlSession session, int pNum) {
+		return session.delete("PostMapper.deletePostByPNum",pNum);
+	}
+
+
+	public int updatePost(SqlSession session, PostDTO dto) {
+		return session.update("PostMapper.updatePost",dto);
+	}
+
+
+
+
 }
