@@ -11,13 +11,11 @@
 	안녕하세요. 
 	<a href="LogoutServlet">로그아웃</a>
 	<a href="MyPageServlet">mypage</a><!--수정  -->
-	<a href="">장바구니 목록</a><!--수정  -->
 <%
 	} else{ //아닌경우
 %>
 	<a href="LoginUIServlet">로그인</a>
 	<a href="MemberAddUIServlet">회원가입</a><!--MVC 패턴 -->
-	<a href="">장바구니</a>
 <%
 	}//end if~else
 %>

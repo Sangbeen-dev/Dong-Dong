@@ -1,7 +1,6 @@
 package com.controller.post;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dto.MemberDTO;
+import com.dto.PostDTO;
+import com.service.MemberService;
 import com.service.PostService;
 
 @WebServlet("/PostDetailServlet")
@@ -19,25 +21,28 @@ public class PostDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String pNum = request.getParameter("pNum");
     	
-    	PostService service = new PostService();
+    	PostService pService = new PostService();
+    	MemberService mService = new MemberService();
     	
-    	HashMap map = service.getPostDetailByPNum(Integer.parseInt(pNum));
     	
-    	System.out.println(map);
+    	PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum));
+    	MemberDTO mDTO = mService.mypage(pDTO.getUserid());
+    	
     	// 데이터 파싱 후 페이지 이동
-    	request.setAttribute("pNum", String.valueOf(map.get("PNUM")));
-    	request.setAttribute("pCategory", map.get("PCATEGORY"));
-    	request.setAttribute("pHit", String.valueOf(map.get("PHIT")));
-    	request.setAttribute("pImage", map.get("PIMAGE"));
-    	request.setAttribute("pPrice", String.valueOf(map.get("PPRICE")));
-    	request.setAttribute("username", map.get("USERNAME"));
-    	request.setAttribute("userid", map.get("USERID"));
-    	request.setAttribute("addr", map.get("ADDR"));
-    	request.setAttribute("pContent", map.get("PCONTENT"));
-    	request.setAttribute("pDate", String.valueOf(map.get("PDATE")));
-    	request.setAttribute("pTitle", map.get("PTITLE"));
+    	request.setAttribute("pNum", String.valueOf(pDTO.getpNum()));
+    	request.setAttribute("pCategory", pDTO.getpCategory());
+    	request.setAttribute("pHit", String.valueOf(pDTO.getpHit()));
+    	request.setAttribute("pImage", pDTO.getpImage());
+    	request.setAttribute("pPrice", String.valueOf(pDTO.getpPrice()));
+    	request.setAttribute("addr", pDTO.getAddr());
+    	request.setAttribute("pContent", pDTO.getpContent());
+    	request.setAttribute("pDate", pDTO.getpDate());
+    	request.setAttribute("pTitle", pDTO.getpTitle());
+
+    	request.setAttribute("userid", mDTO.getUserid());
+    	request.setAttribute("username", mDTO.getUsername());
     	
-    	RequestDispatcher dis = request.getRequestDispatcher("postDetailPage.jsp");
+    	RequestDispatcher dis = request.getRequestDispatcher("postDetail.jsp");
     	dis.forward(request, response);
     }
 
