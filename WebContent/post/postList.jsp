@@ -3,7 +3,7 @@
 <%@page import="com.dto.PostDTO"%>
 <%@page import="java.util.List"%>
 <a href="PostWriteUIServlet">글쓰기</a>
-
+<a href="">
 
  <%
  	List<PostDTO> list = (List<PostDTO>)request.getAttribute("postList");
@@ -15,10 +15,32 @@
 		String pImage = dto.getpImage();
 		String pDate = dto.getpDate();
 		String addr = dto.getAddr();
+		int pNum = dto.getpNum();
 		%>
-<%=pTitle%> 
-<%=pContent%> <hr>
-
+		
+		
+		
+		
+            
+ <hr>
+  
+ <td>
+	<table style='padding:15px'>
+		<tr>
+			<td>
+	<a href="PostDetailServlet?pNum=<%=pNum %>">
+ 	<img src="/Dong-Dong/images/<%=pImage %>" align="top">
+ 	<br>
+ 	<%=pTitle%>			
+ 	 	<br><%=addr%>
+ 		<br> <%= pPrice%>
+         <br> <%= pDate %>
+        <br>
+        <br>
+        <%=pContent%> 
+		<tr>
+		
+		</table>
 <%
     }//end for
 %>

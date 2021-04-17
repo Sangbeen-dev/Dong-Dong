@@ -74,6 +74,34 @@ public class MemberService {
 	}//end idSearch
 
 
+	public int idCheck(String userid) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int count = 0;
+		try {
+			 MemberDAO dao = new MemberDAO();
+			count = dao.idCheck(session, userid);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return count;	
+		}
+
+
+	public int nickNameCheck(String nickName) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int count = 0;
+		try {
+			 MemberDAO dao = new MemberDAO();
+			count = dao.nickNameCheck(session, nickName);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return count;	
+		}
 	public String pwSearch(MemberDTO dto) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		String passwd = null;
@@ -89,5 +117,51 @@ public class MemberService {
 		}
 		return passwd;
 	}//end pwSerach
+
+
+	public int memberUpdate(MemberDTO dto2) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int num = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+			num = dao.memberUpdate(session, dto2);
+			System.out.println("서비스==="+dto2);
+			session.commit();
+		}catch (Exception e) {
+			session.rollback();
+		}finally {
+			session.close();
+		}
+		return num;
+	}
+
+
+	public int nickCheck(String nickName) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n= 0;
+		try{
+			MemberDAO dao = new MemberDAO();
+			n = dao.nickCheck(session, nickName);
+		}finally {
+			session.close();
+		}
+		return n;
+	}//mypage 닉네임중복검사
+
+
+	public int nickUpdate(MemberDTO dto2) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+			n = dao.nickUpdate(session, dto2);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+		} finally {
+			session.close();
+		}
+		return n;
+	}//mypage에서 닉네임 중복검사후 변경
 	
 }

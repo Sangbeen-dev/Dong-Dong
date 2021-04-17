@@ -13,17 +13,39 @@ public class PostDAO {
    }
    
    
-   public HashMap<String, String> getPostDetailByPNum(SqlSession session, int pNum) {
-	   HashMap<String, String> map = session.selectOne("PostMapper.getPostDetailByPNum", pNum);
-	   return map;
+   public PostDTO getPostByPNum(SqlSession session, int pNum) {
+	   PostDTO dto = session.selectOne("PostMapper.getPostByPNum", pNum);
+	   return dto;
    }
 
+
+
+   public List<PostDTO> recentList(SqlSession session, String pDate) {
+	List<PostDTO> list = 
+			   session.selectList("PostMapper.recentList", pDate);
+	   return list;
+   }
 
    public List<PostDTO> postListAll(SqlSession session) {
 	   List<PostDTO> list = session.selectList("PostMapper.postListAll");
-	   System.out.println("DAO의 postListAll->"+list);
 	   return list;
    }
+
+
+	public int deletePostByPNum(SqlSession session, int pNum) {
+		return session.delete("PostMapper.deletePostByPNum",pNum);
+	}
+
+
+	public int newPost(SqlSession session, PostDTO post) {
+		int n = session.insert("PostMapper.newPost", post);
+		System.out.println("DAO의 insert -> "+n);
+		return n;
+	}
+	public int updatePost(SqlSession session, PostDTO dto) {
+		return session.update("PostMapper.updatePost",dto);
+	}
+
 
 
 

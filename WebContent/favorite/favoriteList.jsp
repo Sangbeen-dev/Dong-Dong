@@ -83,9 +83,6 @@
 
 		<tr>
 			 <td class="td_default" width="80"> 
-			<!-- checkbox는 체크된 값만 서블릿으로 넘어간다. 따라서 value에 삭제할 num값을 설정한다. -->
-			<%-- <input type="checkbox"
-				name="check" id="check81" class="check" value="<%= pNum %>"></td> --%>
 			<td class="td_default" width="80"><%= pHit %></td>
 			<td class="td_default" width="80"><%= pNum %></td>
 			<td class="td_default" width="80">
@@ -97,29 +94,7 @@
 			<br> <font size="2" color="#665b5f">[분류 :<%= pCategory %>] </font></td>
 			<td class="td_default" align="center" width="100"><%= pPrice %>
 			</td>
-			<%--  
-			<td class="td_default" align="center" width="90"><input
-				class="input_default" type="text" name="cartAmount"
-				id="cartAmount<%= pNum %>" style="text-align: right" maxlength="3"
-				size="2" value="<%= pAmount %>"></input></td>
-			<td><input type="button" value="수정"
-				class="updateBtn" 
-				data-xxx="<%=num %>" 
-				data-price="<%= gPrice %>" /><!--수량부분, 수정버튼 사용자 정의 속성 사용  -->
-				</td> 
-			<td class="td_default" align="center" width="80"
-				style='padding-left: 5px'><span id="sum<%= num %>">
-				<%= (gPrice*gAmount) %>
-				</span></td>
-			<td><input type="button" value="주문"
-				class="orderBtn" data-xxx="<%= num %>">
-				</td>
-			<td class="td_default" align="center" width="30"
-				style='padding-left: 10px'>
-				<input type="button" value="삭제" id="xx<%=i %>"
-				class="delBtn" data-xxx="<%=num %>"></td><!--data-xxx 사용자 정의 속성  -->
-			<td height="10"></td>
-		--%>
+
 		</tr>
 <%
 	}//end for
@@ -137,16 +112,7 @@
 	</tr>
 
 	<tr>
-		<td align="center" colspan="5"><a class="a_black"
-			href="#" id="orderAllConfirm" > 전체 주문하기 </a>&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a class="a_black" href="#" id="delAllCart" > 전체 삭제하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<a class="a_black" href="#" id="delAllCart2" > 전체 삭제하기2 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<a class="a_black" href="index.jsp"> 계속 쇼핑하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-		</td>
-	</tr>
-	<tr>
 		<td height="20">
 	</tr>
-
-</table>
+</table> 
     
