@@ -54,17 +54,11 @@ public class MemberDAO {
 		System.out.println("dao=="+n);
 		return n;
 	}//end nickCHeck
-<<<<<<< HEAD
-	
-=======
-=======
-	}
-<<<<<<< HEAD
-=======
->>>>>>> d8637d7f12143c55eddcfcfd8ecd581c9da69af7
->>>>>>> d0e8366d94aba2dd61a45a691f53798496053f69
->>>>>>> ca2d0218b437ef220ee46df5f399751dbb690cb9
->>>>>>> 609fa8dfeb45d4232d4ced96ec39b3ccf93c9508
-	
+
+	public int nickUpdate(SqlSession session, MemberDTO dto2) {
+		int n = session.update("MemberMapper.nickUpdate", dto2);
+		System.out.println(dto2);
+		return n;
+	}//end nickUpdate
 }//end MemberDAO
 
