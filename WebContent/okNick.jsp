@@ -27,7 +27,6 @@ div{
 			console.log(nickName);
 			opener.$("#nickName").val(nickName);
 			window.close();
-			
 		});
  });
 </script>

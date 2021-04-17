@@ -26,6 +26,7 @@ form {
 			//중복아닐시 UpdateServlet으로 이동하여 db 적용!
 		});
 		$("#noNick").click(function() {
+			opener.$("#nickName").focus();
 			window.close();
 		});
  });//end ready
