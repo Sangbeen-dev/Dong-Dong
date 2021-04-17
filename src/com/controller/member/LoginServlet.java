@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 		
 		MemberService service = new MemberService();
 		MemberDTO dto = service.login(map);
-		String nextPage = null;
+		String nextPage = "";
 		
 		if(dto != null) {
 			nextPage = "main";
