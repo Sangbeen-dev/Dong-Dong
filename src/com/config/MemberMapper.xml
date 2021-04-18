@@ -43,14 +43,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where userid = #{userid}
 	</update>
    
-<<<<<<< HEAD
     <select id="nickCheck" resultType="int" parameterType ="String">
 	select count(*) from member
 	where nickName = #{nickName} 
 	</select>
    
-
-=======
    <select id="idCheck" parameterType="string"  resultType="int">
      select count(*)
      from member
@@ -63,6 +60,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      where nickName = #{nickName}
 	</select>
 	
->>>>>>> d0e8366d94aba2dd61a45a691f53798496053f69
-
 </mapper>

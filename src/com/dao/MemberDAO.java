@@ -28,7 +28,7 @@ public class MemberDAO {
 		return userid;
 	}//end idSearch
 
-<<<<<<< HEAD
+
 	public int idCheck(SqlSession session, String userid) {
 		int count = session.selectOne("MemberMapper.idCheck", userid);
 		return count;
@@ -39,7 +39,7 @@ public class MemberDAO {
 		System.out.println(nickName);
 		return count;
 	}//end nickNameCheck
-=======
+
 	public String pwSearch(SqlSession session, MemberDTO dto) {
 		String passwd = session.selectOne("MemberMapper.pwSearch",dto);
 		return passwd;
@@ -49,7 +49,6 @@ public class MemberDAO {
 		int num = session.update("MemberMapper.memberUpdate", dto2);
 		System.out.println("dao ==="+dto2);
 		return num;
-<<<<<<< HEAD
 	}//end memberUpdate
 
 	public int nickCheck(SqlSession session, String nickName) {
@@ -57,10 +56,7 @@ public class MemberDAO {
 		System.out.println("dao=="+n);
 		return n;
 	}//end nickCHeck
-=======
-	}
->>>>>>> d8637d7f12143c55eddcfcfd8ecd581c9da69af7
->>>>>>> d0e8366d94aba2dd61a45a691f53798496053f69
-	
+
+
 }//end MemberDAO
 
