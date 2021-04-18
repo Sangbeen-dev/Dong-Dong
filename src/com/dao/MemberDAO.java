@@ -53,6 +53,11 @@ public class MemberDAO {
 		System.out.println("dao=="+n);
 		return n;
 	}//end nickCHeck
-	
+
+	public int nickUpdate(SqlSession session, MemberDTO dto2) {
+		int n = session.update("MemberMapper.nickUpdate", dto2);
+		System.out.println(dto2);
+		return n;
+	}//end nickUpdate
 }//end MemberDAO
 

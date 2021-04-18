@@ -29,7 +29,7 @@
 		<tr>
 			<td>
 	<a href="PostDetailServlet?pNum=<%=pNum %>">
- 	<img src="/Dong-Dong/images/<%=pImage %>" align="top">
+ 	<img src="/Dong-Dong/images/items/<%=pImage %>.gif" align="top">
  	<br>
  	<%=pTitle%>			
  	 	<br><%=addr%>

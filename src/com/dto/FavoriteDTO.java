@@ -2,7 +2,7 @@ package com.dto;
 
 public class FavoriteDTO {
 	private int pNum;
-	private String userId;
+	private String userid;
 	private String pCategory;
 	private String pTitle;
 	private String pContent;
@@ -13,11 +13,11 @@ public class FavoriteDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public FavoriteDTO(int pNum, String userId, String pCategory, String pTitle, String pContent, int pPrice,
+	public FavoriteDTO(int pNum, String userid, String pCategory, String pTitle, String pContent, int pPrice,
 			String pImage, int pHIt) {
 		super();
 		this.pNum = pNum;
-		this.userId = userId;
+		this.userid = userid;
 		this.pCategory = pCategory;
 		this.pTitle = pTitle;
 		this.pContent = pContent;
@@ -32,10 +32,10 @@ public class FavoriteDTO {
 		this.pNum = pNum;
 	}
 	public String getUserId() {
-		return userId;
+		return userid;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserId(String userid) {
+		this.userid = userid;
 	}
 	public String getpCategory() {
 		return pCategory;
@@ -75,7 +75,7 @@ public class FavoriteDTO {
 	}
 	@Override
 	public String toString() {
-		return "FavoriteDTO [pNum=" + pNum + ", userId=" + userId + ", pCategory=" + pCategory + ", pTitle=" + pTitle
+		return "FavoriteDTO [pNum=" + pNum + ", userid=" + userid + ", pCategory=" + pCategory + ", pTitle=" + pTitle
 				+ ", pContent=" + pContent + ", pPrice=" + pPrice + ", pImage=" + pImage + ", pHIt=" + pHIt + "]";
 	}
 	

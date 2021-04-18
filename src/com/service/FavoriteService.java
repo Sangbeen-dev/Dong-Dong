@@ -38,4 +38,16 @@ public class FavoriteService {
         return deleteResult;
 	}
 
+	public FavoriteDTO getFavorite(FavoriteDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		FavoriteDTO returnDTO = null;
+		try {
+			FavoriteDAO dao = new FavoriteDAO();
+			returnDTO = dao.getFavorite(session, dto);
+		} finally {
+			session.close();
+		}
+		return returnDTO;
+	}
+
 }

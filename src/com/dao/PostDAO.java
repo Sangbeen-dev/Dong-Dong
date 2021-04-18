@@ -1,8 +1,9 @@
 package com.dao;
 
-import java.util.HashMap;
 import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
+
 import com.dto.PostDTO;
 
 public class PostDAO {
@@ -41,7 +42,7 @@ public class PostDAO {
 		int n = session.insert("PostMapper.newPost", post);
 		System.out.println("DAO의 insert -> "+n);
 		return n;
-}	
+	}
 	public int updatePost(SqlSession session, PostDTO dto) {
 		return session.update("PostMapper.updatePost",dto);
 	}

@@ -15,6 +15,7 @@
 	String pImage = (String)request.getAttribute("pImage");
 	String pHit = (String)request.getAttribute("pHit");
 	String pDate = (String)request.getAttribute("pDate");
+	String favorite = (String)request.getAttribute("favorite");
 %>
 
 유저 아이디 <%=userid%><br>
@@ -37,6 +38,7 @@
 	<a href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a><br>
 	<a href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
 <% } else  {%>
+	좋아요 여부 : <%=favorite %><br>
 	<a href="">상품 구매</a><br>
 <%} %>
 

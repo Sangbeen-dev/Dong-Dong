@@ -127,7 +127,9 @@ public class MemberService {
 			num = dao.memberUpdate(session, dto2);
 			System.out.println("서비스==="+dto2);
 			session.commit();
-		} finally {
+		}catch (Exception e) {
+			session.rollback();
+		}finally {
 			session.close();
 		}
 		return num;
@@ -144,6 +146,22 @@ public class MemberService {
 			session.close();
 		}
 		return n;
-	}
+	}//mypage 닉네임중복검사
+
+
+	public int nickUpdate(MemberDTO dto2) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+			n = dao.nickUpdate(session, dto2);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+		} finally {
+			session.close();
+		}
+		return n;
+	}//mypage에서 닉네임 중복검사후 변경
 	
 }

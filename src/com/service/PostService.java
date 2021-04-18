@@ -86,9 +86,8 @@ public class PostService {
 			session.close();
 		}
 		return result;
-		}
-
-		public int updatePost(PostDTO dto) {
+	}
+	public int updatePost(PostDTO dto) {
 		SqlSession session = MySqlSessionFactory.getSession();
         int updateResult = 0;
         try {
