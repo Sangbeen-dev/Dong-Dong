@@ -17,4 +17,9 @@ public class FavoriteDAO {
 		return session.delete("FavoriteMapper.deleteFavoriteByPNum",pNum);
 	}
 
+	public FavoriteDTO getFavorite(SqlSession session, FavoriteDTO dto) {
+		FavoriteDTO returnDTO = session.selectOne("FavoriteMapper.getFavorite", dto);
+		return returnDTO;
+	}
+
 }

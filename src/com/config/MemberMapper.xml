@@ -35,7 +35,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="memberUpdate" parameterType="MemberDTO">
 	update member set
-	nickName = #{nickName},
 	addr = #{addr},
 	phone = #{phone},
 	email1 = #{email1},
@@ -47,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select count(*) from member
 	where nickName = #{nickName} 
 	</select>
-   
+
    <select id="idCheck" parameterType="string"  resultType="int">
      select count(*)
      from member
@@ -59,5 +58,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      from member
      where nickName = #{nickName}
 	</select>
-	
+
+	<update id="nickUpdate" parameterType="MemberDTO" >
+	update member set
+	nickName = #{nickName}
+	where userid = #{userid}
+	</update>
+
 </mapper>

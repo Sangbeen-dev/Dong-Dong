@@ -39,6 +39,7 @@ public class PostService {
         }
         return list;
     }
+    
     public PostDTO getPostByPNum(int pNum) {
         SqlSession session = MySqlSessionFactory.getSession();
         PostDTO dto = null;
@@ -73,7 +74,6 @@ public class PostService {
         return deleteResult;
 	}
 
-
 	public int newPost(PostDTO post) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		int result = 0;
@@ -88,7 +88,7 @@ public class PostService {
 		}
 		return result;
 	}
-	
+
 	public int updatePost(PostDTO dto) {
 		SqlSession session = MySqlSessionFactory.getSession();
         int updateResult = 0;

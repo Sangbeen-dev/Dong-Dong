@@ -15,7 +15,7 @@
 		});
 		// 수정 정보 보내기
 		$("#submit").click(function() {
-			$("#myForm").attr("action","MemberUpdateServlet");
+			$("#myForm").attr("action","MemberUpdateServlet");		
 		})
 		//닉네임 중복체크 버튼
 		function confirmNick() {
@@ -24,17 +24,19 @@
 				return;
 			}
 		url = "confirmNick?nickName=" + $("#nickName").val();
-		open(url,"confirm", "width=300","height=200");
+		open(url,"confirm", "width=50","height=50");
 		}
+		
 		$("#nickCheck").click(function() {
 			confirmNick();
 		})
-		
- });
+			
+ });//end ready
 </script>    
 <%
   //session에서 "login"으로 데이터 뽑기
   MemberDTO dto = (MemberDTO)session.getAttribute("login");
+	String nickName = dto.getNickName();
   //System.out.print(dto);
   
 
@@ -49,7 +51,7 @@
 *아이디: <%= dto.getUserid() %><br>
 
 *닉네임:<input type="text" value="<%= dto.getNickName() %>" id="nickName" name="nickName">
-<button id="nickCheck">중복확인</button>
+<button id="nickCheck">닉네임 변경(중복체크)</button>
 <br>
 <!--프로필 이미지  -->
 <img src="images/aaa.jpg" border="0" width="80"/><br>

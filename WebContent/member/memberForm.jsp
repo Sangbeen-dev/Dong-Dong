@@ -23,8 +23,8 @@ $("form").on("submit",function(event){
 			alert("비밀번호가 일치하지 않습니다.")
 			$("#passwd").focus();
 			event.preventDefault();
-		}
- 		else if(nickName.length==0){
+			
+		}else if(nickName.length==0){
 			alert("nickName 필수입니다.")
 			$("#nickName").focus();
 			event.preventDefault();			
@@ -50,7 +50,8 @@ $("#passwd2").on("keyup",function(){
 				userid : $("#userid").val()
 			}, 
 			success : function(responseData, status, xhr) {
-			    $("#result").text(responseData);
+			    console.log(responseData);
+				$("#result").text(responseData);
 			},
 			error : function(xhr, status, error) {
 				console.log("error");
@@ -68,27 +69,26 @@ $("#passwd2").on("keyup",function(){
 				nickName : $("#nickName").val()
 			}, 
 			success : function(responseData, status, xhr) {
-			    $("#result3").text(responseData);
+			    console.log(responseData);
+				$("#result3").text(responseData);
 			},
 			error : function(xhr, status, error) {
 				console.log("error");
 		}
 	});
 });
- 
 
-
-}); 
+}); //end doc
  
 </script>    
 <form action="MemberAddServlet" method="get">
-*닉네임 : <input type="text" name="nickName" placeholder="닉네임 입력"> 
-<span id="result3"></span><br>
+*닉네임 : <input type="text" name="nickName" id="nickName" placeholder="닉네임 입력"><span id="result3"></span>
+<br>
 *아이디 : <input type="text" name="userid" id="userid" placeholder="아이디 입력"><span id="result"></span>
 <br>
-비밀번호 : <input type="text" name="passwd" id="passwd" placeholder="비밀번호 입력"><br>
-비빌번호확인 : <input type="text" name="passwd2" id="passwd2">
-<span id="result2"></span>
+비밀번호 : <input type="text" name="passwd" id="passwd" placeholder="비밀번호 입력">
+<br>
+비빌번호확인 : <input type="text" name="passwd2" id="passwd2"><span id="result2"></span>
 <br>
 이름 : <input type="text" name="username" placeholder="이름"><br> 
 전화번호 : <input type="text" name="phone" >
