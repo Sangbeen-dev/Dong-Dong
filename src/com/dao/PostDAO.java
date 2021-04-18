@@ -20,9 +20,6 @@ public class PostDAO {
 	   return dto;
    }
 
-<<<<<<< HEAD
-  
-=======
 
 
    public List<PostDTO> recentList(SqlSession session, String pDate) {
@@ -30,7 +27,6 @@ public class PostDAO {
 			   session.selectList("PostMapper.recentList", pDate);
 	   return list;
    }
->>>>>>> a732563051c31e4eb6fb5e2dc1cffa066c9436d5
 
    public List<PostDTO> postListAll(SqlSession session) {
 	   List<PostDTO> list = session.selectList("PostMapper.postListAll");

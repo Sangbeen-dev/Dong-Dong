@@ -27,11 +27,10 @@ public class MainServlet extends HttpServlet {
 		List<PostDTO> list = null;
 		if(member == null) {
 			// 로그인이 안된상태 - 모든 글을 긁어온다.
-<<<<<<< HEAD
+
 			System.out.println("로그인 안됨");
 			System.out.println(member);
-=======
->>>>>>> a732563051c31e4eb6fb5e2dc1cffa066c9436d5
+
 			list = service.postListAll();
 			
 		} else {
