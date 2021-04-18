@@ -16,31 +16,34 @@
 		String pDate = dto.getpDate();
 		String addr = dto.getAddr();
 		int pNum = dto.getpNum();
-		%>
-		
-		
-		
-		
-            
+		%>	
+	  
  <hr>
   
  <td>
-	<table style='padding:15px'>
+	<table style='padding:30px'>
 		<tr>
 			<td>
 	<a href="PostDetailServlet?pNum=<%=pNum %>">
- 	<img src="images/items/<%=pImage %>.gif" align="top">
- 	<br>
- 	<%=pTitle%>			
- 	 	<br><%=addr%>
- 		<br> <%= pPrice%>
-         <br> <%= pDate %>
-        <br>
-        <br>
-        <%=pContent%> 
-		<tr>
+ 	<img src="images/items/<%=pImage %>.gif" align="top"><%=pTitle%>
+ 					
+ 	 	<tr>
+ 	 	<td class="Dong"><b><%=addr%></b>
+							&nbsp;</td>
+		</tr>					
+ 	 	
+ 	 		<%=pDate%> <br>	
+ 	 	
+ 	 		<td>
+ 	 			<br>
+ 	 			
+          <%=pPrice%><br>
+        <td>
+        <%=pContent%> <br>
+		<td>
 		
 		</table>
 <%
     }//end for
 %>
+

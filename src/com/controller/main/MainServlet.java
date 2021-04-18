@@ -28,11 +28,14 @@ public class MainServlet extends HttpServlet {
 		if(member == null) {
 			// 로그인이 안된상태 - 모든 글을 긁어온다.
 			System.out.println("로그인 안됨");
+			System.out.println(member);
 			list = service.postListAll();
+			
 		} else {
 			// 로그인 된 상태 - 로그인된 유저의 주소를 받아와서 해당주소로 작성된 글만 긁어온다.
 			System.out.println("로그인 됨");
 			String addr = member.getAddr();
+			System.out.println("addr ="+addr);
 			list = service.postListByAddr(addr);
 		}
 		

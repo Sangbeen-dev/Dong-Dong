@@ -8,6 +8,7 @@ import com.dto.PostDTO;
 public class PostDAO {
 
    public List<PostDTO> postListByAddr(SqlSession session, String addr) {
+	   System.out.println("addr 마지막단 ===="+addr);
 	   List<PostDTO> list = session.selectList("PostMapper.postListByAddr", addr);
 	   return list;
    }
@@ -18,13 +19,7 @@ public class PostDAO {
 	   return dto;
    }
 
-
-
-   public List<PostDTO> recentList(SqlSession session, String pDate) {
-	List<PostDTO> list = 
-			   session.selectList("PostMapper.recentList", pDate);
-	   return list;
-}
+  
 
    public List<PostDTO> postListAll(SqlSession session) {
 	   List<PostDTO> list = session.selectList("PostMapper.postListAll");

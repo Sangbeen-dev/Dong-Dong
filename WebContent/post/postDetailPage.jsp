@@ -29,7 +29,7 @@
  
  %>
 
-<form name="postDetailForm" method="GET" >
+<form name="postDetailForm" method="POST">
 	    <input type="hidden" name="pImage" value="<%=pImage%>"> <input
 		type="hidden" name="pTitle" value="<%=pTitle%>"> <input
 		type="hidden" name="pPrice" value="<%=pPrice%>">
