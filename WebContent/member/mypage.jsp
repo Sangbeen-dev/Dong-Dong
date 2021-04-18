@@ -13,25 +13,46 @@
 		$("#transaction").on("click", function() {
 			location.href ="TransactionListServlet";
 		});
+		// 수정 정보 보내기
+		$("#submit").click(function() {
+			$("#myForm").attr("action","MemberUpdateServlet");		
+		})
+		//닉네임 중복체크 버튼
+		function confirmNick() {
+			if($("#nickName").val() == ""){
+				alert("닉네임을 입력하세요");
+				return;
+			}
+		url = "confirmNick?nickName=" + $("#nickName").val();
+		open(url,"confirm", "width=50","height=50");
+		}
 		
- });
+		$("#nickCheck").click(function() {
+			confirmNick();
+		})
+			
+ });//end ready
 </script>    
 <%
   //session에서 "login"으로 데이터 뽑기
   MemberDTO dto = (MemberDTO)session.getAttribute("login");
+	String nickName = dto.getNickName();
   //System.out.print(dto);
   
 
 	
 %>
 <button id="favorite">관심목록</button>&nbsp;<button id="transaction" >거래내역</button> &nbsp;
-<form action="MemberUpdateServlet" method="post">
+<!-- <form id="myForm" action="MemberUpdateServlet" method="post"> -->
+<form id="myForm" action="#" method="post"> 
 <input type="hidden" value="<%= dto.getUsername() %>" name="username">
 *이름:<%= dto.getUsername() %><br>
 <input type="hidden" value="<%= dto.getUserid() %>" name="userid">
 *아이디: <%= dto.getUserid() %><br>
 
-*닉네임:<input type="text" value="<%= dto.getNickName() %>" name="nickName"><br>
+*닉네임:<input type="text" value="<%= dto.getNickName() %>" id="nickName" name="nickName">
+<button id="nickCheck">닉네임 변경(중복체크)</button>
+<br>
 <!--프로필 이미지  -->
 <img src="images/aaa.jpg" border="0" width="80"/><br>
 
@@ -51,6 +72,6 @@
         <option value="naver.com">naver.com</option>
        </select>
 <br>
-<input type="submit" value="수정">
+<input id="submit" type="submit" value="수정">
 <input type="reset" value="취소">
 </form>

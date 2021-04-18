@@ -24,4 +24,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from post
 		WHERE pNum=${pNum}
 	</select>
+	
+	<update id="updatePost" parameterType="PostDTO">
+		update post 
+		set pTitle=#{pTitle},pContent=#{pContent},pPrice=#{pPrice},pImage=#{pImage}
+		where pNum=#{pNum}
+	</update>
+	
+	<delete id="deletePostByPNum" parameterType="int">
+		delete 
+		from post
+		where pNum=${pNum}
+	</delete>
+	
+	<insert id="newPost" parameterType="PostDTO">
+		INSERT INTO post
+		VALUES (#{pNum}, #{userid}, #{addr}, #{pCategory}, #{pTitle}, #{pContent}, #{pPrice}, #{pImage}
+		,#{pHit}, SYSDATE )
+	</insert>
 </mapper>

@@ -1,8 +1,9 @@
 package com.dao;
 
-import java.util.HashMap;
 import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
+
 import com.dto.PostDTO;
 
 public class PostDAO {
@@ -19,13 +20,37 @@ public class PostDAO {
 	   return dto;
    }
 
+<<<<<<< HEAD
   
+=======
+
+
+   public List<PostDTO> recentList(SqlSession session, String pDate) {
+	List<PostDTO> list = 
+			   session.selectList("PostMapper.recentList", pDate);
+	   return list;
+   }
+>>>>>>> a732563051c31e4eb6fb5e2dc1cffa066c9436d5
 
    public List<PostDTO> postListAll(SqlSession session) {
 	   List<PostDTO> list = session.selectList("PostMapper.postListAll");
-	   System.out.println("DAO의 postListAll->"+list);
 	   return list;
    }
+
+
+	public int deletePostByPNum(SqlSession session, int pNum) {
+		return session.delete("PostMapper.deletePostByPNum",pNum);
+	}
+
+
+	public int newPost(SqlSession session, PostDTO post) {
+		int n = session.insert("PostMapper.newPost", post);
+		System.out.println("DAO의 insert -> "+n);
+		return n;
+	}
+	public int updatePost(SqlSession session, PostDTO dto) {
+		return session.update("PostMapper.updatePost",dto);
+	}
 
 
 

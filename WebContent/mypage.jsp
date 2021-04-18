@@ -19,7 +19,7 @@
 <body>
 <h1 id="main">동동마켓</h1>
 
-<h3>회원상세 페이지화면입니다.</h3>
+<h3>MyPage</h3>
 
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 <jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>

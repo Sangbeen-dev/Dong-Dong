@@ -13,17 +13,17 @@ public class PostService {
 
 
 	public List<PostDTO> postListAll() {
-        SqlSession session = MySqlSessionFactory.getSession();
-        List<PostDTO> list = null;
-        try {
-            PostDAO dao = new PostDAO();
-            list = dao.postListAll(session);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return list;
+		SqlSession session = MySqlSessionFactory.getSession();
+		List<PostDTO> list = null;
+		try {
+			PostDAO dao = new PostDAO();
+			list = dao.postListAll(session);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
     }
 
     public List<PostDTO> postListByAddr(String addr){
@@ -39,6 +39,7 @@ public class PostService {
         }
         return list;
     }
+    
     public PostDTO getPostByPNum(int pNum) {
         SqlSession session = MySqlSessionFactory.getSession();
         PostDTO dto = null;
@@ -52,5 +53,61 @@ public class PostService {
         }
         return dto;
     }
+
+	public int deletePostByPNum(int pNum) {
+		SqlSession session = MySqlSessionFactory.getSession();
+        int deleteResult = 0;
+        try {
+            PostDAO dao = new PostDAO();
+            deleteResult = dao.deletePostByPNum(session, pNum);
+            if(deleteResult!=1) {
+            	session.rollback();
+            } else {
+            	session.commit();
+            }
+        } catch (Exception e) {
+        	session.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return deleteResult;
+	}
+
+	public int newPost(PostDTO post) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int result = 0;
+		try {
+			PostDAO dao = new PostDAO();
+			result = dao.newPost(session, post);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+		} finally {
+			session.close();
+		}
+		return result;
+	}
+
+	public int updatePost(PostDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSession();
+        int updateResult = 0;
+        try {
+            PostDAO dao = new PostDAO();
+            updateResult = dao.updatePost(session, dto);
+            if(updateResult!=1) {
+            	session.rollback();
+            } else {
+            	session.commit();
+            }
+        } catch (Exception e) {
+        	session.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return updateResult;
+
+	}
 }// end class
 
