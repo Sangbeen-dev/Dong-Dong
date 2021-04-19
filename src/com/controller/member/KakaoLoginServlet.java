@@ -89,6 +89,7 @@ public class KakaoLoginServlet extends HttpServlet {
 			//로그인 하기
 			String userid = kakaoProfile.getId() + "_kakao";
 			String passwd = kakaoProfile.getId();
+			String nickName = "익명" + kakaoProfile.getId();
 			String email = kakaoProfile.getKakao_account().getEmail();
 			
 			HashMap<String, String> map = new HashMap<String, String>();
@@ -97,6 +98,7 @@ public class KakaoLoginServlet extends HttpServlet {
 			
 			MemberService service = new MemberService();
 			MemberDTO dto = service.login(map);
+			
 			String nextPage = "";
 			if(dto != null) {
 				nextPage = "main";
@@ -104,10 +106,13 @@ public class KakaoLoginServlet extends HttpServlet {
 				session.setAttribute("login", dto); //로그인 정보 저장
 			}else { //회원정보 없으면 회원가입 진행
 				MemberDTO newMem 
-					= new MemberDTO(userid, passwd, "0", "0", "0", "0",email.split("@")[0],email.split("@")[1]);
+					= new MemberDTO(userid, passwd, nickName, "0", "0", "0",email.split("@")[0],email.split("@")[1]);
 				
 				service.memberAdd(newMem);
 				nextPage = "mypage.jsp";
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("mesg", "추가 정보를 입력해주세요");
 				
 			}
 			response.sendRedirect(nextPage);
