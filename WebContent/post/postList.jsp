@@ -23,8 +23,10 @@
 <td><img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
 		<%=pTitle%>
 		<tr>
+		<br>
  	 	<td class="Dong"><b><%=addr%></b>
 							&nbsp;</td>
+							<br>	
 		</tr>					
  	 	
  	 		<%=pDate%> <br>	
