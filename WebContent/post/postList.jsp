@@ -17,42 +17,49 @@
 		String addr = dto.getAddr();
 		int pNum = dto.getpNum();
 
-		%>	
-	  
+		%>
+		
+		<style type="text/css"> 
+a { text-decoration:none } 
+</style>
 
-
-         
-
- <hr>
-  
- <td>
-	<table style='padding:30px'>
+<a href="PostDetailServlet?pNum=<%=pNum %>">
+<div style=" background-color: white; padding:30px; width: auto; height: auto; cursor: pointer;" onclick="postdetail">
+<td><img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
+		<%=pTitle%>
 		<tr>
-			<td>
-
-	<a href="PostDetailServlet?pNum=<%=pNum %>">
- 	<img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
- 	<%=pTitle%>
- 					
- 	 	<tr>
+		<br>
  	 	<td class="Dong"><b><%=addr%></b>
 							&nbsp;</td>
+							<br>	
 		</tr>					
  	 	
  	 		<%=pDate%> <br>	
  	 	
- 	 		<td>
+ 	 		
  	 			<br>
  	 			
           <%=pPrice%><br>
-        <td>
-        <%=pContent%> <br>
-		<td>
+		</td>
+　　　</td>
+　　</tr>
+</div>
 
-				
-			</td>
-		<tr>
 
+　</table> 
+ </body> 
+</html>     
+
+
+
+</tr>
+</table>
+
+ <hr>
+  
+ <td>
+	
+		
 		
 		</table>
 <%
