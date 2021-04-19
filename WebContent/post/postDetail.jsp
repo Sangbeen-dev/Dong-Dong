@@ -27,7 +27,7 @@
 게시글 내용 <%=pContent%><br>
 상품 가격 <%=pPrice%><br>
 상품 이미지 <br>
-<img src="images/items/<%=pImage%>.gif"><br>
+<img src="/Dong-Dong/images/<%=pImage%>" width="100" height="100"><br>
 상품 Hit 수<%=pHit%><br>
 상품 등록 시간 <%=pDate%><br>
 
