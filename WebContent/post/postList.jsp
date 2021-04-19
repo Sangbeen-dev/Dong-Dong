@@ -18,42 +18,41 @@
 		int pNum = dto.getpNum();
 
 		%>	
-	  
-
-
-         
-
- <hr>
-  <table>
- <td>
-		<tr>
-			<td>
-		<tr a href="PostDetailServlet?pNum=<%=pNum %>">
-				<img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
+<a href="PostDetailServlet?pNum=<%=pNum %>">
+<div style=" background-color: white; padding:30px; width: auto; height: auto; cursor: pointer;" onclick="postdetail">
+<td><img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
 		<%=pTitle%>
-
-		</tr>
-
- 					
- 	 	<tr>
+		<tr>
  	 	<td class="Dong"><b><%=addr%></b>
 							&nbsp;</td>
 		</tr>					
  	 	
  	 		<%=pDate%> <br>	
  	 	
- 	 		<td>
+ 	 		
  	 			<br>
  	 			
           <%=pPrice%><br>
-        <td>
+		</td>
+　　　</td>
+　　</tr>
+</div>
 
-		<td>
 
-				
-			</td>
-		<tr>
+　</table> 
+ </body> 
+</html>     
 
+
+
+</tr>
+</table>
+
+ <hr>
+  
+ <td>
+	
+		
 		
 		</table>
 <%
