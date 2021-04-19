@@ -31,7 +31,7 @@
 			<td>
 
 	<a href="PostDetailServlet?pNum=<%=pNum %>">
- 	<img src="images/items/<%=pImage %>.gif" align="top"><%=pTitle%>
+ 	<img src="images/<%=pImage %>.gif" align="top">><%=pTitle%>
  					
  	 	<tr>
  	 	<td class="Dong"><b><%=addr%></b>
