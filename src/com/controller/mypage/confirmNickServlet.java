@@ -16,8 +16,8 @@ import com.service.MemberService;
 /**
  * Servlet implementation class comfirmId
  */
-@WebServlet("/confirmNick")
-public class confirmNick extends HttpServlet {
+@WebServlet("/confirmNickServlet")
+public class confirmNickServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
@@ -26,10 +26,8 @@ public class confirmNick extends HttpServlet {
 		if(dto != null) {
 			nextPage = "confirmNick.jsp";
 			String nickName = request.getParameter("nickName");
-			System.out.println(nickName);
 			MemberService service = new MemberService();
 			int n = service.nickCheck(nickName);
-			System.out.println("서블릿====="+n);
 			request.setAttribute("nickCheck", n);
 			request.setAttribute("nickName", nickName);
 		}else{

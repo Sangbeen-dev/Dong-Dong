@@ -27,13 +27,11 @@ public class nickUpdateServlet extends HttpServlet {
 			nextPage = "okNick.jsp";
 			String userid = dto.getUserid();
 			String nickName = request.getParameter("nickName");
-			System.out.println(nickName);
 			MemberService service = new MemberService();
 			MemberDTO dto2 = new MemberDTO();
 			dto2.setUserid(userid);
 			dto2.setNickName(nickName);
 			int n = service.nickUpdate(dto2);
-			System.out.println("서블릿====="+n);
 			request.setAttribute("okNick", n);
 			request.setAttribute("nickDto", dto2);
 		}else{
