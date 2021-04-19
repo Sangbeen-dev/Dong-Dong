@@ -26,15 +26,14 @@
  <hr>
   
  <td>
-	<table style='padding:30px'>
+	
 		<tr>
 			<td>
+		<tr onclick="PostDetailServlet?pNum=<%=pNum %>">
+				<img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
+		<%=pTitle%>
 
-	<a href="PostDetailServlet?pNum=<%=pNum %>">
-
- 
- 	<img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
- 	<%=pTitle%>
+		</tr>
 
  					
  	 	<tr>
