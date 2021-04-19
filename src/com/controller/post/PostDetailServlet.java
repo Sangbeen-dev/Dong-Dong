@@ -56,12 +56,12 @@ public class PostDetailServlet extends HttpServlet {
     		temp.setpNum(Integer.parseInt(pNum));
     		FavoriteDTO fDTO = fService.getFavorite(temp);
     		if(fDTO!=null) {
-    			request.setAttribute("favorite", "y");
+    			request.setAttribute("favorite", true);
     		} else {
-    			request.setAttribute("favorite", "n");
+    			request.setAttribute("favorite", false);
 			}
     	} else {
-    		request.setAttribute("favorite", "n");
+    		request.setAttribute("favorite", false);
     	}
     	
     	RequestDispatcher dis = request.getRequestDispatcher("postDetail.jsp");

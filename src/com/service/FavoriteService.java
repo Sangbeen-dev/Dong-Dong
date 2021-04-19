@@ -50,4 +50,36 @@ public class FavoriteService {
 		return returnDTO;
 	}
 
+	public int insertFavoite(FavoriteDTO fDTO) {
+		SqlSession session = MySqlSessionFactory.getSession();
+        int insertResult = 0;
+        try {
+        	FavoriteDAO dao = new FavoriteDAO();
+            insertResult = dao.insertFavoite(session, fDTO);
+            session.commit();
+        } catch (Exception e) {
+        	session.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return insertResult;
+	}
+
+	public int deleteFavoite(FavoriteDTO fDTO) {
+		SqlSession session = MySqlSessionFactory.getSession();
+	    int deleteResult = 0;
+	    try {
+	    	FavoriteDAO dao = new FavoriteDAO();
+	        deleteResult = dao.deleteFavoite(session, fDTO);
+	        session.commit();
+	    } catch (Exception e) {
+	    	session.rollback();
+	        e.printStackTrace();
+	    } finally {
+	        session.close();
+	    }
+	    return deleteResult;
+	}
+
 }
