@@ -17,7 +17,12 @@
 		String addr = dto.getAddr();
 		int pNum = dto.getpNum();
 
-		%>	
+		%>
+		
+		<style type="text/css"> 
+a { text-decoration:none } 
+</style>
+
 <a href="PostDetailServlet?pNum=<%=pNum %>">
 <div style=" background-color: white; padding:30px; width: auto; height: auto; cursor: pointer;" onclick="postdetail">
 <td><img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
