@@ -106,7 +106,7 @@ public class KakaoLoginServlet extends HttpServlet {
 				session.setAttribute("login", dto); //로그인 정보 저장
 			}else { //회원정보 없으면 회원가입 진행
 				MemberDTO newMem 
-					= new MemberDTO(userid, passwd, nickName, "0", "0", "0",email.split("@")[0],email.split("@")[1]);
+					= new MemberDTO(userid, passwd, "0", nickName, "0", "0",email.split("@")[0],email.split("@")[1]);
 				
 				service.memberAdd(newMem);
 				nextPage = "mypage.jsp";
