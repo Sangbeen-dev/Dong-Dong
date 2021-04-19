@@ -36,7 +36,7 @@ public class MainServlet extends HttpServlet {
 		} else {
 			// 로그인 된 상태 - 로그인된 유저의 주소를 받아와서 해당주소로 작성된 글만 긁어온다.
 			String addr = member.getAddr();
-			System.out.println("addr ="+addr);
+			//System.out.println("addr ="+addr);
 			list = service.postListByAddr(addr);
 		}
 		
