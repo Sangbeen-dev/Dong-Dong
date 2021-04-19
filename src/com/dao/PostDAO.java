@@ -9,7 +9,6 @@ import com.dto.PostDTO;
 public class PostDAO {
 
    public List<PostDTO> postListByAddr(SqlSession session, String addr) {
-	   System.out.println("addr 마지막단 ===="+addr);
 	   List<PostDTO> list = session.selectList("PostMapper.postListByAddr", addr);
 	   return list;
    }
