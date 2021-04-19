@@ -24,12 +24,11 @@
          
 
  <hr>
-  
+  <table>
  <td>
-	
 		<tr>
 			<td>
-		<tr onclick="PostDetailServlet?pNum=<%=pNum %>">
+		<tr a href="PostDetailServlet?pNum=<%=pNum %>">
 				<img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
 		<%=pTitle%>
 

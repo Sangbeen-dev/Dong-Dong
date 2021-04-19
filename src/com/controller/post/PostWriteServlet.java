@@ -52,7 +52,7 @@ public class PostWriteServlet extends HttpServlet {
 		System.out.println(pPrice);
 		String pImage = fileName; // 경로는 다 똑같아서 설정된 파일이름으로만 지정
 		
-		PostDTO post = new PostDTO(14,userid,addr,"F",pTitle,pContent,pPrice,pImage,0,null);
+		PostDTO post = new PostDTO(0,userid,addr,"F",pTitle,pContent,pPrice,pImage,0,null);
 		System.out.println(post);
 		PostService service = new PostService();
 		int n = service.newPost(post);
