@@ -40,8 +40,6 @@ public class MainServlet extends HttpServlet {
 			list = service.postListByAddr(addr);
 		}
 		
-		
-		System.out.println("list->"+list);
 		request.setAttribute("postList", list);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");

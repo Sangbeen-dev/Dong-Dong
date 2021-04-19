@@ -54,7 +54,7 @@
 <button id="nickCheck">닉네임 변경(중복체크)</button>
 <br>
 <!--프로필 이미지  -->
-<img src="images/aaa.jpg" border="0" width="80"/><br>
+<img src="/Dong-Dong/images/profile/aaa.jpg" border="0" width="80"/><br>
 
 <br> 
 
