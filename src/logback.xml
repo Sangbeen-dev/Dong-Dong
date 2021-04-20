@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true" scanPeriod="30 seconds">
+	
+	<property name = "LOG_FILE" value = "c:/logs/access.log" />
+  
+   <!-- FILE Appender -->
+    
+    <appender name="ROLL_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <!-- 일자별로 로그파일 적용하기 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>15</maxHistory> <!-- 일자별 백업파일의 보관기간 -->
+        </rollingPolicy>
+        
+        <!-- 용량 10KB넘으면 압축파일로 만듦 -->
+         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+	         <MaxFileSize>10KB</MaxFileSize>
+         </triggeringPolicy>
+        
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>	
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <!-- encoders are assigned the type
-         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
     <encoder>
       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
     </encoder>
   </appender>
-	
-  <logger name = "Dong-Dong" level = "INFO"></logger>	
-  
-  <root level="DEBUG">
+
+  <root level="INFO">
     <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
+    <appender-ref ref="ROLL_FILE" />
   </root>
 </configuration>
+
+
