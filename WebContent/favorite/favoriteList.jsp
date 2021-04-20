@@ -113,7 +113,7 @@
 			<td class="td_default" width="80"><%= pNum %></td>
 			<td class="td_default" width="80">
 			<a href="PostDetailServlet?pNum=<%= pNum%>"><%--여기 해당상품 이동될 페이지  --%>
-			<img src="images/items/<%= pImage %>.jpg" border="0" align="center"
+			<img src="/Dong-Dong/images/<%= pImage %>" border="0" align="center"
 				width="80" /></td>
 			<td class="td_default" width="300" style='padding-left: 30px'><%= pTitle %>
 			
@@ -143,7 +143,7 @@
 	</tr>
 	<tr>
 		<td align="center" colspan="5"><a class="a_black" href="#"
-			class="a_black" href="#" id="delAllCart"> 전체 삭제하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			class="a_black" href="#" id="delAllfavorite"> 전체 삭제하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<a class="a_black" href="main"> 계속 쇼핑하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
 	</tr>
