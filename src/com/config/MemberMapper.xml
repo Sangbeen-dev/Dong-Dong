@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="memberAdd" parameterType="MemberDTO">
      insert into member (userid, passwd,username,nickName,addr ,phone ,email1 ,email2)
      values( #{userid},#{passwd},#{username},#{nickName},#{addr},#{phone},
-              #{email1},#{email2})
+              #{email1},#{email2},#{userimage})
    </insert>
    
    <select id = "idSearch" resultType = "String" parameterType = "MemberDTO">
@@ -39,6 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	phone = #{phone},
 	email1 = #{email1},
 	email2 = #{email2}
+	userImage=#{userImage},
 	where userid = #{userid}
 	</update>
    

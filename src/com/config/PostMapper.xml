@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="PostMapper">   
   
 	
+   
 	<select id="postListByAddr" parameterType="string" resultType="PostDTO">
 		select pNum,userid,addr,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate
        	from post

@@ -13,7 +13,7 @@
 	String pContent = (String)request.getAttribute("pContent");
 	String pPrice = (String)request.getAttribute("pPrice");
 	String pImage = (String)request.getAttribute("pImage");
-	int pHit = (Integer)request.getAttribute("pHit");
+	int pHit = Integer.parseInt((String)request.getAttribute("pHit"));
 	String pDate = (String)request.getAttribute("pDate");
 	boolean favorite = (boolean)request.getAttribute("favorite");
 	
@@ -23,6 +23,8 @@
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+
+	var favorite = <%=favorite%>;
 <%if(dto!=null) {%>
 	$(function() {
 		$("#favorite").on("click", function(){
@@ -32,12 +34,20 @@
 				data: {
 					userid: <%=dto.getUserid()%>,
 					pNum: <%=pNum%>,
-					favorite : <%=favorite%>
+					favorite : favorite
 				}, //data
 				dataType: "text",
 				success: function(data, status, xhr) {
-					//$("#result").text(data);
-					// 결과를 받아서 favorite 변수 변경 / 화면에 반옇
+					if(data=="true"){
+						$("#favorite").text("true");
+						favorite = true;
+					} else {
+						$("#favorite").text("false");
+						favorite = false;
+					}
+					
+					$("#favorite").text(data);
+					// 결과를 받아서 favorite 변수 변경 / 화면에 반영
 				}, //success
 				error: function(xhr, status, error) {
 					$("#result").append(error);
@@ -48,7 +58,6 @@
 	});//ready()
 <%}%>
 </script>
-
 
 유저 아이디 <%=userid%><br>
 유저 이름 <%=username%><br>
@@ -70,7 +79,7 @@
 	<a href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a><br>
 	<a href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
 <% } else  {%>
-	<button id="favorite" value="">좋아요 버튼 : <%=favorite %></button><br>
+	<button id="favorite" value=""><%=favorite %></button><br>
 	<a href="">상품 구매</a><br>
 <%} %>
 

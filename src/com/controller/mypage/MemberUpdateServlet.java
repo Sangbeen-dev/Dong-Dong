@@ -33,9 +33,10 @@ public class MemberUpdateServlet extends HttpServlet {
 			String phone = request.getParameter("phone");
 			String email1 = request.getParameter("email1");
 			String email2 = request.getParameter("email2");
+			String userImage = request.getParameter("userImage");
 			MemberDTO dto2 =
 					new MemberDTO(userid,passwd,username,nickName,
-							addr,phone,email1,email2);
+							addr,phone,email1,email2,userImage);
 			//System.out.println("서블릿===="+dto2);
 			//update실행
 			MemberService service = new MemberService();
