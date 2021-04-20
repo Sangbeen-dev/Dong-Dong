@@ -40,22 +40,33 @@
 		})
 			
  });//end ready
+ 
+ function readURL(input){
+		if(input.files && input.files[0]){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$("#thumbnail").attr('src', e.target.result);
+				$("#thumbnail").attr('height', '100');
+				$("#thumbnail").attr('width', '100');
+				
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 </script>    
 <%
   //session에서 "login"으로 데이터 뽑기
   MemberDTO dto = (MemberDTO)session.getAttribute("login");
 	String nickName = dto.getNickName();
   //System.out.print(dto);
-  
 
-	
 %>
 <button id="favorite">관심목록</button>&nbsp;<button id="transaction" >거래내역</button> &nbsp;
 <br><br><br>
 <form id="myForm" action="#" method="post"> 
 <!--프로필 이미지 -->
 <!-- <img src="/Dong-Dong/images/profile/aaa.jpg" border="0" width="80"/><br> -->
-<img id="thumbnail" src="/Dong-Dong/images/profile/thumbnail.PNG"  /><br><!--멤버에 이미지추가하고 여기 수정, 썸네일이미지 프로필에도 넣는거말해주기  -->
+<img id="thumbnail" src="/Dong-Dong/images/profile/<%= dto.getUserImage() %>"  /><br><!--멤버에 이미지추가하고 여기 수정, 썸네일이미지 프로필에도 넣는거말해주기  -->
 	사진 첨부 : 
 <!-- input type file의 accept  : 파일 창이 열릴때 이미지파일만 보이도록 해준다. -->
 <input type="file" id="photo" name="photo"  accept="image/gif,image/jpg,image/png,image/jpeg"
