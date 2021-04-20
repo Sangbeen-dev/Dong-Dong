@@ -41,7 +41,6 @@ public class MemberUpdateServlet extends HttpServlet {
 			//update실행
 			MemberService service = new MemberService();
 			int num = service.memberUpdate(dto2);
-			System.out.println("변경된 레코드=="+num);
 			//세션에 mesg '회원정보가 수정되었습니다.' 저장
 			session.setAttribute("mesg", "회원정보가 수정되었습니다.");
 			nextPage="main"; //MainServlet => db => top => main.jsp goodsList.jsp에서 출력

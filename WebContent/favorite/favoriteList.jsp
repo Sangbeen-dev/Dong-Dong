@@ -7,6 +7,31 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		//전체 체크
+		$("#allCheck").click(function() {
+			var result = this.checked;
+			var num = [];
+			$(".check").each(function(idx, data) {
+				//this.checked = result;
+				data.checked = result;
+			});
+		});//end allCheck
+		
+		//개별 삭제
+		$(".delBtn").on("click", function() {
+			var num = $(this).attr("data-xxx");
+			location.href="FavoriteDelServlet?num="+num; 
+		});//end delBtn
+		
+		//체크한 관심목록 삭제
+		$("#delAllfavorite").click(function() {
+			var num = [];
+			$(".check:checked").each(function(idx, data) {
+				num[idx] = $(this).val();
+			});
+			console.log(num);
+			location.href="FavoriteDelAllServlet?data="+num;
+		});//end delAllCart
 		
 		
 	})//end ready
@@ -40,11 +65,12 @@
 	</tr>
 
 	<tr>
-		 <!-- <td class="td_default" align="center"> --> 
+	 	<td class="td_default" align="center"> 
+		<input type="checkbox" name="allCheck" id="allCheck"> <strong>전체선택</strong></td>
 		<td class="td_default" align="center"><strong>Hit</strong></td>
 		<td class="td_default" align="center" colspan="1"><strong>주문번호</strong></td>
 		<td class="td_default" align="center" colspan="2"><strong>상품정보</strong></td>
-		<td class="td_default" align="right"><strong>판매가</strong></td>
+		<td class="td_default" align="center"><strong>판매가</strong></td>
 		<!-- <td class="td_default" align="center" colspan="2"><strong>수량</strong></td>
 		<td class="td_default" align="center"><strong>합계</strong></td> -->
 		<td></td>
@@ -82,7 +108,9 @@
 	  		
 
 		<tr>
-			 <td class="td_default" width="80"> 
+			<td class="td_default" width="80"> 
+			<input type="checkbox"
+				name="check" id="check" class="check" value="<%= pNum %>"></td>
 			<td class="td_default" width="80"><%= pHit %></td>
 			<td class="td_default" width="80"><%= pNum %></td>
 			<td class="td_default" width="80">
@@ -94,6 +122,11 @@
 			<br> <font size="2" color="#665b5f">[분류 :<%= pCategory %>] </font></td>
 			<td class="td_default" align="center" width="100"><%= pPrice %>
 			</td>
+			<td class="td_default" align="center" width="30"
+				style='padding-left: 10px'>
+				<input type="button" value="삭제" id="xx<%=i %>"
+				class="delBtn" data-xxx="<%=pNum %>"></td><!--data-xxx 사용자 정의 속성  -->
+			<td height="10"></td>
 
 		</tr>
 <%
@@ -110,7 +143,12 @@
 	<tr>
 		<td height="30">
 	</tr>
-
+	<tr>
+		<td align="center" colspan="5"><a class="a_black" href="#"
+			class="a_black" href="#" id="delAllCart"> 전체 삭제하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class="a_black" href="main"> 계속 쇼핑하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+	</tr>
 	<tr>
 		<td height="20">
 	</tr>

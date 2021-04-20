@@ -38,6 +38,10 @@
 		$("#nickCheck").click(function() {
 			confirmNick();
 		})
+		
+		
+		
+		
 			
  });//end ready
 </script>    
@@ -60,8 +64,8 @@
 <!-- input type file의 accept  : 파일 창이 열릴때 이미지파일만 보이도록 해준다. -->
 <input type="file" id="photo" name="photo"  accept="image/gif,image/jpg,image/png,image/jpeg"
 		onchange="readURL(this);"><br>
-<!--모르겠다..멤버도 수정해야할듯(처음 가입시 디폴트값 썸네일이미지로 가져가고 수정시 값변경되게끔) ,ProfileImageServlet을 팝업창으로 뜨게끔 해야함 (서블릿도 아직 다안함 내일해야함) 
-	서블릿으로 연결후 처리하고 팝업창 닫기 클릭시 mypage에 사진 바로 떠있게끔 처리 내일 물어보고 배워서 적용하기   -->			
+<!--모르겠다..멤버도 수정해야할듯(처음 가입시 디폴트값 썸네일이미지로 가져가고 수정시 값변경되게끔) ,ProfileImageServlet
+	서블릿으로 연결후 처리하고 mypage에 사진 바로 떠있게끔 처리 내일 물어보고 배워서 적용하기   -->			
 <input type="hidden" value="<%= dto.getUsername() %>" name="username">
 *이름:<%= dto.getUsername() %><br>
 <input type="hidden" value="<%= dto.getUserid() %>" name="userid">
