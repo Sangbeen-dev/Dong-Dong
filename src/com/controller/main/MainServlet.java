@@ -20,7 +20,7 @@ import com.service.PostService;
 public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("login");
 		PostService service = new PostService();
