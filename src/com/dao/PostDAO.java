@@ -47,6 +47,11 @@ public class PostDAO {
 	}
 
 
+	public int updatePHit(SqlSession session, PostDTO dto) {
+		return session.update("PostMapper.updatePHit",dto);
+	}
+
+
 
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.dto.FavoriteDTO;
+import com.dto.PostDTO;
 
 public class FavoriteDAO {
 
@@ -22,12 +23,16 @@ public class FavoriteDAO {
 		return returnDTO;
 	}
 
-	public int insertFavoite(SqlSession session, FavoriteDTO fDTO) {
-		return session.insert("FavoriteMapper.insertFavoite",fDTO);
+	public int insertFavoite(SqlSession session, FavoriteDTO dto) {
+		return session.insert("FavoriteMapper.insertFavoite",dto);
 	}
 
-	public int deleteFavoite(SqlSession session, FavoriteDTO fDTO) {
-		return session.delete("FavoriteMapper.deleteFavoite",fDTO);
+	public int deleteFavoite(SqlSession session, FavoriteDTO dto) {
+		return session.delete("FavoriteMapper.deleteFavoite",dto);
+	}
+
+	public int updateFavoriteByPost(SqlSession session, PostDTO dto) {
+		return session.update("FavoriteMapper.updateFavoriteByPost",dto);
 	}
 
 	public int favoriteDel(SqlSession session, int num) {
