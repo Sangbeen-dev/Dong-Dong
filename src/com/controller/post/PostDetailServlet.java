@@ -34,6 +34,11 @@ public class PostDetailServlet extends HttpServlet {
     	PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum));
     	MemberDTO mDTO = mService.mypage(pDTO.getUserid());
     	
+    	//post hit increase
+    	pDTO.setpHit(pDTO.getpHit()+1);
+    	int pUpdateResult = pService.updatePHit(pDTO);
+    	int fUpdateResult = fService.updateFavoriteByPost(pDTO);
+    	
     	//post data setting
     	request.setAttribute("pNum", String.valueOf(pDTO.getpNum()));
     	request.setAttribute("pCategory", pDTO.getpCategory());

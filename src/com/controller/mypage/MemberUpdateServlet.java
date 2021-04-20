@@ -39,7 +39,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			String userid = multi.getParameter("userid");
 			String passwd = dto.getPasswd(); // mypage.jsp에서 넘겨주는 값이 없어서 dto에서 뽑아왔어요!(어차피 수정되는부분이아니라 null들어가도 상관없긴함)
 			String username = multi.getParameter("username");
-			System.out.println("MemberUpdateServlet의 유저정보 : " + userid +", " + passwd + ", " + username);
+			
 			String nickName = multi.getParameter("nickName");
 			String addr = multi.getParameter("addr");
 			String phone = multi.getParameter("phone");
@@ -50,11 +50,10 @@ public class MemberUpdateServlet extends HttpServlet {
 			MemberDTO dto2 =
 					new MemberDTO(userid,passwd,username,nickName,
 							addr,phone,email1,email2,userImage);
-			//System.out.println("서블릿===="+dto2);
+			
 			//update실행
 			MemberService service = new MemberService();
 			int num = service.memberUpdate(dto2);
-			System.out.println("변경된 레코드=="+num);
 			//세션에 mesg '회원정보가 수정되었습니다.' 저장
 			session.setAttribute("mesg", "회원정보가 수정되었습니다.");
 			nextPage="main"; //MainServlet => db => top => main.jsp goodsList.jsp에서 출력
@@ -68,9 +67,6 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

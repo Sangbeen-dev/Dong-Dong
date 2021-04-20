@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.config.MySqlSessionFactory;
 import com.dao.FavoriteDAO;
 import com.dto.FavoriteDTO;
+import com.dto.PostDTO;
 
 public class FavoriteService {
 
@@ -50,12 +51,12 @@ public class FavoriteService {
 		return returnDTO;
 	}
 
-	public int insertFavoite(FavoriteDTO fDTO) {
+	public int insertFavoite(FavoriteDTO dto) {
 		SqlSession session = MySqlSessionFactory.getSession();
         int insertResult = 0;
         try {
         	FavoriteDAO dao = new FavoriteDAO();
-            insertResult = dao.insertFavoite(session, fDTO);
+            insertResult = dao.insertFavoite(session, dto);
             session.commit();
         } catch (Exception e) {
         	session.rollback();
@@ -66,12 +67,12 @@ public class FavoriteService {
         return insertResult;
 	}
 
-	public int deleteFavoite(FavoriteDTO fDTO) {
+	public int deleteFavoite(FavoriteDTO dto) {
 		SqlSession session = MySqlSessionFactory.getSession();
 	    int deleteResult = 0;
 	    try {
 	    	FavoriteDAO dao = new FavoriteDAO();
-	        deleteResult = dao.deleteFavoite(session, fDTO);
+	        deleteResult = dao.deleteFavoite(session, dto);
 	        session.commit();
 	    } catch (Exception e) {
 	    	session.rollback();
@@ -80,6 +81,52 @@ public class FavoriteService {
 	        session.close();
 	    }
 	    return deleteResult;
+	}
+	
+	public int updateFavoriteByPost(PostDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSession();
+	    int updateResult = 0;
+	    try {
+	    	FavoriteDAO dao = new FavoriteDAO();
+	        updateResult = dao.updateFavoriteByPost(session, dto);
+	        session.commit();
+	    } catch (Exception e) {
+	    	session.rollback();
+	        e.printStackTrace();
+	    } finally {
+	        session.close();
+	    }
+	    return updateResult;
+	}
+
+	public int favoriteDel(int num) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			FavoriteDAO dao = new FavoriteDAO();
+			n = dao.favoriteDel(session, num);
+			session.commit();
+		}catch (Exception e) {
+			session.rollback();
+		}finally {
+			session.close();
+		}
+		return n;
+	}
+
+	public int favoriteAllDel(List<String> list) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n =0;
+		try {
+			FavoriteDAO dao = new FavoriteDAO();
+			n = dao.favoriteAllDel(session, list);
+			session.commit();
+		}catch (Exception e) {
+			session.rollback();
+		}finally {
+			session.close();
+		}
+		return n;
 	}
 
 }
