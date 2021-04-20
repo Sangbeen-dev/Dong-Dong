@@ -4,6 +4,8 @@
 <%@page import="java.util.List"%>
 <a href="PostWriteUIServlet">글쓰기</a>
 
+
+
  <%
  	List<PostDTO> list = (List<PostDTO>)request.getAttribute("postList");
 	for(int i=1;i<=list.size();i++){
@@ -18,9 +20,9 @@
 
 		%>
 		
-		<style type="text/css"> 
+<!-- 		<style type="text/css"> 
 a { text-decoration:none } 
-</style>
+</style> -->
 
 <a href="PostDetailServlet?pNum=<%=pNum %>">
 	<div style=" background-color: white; padding:30px; width: auto; height: auto; cursor: pointer;" onclick="postdetail">
