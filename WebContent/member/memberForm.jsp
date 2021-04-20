@@ -9,11 +9,16 @@ $("form").on("submit",function(event){
  var passwd = $("#passwd").val();
  var nickName = $("#nickName").val();
  
- 		if(userid.length==0){
-			alert("userid 필수")
-			$("#userid").focus();
-			event.preventDefault();
- 		
+ 		if(nickName.length==0){
+			alert("nickName 필수입니다.")
+			$("#nickName").focus();
+			event.preventDefault();	
+			
+ 		}else if(userid.length==0){
+ 			alert("userid 필수")
+ 			$("#userid").focus();
+ 			event.preventDefault();		
+			
  		}else if(passwd.length==0){
 			alert("passwd 필수")
 			$("#passwd").focus();
@@ -24,11 +29,7 @@ $("form").on("submit",function(event){
 			$("#passwd").focus();
 			event.preventDefault();
 			
-		}else if(nickName.length==0){
-			alert("nickName 필수입니다.")
-			$("#nickName").focus();
-			event.preventDefault();			
- 		}
+		}
 	});
 //비번확인
 $("#passwd2").on("keyup",function(){
@@ -39,6 +40,7 @@ $("#passwd2").on("keyup",function(){
 	}
 	$("#result2").text(mesg);
 });
+
 
 //id체크 
  $("#userid").on("keyup",function(event){
@@ -86,7 +88,7 @@ $("#passwd2").on("keyup",function(){
 <br>
 *아이디 : <input type="text" name="userid" id="userid" placeholder="아이디 입력"><span id="result"></span>
 <br>
-비밀번호 : <input type="text" name="passwd" id="passwd" placeholder="비밀번호 입력">
+*비밀번호 : <input type="text" name="passwd" id="passwd" placeholder="비밀번호 입력">
 <br>
 비빌번호확인 : <input type="text" name="passwd2" id="passwd2"><span id="result2"></span>
 <br>

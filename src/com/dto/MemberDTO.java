@@ -9,12 +9,14 @@ public class MemberDTO {
 	private String phone;
 	private String email1;
 	private String email2;
+	private String userImage;
 	public MemberDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public MemberDTO(String userid, String passwd, String username, String nickName, String addr, String phone,
-			String email1, String email2) {
+			String email1, String email2, String userImage) {
 		super();
 		this.userid = userid;
 		this.passwd = passwd;
@@ -24,6 +26,13 @@ public class MemberDTO {
 		this.phone = phone;
 		this.email1 = email1;
 		this.email2 = email2;
+		this.userImage = userImage;
+	}
+	public String getUserImage() {
+		return userImage;
+	}
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
 	}
 	public String getUserid() {
 		return userid;
@@ -76,9 +85,8 @@ public class MemberDTO {
 	@Override
 	public String toString() {
 		return "MemberDTO [userid=" + userid + ", passwd=" + passwd + ", username=" + username + ", nickName="
-				+ nickName + ", addr=" + addr + ", phone=" + phone + ", email1=" + email1 + ", email2=" + email2 + "]";
+				+ nickName + ", addr=" + addr + ", phone=" + phone + ", email1=" + email1 + ", email2=" + email2
+				+ ", userImage=" + userImage + "]";
 	}
 
-	
-	
 }
