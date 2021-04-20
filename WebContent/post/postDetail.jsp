@@ -18,6 +18,7 @@
 	String favorite = (String)request.getAttribute("favorite");
 %>
 
+
 유저 아이디 <%=userid%><br>
 유저 이름 <%=username%><br>
 상품 번호 <%=pNum%><br>
