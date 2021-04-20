@@ -31,9 +31,7 @@ public class PostDeleteServlet extends HttpServlet {
 			
 			if(dto.getUserid().equals(pDTO.getUserid())){
 				int DeletePostResult = pService.deletePostByPNum(Integer.parseInt(pNum));
-				if(DeletePostResult==1) {
-					System.out.println("포스트 삭제 성공");
-				}
+				
 				int DeleteFavoriteResult = fService.deleteFavoriteByPNum(Integer.parseInt(pNum));
 				System.out.println(DeleteFavoriteResult);
 			} else {

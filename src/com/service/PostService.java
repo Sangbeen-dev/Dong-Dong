@@ -109,5 +109,25 @@ public class PostService {
         return updateResult;
 
 	}
+
+	public int updatePHit(PostDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSession();
+        int updateResult = 0;
+        try {
+            PostDAO dao = new PostDAO();
+            updateResult = dao.updatePHit(session, dto);
+            if(updateResult!=1) {
+            	session.rollback();
+            } else {
+            	session.commit();
+            }
+        } catch (Exception e) {
+        	session.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return updateResult;
+	}
 }// end class
 
