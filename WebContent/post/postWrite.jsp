@@ -1,21 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
-<script type="text/javascript">
-		function readURL(input){
-			if(input.files && input.files[0]){
-				var reader = new FileReader();
-				reader.onload = function(e){
-					$("#thumbnail").attr('src', e.target.result);
-					$("#thumbnail").attr('height', '100');
-					$("#thumbnail").attr('width', '100');
-					
-				}
-				reader.readAsDataURL(input.files[0]);
-			}
-		}
+<head>
 	
-</script>
+	<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+			function readURL(input){
+				if(input.files && input.files[0]){
+					var reader = new FileReader();
+					reader.onload = function(e){
+						$("#thumbnail").attr('src', e.target.result);
+						$("#thumbnail").attr('height', '100');
+						$("#thumbnail").attr('width', '100');
+					}
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+	</script>
+</head>
+
 
 
 <form action="../PostWriteServlet" method="post" enctype="multipart/form-data">

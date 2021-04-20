@@ -1,5 +1,6 @@
 package com.controller.post;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +34,11 @@ public class PostDeleteServlet extends HttpServlet {
 				int DeletePostResult = pService.deletePostByPNum(Integer.parseInt(pNum));
 				
 				int DeleteFavoriteResult = fService.deleteFavoriteByPNum(Integer.parseInt(pNum));
-				System.out.println(DeleteFavoriteResult);
+				
+				//이미지 삭제
+				File deleteImage = new File("c://images//"+pDTO.getpImage());
+				deleteImage.delete();
+				
 			} else {
 				session.setAttribute("mesg", "자신이 쓴 글만 삭제가 가능합니다.");
 			}

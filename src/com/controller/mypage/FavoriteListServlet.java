@@ -15,6 +15,8 @@ import com.dto.FavoriteDTO;
 import com.dto.MemberDTO;
 import com.service.FavoriteService;
 
+import sun.security.util.Length;
+
 /**
  * Servlet implementation class FavoriteServlet
  */

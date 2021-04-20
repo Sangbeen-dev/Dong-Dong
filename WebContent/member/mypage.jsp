@@ -3,7 +3,8 @@
 <%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -30,7 +31,6 @@
 			// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼줌
 			var popupY= (window.screen.height / 2) - (popupHeight / 2);
 			// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼줌
-			//url = "confirmNick?nickName=" + $("#nickName").val();
 			url = "checkNick.jsp"
 			open(url,"confirm", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 			}
@@ -39,6 +39,10 @@
 			confirmNick();
 		})
 		
+		//메일 선택
+		$("#emailSelect").change(function() {
+			$("#email2").val(this.value);
+		})
 		
 		
 		
@@ -57,7 +61,8 @@
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-</script>    
+</script>
+    
 <%
   //session에서 "login"으로 데이터 뽑기
   MemberDTO dto = (MemberDTO)session.getAttribute("login");
@@ -69,6 +74,7 @@
 <br><br><br>
 <form id="myForm" action="#" method="post" enctype="multipart/form-data"> 
 <!--프로필 이미지 -->
+<input type="hidden" value="<%= dto.getUserImage() %>" name="basic_photo">
 <img id="thumbnail" src="/Dong-Dong/images/profile/<%= dto.getUserImage() %>" width="100" height="100" /><br>
 	프로필사진 바꾸기 : 
 <!-- input type file의 accept  : 파일 창이 열릴때 이미지파일만 보이도록 해준다. -->
@@ -97,10 +103,12 @@
 
 <br>
 이메일:<input type="text" value="<%= dto.getEmail1() %>" name="email1" id="email1">@
-       <input type="text" value="<%= dto.getEmail2() %>" name="email2" id="email2" placeholder="직접입력">
+       <input type="text" value="<%= dto.getEmail2() %>" id="email2" name="email2" id="email2" placeholder="직접입력">
        <select  id="emailSelect">
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
+        <option value="gmail.com">gmail.com</option>
+        <option value="hanmail.net">hanmail.net</option>
        </select>
 <br>
 <input id="submit" type="submit" value="수정">

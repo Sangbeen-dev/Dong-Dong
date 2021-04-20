@@ -3,7 +3,8 @@
 <%@page import="com.dto.PostDTO"%>
 <%@page import="java.util.List"%>
 <a href="PostWriteUIServlet">글쓰기</a>
-<a href="">
+
+
 
  <%
  	List<PostDTO> list = (List<PostDTO>)request.getAttribute("postList");
@@ -19,49 +20,24 @@
 
 		%>
 		
-		<style type="text/css"> 
+<!-- 		<style type="text/css"> 
 a { text-decoration:none } 
-</style>
+</style> -->
 
 <a href="PostDetailServlet?pNum=<%=pNum %>">
-<div style=" background-color: white; padding:30px; width: auto; height: auto; cursor: pointer;" onclick="postdetail">
-<td><img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
+	<div style=" background-color: white; padding:30px; width: auto; height: auto; cursor: pointer;" onclick="postdetail">
+		<img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
 		<%=pTitle%>
-		<tr>
+
 		<br>
- 	 	<td class="Dong"><b><%=addr%></b>
-							&nbsp;</td>
-							<br>	
-		</tr>					
+ 	 	<b><%=addr%></b>&nbsp;<br>						
  	 	
- 	 		<%=pDate%> <br>	
- 	 	
- 	 		
- 	 			<br>
- 	 			
-          <%=pPrice%><br>
-		</td>
-　　　</td>
-　　</tr>
-</div>
-
-
-　</table> 
- </body> 
-</html>     
-
-
-
-</tr>
-</table>
-
+ 	 	<%=pDate%> <br>	
+ 	 	<br>
+        <%= pPrice%><br>
+	</div>
+</a>
  <hr>
-  
- <td>
-	
-		
-		
-		</table>
 <%
     }//end for
 %>
