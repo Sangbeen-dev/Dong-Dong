@@ -50,7 +50,6 @@ public class MemberUpdateServlet extends HttpServlet {
 			MemberDTO dto2 =
 					new MemberDTO(userid,passwd,username,nickName,
 							addr,phone,email1,email2,userImage);
-			
 			//update실행
 			MemberService service = new MemberService();
 			int num = service.memberUpdate(dto2);
