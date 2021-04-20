@@ -13,10 +13,41 @@
 	String pContent = (String)request.getAttribute("pContent");
 	String pPrice = (String)request.getAttribute("pPrice");
 	String pImage = (String)request.getAttribute("pImage");
-	String pHit = (String)request.getAttribute("pHit");
+	int pHit = (Integer)request.getAttribute("pHit");
 	String pDate = (String)request.getAttribute("pDate");
-	String favorite = (String)request.getAttribute("favorite");
+	boolean favorite = (boolean)request.getAttribute("favorite");
+	
 %>
+
+
+
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+<%if(dto!=null) {%>
+	$(function() {
+		$("#favorite").on("click", function(){
+			$.ajax({
+				type: "get",
+				url: "FavorateSwitchServlet",
+				data: {
+					userid: <%=dto.getUserid()%>,
+					pNum: <%=pNum%>,
+					favorite : <%=favorite%>
+				}, //data
+				dataType: "text",
+				success: function(data, status, xhr) {
+					//$("#result").text(data);
+					// 결과를 받아서 favorite 변수 변경 / 화면에 반옇
+				}, //success
+				error: function(xhr, status, error) {
+					$("#result").append(error);
+					$("#result").append(status);
+				} //error
+			});//ajax
+		});//on
+	});//ready()
+<%}%>
+</script>
 
 
 유저 아이디 <%=userid%><br>
@@ -39,7 +70,7 @@
 	<a href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a><br>
 	<a href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
 <% } else  {%>
-	좋아요 여부 : <%=favorite %><br>
+	<button id="favorite" value="">좋아요 버튼 : <%=favorite %></button><br>
 	<a href="">상품 구매</a><br>
 <%} %>
 

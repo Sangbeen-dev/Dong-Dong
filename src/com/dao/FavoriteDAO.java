@@ -22,4 +22,12 @@ public class FavoriteDAO {
 		return returnDTO;
 	}
 
+	public int insertFavoite(SqlSession session, FavoriteDTO fDTO) {
+		return session.insert("FavoriteMapper.insertFavoite",fDTO);
+	}
+
+	public int deleteFavoite(SqlSession session, FavoriteDTO fDTO) {
+		return session.delete("FavoriteMapper.deleteFavoite",fDTO);
+	}
+
 }

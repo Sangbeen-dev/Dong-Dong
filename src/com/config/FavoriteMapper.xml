@@ -17,6 +17,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where userid = #{userid} AND pNum=#{pNum}
 	</select>
 
+	<insert id="insertFavoite" parameterType="FavoriteDTO">
+		insert
+		into favorite (pNum, userid, pCategory, pTitle, pContent, pPrice, pImage, pHit)
+		values (#{pNum},#{userid},#{pCategory},#{pTitle},#{pContent},#{pPrice},#{pImage},#{pHit})
+	</insert>
+	
+	<delete id="deleteFavoite" parameterType="FavoriteDTO">
+		delete
+		from favorite
+		where pNum=#{pNum} and userid=#{userid}
+	</delete>
+	
 	<delete id="deleteFavoriteByPNum" parameterType="int">
 		delete
 		from favorite

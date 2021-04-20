@@ -8,13 +8,13 @@ public class FavoriteDTO {
 	private String pContent;
 	private int pPrice;
 	private String pImage;
-	private int pHIt;
+	private int pHit;
 	public FavoriteDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public FavoriteDTO(int pNum, String userid, String pCategory, String pTitle, String pContent, int pPrice,
-			String pImage, int pHIt) {
+			String pImage, int pHit) {
 		super();
 		this.pNum = pNum;
 		this.userid = userid;
@@ -23,7 +23,7 @@ public class FavoriteDTO {
 		this.pContent = pContent;
 		this.pPrice = pPrice;
 		this.pImage = pImage;
-		this.pHIt = pHIt;
+		this.pHit = pHit;
 	}
 	public int getpNum() {
 		return pNum;
@@ -68,15 +68,15 @@ public class FavoriteDTO {
 		this.pImage = pImage;
 	}
 	public int getpHIt() {
-		return pHIt;
+		return pHit;
 	}
-	public void setpHIt(int pHIt) {
-		this.pHIt = pHIt;
+	public void setpHIt(int pHit) {
+		this.pHit = pHit;
 	}
 	@Override
 	public String toString() {
 		return "FavoriteDTO [pNum=" + pNum + ", userid=" + userid + ", pCategory=" + pCategory + ", pTitle=" + pTitle
-				+ ", pContent=" + pContent + ", pPrice=" + pPrice + ", pImage=" + pImage + ", pHIt=" + pHIt + "]";
+				+ ", pContent=" + pContent + ", pPrice=" + pPrice + ", pImage=" + pImage + ", pHit=" + pHit + "]";
 	}
 	
 	
