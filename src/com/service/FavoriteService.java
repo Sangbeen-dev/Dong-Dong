@@ -82,4 +82,34 @@ public class FavoriteService {
 	    return deleteResult;
 	}
 
+	public int favoriteDel(int num) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			FavoriteDAO dao = new FavoriteDAO();
+			n = dao.favoriteDel(session, num);
+			session.commit();
+		}catch (Exception e) {
+			session.rollback();
+		}finally {
+			session.close();
+		}
+		return n;
+	}
+
+	public int favoriteAllDel(List<String> list) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n =0;
+		try {
+			FavoriteDAO dao = new FavoriteDAO();
+			n = dao.favoriteAllDel(session, list);
+			session.commit();
+		}catch (Exception e) {
+			session.rollback();
+		}finally {
+			session.close();
+		}
+		return n;
+	}
+
 }

@@ -71,8 +71,6 @@
 		<td class="td_default" align="center" colspan="1"><strong>주문번호</strong></td>
 		<td class="td_default" align="center" colspan="2"><strong>상품정보</strong></td>
 		<td class="td_default" align="center"><strong>판매가</strong></td>
-		<!-- <td class="td_default" align="center" colspan="2"><strong>수량</strong></td>
-		<td class="td_default" align="center"><strong>합계</strong></td> -->
 		<td></td>
 	</tr>
 

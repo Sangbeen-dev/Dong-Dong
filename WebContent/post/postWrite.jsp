@@ -18,7 +18,7 @@
 </script>
 
 
-<form action="../PostWriteServlet" method="post" enctype="multipart/form-data" runat="server">
+<form action="../PostWriteServlet" method="post" enctype="multipart/form-data">
 	<input type="text" id="title" name="title" placeholder="상품명을 포함한 글 제목"><br>
 	<select name="category">
 		<option value="D">[Digital]디지털,가전,게임</option>

@@ -30,4 +30,14 @@ public class FavoriteDAO {
 		return session.delete("FavoriteMapper.deleteFavoite",fDTO);
 	}
 
+	public int favoriteDel(SqlSession session, int num) {
+		int n = session.delete("FavoriteMapper.favoriteDel", num);
+		return n;
+	}
+
+	public int favoriteAllDel(SqlSession session, List<String> list) {
+		int n = session.delete("FavoriteMapper.favoriteAllDel", list);
+		return n;
+	}
+
 }

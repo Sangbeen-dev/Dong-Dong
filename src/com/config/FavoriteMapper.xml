@@ -35,4 +35,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where pNum=#{pNum}
 	</delete>
 	
+	<delete id="favoriteDel" parameterType="int">
+	delete
+	from
+	favorite
+	where pNum = #{pNum}
+	</delete>
+	
+	<delete id="favoriteAllDel" parameterType="arraylist">
+	delete from favorite
+	where pNum in
+	<foreach item="item"  collection="list" open="(" separator="," close=")">
+		#{item}
+	</foreach>
+	</delete>
+	
 </mapper>
