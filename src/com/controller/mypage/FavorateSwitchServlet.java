@@ -1,6 +1,8 @@
 package com.controller.mypage;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,19 +21,23 @@ public class FavorateSwitchServlet extends HttpServlet {
 	 static final long serialVersionUID = 1L;
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html; charset=utf-8");
     	HttpSession session = request.getSession();
-		
+    	PrintWriter out = response.getWriter();
+    	
 		MemberDTO mDTO = (MemberDTO)session.getAttribute("login");
 		String userid = request.getParameter("userid");
 		String pNum = request.getParameter("pNum");
 		boolean favorite = (request.getParameter("favorite").equals("true")?true:false);
 		String nextPage = null;
-		System.out.println("favoriteSwitchServlet in/ favorite : " + favorite);
+		
 		if(mDTO==null) {
-			System.out.println("로그인 정보 없음");
+			//로그인 정보가 없는 경우
 			session.setAttribute("mesg", "로그인 정보가 없습니다.");
 			nextPage = "main";
 		} else{
+			// 로그인 정보가 있는 경우, 기본적인 데이터 생성 
 			PostService pService = new PostService();
 			PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum));
 			FavoriteService fService = new FavoriteService();
@@ -40,11 +46,6 @@ public class FavorateSwitchServlet extends HttpServlet {
 			fDTO.setpNum(Integer.parseInt(pNum));
 			fDTO.setUserId(userid);
 			if(!favorite) {
-				System.out.println("좋아요 생성 시작");
-				// 좋아요 데이터 생성
-				// 데이터 생성을 위해 Post 정보 쿼리
-				
-
 				// 데이터 생성
 				fDTO.setpCategory(pDTO.getpCategory());
 				fDTO.setpTitle(pDTO.getpTitle()); ;
@@ -53,15 +54,15 @@ public class FavorateSwitchServlet extends HttpServlet {
 				fDTO.setpImage(pDTO.getpImage());
 				fDTO.setpHIt(pDTO.getpHit());
 				
-				System.out.println(fDTO);
-				int favoriteResult = fService.insertFavoite(fDTO);
+				int insertResult = fService.insertFavoite(fDTO);
 				//int hitResult = pService.changeHitByFavorite(1);
 				
+				out.print(true);
 			}else {
-				System.out.println("좋아요 삭제 시작");
 				// 좋아요 데이터 삭제
-				int favoriteResult = fService.deleteFavoite(fDTO);
+				int deleteResult = fService.deleteFavoite(fDTO);
 				//int hitResult = pService.changeHitByFavorite(-1);
+				out.print(false);
 			}
 		}
 
