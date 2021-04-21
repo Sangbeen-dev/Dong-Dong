@@ -9,12 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.dto.MemberDTO;
 import com.service.MemberService;
 
 @WebServlet("/MemberAddServlet")
 public class MemberAddServlet extends HttpServlet {
-
+	private static final Logger logr  = LoggerFactory.getLogger(MemberAddServlet.class);
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String userid = request.getParameter("userid");
@@ -35,6 +39,8 @@ public class MemberAddServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("mesg", "회원가입성공");
+		
+		logr.info("memberAdd : {}", userid);
 		response.sendRedirect("main");
 		
 		
