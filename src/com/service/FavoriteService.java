@@ -23,22 +23,6 @@ public class FavoriteService {
 		return list;
 	}
 
-	public int deleteFavoriteByPNum(int pNum) {
-		SqlSession session = MySqlSessionFactory.getSession();
-        int deleteResult = 0;
-        try {
-        	FavoriteDAO dao = new FavoriteDAO();
-            deleteResult = dao.deleteFavoriteByPNum(session, pNum);
-            session.commit();
-        } catch (Exception e) {
-        	session.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return deleteResult;
-	}
-
 	public FavoriteDTO getFavorite(FavoriteDTO dto) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		FavoriteDTO returnDTO = null;
@@ -81,22 +65,6 @@ public class FavoriteService {
 	        session.close();
 	    }
 	    return deleteResult;
-	}
-	
-	public int updateFavoriteByPost(PostDTO dto) {
-		SqlSession session = MySqlSessionFactory.getSession();
-	    int updateResult = 0;
-	    try {
-	    	FavoriteDAO dao = new FavoriteDAO();
-	        updateResult = dao.updateFavoriteByPost(session, dto);
-	        session.commit();
-	    } catch (Exception e) {
-	    	session.rollback();
-	        e.printStackTrace();
-	    } finally {
-	        session.close();
-	    }
-	    return updateResult;
 	}
 
 	public int favoriteDel(int num) {
