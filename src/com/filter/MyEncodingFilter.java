@@ -18,7 +18,6 @@ public class MyEncodingFilter implements Filter{
 
 	@Override
 	public void destroy() {
-		System.out.println("destroy");
 		
 	}
 
@@ -33,7 +32,6 @@ public class MyEncodingFilter implements Filter{
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		log.debug("debug");
 	}
 
 }
