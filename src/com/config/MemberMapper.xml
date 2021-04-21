@@ -38,8 +38,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	addr = #{addr},
 	phone = #{phone},
 	email1 = #{email1},
-	email2 = #{email2}
-	userImage=#{userImage},
+	email2 = #{email2},
+	userImage = #{userImage}
 	where userid = #{userid}
 	</update>
    

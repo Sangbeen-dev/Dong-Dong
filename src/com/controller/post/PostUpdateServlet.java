@@ -34,16 +34,17 @@ public class PostUpdateServlet extends HttpServlet {
 			if(dto.getUserid().equals(pDTO.getUserid())){
 				PostDTO uDTO = new PostDTO();
 				
+				
 				uDTO.setpNum(Integer.parseInt(pNum));
 				uDTO.setpTitle(request.getParameter("pTitle"));
 				uDTO.setpContent(request.getParameter("pContent"));
 				uDTO.setpPrice(Integer.parseInt(request.getParameter("pPrice")));
 				//uDTO.setpImage(request.getParameter("pImage"));
-				uDTO.setpImage("test"); // 이미지 수정은 일반 보류
+				uDTO.setpImage("test"); // 이미지 수정은 일단 보류
 				int updateResult = pService.updatePost(uDTO);
 				
 				if(updateResult==1) {
-					System.out.println("포스트 업데이트 성공");
+					int fUpdateResult = fService.updateFavoriteByPost(uDTO);
 				}
 			} else {
 				session.setAttribute("mesg", "자신이 쓴 글만 수정이 가능합니다.");

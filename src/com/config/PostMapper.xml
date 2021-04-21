@@ -32,10 +32,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where pNum=#{pNum}
 	</update>
 	
+	<update id="updatePHit" parameterType="PostDTO">
+		update post 
+		set pHit=#{pHit}
+		where pNum=#{pNum}
+	</update>
+	
 	<delete id="deletePostByPNum" parameterType="int">
 		delete 
 		from post
-		where pNum=${pNum}
+		where pNum=#{pNum}
 	</delete>
 	
 	<insert id="newPost" parameterType="PostDTO">

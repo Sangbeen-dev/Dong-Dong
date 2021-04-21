@@ -23,6 +23,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{pNum},#{userid},#{pCategory},#{pTitle},#{pContent},#{pPrice},#{pImage},#{pHit})
 	</insert>
 	
+	<update id="updateFavoriteByPost" parameterType="PostDTO">
+		update favorite 
+		set pCategory=#{pCategory}, pTitle=#{pTitle}, pContent=#{pContent}, pPrice=#{pPrice}, pImage=#{pImage}, pHit=#{pHit}
+		where pNum=#{pNum}
+	</update>
+	
 	<delete id="deleteFavoite" parameterType="FavoriteDTO">
 		delete
 		from favorite
@@ -33,6 +39,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete
 		from favorite
 		where pNum=#{pNum}
+	</delete>
+	
+	<delete id="favoriteDel" parameterType="int">
+	delete
+	from
+	favorite
+	where pNum = #{pNum}
+	</delete>
+	
+	<delete id="favoriteAllDel" parameterType="arraylist">
+	delete from favorite
+	where pNum in
+	<foreach item="item"  collection="list" open="(" separator="," close=")">
+		#{item}
+	</foreach>
 	</delete>
 	
 </mapper>
