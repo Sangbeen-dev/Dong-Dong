@@ -52,13 +52,13 @@ a { text-decoration:none }
 		<br>
  	 	<b><%=addr%></b>&nbsp;<br>						
  	 	
-
+			<%=pDate %>
  	 	<img src="/Dong-Dong/images/util/favorite.png" align="right" width="30" height="30">	
  	 		</div>
  	 			<br>
  	 			
           <%=pPrice%><br>
-
+		
 
 <hr>
 </div>

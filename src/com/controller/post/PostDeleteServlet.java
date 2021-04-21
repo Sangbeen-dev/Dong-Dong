@@ -28,7 +28,7 @@ public class PostDeleteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO)session.getAttribute("login");
 		String pNum = request.getParameter("pNum");
-		
+		String nextPage = "main";
 		if(dto==null) { // 로그인 정보가 없는 경우
 			session.setAttribute("mesg", "로그인 정보가 없습니다.");
 		} else { // 로그인 정보가 있는 경우
@@ -38,21 +38,23 @@ public class PostDeleteServlet extends HttpServlet {
 			PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum));
 			
 			if(dto.getUserid().equals(pDTO.getUserid())){ // 삭제할 게시글과 로그인 유저 정보가 일치하는 경우
-				// !!!! 분할된 트랜젝션 통합 필요
-				int DeletePostResult = pService.deletePostByPNum(Integer.parseInt(pNum));
-				int DeleteFavoriteResult = fService.deleteFavoriteByPNum(Integer.parseInt(pNum));
-				// !!!!
+				int DeleteResult = pService.deletePostByPNum(Integer.parseInt(pNum));
 				
-				// 삭제한 게시글의 저장된 이미지 삭제
-				File deleteImage = new File("c://images//"+pDTO.getpImage());
-				deleteImage.delete();
-				logr.info("Delete Post & Favorate : postNumber - {}", pNum);
-				session.setAttribute("mesg", "게시글이 삭제되었습니다.");
+				if(DeleteResult!=1) { // 게시글 삭제가 실패했을 경우 
+					session.setAttribute("mesg", "게시물 삭제 중 오류가 발생하였습니다.");
+					nextPage="PostDetailServlet?pNum="+pNum;
+		    	} else {
+		    		// 삭제한 게시글의 저장된 이미지 삭제
+					File deleteImage = new File("c://images//"+pDTO.getpImage());
+					deleteImage.delete();
+					logr.info("Delete Post & Favorate : postNumber - {}", pNum);
+					session.setAttribute("mesg", "게시글이 삭제되었습니다.");
+		    	}
 			} else { // 삭제할 게시글과 로그인 유저 정보가 일치하지 않는 경우
 				session.setAttribute("mesg", "자신이 쓴 글만 삭제가 가능합니다.");
 			}
 		}
-		response.sendRedirect("main");
+		response.sendRedirect(nextPage);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
