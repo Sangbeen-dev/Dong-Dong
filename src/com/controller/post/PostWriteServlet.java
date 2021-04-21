@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.controller.member.LoginServlet;
 import com.dto.MemberDTO;
 import com.dto.PostDTO;
 import com.oreilly.servlet.MultipartRequest;
@@ -19,8 +23,9 @@ import com.service.PostService;
 @WebServlet("/PostWriteServlet")
 public class PostWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public PostWriteServlet() {
+	private static final Logger logr  = LoggerFactory.getLogger(PostWriteServlet.class);
+    
+	public PostWriteServlet() {
         super();
     }
 
@@ -51,8 +56,7 @@ public class PostWriteServlet extends HttpServlet {
 		PostService service = new PostService();
 		int n = service.newPost(post);
 
-		
-		
+		logr.info("PostingUser : {}-{}", userid,pTitle);
 		response.sendRedirect("main");
 	}
 

@@ -3,7 +3,8 @@
 <%@page import="com.dto.PostDTO"%>
 <%@page import="java.util.List"%>
 <a href="PostWriteUIServlet">글쓰기</a>
-
+<script src="/js/jquery.timeago.js"></script>
+<script src="/js/jquery.timeago.ko.js"></script>
 
 
  <%
@@ -17,7 +18,9 @@
 		String pDate = dto.getpDate();
 		String addr = dto.getAddr();
 		int pNum = dto.getpNum();
-
+		
+		
+		
 		%>
 		
 <!-- 		<style type="text/css"> 
@@ -32,7 +35,6 @@ a { text-decoration:none }
 		<br>
  	 	<b><%=addr%></b>&nbsp;<br>						
  	 	
- 	 	<%=pDate%> <br>	
  	 	<br>
         <%= pPrice%><br>
 	</div>
@@ -42,3 +44,11 @@ a { text-decoration:none }
     }//end for
 %>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+    	$("#postingTime").each(function(){
+    		 var timeago_t = jQuery.timeago( $(this).data("date"));
+             $(this).text(timeago_t);
+    	});
+     });
+</script>
