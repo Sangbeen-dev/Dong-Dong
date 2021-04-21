@@ -4,8 +4,8 @@
 <%@page import="java.util.List"%>
 
 <a href="PostWriteUIServlet">글쓰기</a>
-<script src="/js/jquery.timeago.js"></script>
-<script src="/js/jquery.timeago.ko.js"></script>
+
+
 
 
  <%
@@ -19,37 +19,58 @@
 		String pDate = dto.getpDate();
 		String addr = dto.getAddr();
 		int pNum = dto.getpNum();
+
+
+		%>
+
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script> -->
+<!-- <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript"> -->
+
+	
+		
+
 		
 		
-		
-%>
-		
-<!-- 		<style type="text/css"> 
+	
+
+
+<style type="text/css"> 
+
 a { text-decoration:none } 
 </style> -->
 
 <a href="PostDetailServlet?pNum=<%=pNum %>">
-	<div style=" background-color: white; padding:30px; width: auto; height: auto; cursor: pointer;" onclick="postdetail">
-		<img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
+
+<div style=" background-color: white; padding:30px; width: auto; height: auto; cursor: pointer;">
+<td><img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
+
 		<%=pTitle%>
 
 		<br>
  	 	<b><%=addr%></b>&nbsp;<br>						
  	 	
- 	 	<br>
-        <%= pPrice%><br>
-	</div>
-</a>
- <hr>
+			<%=pDate %>
+ 	 	<img src="/Dong-Dong/images/util/favorite.png" align="right" width="30" height="30">	
+ 	 		</div>
+ 	 			<br>
+ 	 			
+          <%=pPrice%><br>
+		
+
+<hr>
+</div>
+ </body> 
+</html>     
+
+
+
+
+
 <%
     }//end for
 %>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-    	$("#postingTime").each(function(){
-    		 var timeago_t = jQuery.timeago( $(this).data("date"));
-             $(this).text(timeago_t);
-    	});
-     });
-</script>
+

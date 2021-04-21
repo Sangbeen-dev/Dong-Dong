@@ -13,10 +13,11 @@
 	String pContent = (String)request.getAttribute("pContent");
 	String pPrice = (String)request.getAttribute("pPrice");
 	String pImage = (String)request.getAttribute("pImage");
-	String pHit = (String)request.getAttribute("pHit");
+	int pHit = Integer.parseInt((String)request.getAttribute("pHit"));
 	String pDate = (String)request.getAttribute("pDate");
 	boolean favorite = (boolean)request.getAttribute("favorite");
 %>
+
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	var favorite = <%=favorite%>;
