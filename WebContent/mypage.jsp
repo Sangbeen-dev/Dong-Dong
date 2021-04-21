@@ -17,7 +17,7 @@
 </script>
 </head>
 <body>
-<h1 id="main">동동마켓</h1>
+<img id="main" src="/Dong-Dong/images/util/DongDonglogo.png" width="250" height="100" />
 
 <h3>MyPage</h3>
 
