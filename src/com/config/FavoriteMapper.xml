@@ -16,6 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from favorite
 		where userid = #{userid} AND pNum=#{pNum}
 	</select>
+	
+	<select id="selectCountByPNum" resultType="int" parameterType="int">
+		select COUNT(*)
+		from favorite
+		where pNum=#{pNum}
+	</select>
 
 	<insert id="insertFavoite" parameterType="FavoriteDTO">
 		insert
