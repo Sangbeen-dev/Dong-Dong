@@ -39,7 +39,7 @@
 		<input type="hidden" id="pNum" name="pNum" value="<%=dto.getpNum()%>">
 		 <div class="mb-3">
     		<input type="text" name="pTitle" id="pTitle" class="form-control"
-    			aria-describedby="emailHelp" placeholder="상품명을 포함한 글 제목" value="<%=dto.getpTitle()%>">
+    			aria-describedby="emailHelp" value="<%=dto.getpTitle()%>" readonly="readonly">
   		</div>
 
 		<select class="form-select" aria-label="Default select example" id="pCategory" name="pCategory">
