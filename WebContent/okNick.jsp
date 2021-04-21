@@ -25,7 +25,7 @@ div{
 		$("button").click(function() {
 			var nickName = <%= nickName %>;
 			console.log(nickName);
-			opener.$("#resultNick").text(nickName);
+			opener.$("#resultNick").val(nickName);
 			window.close();
 		});
  });
