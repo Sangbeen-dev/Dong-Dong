@@ -33,8 +33,12 @@ public class MemberUpdateServlet extends HttpServlet {
 			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy(); // 덮어씌우기 방지(같은이름방지)
 			MultipartRequest multi = new MultipartRequest(request,path,maxSize,enc,policy);
 			
+			// user가 프로필사진을 변경한 경우 새로운 이미지파일 이름을받아온다.
 			String fileName = multi.getFilesystemName("photo");
 			String originFileName = multi.getOriginalFileName("photo");
+			
+			// 기존 이미지파일을 받아온다.
+			String basicFile = multi.getParameter("basic_photo");
 			
 			String userid = multi.getParameter("userid");
 			String passwd = dto.getPasswd(); // mypage.jsp에서 넘겨주는 값이 없어서 dto에서 뽑아왔어요!(어차피 수정되는부분이아니라 null들어가도 상관없긴함)
@@ -45,7 +49,14 @@ public class MemberUpdateServlet extends HttpServlet {
 			String phone = multi.getParameter("phone");
 			String email1 = multi.getParameter("email1");
 			String email2 = multi.getParameter("email2");
-			String userImage = fileName;
+			String userImage = "";
+			if(fileName == null) {
+				// 새로들어온 파일이 없는경우 --> user가 프로필사진은 변경하지 않은경우
+				userImage = basicFile;
+			} else {
+				// 새로들어온 파일이 있는경우 --> user가 프로필사진을 변경한 경우
+				userImage = fileName;
+			}
 			
 			MemberDTO dto2 =
 					new MemberDTO(userid,passwd,username,nickName,

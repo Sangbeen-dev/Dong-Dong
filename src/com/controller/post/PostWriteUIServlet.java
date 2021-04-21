@@ -17,7 +17,7 @@ public class PostWriteUIServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("post/postWrite.jsp");
+		response.sendRedirect("postWrite.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+	
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type = "text/javascript">
 $(function(){
@@ -20,18 +20,60 @@ $(function(){
 			 return false;
 		 }
 	 }) //form end
+	
 	 
 })
 
 </script>
-    
-<form action="LoginServlet" method="get">
-아이디:<input type="text" name="userid" id="userid"><br>
-비밀번호:<input type="text" name="passwd" id="passwd"><br> 
-<input type="submit" value="로그인">
-<a href="https://kauth.kakao.com/oauth/authorize?client_id=9516c7a8850f5616c0e63b831800b6a9&redirect_uri=http://localhost:8079/Dong-Dong/kakao&response_type=code">
-<img height="35px" src="/Dong-Dong/images/login/kakao_login_button.png" /></a><br>
-<a href = "MemberIdSearchUIServlet">아이디 찾기</a><br>
-<a href = "MemberPWSearchUIServlet">비밀번호 찾기</a>
 
-</form>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" action="LoginServlet" method="get">
+					<span class="login100-form-title p-b-26">
+						Log-in
+					</span>
+					<span class="login100-form-title p-b-48">
+						<i class="zmdi zmdi-font"></i>
+					</span>
+					
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+						<input class="input100" type="text" name="userid" id="userid" placeholder="아이디">
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="passwd" id = "passwd" placeholder="패스워드">
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" id="loginbtn">
+								Login
+							</button>
+						</div>
+					</div>
+					
+					<div class="text-center p-t-25">
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=9516c7a8850f5616c0e63b831800b6a9&redirect_uri=http://localhost:8079/Dong-Dong/kakao&response_type=code">
+						<img height="35px" src="/Dong-Dong/images/login/kakao_login_button.png" /></a>
+					</div>
+					<div class="text-center p-t-115">
+						<span class="txt1">
+							Don’t have an account?
+						</span><br>
+						<a href = "MemberAddUIServlet">회원가입</a><br>
+						<a href = "MemberIdSearchUIServlet">아이디 찾기 </a><br>
+						<a href = "MemberPWSearchUIServlet">비밀번호 찾기 </a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	

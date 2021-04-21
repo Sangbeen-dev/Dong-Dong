@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.dto.MemberDTO;
 import com.service.MemberService;
 
@@ -17,6 +20,7 @@ import com.service.MemberService;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logr  = LoggerFactory.getLogger(LoginServlet.class);
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -40,6 +44,7 @@ public class LoginServlet extends HttpServlet {
 			nextPage = "LoginUIServlet";
 		}
 		
+		logr.info("loginUser : {}", userid);
 		response.sendRedirect(nextPage); //sendRedirect는 하나만 써야함
 	}
 
