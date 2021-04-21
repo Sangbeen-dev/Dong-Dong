@@ -3,7 +3,8 @@
 <%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<!--부트스트랩 css cdn  -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -64,13 +65,12 @@
 </script>
     
 <%
-  //session에서 "login"으로 데이터 뽑기
   MemberDTO dto = (MemberDTO)session.getAttribute("login");
-	String nickName = dto.getNickName();
-  //System.out.print(dto);
+  String nickName = dto.getNickName();
 
 %>
-<button id="favorite">관심목록</button>&nbsp;<button id="transaction" >거래내역</button> &nbsp;
+<button type="button" class="btn btn-outline-success" id="favorite">관심목록</button>&nbsp;
+<button type="button" class="btn btn-outline-danger" id="transaction" >거래내역</button> &nbsp;
 <br><br><br>
 <form id="myForm" action="#" method="post" enctype="multipart/form-data"> 
 <!--프로필 이미지 -->
@@ -103,8 +103,8 @@
 
 <br>
 이메일:<input type="text" value="<%= dto.getEmail1() %>" name="email1" id="email1">@
-       <input type="text" value="<%= dto.getEmail2() %>" id="email2" name="email2" id="email2" placeholder="직접입력">
-       <select  id="emailSelect">
+       <input type="text" value="<%= dto.getEmail2() %>" id="email2" name="email2"  placeholder="직접입력">
+       <select id="emailSelect">
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
         <option value="gmail.com">gmail.com</option>
