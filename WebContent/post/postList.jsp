@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.dto.PostDTO"%>
 <%@page import="java.util.List"%>
+
 <a href="PostWriteUIServlet">글쓰기</a>
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.timeago.ko.js"></script>
@@ -21,7 +22,7 @@
 		
 		
 		
-		%>
+%>
 		
 <!-- 		<style type="text/css"> 
 a { text-decoration:none } 
