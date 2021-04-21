@@ -45,7 +45,7 @@ public class MemberDAO {
 
 	public int memberUpdate(SqlSession session, MemberDTO dto2) {
 		int num = session.update("MemberMapper.memberUpdate", dto2);
-		System.out.println("dao ==="+dto2);
+		System.out.println("업데이트dao"+dto2);
 		return num;
 	}//end memberUpdate
 

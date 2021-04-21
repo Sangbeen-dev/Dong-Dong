@@ -7,7 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>dongdong market-Home</title>
-
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#main").click(function() {
+			location.href="main";
+		})
+		
+	})//end ready
+	
+</script>
 </head>
 <body>
 <%
@@ -22,7 +30,7 @@
 	session.removeAttribute("mesg");
 	}
 %>
-<h1>Main</h1>
+<img id="main" src="/Dong-Dong/images/util/DongDonglogo.png" width="250" height="100" /><br><br>
 
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 <jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
