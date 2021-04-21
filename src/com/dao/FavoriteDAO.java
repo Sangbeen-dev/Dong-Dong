@@ -45,4 +45,8 @@ public class FavoriteDAO {
 		return n;
 	}
 
+	public int selectCountByPNum(SqlSession session, int pNum) {
+		return session.selectOne("FavoriteMapper.selectCountByPNum", pNum);
+	}
+
 }

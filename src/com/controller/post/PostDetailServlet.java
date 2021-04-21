@@ -22,54 +22,59 @@ public class PostDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	// 기본적인 설정 & 세션 등 생성
     	HttpSession session = request.getSession();
-    	MemberDTO loginInfo = (MemberDTO)session.getAttribute("login");
+    	MemberDTO uDTO = (MemberDTO)session.getAttribute("login");
     	String pNum = request.getParameter("pNum");
     	
     	PostService pService = new PostService();
     	MemberService mService = new MemberService();
     	FavoriteService fService = new FavoriteService();
     	
-    	
     	PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum));
     	MemberDTO mDTO = mService.mypage(pDTO.getUserid());
-    	
-    	//post hit increase
+    	String nextPage = "";
+    	//게시글 조회수 증가
     	pDTO.setpHit(pDTO.getpHit()+1);
-    	int pUpdateResult = pService.updatePHit(pDTO);
-    	int fUpdateResult = fService.updateFavoriteByPost(pDTO);
+    	int updateResult = pService.updatePHit(pDTO);
     	
-    	//post data setting
-    	request.setAttribute("pNum", String.valueOf(pDTO.getpNum()));
-    	request.setAttribute("pCategory", pDTO.getpCategory());
-    	request.setAttribute("pHit", String.valueOf(pDTO.getpHit()));
-    	request.setAttribute("pImage", pDTO.getpImage());
-    	request.setAttribute("pPrice", String.valueOf(pDTO.getpPrice()));
-    	request.setAttribute("addr", pDTO.getAddr());
-    	request.setAttribute("pContent", pDTO.getpContent());
-    	request.setAttribute("pDate", pDTO.getpDate());
-    	request.setAttribute("pTitle", pDTO.getpTitle());
+    	if(updateResult!=1) { // 조회수 업데이트가 실패했을 경우 
+			session.setAttribute("mesg", "게시물 접근 중 오류가 발생하였습니다.");
+			nextPage="main";
+    	} else { // 조회수 업데이트 성공 후
+    		//게시글 정보 전달을 위해 request에 설정
+        	request.setAttribute("pNum", String.valueOf(pDTO.getpNum()));
+        	request.setAttribute("pCategory", pDTO.getpCategory());
+        	request.setAttribute("pHit", String.valueOf(pDTO.getpHit()));
+        	request.setAttribute("pImage", pDTO.getpImage());
+        	request.setAttribute("pPrice", String.valueOf(pDTO.getpPrice()));
+        	request.setAttribute("addr", pDTO.getAddr());
+        	request.setAttribute("pContent", pDTO.getpContent());
+        	request.setAttribute("pDate", pDTO.getpDate());
+        	request.setAttribute("pTitle", pDTO.getpTitle());
 
-    	//user data setting
-    	request.setAttribute("userid", mDTO.getUserid());
-    	request.setAttribute("username", mDTO.getUsername());
-    	
-    	//favorite data setting(check login info)
-    	if(loginInfo!=null) {
-    		FavoriteDTO temp = new FavoriteDTO();
-    		temp.setUserId(loginInfo.getUserid());
-    		temp.setpNum(Integer.parseInt(pNum));
-    		FavoriteDTO fDTO = fService.getFavorite(temp);
-    		if(fDTO!=null) {
-    			request.setAttribute("favorite", true);
-    		} else {
-    			request.setAttribute("favorite", false);
-			}
-    	} else {
-    		request.setAttribute("favorite", false);
+        	//게시글을 작성한 유저 정보 전달을 위해 request에 설정
+        	request.setAttribute("userid", mDTO.getUserid());
+        	request.setAttribute("username", mDTO.getUsername());
+        	
+        	//게시글의 관심 설정 정보 전달을 위해 request에 설정
+        	if(uDTO!=null) { // 로그인 정보가 있을 경우
+        		FavoriteDTO temp = new FavoriteDTO();
+        		temp.setUserId(uDTO.getUserid());
+        		temp.setpNum(Integer.parseInt(pNum));
+        		FavoriteDTO fDTO = fService.getFavorite(temp); // 관심 정보 조회
+        		if(fDTO!=null) { // 관심 O
+        			request.setAttribute("favorite", true);
+        		} else { // 관심 X
+        			request.setAttribute("favorite", false);
+    			}
+        	} else { // 로그인 정보가 없을 경우
+        		request.setAttribute("favorite", false);
+        	}
+			nextPage="postDetail.jsp";
     	}
-    	
-    	RequestDispatcher dis = request.getRequestDispatcher("postDetail.jsp");
+    	// 페이지 이동
+    	RequestDispatcher dis = request.getRequestDispatcher(nextPage);
     	dis.forward(request, response);
     }
 
