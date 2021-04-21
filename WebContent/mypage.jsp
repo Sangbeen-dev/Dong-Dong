@@ -17,7 +17,7 @@
 </script>
 </head>
 <body>
-<img id="main" src="/Dong-Dong/images/util/DongDonglogo.png" width="250" height="100" />
+<img id="main" src="/Dong-Dong/images/util/DongDonglogo.png" width="250" height="50" />
 
 <h3>MyPage</h3>
 

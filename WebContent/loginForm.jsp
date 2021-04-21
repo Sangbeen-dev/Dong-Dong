@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/LoginFormMain.css">
+<link rel="stylesheet" type="text/css" href="css/LoginFormUtil.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -19,11 +22,6 @@
 	session.removeAttribute("mesg");
 	}
 %>	
-<h1>Login 화면입니다.</h1>
-
-<jsp:include page = "common/top.jsp" flush = "true" /><br>
-<jsp:include page = "common/menu.jsp" flush ="true" /><br>
-<hr>
 <jsp:include page = "member/loginForm.jsp" flush ="true" />
 </body>
 </html>
