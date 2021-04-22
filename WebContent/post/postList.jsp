@@ -23,30 +23,22 @@
 		
 		int pDateDiff = Integer.parseInt(dto.getpDateDiff());
 		String pDateResult = null;
-		if ((pDateDiff / 1440) >= 1){
 		
+		if ((pDateDiff / 1440) >= 1){
 			pDateResult =(pDateDiff / 1440)+ "일전";
-			 
-			
 		 }	
 		else if
-			(pDateDiff / 60 <= 23){
-			
-			
+			((pDateDiff / 60) >= 1){
 			pDateResult =(pDateDiff / 60)+ "시간전";
+		}
+		else if
+		(pDateDiff >= 1) {
+			pDateResult = (pDateDiff)+ "분전";	
+		}
+		else {
+			pDateResult = "방금";
 			
 		}
-			else if
-			(pDateDiff >= 1) {
-			
-				pDateResult = (pDateDiff)+ "분전";
-				
-			}
-			else{
-				
-				pDateResult = "방금";
-				
-			}
 		 
 	
 		%>
@@ -95,10 +87,10 @@ $(document).ready(function(){
 
 
 
-<div class="container" id="card<%=pNum %>">
+<div class="container" id="card<%=pNum %>" style="width:30%">
 <div style="background-color: white; padding:15px; width: auto; height: auto; cursor: pointer;">
     <div class="card">
-      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Card image" style="width:100%">
+      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Card image" style="width:463px">
       <div class="card-body">
         <h5 class="card-title"><%=pTitle%></h5>
       </div>
