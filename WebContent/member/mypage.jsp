@@ -6,10 +6,10 @@
 <!--부트스트랩 css cdn  -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <style>
-.form-control {
+/* .form-control {
   width: 50%;
   
-}
+} */
 </style>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -68,7 +68,7 @@
 		}
 	}
 </script>
-    
+   
 <%
   MemberDTO dto = (MemberDTO)session.getAttribute("login");
   String nickName = dto.getNickName();
@@ -78,9 +78,15 @@
 <button type="button" class="btn btn-outline-danger" id="transaction" >거래내역</button> &nbsp;
 <br><br><br>
 <form id="myForm" action="#" method="post" enctype="multipart/form-data"> 
+  <div class="container">
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <h2>회원정보</h2>
+        </div>
 <!--프로필 이미지 -->
 <input type="hidden" value="<%= dto.getUserImage() %>" name="basic_photo">
-<img id="thumbnail" src="/Dong-Dong/images/profile/<%= dto.getUserImage() %>" width="100" height="100" /><br>
+
+<img  id="thumbnail" src="/Dong-Dong/images/profile/<%= dto.getUserImage() %>" width="100" height="100" align="center"/><br>
 	프로필사진 바꾸기 : 
 <!-- input type file의 accept  : 파일 창이 열릴때 이미지파일만 보이도록 해준다. -->
 <input type="file" id="photo" name="photo"  accept="image/gif,image/jpg,image/png,image/jpeg"
@@ -88,20 +94,20 @@
 	
  <div class="mb-3">
 <%-- <input type="hidden" value="<%= dto.getUsername() %>" name="username"> --%>
-<label for="username">이름 (Name)</label>
- <input type="text" class="form-control" name="username" value="<%= dto.getUsername() %>" readonly>
+	<label for="username">이름 (Name)</label>
+ 	<input type="text" class="form-control" name="username" value="<%= dto.getUsername() %>" readonly>
 </div>
 
 <div class="mb-3">
 <%-- <input type="hidden" value="<%= dto.getUserid() %>" name="userid" > --%>
-<label for="userId">아이디 (Id)</label>
- <input type="text" class="form-control" name="userid" value="<%= dto.getUserid() %>" readonly>
+	<label for="userId">아이디 (Id)</label>
+ 	<input type="text" class="form-control" name="userid" value="<%= dto.getUserid() %>" readonly>
 </div>
 
 <div class="mb-3">
-<label for="resultNick">닉네임 (nickName)</label>
- <input type="text" class="form-control" id="resultNick" name="resultNick" value="<%= dto.getNickName() %>" readonly>
-<button id="nickCheck">닉네임 변경하기</button>
+	<label for="resultNick">닉네임 (nickName)</label>
+ 	<input type="text" class="form-control" id="resultNick" name="resultNick" value="<%= dto.getNickName() %>" readonly>
+	<button id="nickCheck">닉네임 변경하기</button>
 </div>
 
 <div class="mb-3">
@@ -115,10 +121,10 @@
  <input type="text" class="form-control" id="phone" name="phone" value="<%= dto.getPhone() %>">
 </div>
 
-<div class="mb-3">
+<div display="inline-block" >
 <label for="email1">이메일 (email)</label>
- <input type="text" class="form-control" id="email1" name="email1" value="<%= dto.getEmail1() %>">@
- <input type="text" class="form-control" id="email2" name="email2" value="<%= dto.getEmail2() %>">
+ <input display="block" type="text" class="form-control" id="email1" name="email1" value="<%= dto.getEmail1() %>">@
+ <input display="block" type="text" class="form-control" id="email2" name="email2" value="<%= dto.getEmail2() %>">
 
 <%-- 이메일:<input type="text" value="<%= dto.getEmail1() %>" name="email1" id="email1">@
        <input type="text" value="<%= dto.getEmail2() %>" id="email2" name="email2"  placeholder="직접입력"> --%>
@@ -129,6 +135,12 @@
         <option value="hanmail.net">hanmail.net</option>
        </select>
 </div>
-<input id="submit" type="submit" value="수정">
-<input type="reset" value="취소">
+<div class="mb-3">
+	<button id="submit" type="submit" class="btn btn-info">수정</button>
+	<button type="reset" class="btn btn-danger" >취소</button>
+</div>
+
+</div>
 </form>
+
+
