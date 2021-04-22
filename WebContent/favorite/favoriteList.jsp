@@ -3,7 +3,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<!--부트스트랩 css cdn  -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -38,7 +39,7 @@
 	
 </script>
 
-<table width="90%" cellspacing="0" cellpadding="0" border="0">
+<table  width="90%" cellspacing="0" cellpadding="0" border="0">
 
 	<tr>
 		<td height="30">
@@ -87,7 +88,7 @@
 	</tr>
 
 
-	<form name="myForm" >	    
+	<form name="myForm">	    
 <%  
    //데이터 가져오기 //for문 작성 
 	List<FavoriteDTO> list = (List<FavoriteDTO>)request.getAttribute("favoriteList");
