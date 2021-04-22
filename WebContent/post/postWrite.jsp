@@ -35,8 +35,8 @@
 <body>
 <!-- Bootstrap js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-	<form action="../PostWriteServlet" method="post" enctype="multipart/form-data">
-		<!-- <input type="text" id="title" name="title" placeholder="상품명을 포함한 글 제목"> -->
+	<form action="PostWriteServlet" method="post" enctype="multipart/form-data">
+		<!-- 글 제목 입력 -->
 		<div class="row" >
 			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
@@ -46,6 +46,7 @@
   			<div class="col-md-3 col-sm-2"></div>
   		</div>
   		
+  		<!-- 카테고리 선택 -->
   		<div class="row">
   			<div class="col-md-3 col-sm-2"></div>
 			<div class="col-md-6 col-sm-8 mb-3">
@@ -63,7 +64,7 @@
   		
 		
 		<br>
-		
+		<!-- 미리보기 사진 -->
 		<img id="thumbnail" src="/Dong-Dong/images/util/thumbnail.PNG"  /><br>
 	
  		<div class="row">
