@@ -21,14 +21,34 @@
 		int pNum = dto.getpNum();
 		
 		
-		String pDateDiff = dto.getpDateDiff();
-		/* if (pDateDiff / 1440) >= 1 일전
-				break;
+		int pDateDiff = Integer.parseInt(dto.getpDateDiff());
+		String pDateResult = null;
+		if ((pDateDiff / 1440) >= 1){
+		
+			pDateResult =(pDateDiff / 1440)+ "일전";
+			 
+			
+		 }	
 		else if
-			(pDateDiff / 60 ) >= 시간전
-					break;
-			else if 
-			(pDateDiff / ) */
+			(pDateDiff / 60 >= 23){
+			
+			
+			pDateResult =(pDateDiff / 60 )+ "시간전";
+			
+		}
+			else if
+			(pDateDiff >= 1) {
+			
+				pDateResult = (pDateDiff )+ "분전";
+				
+			}
+			else{
+				
+				pDateResult = "방금";
+				
+			}
+		 
+	
 		%>
 
 
@@ -48,7 +68,7 @@
 <style type="text/css"> 
 
 a { text-decoration:none } 
-</style> -->
+</style> 
 
 <a href="PostDetailServlet?pNum=<%=pNum %>">
 
@@ -58,7 +78,7 @@ a { text-decoration:none }
 		<%=pTitle%>
 
 		<br>
- 	 	<b></b>&nbsp;<br><%=pDateDiff %>분전 			
+ 	 	<b></b>&nbsp;<br> <%=pDateResult%>
  	 	
  	 	<img src="/Dong-Dong/images/util/favorite.png" align="right" width="30" height="30">	
  	 		</div>
@@ -78,6 +98,7 @@ a { text-decoration:none }
 
 <%
     }//end for
+
 %>
 
 

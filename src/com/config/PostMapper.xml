@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
    
 	<select id="postListByAddr" parameterType="string" resultType="PostDTO">
-		select pNum,userid,addr,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate
+		select pNum,userid,addr,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate,TRUNC((SYSDATE-PDATE) * 24 * 60) AS PDATEDIFF
        	from post
        	where addr = #{addr}
        	order by pDate desc 
