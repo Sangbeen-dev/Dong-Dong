@@ -19,8 +19,16 @@
 		String pDate = dto.getpDate();
 		String addr = dto.getAddr();
 		int pNum = dto.getpNum();
-
-
+		
+		
+		String pDateDiff = dto.getpDateDiff();
+		/* if (pDateDiff / 1440) >= 1 일전
+				break;
+		else if
+			(pDateDiff / 60 ) >= 시간전
+					break;
+			else if 
+			(pDateDiff / ) */
 		%>
 
 
@@ -50,9 +58,8 @@ a { text-decoration:none }
 		<%=pTitle%>
 
 		<br>
- 	 	<b><%=addr%></b>&nbsp;<br>						
+ 	 	<b></b>&nbsp;<br><%=pDateDiff %>분전 			
  	 	
-			<%=pDate %>
  	 	<img src="/Dong-Dong/images/util/favorite.png" align="right" width="30" height="30">	
  	 		</div>
  	 			<br>

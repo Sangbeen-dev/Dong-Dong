@@ -11,13 +11,21 @@ public class PostDTO {
 	private String pImage;
 	private int pHit;
 	private String pDate;
-	
+	private String pDateDiff;
 	public PostDTO() {
 		super();
 	}
 
+	public String getpDateDiff() {
+		return pDateDiff;
+	}
+
+	public void setpDateDiff(String pDateDiff) {
+		this.pDateDiff = pDateDiff;
+	}
+
 	public PostDTO(int pNum, String userid, String addr, String pCategory, String pTitle, String pContent, int pPrice,
-			String pImage, int pHit, String pDate) {
+			String pImage, int pHit, String pDate, String pDateDiff) {
 		super();
 		this.pNum = pNum;
 		this.userid = userid;
@@ -29,8 +37,10 @@ public class PostDTO {
 		this.pImage = pImage;
 		this.pHit = pHit;
 		this.pDate = pDate;
+		this.pDateDiff = pDateDiff;
 	}
 
+	
 	public int getpNum() {
 		return pNum;
 	}
@@ -116,7 +126,7 @@ public class PostDTO {
 	public String toString() {
 		return "PostDTO [pNum=" + pNum + ", userid=" + userid + ", addr=" + addr + ", pCategory=" + pCategory
 				+ ", pTitle=" + pTitle + ", pContent=" + pContent + ", pPrice=" + pPrice + ", pImage=" + pImage
-				+ ", pHit=" + pHit + ", pDate=" + pDate + "]";
+				+ ", pHit=" + pHit + ", pDate=" + pDate + ", pDateDiff=" + pDateDiff + "]";
 	}
 
 	
