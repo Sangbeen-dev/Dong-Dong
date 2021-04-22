@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="css/LoginFormMain.css">
+<link rel="stylesheet" type="text/css" href="css/Util.css">
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
 </head>

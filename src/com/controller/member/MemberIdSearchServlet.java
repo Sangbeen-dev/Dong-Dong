@@ -21,13 +21,17 @@ public class MemberIdSearchServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String username = request.getParameter("username").trim(); //양쪽 공백제거
 		String phone = request.getParameter("phone").trim();
-		String email1 =  request.getParameter("email1").trim();
-		String email2 =  request.getParameter("email2").trim();
+		String email =  request.getParameter("email").trim();
+		
+		String email1 = email.split("@")[0];
+		String email2 = email.split("@")[1];
 		
 		//service.idSearch(MemberDTO)이용
 		MemberDTO dto = new MemberDTO();
 		dto.setUsername(username);
 		dto.setPhone(phone);
+		dto.setEmail1(email1);
+		dto.setEmail2(email2);
 		
 		MemberService service = new MemberService();
 		String userid = service.idSearch(dto);
@@ -35,8 +39,8 @@ public class MemberIdSearchServlet extends HttpServlet {
 		
 		//전화번호, 사용자 이름 일치 여부검사 (mapperid = "idSearch") 후 사용자 id만 select
 		if(userid == null) {
-			nextPage = "MemberIdSearchUIServlet";
-			request.setAttribute("mesg", "이름 또는 핸드폰이 등록되지 않은 정보");
+			nextPage = "idSearch.jsp";
+			request.setAttribute("mesg", "등록되지 않은  회원 정보");
 		}else { //일치하는 경우 메일발송
 			nextPage="SendMailServlet";
 			request.setAttribute("mailTo", email1 + "@" + email2);
