@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 찾기</title>
 </head>
 <body>
 
-<jsp:include page = "common/top.jsp" flush = "true"></jsp:include><br>
-<jsp:include page = "common/menu.jsp" flush ="true"></jsp:include><br>
-<hr>
 <jsp:include page = "member/idSearch.jsp" flush ="true"></jsp:include><br> 
 </body>
 </html>

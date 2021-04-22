@@ -33,8 +33,9 @@ $(function(){
 					<span class="login100-form-title p-b-26">
 						Log-in
 					</span>
-					<span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-font"></i>
+					<span class="login100-form-title p-b-30">
+						<img src = /Dong-Dong/images/util/DongDonglogo2.png height = "100" width = "100" />
+						
 					</span>
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
@@ -61,7 +62,7 @@ $(function(){
 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=9516c7a8850f5616c0e63b831800b6a9&redirect_uri=http://localhost:8079/Dong-Dong/kakao&response_type=code">
 						<img height="35px" src="/Dong-Dong/images/login/kakao_login_button.png" /></a>
 					</div>
-					<div class="text-center p-t-115">
+					<div class="text-center p-t-25">
 						<span class="txt1">
 							Don’t have an account?
 						</span><br>
