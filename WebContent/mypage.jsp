@@ -18,7 +18,7 @@
 </head>
 <body>
 <!-- <h3>MyPage</h3> -->
-<img id="main" src="/Dong-Dong/images/util/DongDonglogo.png" width="250" height="50" />
+<img id="main" src="/Dong-Dong/images/util/DongDonglogo.png" width="222" height="52" />
 <br><br>
 <!-- <h3>MyPage</h3> -->
 

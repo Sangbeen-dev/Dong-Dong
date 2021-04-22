@@ -34,7 +34,7 @@ $(function(){
 						Log-in
 					</span>
 					<span class="login100-form-title p-b-30">
-						<img src = /Dong-Dong/images/util/DongDonglogo2.png height = "100" width = "100" />
+						<img src = "/Dong-Dong/images/util/DongDonglogo2.png" height = "100" width = "100" />
 						
 					</span>
 					

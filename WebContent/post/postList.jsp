@@ -82,6 +82,8 @@ $(document).ready(function(){
 	})
 })
 
+
+
 </script>
 
 </head>
@@ -93,7 +95,7 @@ $(document).ready(function(){
 
 
 <div class="container" id="card<%=pNum %>">
-<div style="background-color: white; padding:20px; width: auto; height: auto; cursor: pointer;">
+<div style="background-color: white; padding:15px; width: auto; height: auto; cursor: pointer;">
     <div class="card">
       <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Card image" style="width:100%">
       <div class="card-body">

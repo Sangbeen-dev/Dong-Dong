@@ -31,19 +31,19 @@ public class SendMailServlet extends HttpServlet {
 		
 		String host = "smtp.naver.com"; // 호스트 네이버 메일
 		String subject = ""; //메일제목
-	    String from = "***"; //보내는 사람 메일 주소  //이부분 채워주셔야 합니다.
+	    String from = "****@naver.com"; //보내는 사람 메일 주소  //이부분 채워주셔야 합니다.
 	    String fromName = "DongDong"; //송신자명
 	    String to = mailTo; //받는 사람 메일 주소
 	    String content = "";
 	    String mesg = "";
 	    if(userid != null) {
-	    	content = "귀하의 아이디는:" + userid;//메일 내용
+	    	content = "귀하의 아이디:" + userid;//메일 내용
 	    	subject = "동동에서 보내는 아이디 확인 메일입니다.";
 	    	mesg = "아이디가 발송되었습니다."; 
 	    }
 	    
 	    if(passwd != null) {
-	    	content = "귀하의 비밀번호는 : " + passwd;
+	    	content = "귀하의 비밀번호 : " + passwd;
 	    	subject = "동동에서 보내는 비밀번호 확인 메일입니다.";
 	    	mesg = "비밀번호가 발송되었습니다.";
 	    }
