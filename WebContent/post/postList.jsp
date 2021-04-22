@@ -57,7 +57,7 @@
 <!-- <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript"> -->
 
-<<<<<<< HEAD
+
 	
 		
 
@@ -69,8 +69,6 @@
 		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <style type="text/css"> 
 
-=======
->>>>>>> ccf46cbdfb29238e0da33b917ea3d8f95b18d653
 
 a {
  text-decoration:none
