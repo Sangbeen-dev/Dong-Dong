@@ -44,14 +44,7 @@
 		%>
 
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script> -->
-<!-- <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript"> -->
 
-
-	
-		
 
 		
 		
@@ -73,6 +66,7 @@ $(document).ready(function(){
 	$("#card"+<%=pNum %>).on("click",function(){
 		location.href="PostDetailServlet?pNum=<%=pNum %>";
 	})
+	
 })
 
 
@@ -93,6 +87,7 @@ $(document).ready(function(){
       <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Card image" style="width:463px">
       <div class="card-body">
         <h5 class="card-title"><%=pTitle%></h5>
+        <!-- <img src="/Dong-Dong/images/util/favorite1.png" align="right"width="30" height="30"> -->
       </div>
       <div class="card-footer">
         <small class="text-muted"><%=pDateResult%></small>
@@ -101,26 +96,6 @@ $(document).ready(function(){
     </div>
   </div>
 </body>
-<%-- <a href="PostDetailServlet?pNum=<%=pNum %>">
-
-<div style=" background-color: white; padding:30px; width: auto; height: auto; cursor: pointer;">
-<td><img src="/Dong-Dong/images/<%=pImage %>" align="top" width="100" height="100">
-
-		<%=pTitle%>
-
-		<br>
- 	 	<b></b>&nbsp;<br> <%=pDateResult%>
- 	 	
- 	 	<img src="/Dong-Dong/images/util/favorite.png" align="right" width="30" height="30">	
- 	 		</div>
- 	 			<br>
- 	 			
-          <%=pPrice%><br>
-		
-
-<hr> --%>
-</div>
- </body> 
 </html>     
 
 
