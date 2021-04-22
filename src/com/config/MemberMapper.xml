@@ -25,12 +25,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <select id = "idSearch" resultType = "String" parameterType = "MemberDTO">
 	select userid from member
-	where username = #{username} and phone = #{phone}
+	where username = #{username} and phone = #{phone} and email1 = #{email1} and email2 = #{email2}
 	
 	</select>
    <select id = "pwSearch" resultType = "String" parameterType = "MemberDTO">
 	select passwd from member
-	where username = #{username} and userid = #{userid} and phone = #{phone}
+	where username = #{username} and userid = #{userid} and phone = #{phone} and email1 = #{email1} and email2 = #{email2}
 	</select>
 	
 	<update id="memberUpdate" parameterType="MemberDTO">
