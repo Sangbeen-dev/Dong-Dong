@@ -31,11 +31,11 @@ public class TransactionListServlet extends HttpServlet {
 			//구매내역
 			TransactionService service = new TransactionService();
 			List<PurchaseDTO> plist = service.purchaseList(userid);
-			System.out.println("구매내역(서블릿)===="+plist); 
+			//System.out.println("구매내역(서블릿)===="+plist); 
 			request.setAttribute("purchaseList", plist);
 			//판매내역 
 			List<SaleDTO> slist = service.saleList(userid);
-			System.out.println("판매내역(서블릿)===="+slist); 
+			//System.out.println("판매내역(서블릿)===="+slist); 
 			request.setAttribute("saleList", slist);
 			
 			nextPage = "transactionList.jsp";

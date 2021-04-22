@@ -17,9 +17,10 @@
 </script>
 </head>
 <body>
+<!-- <h3>MyPage</h3> -->
 <img id="main" src="/Dong-Dong/images/util/DongDonglogo.png" width="250" height="50" />
-
-<h3>MyPage</h3>
+<br><br>
+<!-- <h3>MyPage</h3> -->
 
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 <jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>

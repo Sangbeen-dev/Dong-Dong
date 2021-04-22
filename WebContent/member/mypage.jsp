@@ -3,8 +3,14 @@
 <%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
+<!--부트스트랩 css cdn  -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<style>
+.form-control {
+  width: 50%;
+  
+}
+</style>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -64,13 +70,12 @@
 </script>
     
 <%
-  //session에서 "login"으로 데이터 뽑기
   MemberDTO dto = (MemberDTO)session.getAttribute("login");
-	String nickName = dto.getNickName();
-  //System.out.print(dto);
+  String nickName = dto.getNickName();
 
 %>
-<button id="favorite">관심목록</button>&nbsp;<button id="transaction" >거래내역</button> &nbsp;
+<button type="button" class="btn btn-outline-success" id="favorite">관심목록</button>&nbsp;
+<button type="button" class="btn btn-outline-danger" id="transaction" >거래내역</button> &nbsp;
 <br><br><br>
 <form id="myForm" action="#" method="post" enctype="multipart/form-data"> 
 <!--프로필 이미지 -->
@@ -81,36 +86,49 @@
 <input type="file" id="photo" name="photo"  accept="image/gif,image/jpg,image/png,image/jpeg"
 		onchange="readURL(this);"><br>
 	
-	
-<input type="hidden" value="<%= dto.getUsername() %>" name="username">
-*이름:<%= dto.getUsername() %><br>
-<input type="hidden" value="<%= dto.getUserid() %>" name="userid">
-*아이디: <%= dto.getUserid() %><br>
+ <div class="mb-3">
+<%-- <input type="hidden" value="<%= dto.getUsername() %>" name="username"> --%>
+<label for="username">이름 (Name)</label>
+ <input type="text" class="form-control" name="username" value="<%= dto.getUsername() %>" readonly>
+</div>
 
-*닉네임: <span id="resultNick"><%= dto.getNickName() %></span>
-<%-- <input type="text" value="<%= dto.getNickName() %>" id="nickName" name="nickName"> --%>
+<div class="mb-3">
+<%-- <input type="hidden" value="<%= dto.getUserid() %>" name="userid" > --%>
+<label for="userId">아이디 (Id)</label>
+ <input type="text" class="form-control" name="userid" value="<%= dto.getUserid() %>" readonly>
+</div>
+
+<div class="mb-3">
+<label for="resultNick">닉네임 (nickName)</label>
+ <input type="text" class="form-control" id="resultNick" name="resultNick" value="<%= dto.getNickName() %>" readonly>
 <button id="nickCheck">닉네임 변경하기</button>
-<br>
+</div>
 
+<div class="mb-3">
+<label for="addr">주소 (address)</label>
+ <input type="text" class="form-control" id="addr" name="addr" value="<%= dto.getAddr() %>">
+<!-- <span id="guide" style="color:#999"></span> -->
+</div>
 
-<br> 
+<div class="mb-3">
+<label for="phone">전화번호 (phone)</label>
+ <input type="text" class="form-control" id="phone" name="phone" value="<%= dto.getPhone() %>">
+</div>
 
+<div class="mb-3">
+<label for="email1">이메일 (email)</label>
+ <input type="text" class="form-control" id="email1" name="email1" value="<%= dto.getEmail1() %>">@
+ <input type="text" class="form-control" id="email2" name="email2" value="<%= dto.getEmail2() %>">
 
-주소:<input type="text" value="<%= dto.getAddr() %>" name="addr" id="addr" placeholder="주소입력">
-<span id="guide" style="color:#999"></span>
-<br>
-전화번호:<input type="text" value="<%= dto.getPhone() %>" name="phone" id="phone" placeholder="번호">
-
-<br>
-이메일:<input type="text" value="<%= dto.getEmail1() %>" name="email1" id="email1">@
-       <input type="text" value="<%= dto.getEmail2() %>" id="email2" name="email2" id="email2" placeholder="직접입력">
-       <select  id="emailSelect">
+<%-- 이메일:<input type="text" value="<%= dto.getEmail1() %>" name="email1" id="email1">@
+       <input type="text" value="<%= dto.getEmail2() %>" id="email2" name="email2"  placeholder="직접입력"> --%>
+       <select id="emailSelect">
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
         <option value="gmail.com">gmail.com</option>
         <option value="hanmail.net">hanmail.net</option>
        </select>
-<br>
+</div>
 <input id="submit" type="submit" value="수정">
 <input type="reset" value="취소">
 </form>
