@@ -46,6 +46,8 @@ public class PostWriteServlet extends HttpServlet {
 		String addr = member.getAddr();
 		String pTitle = multi.getParameter("title");
 		String pContent = multi.getParameter("content");
+		// 들어온 글 내용에서 enter값 파싱
+		pContent = pContent.replaceAll("\r\n", "<br>");
 		int pPrice = Integer.parseInt(multi.getParameter("price"));
 		System.out.println(pPrice);
 		String pImage = fileName; // 경로는 다 똑같아서 설정된 파일이름으로만 지정
