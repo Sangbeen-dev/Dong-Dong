@@ -23,7 +23,6 @@
 <!-- <h3>MyPage</h3> -->
 
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
-<jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
 <hr>
 <jsp:include page="member/mypage.jsp" flush="true"></jsp:include>
 

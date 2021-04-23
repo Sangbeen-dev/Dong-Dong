@@ -2,43 +2,43 @@
 
 INSERT INTO member
 
-VALUES('1', '1', '1번이름', '1번닉네임', '명동', '01011111111', '1111', 'naver.com', 'default_userImg');
+VALUES('1', '1', '1번이름', '1번닉네임', '명동', '01011111111', '1111', 'naver.com', 'default_userImg.PNG');
 
 INSERT INTO member
 
-VALUES('2', '2', '2번이름', '2번닉네임', '소공동', '01022222222', '2222', 'naver.com', 'default_userImg');
+VALUES('2', '2', '2번이름', '2번닉네임', '소공동', '01022222222', '2222', 'naver.com', 'default_userImg.PNG');
 
 INSERT INTO member
 
-VALUES('3', '3', '3번이름', '3번닉네임', '장충동', '01033333333', '3333', 'daum.net', 'default_userImg');
+VALUES('3', '3', '3번이름', '3번닉네임', '장충동', '01033333333', '3333', 'daum.net', 'default_userImg.PNG');
 
 INSERT INTO member
 
-VALUES('4', '4', '4번이름', '4번닉네임', '명동', '01044444444', '4444', 'hanmail.net', 'default_userImg');
+VALUES('4', '4', '4번이름', '4번닉네임', '명동', '01044444444', '4444', 'hanmail.net', 'default_userImg.PNG');
 
 INSERT INTO member
 
-VALUES('5', '5', '5번이름', '5번닉네임', '명동', '01055555555', '5555', 'naver.com', 'default_userImg');
+VALUES('5', '5', '5번이름', '5번닉네임', '명동', '01055555555', '5555', 'naver.com', 'default_userImg.PNG');
 
 INSERT INTO member
 
-VALUES('6', '6', '6번이름', '6번닉네임', '명동', '01066666666', '6666', 'naver.com', 'default_userImg');
+VALUES('6', '6', '6번이름', '6번닉네임', '명동', '01066666666', '6666', 'naver.com', 'default_userImg.PNG');
 
 INSERT INTO member
 
-VALUES('7', '7', '7번이름', '7번닉네임', '명동', '01077777777', '7777', 'naver.com' ,'default_userImg');
+VALUES('7', '7', '7번이름', '7번닉네임', '명동', '01077777777', '7777', 'naver.com' ,'default_userImg.PNG');
 
 INSERT INTO member
 
-VALUES('8', '8', '8번이름', '8번닉네임', '명동', '01088888888', '8888', 'naver.com', 'default_userImg');
+VALUES('8', '8', '8번이름', '8번닉네임', '명동', '01088888888', '8888', 'naver.com', 'default_userImg.PNG');
 
 INSERT INTO member
 
-VALUES('9', '9', '9번이름', '9번닉네임', '명동', '01099999999', '9999', 'naver.com', 'default_userImg');
+VALUES('9', '9', '9번이름', '9번닉네임', '명동', '01099999999', '9999', 'naver.com', 'default_userImg.PNG');
 
 INSERT INTO member
 
-VALUES('10', '10', '10번이름', '10번닉네임', '명동', '01012341234', '1010', 'gmail.com', 'default_userImg');
+VALUES('10', '10', '10번이름', '10번닉네임', '명동', '01012341234', '1010', 'gmail.com', 'default_userImg.PNG');
 
 
 
@@ -77,9 +77,9 @@ INSERT INTO post VALUES(POST_NUM.NEXTVAL, '2' , '소공동' , 'D' , '레오폴�
 
 INSERT INTO post VALUES(POST_NUM.NEXTVAL, '1' , '명동' , 'F' , '정품 스톤아일랜드 니트' , '몇번 입질 않아서 상태좋지만 미세하자가 있습니다. 실착시 안보이는 부분이나 참고하시길 바랍니다. 코로나로 인해 택배거래만합니다. 60만원대에 구매해서 저렴히 올렸기에 네고는 사절합니다.' , 120000, '스톤아일랜드니트.jpg', 0 , SYSDATE);
 
-INSERT INTO post VALUES(POST_NUM.NEXTVAL, '4' , '명동' , 'L' , '이케아 접이식 의자' , '8개 있습니다. 8개 한번에 구매하시면 개당 5000원으로 네고해드려요. 쿨거래 환영' , 6000, '이케아접이식의자.PNG', 0 , SYSDATE);
+INSERT INTO post VALUES(POST_NUM.NEXTVAL, '4' , '명동' , 'L' , '이케아 접이식 의자' , '8개 있습니다. 8개 한번에 구매하시면 개당 5000원으로 네고해드려요. 쿨거래 환영' , 6000, '이케아접이식의자.jpg', 0 , SYSDATE);
 
-INSERT INTO post VALUES(POST_NUM.NEXTVAL, '5' , '명동' , 'L' , '카키 흔들의자 (새상품)' , '이사해서 3주정도 눈으로 보기만했습니다. 공간을 넓게쓰고싶어서 원래 구매했던 가격보다 저렴하게 정리하려합니다. 필요하신분 연락주세요. 위치는 위례신도시입니다.' , 250000, '카키흔들의자.PNG', 0 , SYSDATE);
+INSERT INTO post VALUES(POST_NUM.NEXTVAL, '5' , '명동' , 'L' , '카키 흔들의자 (새상품)' , '이사해서 3주정도 눈으로 보기만했습니다. 공간을 넓게쓰고싶어서 원래 구매했던 가격보다 저렴하게 정리하려합니다. 필요하신분 연락주세요. 위치는 위례신도시입니다.' , 250000, '카키흔들의자.jpg', 0 , SYSDATE);
 
 INSERT INTO post VALUES(POST_NUM.NEXTVAL, '4' , '명동' , 'F' , '정품 나이키 빅스우시 후드집업' , '옷이 많아서 보관만 하고 입지도 않고해서 판매합니다. 딱히 하자는 없네요. 사이즈M 원가21만원에 구매했습니다. 코로나로 인해 택배거래만 합니다ㅠ 거래시 택배비부담. 네고X' , 70000, '나이키후드집업.jpg', 0 , SYSDATE);
 
