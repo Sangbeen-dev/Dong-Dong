@@ -14,10 +14,6 @@ public class FavoriteDAO {
 		return list;
 	}
 
-	public int deleteFavoriteByPNum(SqlSession session, int pNum) {
-		return session.delete("FavoriteMapper.deleteFavoriteByPNum",pNum);
-	}
-
 	public FavoriteDTO getFavorite(SqlSession session, FavoriteDTO dto) {
 		FavoriteDTO returnDTO = session.selectOne("FavoriteMapper.getFavorite", dto);
 		return returnDTO;
@@ -31,10 +27,6 @@ public class FavoriteDAO {
 		return session.delete("FavoriteMapper.deleteFavoite",dto);
 	}
 
-	public int updateFavoriteByPost(SqlSession session, PostDTO dto) {
-		return session.update("FavoriteMapper.updateFavoriteByPost",dto);
-	}
-
 	public int favoriteDel(SqlSession session, int num) {
 		int n = session.delete("FavoriteMapper.favoriteDel", num);
 		return n;
@@ -44,9 +36,4 @@ public class FavoriteDAO {
 		int n = session.delete("FavoriteMapper.favoriteAllDel", list);
 		return n;
 	}
-
-	public int selectCountByPNum(SqlSession session, int pNum) {
-		return session.selectOne("FavoriteMapper.selectCountByPNum", pNum);
-	}
-
 }

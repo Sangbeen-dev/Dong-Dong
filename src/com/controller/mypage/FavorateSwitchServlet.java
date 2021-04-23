@@ -51,14 +51,6 @@ public class FavorateSwitchServlet extends HttpServlet {
 			
 			// 현재 상태에 따라 if_else
 			if(!favorite) { // 관심 X 일때 -> 관심목록에 추가하기
-				// 관심목록 저장을 위한 추가적인 데이터 설정
-				fDTO.setpCategory(pDTO.getpCategory());
-				fDTO.setpTitle(pDTO.getpTitle()); ;
-				fDTO.setpContent(pDTO.getpContent());
-				fDTO.setpPrice(pDTO.getpPrice());
-				fDTO.setpImage(pDTO.getpImage());
-				fDTO.setpHIt(pDTO.getpHit());
-				
 				int insertResult = fService.insertFavoite(fDTO); // 관심목록에 저장
 				if(insertResult==1) { // 성공여부 확인
 					logr.info("Create Favorite : postNumber - {}, loginUser - {}", fDTO.getpNum(), fDTO.getUserId());

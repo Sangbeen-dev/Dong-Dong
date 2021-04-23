@@ -16,35 +16,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from favorite
 		where userid = #{userid} AND pNum=#{pNum}
 	</select>
-	
-	<select id="selectCountByPNum" resultType="int" parameterType="int">
-		select COUNT(*)
-		from favorite
-		where pNum=#{pNum}
-	</select>
 
 	<insert id="insertFavoite" parameterType="FavoriteDTO">
 		insert
-		into favorite (pNum, userid, pCategory, pTitle, pContent, pPrice, pImage, pHit)
-		values (#{pNum},#{userid},#{pCategory},#{pTitle},#{pContent},#{pPrice},#{pImage},#{pHit})
+		into favorite (pNum, userid)
+		values (#{pNum},#{userid})
 	</insert>
-	
-	<update id="updateFavoriteByPost" parameterType="PostDTO">
-		update favorite 
-		set pCategory=#{pCategory}, pTitle=#{pTitle}, pContent=#{pContent}, pPrice=#{pPrice}, pImage=#{pImage}, pHit=#{pHit}
-		where pNum=#{pNum}
-	</update>
 	
 	<delete id="deleteFavoite" parameterType="FavoriteDTO">
 		delete
 		from favorite
 		where pNum=#{pNum} and userid=#{userid}
-	</delete>
-	
-	<delete id="deleteFavoriteByPNum" parameterType="int">
-		delete
-		from favorite
-		where pNum=#{pNum}
 	</delete>
 	
 	<delete id="favoriteDel" parameterType="int">

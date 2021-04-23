@@ -16,7 +16,6 @@ import com.dto.MemberDTO;
 import com.dto.PostDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.service.FavoriteService;
 import com.service.PostService;
 
 @WebServlet("/PostUpdateServlet")
@@ -46,7 +45,6 @@ public class PostUpdateServlet extends HttpServlet {
 			nextPage="main";
 		} else { // 로그인 정보가 있는 경우
 			PostService pService = new PostService();
-			FavoriteService fService = new FavoriteService();
 			PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum)); // 수정할 게시글 정보 획득
 			if(dto.getUserid().equals(pDTO.getUserid())){ // 수정할 게시글과 로그인 유저 정보가 일치하는 경우
 				PostDTO uDTO = pService.getPostByPNum(Integer.parseInt(pNum));

@@ -12,10 +12,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.controller.member.LoginServlet;
 import com.dto.MemberDTO;
 import com.dto.PostDTO;
-import com.service.FavoriteService;
 import com.service.PostService;
 
 @WebServlet("/PostDeleteServlet")
@@ -33,7 +31,6 @@ public class PostDeleteServlet extends HttpServlet {
 			session.setAttribute("mesg", "로그인 정보가 없습니다.");
 		} else { // 로그인 정보가 있는 경우
 			PostService pService = new PostService();
-			FavoriteService fService = new FavoriteService();
 			
 			PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum));
 			
