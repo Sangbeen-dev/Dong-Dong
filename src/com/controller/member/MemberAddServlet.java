@@ -30,6 +30,7 @@ public class MemberAddServlet extends HttpServlet {
 		String email1 = request.getParameter("email1");
 		String email2 = request.getParameter("email2");
 		String userImage = "default_userImg.PNG";
+		
 		MemberDTO dto = new MemberDTO
 		(userid,passwd,username,nickName,addr,phone,email1,email2,userImage);
 		
