@@ -72,6 +72,7 @@
 <%
   MemberDTO dto = (MemberDTO)session.getAttribute("login");
   String nickName = dto.getNickName();
+  System.out.print(dto.getUserimage());
 
 %>
 <button type="button" class="btn btn-outline-success" id="favorite">관심목록</button>&nbsp;
@@ -122,9 +123,11 @@
 </div>
 
 <div display="inline-block" >
-<label for="email1">이메일 (email)</label>
- <input display="block" type="text" class="form-control" id="email1" name="email1" value="<%= dto.getEmail1() %>">@
- <input display="block" type="text" class="form-control" id="email2" name="email2" value="<%= dto.getEmail2() %>">
+<label for="email1">이메일 (email)</label><br>
+ <%-- <input display="block" type="text" class="form-control" id="email1" name="email1" value="<%= dto.getEmail1() %>">@
+ <input display="block" type="text" class="form-control" id="email2" name="email2" value="<%= dto.getEmail2() %>"> --%>
+ <input display="block" type="text"  id="email1" name="email1" value="<%= dto.getEmail1() %>">@
+ <input display="block" type="text"  id="email2" name="email2" value="<%= dto.getEmail2() %>">
 
 <%-- 이메일:<input type="text" value="<%= dto.getEmail1() %>" name="email1" id="email1">@
        <input type="text" value="<%= dto.getEmail2() %>" id="email2" name="email2"  placeholder="직접입력"> --%>
