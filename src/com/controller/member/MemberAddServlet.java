@@ -29,10 +29,10 @@ public class MemberAddServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String email1 = request.getParameter("email1");
 		String email2 = request.getParameter("email2");
-		String userImage = "default_userImg.PNG";
+		String userimage = "default_userImg.PNG";
 		
 		MemberDTO dto = new MemberDTO
-		(userid,passwd,username,nickName,addr,phone,email1,email2,userImage);
+		(userid,passwd,username,nickName,addr,phone,email1,email2,userimage);
 		
 		MemberService service = new MemberService();
 		int n = service.memberAdd(dto);

@@ -11,7 +11,7 @@ userName varchar2(20) not null,
 
 nickName varchar2(20) not null,
 addr varchar2(500) not null,
-phone1 varchar2(11) not null,
+phone varchar2(11) not null,
 email1 varchar2(20) not null,
 email2 varchar2(20) not null,
 

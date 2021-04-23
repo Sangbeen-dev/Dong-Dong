@@ -7,6 +7,7 @@ $(document).ready(function(){
 $("form").on("submit",function(event){
  var userid = $("#userid").val();
  var passwd = $("#passwd").val();
+ var passwd2 = $("#passwd2").val();
  var nickName = $("#nickName").val();
  
  		if(nickName.length==0){
@@ -19,7 +20,9 @@ $("form").on("submit",function(event){
  			$("#userid").focus();
  			event.preventDefault();		
 			
- 		}else if(passwd.length==0){
+ 		}
+ 		
+ 		if(passwd.length==0){
 			alert("passwd 필수")
 			$("#passwd").focus();
 			event.preventDefault();
@@ -93,7 +96,7 @@ $("#passwd2").on("keyup",function(){
 비빌번호확인 : <input type="text" name="passwd2" id="passwd2"><span id="result2"></span>
 <br>
 이름 : <input type="text" name="username" placeholder="이름"><br> 
-전화번호 : <input type="text" name="phone" >
+전화번호 : <input type="text" name="phone" id = "phone" >
 <br>
 주소 : <input type="text" name="addr" id="sample4_roadAddress" placeholder="주소입력">
 <span id="guide" style="color:#999"></span>
