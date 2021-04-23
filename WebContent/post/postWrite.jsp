@@ -65,7 +65,7 @@
 		
 		<br>
 		<!-- 미리보기 사진 -->
-		<img id="thumbnail" src="/Dong-Dong/images/util/thumbnail.PNG"  /><br>
+		<img id="thumbnail" src="/Dong-Dong/images/util/thumbnail.png"  /><br>
 	
  		<div class="row">
  			<div class="col-md-3 col-sm-2"></div>
