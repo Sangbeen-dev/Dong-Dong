@@ -58,6 +58,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="newPost" parameterType="PostDTO">
 		INSERT INTO post
 		VALUES (POST_NUM.NEXTVAL, #{userid}, #{addr}, #{pCategory}, #{pTitle}, #{pContent}, #{pPrice}, #{pImage}
-		,#{pHit}, SYSDATE )
+		,#{pHit}, SYSDATE, #{pStatus} )
 	</insert>
 </mapper>
