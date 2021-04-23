@@ -18,9 +18,9 @@ import com.service.MemberService;
 @WebServlet("/MemberAddServlet")
 public class MemberAddServlet extends HttpServlet {
 	private static final Logger logr  = LoggerFactory.getLogger(MemberAddServlet.class);
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
 		String userid = request.getParameter("userid");
 		String passwd = request.getParameter("passwd");
 		String username = request.getParameter("username");
@@ -30,22 +30,23 @@ public class MemberAddServlet extends HttpServlet {
 		String email1 = request.getParameter("email1");
 		String email2 = request.getParameter("email2");
 		String userImage = "default_userImg.PNG";
-		
+
+
 		MemberDTO dto = new MemberDTO
-		(userid,passwd,username,nickName,addr,phone,email1,email2,userImage);
-		
+		(userid,passwd,username,nickName,addr,phone,email1,email2,userimage);
+
 		MemberService service = new MemberService();
 		int n = service.memberAdd(dto);
-		
+
 		HttpSession session = request.getSession();
 		session.setAttribute("mesg", "회원가입성공");
-		
+
 		logr.info("memberAdd : {}", userid);
 		response.sendRedirect("main");
-		
-		
-	
-	
+
+
+
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
