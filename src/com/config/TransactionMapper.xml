@@ -4,18 +4,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="TransactionMapper">
 	
-	<select id="purchaseList" resultType="PurchaseDTO" parameterType="string">
+	<select id="purchaseList" resultType="PostDTO" parameterType="string">
 	select *
-	from
-	purchase
-	where userid = #{userid}
+	from post p, purchase p2
+	where p.pnum = p2.pnum
+	and
+	f.userid = #{userid}
 	</select>
 	
-	<select id="saleList" resultType="SaleDTO" parameterType="string">
+	<select id="saleList" resultType="PostDTO" parameterType="string">
 	select *
-	from
-	sale
-	where userid = #{userid}
+	from post p, sale s
+	where p.pnum = s.pnum
+	and
+	f.userid = #{userid}
 	</select>
 
 </mapper>

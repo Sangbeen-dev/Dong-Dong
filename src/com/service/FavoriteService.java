@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,9 +12,9 @@ import com.dto.PostDTO;
 
 public class FavoriteService {
 
-	public List<FavoriteDTO> favoriteList(String userid) {
+	public List<PostDTO> favoriteList(String userid) {
 		SqlSession session = MySqlSessionFactory.getSession();
-		List<FavoriteDTO> list = null;
+		List<PostDTO> list = null;
 		try {
 			FavoriteDAO dao = new FavoriteDAO();
 			list = dao.favoriteList(session, userid);

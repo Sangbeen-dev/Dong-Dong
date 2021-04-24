@@ -6,14 +6,15 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
 import com.dao.TransactionDAO;
+import com.dto.PostDTO;
 import com.dto.PurchaseDTO;
 import com.dto.SaleDTO;
 
 public class TransactionService {
 
-	public List<PurchaseDTO> purchaseList(String userid) {
+	public List<PostDTO> purchaseList(String userid) {
 		SqlSession session = MySqlSessionFactory.getSession();
-		List<PurchaseDTO> plist = null;
+		List<PostDTO> plist = null;
 		try {
 			TransactionDAO dao = new TransactionDAO();
 			plist = dao.purchaseList(session, userid);
@@ -23,9 +24,9 @@ public class TransactionService {
 		return plist;
 	}
 
-	public List<SaleDTO> saleList(String userid) {
+	public List<PostDTO> saleList(String userid) {
 		SqlSession session = MySqlSessionFactory.getSession();
-		List<SaleDTO> slist = null;
+		List<PostDTO> slist = null;
 		try {
 			TransactionDAO dao = new TransactionDAO();
 			slist = dao.saleList(session, userid);

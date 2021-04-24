@@ -1,6 +1,7 @@
 package com.controller.mypage;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,11 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dto.FavoriteDTO;
 import com.dto.MemberDTO;
+import com.dto.PostDTO;
 import com.service.FavoriteService;
-
-import sun.security.util.Length;
 
 /**
  * Servlet implementation class FavoriteServlet
@@ -28,10 +27,8 @@ public class FavoriteListServlet extends HttpServlet {
 		String nextPage = null;
 		if(dto!=null) {
 			String userid = dto.getUserid();
-			//System.out.println(userid);
 			FavoriteService service = new FavoriteService();
-			List<FavoriteDTO> list = service.favoriteList(userid);
-			//System.out.println(list); 
+			List<PostDTO> list = service.favoriteList(userid);
 			request.setAttribute("favoriteList", list);
 			nextPage = "favoriteList.jsp";
 			

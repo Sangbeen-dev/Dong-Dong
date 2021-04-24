@@ -52,14 +52,14 @@
 	<form name="myForm" >	    
 <%  
    //데이터 가져오기 //for문 작성 
-	List<PurchaseDTO> plist = (List<PurchaseDTO>)request.getAttribute("purchaseList");
-	for(int i=0; i<plist.size(); i++){
-		PurchaseDTO dto = plist.get(i);
-		String nickName = dto.getNickName();
-		String pTitle = dto.getpTitle();
-		String pImage = dto.getpImage();
-		int pNum = dto.getpNum();
-		int pPrice = dto.getpPrice();
+	List<PostDTO> plist = (List<PostDTO>)request.getAttribute("purchaseList");
+	if(plist != null){
+		for(int i=0; i<plist.size(); i++){
+			PostDTO dto = plist.get(i);
+			String pTitle = dto.getpTitle();
+			String pImage = dto.getpImage();
+			int pNum = dto.getpNum();
+			int pPrice = dto.getpPrice();
 
 %>	    
 	  		
@@ -82,6 +82,7 @@
 		</tr>
 <%
 	}//end for
+}//end if
 %>
 	
 
@@ -145,14 +146,14 @@
 	<form name="myForm2" >	    
 <%  
    //데이터 가져오기 //for문 작성 
-	List<SaleDTO> slist = (List<SaleDTO>)request.getAttribute("saleList");
-	for(int i=0; i<slist.size(); i++){
-		SaleDTO dto = slist.get(i);
-		String nickName = dto.getNickName();
-		String pTitle = dto.getpTitle();
-		String pImage = dto.getpImage();
-		int pNum = dto.getpNum();
-		int pPrice = dto.getpPrice();
+	List<PostDTO> slist = (List<PostDTO>)request.getAttribute("saleList");
+	if(slist != null){
+		for(int i=0; i<slist.size(); i++){
+			PostDTO dto = slist.get(i);
+			String pTitle = dto.getpTitle();
+			String pImage = dto.getpImage();
+			int pNum = dto.getpNum();
+			int pPrice = dto.getpPrice();
 
 %>	    
 	  		
@@ -175,6 +176,7 @@
 		</tr>
 <%
 	}//end for
+}//end if
 %>
 
 
