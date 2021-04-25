@@ -31,11 +31,11 @@ public class KakaoLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String code = request.getParameter("code");
 		String pUrl = "https://kauth.kakao.com/oauth/token";
-		System.out.println(code);
+		//System.out.println(code);
 		
 		String bodyData="grant_type=authorization_code&";
 		bodyData += "client_id=9516c7a8850f5616c0e63b831800b6a9&";
-		bodyData += "redirect_uri=http://localhost:8079/Dong-Dong/kakao&";
+		bodyData += "redirect_uri=http://localhost:8079/kakao&";
 		bodyData += "code="+code;
 		
 		try {
@@ -80,7 +80,7 @@ public class KakaoLoginServlet extends HttpServlet {
 				sb2.append(input2);
 			}
 			
-			System.out.println("sb2.toString() : "+sb2.toString());
+			//System.out.println("sb2.toString() : "+sb2.toString());
 			
 			Gson gson2=new Gson();
 			KakaoProfileDTO kakaoProfile=gson2.fromJson(sb2.toString(), KakaoProfileDTO.class);

@@ -59,7 +59,7 @@ $(function(){
 					</div>
 					
 					<div class="text-center p-t-25">
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=9516c7a8850f5616c0e63b831800b6a9&redirect_uri=http://localhost:8079/Dong-Dong/kakao&response_type=code">
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=9516c7a8850f5616c0e63b831800b6a9&redirect_uri=http://localhost:8079/kakao&response_type=code">
 						<img height="35px" src="/Dong-Dong/images/login/kakao_login_button.png" /></a>
 					</div>
 					<div class="text-center p-t-25">
