@@ -84,7 +84,7 @@ $(document).ready(function(){
 <div class="container" id="card<%=pNum %>" style="width:30%">
 <div style="background-color: white; padding:15px; width: auto; height: auto; cursor: pointer;">
     <div class="card">
-      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Card image" style="width:463px">
+      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Card image" style="width:450px">
       <div class="card-body">
         <h5 class="card-title"><%=pTitle%></h5>
         <!-- <img src="/Dong-Dong/images/util/favorite1.png" align="right"width="30" height="30"> -->

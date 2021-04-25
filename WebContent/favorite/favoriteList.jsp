@@ -1,6 +1,8 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="com.dto.FavoriteDTO"%>
 <%@page import="com.dto.PostDTO"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!--부트스트랩 css cdn  -->
@@ -91,18 +93,20 @@
 	<form name="myForm">	    
 <%  
    //데이터 가져오기 //for문 작성 
-	List<FavoriteDTO> list = (List<FavoriteDTO>)request.getAttribute("favoriteList");
+    
+	List<PostDTO> list = (List<PostDTO>)request.getAttribute("favoriteList");
 	for(int i=0; i<list.size(); i++){
-		FavoriteDTO dto = list.get(i);
+		PostDTO dto = list.get(i);
 		String pCategory = dto.getpCategory();
 		String pContent = dto.getpContent();
-		int pHit = dto.getpHIt();
+		int pHit = dto.getpHit();
 		String pImage = dto.getpImage();
 		int pNum = dto.getpNum();
 		int pPrice = dto.getpPrice();
 		String pTitle = dto.getpTitle();
-		String userid = dto.getUserId();
+		String userid = dto.getUserid();
 
+		
 %>	    
 	  		
 

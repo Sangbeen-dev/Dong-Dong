@@ -12,6 +12,8 @@ public class PostDTO {
 	private int pHit;
 	private String pDate;
 	private String pDateDiff;
+	private String pStatus;
+	
 	public PostDTO() {
 		super();
 	}
@@ -25,7 +27,7 @@ public class PostDTO {
 	}
 
 	public PostDTO(int pNum, String userid, String addr, String pCategory, String pTitle, String pContent, int pPrice,
-			String pImage, int pHit, String pDate, String pDateDiff) {
+			String pImage, int pHit, String pDate, String pDateDiff, String pStatus) {
 		super();
 		this.pNum = pNum;
 		this.userid = userid;
@@ -38,6 +40,7 @@ public class PostDTO {
 		this.pHit = pHit;
 		this.pDate = pDate;
 		this.pDateDiff = pDateDiff;
+		this.pStatus = pStatus;
 	}
 
 	
@@ -122,13 +125,22 @@ public class PostDTO {
 		this.addr = addr;
 	}
 
+	public String getpStatus() {
+		return pStatus;
+	}
+
+	public void setpStatus(String pStatus) {
+		this.pStatus = pStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "PostDTO [pNum=" + pNum + ", userid=" + userid + ", addr=" + addr + ", pCategory=" + pCategory
 				+ ", pTitle=" + pTitle + ", pContent=" + pContent + ", pPrice=" + pPrice + ", pImage=" + pImage
-				+ ", pHit=" + pHit + ", pDate=" + pDate + ", pDateDiff=" + pDateDiff + "]";
+				+ ", pHit=" + pHit + ", pDate=" + pDate + ", pDateDiff=" + pDateDiff + ", pStatus=" + pStatus + "]";
 	}
 
+	
 	
 
 }

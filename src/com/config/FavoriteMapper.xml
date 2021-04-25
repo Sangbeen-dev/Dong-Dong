@@ -4,11 +4,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="FavoriteMapper">
 	
-	<select id="favoriteList" resultType="FavoriteDTO" parameterType="string">
+	<select id="favoriteList" resultType="PostDTO" parameterType="string">
 	select *
-	from
-	favorite
-	where userid = #{userid}
+	from post p, favorite f
+	where p.pnum = f.pnum
+	and
+	f.userid = #{userid}
 	</select>
 
 	<select id="getFavorite" resultType="FavoriteDTO" parameterType="FavoriteDTO">

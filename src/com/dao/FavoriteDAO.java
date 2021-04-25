@@ -9,8 +9,8 @@ import com.dto.PostDTO;
 
 public class FavoriteDAO {
 
-	public List<FavoriteDTO> favoriteList(SqlSession session, String userid) {
-		List<FavoriteDTO> list = session.selectList("FavoriteMapper.favoriteList", userid);
+	public List<PostDTO> favoriteList(SqlSession session, String userid) {
+		List<PostDTO> list = session.selectList("FavoriteMapper.favoriteList", userid);
 		return list;
 	}
 

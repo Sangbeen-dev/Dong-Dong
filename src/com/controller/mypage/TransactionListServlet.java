@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dto.MemberDTO;
-import com.dto.PurchaseDTO;
+import com.dto.PostDTO;
 import com.dto.SaleDTO;
 import com.service.TransactionService;
 
@@ -30,11 +30,11 @@ public class TransactionListServlet extends HttpServlet {
 			System.out.println(userid);
 			//구매내역
 			TransactionService service = new TransactionService();
-			List<PurchaseDTO> plist = service.purchaseList(userid);
+			List<PostDTO> plist = service.purchaseList(userid);
 			//System.out.println("구매내역(서블릿)===="+plist); 
 			request.setAttribute("purchaseList", plist);
 			//판매내역 
-			List<SaleDTO> slist = service.saleList(userid);
+			List<PostDTO> slist = service.saleList(userid);
 			//System.out.println("판매내역(서블릿)===="+slist); 
 			request.setAttribute("saleList", slist);
 			
