@@ -38,6 +38,8 @@ ALTER TABLE post
 ADD CONSTRAINT post_userid_fk FOREIGN KEY(userid)
 REFERENCES member(userid) ON DELETE CASCADE;
 
+ALTER TABLE post ADD (pStatus VARCHAR2(1));
+update post set pstatus=0;
 
 //Favorite, Purchase, Sale
 
