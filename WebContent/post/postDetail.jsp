@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="com.dto.CommentsDTO"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -26,7 +29,7 @@
     String price = formatter.format(Integer.parseInt(pPrice));
     
     String category = "";
-    
+    // 카테고리 설정
     switch (pCategory) {
     	case "D" :
     		category = "Digital";
@@ -46,6 +49,11 @@
     	default :
     		break;
     }
+    
+    // 임시 값, 삭제 예정
+    List<CommentsDTO> list = request.;
+    
+    
 %>
 
 <!-- Bootstrap css -->
@@ -136,7 +144,7 @@
 		  <a class="btn btn-primary" href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a>
 		  <a class="btn btn-primary" href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
 		<% 	} else  {%>
-          <a class="btn btn-primary" href="########">판매자와 채팅</a>
+          <a class="btn btn-primary" href="ChatServerServlet?userid=<%=dto.getUserid()%>">판매자와 채팅</a>
           <a id="favorite"  class="btn">
 		    <%if(favorite==true) {%>
     	    	<img id="favoriteImg" src="/Dong-Dong/images/util/favorite1.png"  width="50" height="50"/>
@@ -160,6 +168,21 @@
 		카테고리 : <%=category%>, 조회 수 : <%=pHit%><br>
       </div>
     </div>
+    <%if(dto==null) {%>
+     	대충 댓글 달고 싶으면 로그인 하라는 안내 메세지
+    <%} else  {%>
+    <div>
+      <div class="comment_form">
+      	<form action="CommentsWriteServlet" method="get">
+      	  <input type="hidden" name="pNum" value="<%=pNum%>"/>
+      	  <textarea rows="3" cols="30" name="cContent"></textarea>
+      	  <input type="submit" value="댓글달기"/>
+      	</form>
+      </div>
+    </div>
+    <%} %><br>
+    
+    
   </div>
   <!-- /.container -->
 
