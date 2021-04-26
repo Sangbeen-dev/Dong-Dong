@@ -83,6 +83,23 @@ $("#passwd2").on("keyup",function(){
 	});
 });
 
+	function maileAuth() {
+		// 자식창 중앙 정렬
+		var popupWidth = 500;
+		var popupHeight = 200;
+		//오류 주의...
+		var popupX = (window.screen.width / 2) - (popupWidth / 2);
+		// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼줌
+		var popupY= (window.screen.height / 2) - (popupHeight / 2);
+		// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼줌
+		url = "emailAuth.jsp"
+		open(url,"confirm", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+		}
+	//닉네임 체크 
+	$("#mailAuth").click(function() {
+		maileAuth();
+	})
+
 }); //end doc
  
 </script>    
@@ -103,10 +120,12 @@ $("#passwd2").on("keyup",function(){
 <br>
 이메일 : <input type="text" name="email1" >@
        <input type="text" name="email2"  placeholder="직접입력">
-       <select>
+<!--        <select>
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
-       </select>
+       </select> -->
+	<button type="button" id="mailAuth">메일 인증</button>
+       
 <br>
 <input type="submit" value="회원가입">
 <input type="reset" value="취소">
