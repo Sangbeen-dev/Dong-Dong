@@ -52,7 +52,8 @@ public class PostDetailServlet extends HttpServlet {
         	request.setAttribute("pContent", pDTO.getpContent());
         	request.setAttribute("pDate", pDTO.getpDate());
         	request.setAttribute("pTitle", pDTO.getpTitle());
-
+        	request.setAttribute("pStatus", pDTO.getpStatus());
+        	
         	//게시글을 작성한 유저 정보 전달을 위해 request에 설정
         	request.setAttribute("userid", mDTO.getUserid());
         	request.setAttribute("username", mDTO.getUsername());

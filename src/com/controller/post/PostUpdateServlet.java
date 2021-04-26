@@ -66,7 +66,7 @@ public class PostUpdateServlet extends HttpServlet {
 						File deleteImage = new File(path+"//"+pDTO.getpImage());
 						deleteImage.delete();
 					}//if
-					logr.info("Update Post & Favorate : postNumber - {}", pNum);
+					logr.info("Update Post : pNum - {}, loginUser - {}", pNum, dto.getUserid());
 		    	}
 			} else { // 수정할 게시글과 로그인 유저정보가 일치하지 않는 경우
 				session.setAttribute("mesg", "자신이 쓴 글만 수정이 가능합니다.");
