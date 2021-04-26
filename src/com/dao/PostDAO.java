@@ -52,6 +52,18 @@ public class PostDAO {
 	}
 
 
+	public List<PostDTO> mypostList(SqlSession session, String userid) {
+		List<PostDTO> list = session.selectList("PostMapper.mypostList", userid);
+		return list;
+	}
+
+
+	public int postAllDel(SqlSession session, List<String> list) {
+		int n = session.delete("PostMapper.postAllDel", list);
+		return n;
+	}
+
+
 
 
 }

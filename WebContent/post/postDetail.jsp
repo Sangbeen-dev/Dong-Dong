@@ -51,7 +51,7 @@
     }
     
     // 임시 값, 삭제 예정
-    List<CommentsDTO> list = request.;
+    List<CommentsDTO> comments = (List<CommentsDTO>)request.getAttribute("comments");
     
     
 %>
@@ -182,7 +182,36 @@
     </div>
     <%} %><br>
     
-    
+    <% if(comments==null){ %>
+    	댓글 없음....
+   	<%} else { %> 
+    <ul>
+      <%for(CommentsDTO cDTO : comments) {%>
+      		<li>
+      			<%if(cDTO.getcNum()!=cDTO.getParentnum()) {%> <!-- 답글일 경우 -->
+      				
+      				
+      			<%} %>
+      			<dl>
+      				<dt>
+      					<%=cDTO.getUserid() %>
+      					<%if(cDTO.getcNum()!=cDTO.getParentnum()) {%>
+      						
+      					<%} %>
+      					<span><%=cDTO.getcDate() %></span>
+      					<a href="#">답글</a>
+      					<%if(dto!=null && cDTO.getUserid().equals(dto.getUserid())) {%>
+      						수정 / 삭제
+      					<%} %>
+      				</dt>
+      				<dd>
+      					<pre><%=cDTO.getcContent() %></pre>
+      				</dd>
+      			</dl>
+      		</li>
+      <%}%>
+    </ul>
+    <%} %>
   </div>
   <!-- /.container -->
 
