@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CommentsMapper">
+
+	<insert id="insertComments" parameterType="CommentsDTO">
+		insert into comments (pNum, cNum, userid, cContent, cDate)
+		values (#{pNum},COMMENTS_NUM.NEXTVAL,#{userid},#{cContent},SYSDATE)
+	</insert>
+	
+	
+	<select id="getCommentsByPNum" parameterType="int" resultType="CommentsDTO">
+		select * from comments where pnum=#{pnum} ORDER BY cnum desc
+	</select>
+</mapper>

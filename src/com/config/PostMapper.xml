@@ -61,10 +61,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		,#{pHit}, SYSDATE, #{pStatus} )
 	</insert>
 	
+
 	<select id="searchByKeyword" resultType="PostDTO" parameterType="string">
 		SELECT pNum, userid, addr, pCategory, pTitle, pContent, pPrice, pImage, pHit, pDate
     		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff 
     		FROM post 
 			WHERE pTitle LIKE '%'||#{keyword}||'%'
 	</select>
+
+	<select id="mypostList" parameterType="string" resultType="PostDTO">
+		select *
+       	from post
+       	where userid = #{userid}
+	</select>
+	
+	<delete id="postAllDel" parameterType="arraylist">
+		delete from post
+		where pNum in
+		<foreach item="item"  collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+
 </mapper>

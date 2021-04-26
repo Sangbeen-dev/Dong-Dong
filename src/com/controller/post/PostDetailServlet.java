@@ -1,6 +1,7 @@
 package com.controller.post;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.dto.CommentsDTO;
 import com.dto.FavoriteDTO;
 import com.dto.MemberDTO;
 import com.dto.PostDTO;
+import com.service.CommentsService;
 import com.service.FavoriteService;
 import com.service.MemberService;
 import com.service.PostService;
@@ -30,9 +33,11 @@ public class PostDetailServlet extends HttpServlet {
     	PostService pService = new PostService();
     	MemberService mService = new MemberService();
     	FavoriteService fService = new FavoriteService();
+    	CommentsService sService = new CommentsService();
     	
     	PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum));
     	MemberDTO mDTO = mService.mypage(pDTO.getUserid());
+    	List<CommentsDTO> comments = sService.getCommentsByPNum(Integer.parseInt(pNum)); 
     	String nextPage = "";
     	//게시글 조회수 증가
     	pDTO.setpHit(pDTO.getpHit()+1);
@@ -57,6 +62,9 @@ public class PostDetailServlet extends HttpServlet {
         	//게시글을 작성한 유저 정보 전달을 위해 request에 설정
         	request.setAttribute("userid", mDTO.getUserid());
         	request.setAttribute("username", mDTO.getUsername());
+        	
+        	// 게시글 내용 전달을 위해 설정
+        	request.setAttribute("comments", comments);
         	
         	//게시글의 관심 설정 정보 전달을 위해 request에 설정
         	if(uDTO!=null) { // 로그인 정보가 있을 경우
