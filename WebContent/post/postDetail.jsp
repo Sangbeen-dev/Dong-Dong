@@ -22,8 +22,6 @@
 	String pStatus = (String)request.getAttribute("pStatus");
 	boolean favorite = (boolean)request.getAttribute("favorite");
 	
-	// 날짜의 초 단위 삭제
-	pDate = pDate.substring(0, pDate.length()-3);
 	// 가격에 1000단위에 쉼표를 붙여 줍니다.
     DecimalFormat formatter = new DecimalFormat("###,###");
     String price = formatter.format(Integer.parseInt(pPrice));
@@ -124,7 +122,7 @@
         <br>
         <h1 class="font-weight-light"><%=pTitle%></h1><br>
         <h2 class="font-weight-light"><%=price%>원</h2><br>
-        <h6 class="font-weight-light"><%=pDate%></h6>
+        <h6 class="font-weight-light"><%=pDate.substring(0, pDate.length()-3)%></h6>
         
 		<table class="table">
 		   <tr>
@@ -189,23 +187,23 @@
       <%for(CommentsDTO cDTO : comments) {%>
       		<li>
       			<%if(cDTO.getcNum()!=cDTO.getParentnum()) {%> <!-- 답글일 경우 -->
-      				
-      				
       			<%} %>
       			<dl>
       				<dt>
-      					<%=cDTO.getUserid() %>
+      					작성자 : <%=cDTO.getUserid() %>&nbsp;&nbsp;
       					<%if(cDTO.getcNum()!=cDTO.getParentnum()) {%>
       						
       					<%} %>
-      					<span><%=cDTO.getcDate() %></span>
-      					<a href="#">답글</a>
+      					<span><%=pDate.substring(0, cDTO.getcDate().length()-3) %></span>&nbsp;&nbsp;
+      					<%if(dto!=null && !(cDTO.getUserid().equals(dto.getUserid()))) {%>
+      					<a href="#">답글</a>&nbsp;&nbsp;
+      					<%} %>
       					<%if(dto!=null && cDTO.getUserid().equals(dto.getUserid())) {%>
-      						수정 / 삭제
+      						<a href="#">수정</a>&nbsp;&nbsp;<a href="#">삭제</a>
       					<%} %>
       				</dt>
       				<dd>
-      					<pre><%=cDTO.getcContent() %></pre>
+      					<h3><%=cDTO.getcContent() %></h3>
       				</dd>
       			</dl>
       		</li>
