@@ -61,7 +61,7 @@ ul {
 li {
 	display:inline;
 	float: left;
-	width: 25%;
+	width: 21%;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     border: 0;
