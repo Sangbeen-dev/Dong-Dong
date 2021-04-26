@@ -132,5 +132,19 @@ public class PostService {
         }
         return updateResult;
 	}
+
+	public List<PostDTO> searchByKeyword(String keyword) {
+		SqlSession session = MySqlSessionFactory.getSession();
+        List<PostDTO> list = null;
+        try {
+            PostDAO dao = new PostDAO();
+            list = dao.searchByKeyword(session, keyword);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+	}
 }// end class
 

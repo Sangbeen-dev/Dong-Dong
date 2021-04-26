@@ -60,4 +60,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES (POST_NUM.NEXTVAL, #{userid}, #{addr}, #{pCategory}, #{pTitle}, #{pContent}, #{pPrice}, #{pImage}
 		,#{pHit}, SYSDATE, #{pStatus} )
 	</insert>
+	
+	<select id="searchByKeyword" resultType="PostDTO" parameterType="string">
+		SELECT pNum, userid, addr, pCategory, pTitle, pContent, pPrice, pImage, pHit, pDate
+    		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff 
+    		FROM post 
+			WHERE pTitle LIKE '%'||#{keyword}||'%'
+	</select>
 </mapper>

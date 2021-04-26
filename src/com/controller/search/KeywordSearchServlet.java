@@ -1,40 +1,45 @@
 package com.controller.search;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class KeywordSearchServlet
- */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.controller.post.PostWriteServlet;
+import com.dto.PostDTO;
+import com.service.PostService;
+
 @WebServlet("/KeywordSearchServlet")
 public class KeywordSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	private static final Logger logr  = LoggerFactory.getLogger(PostWriteServlet.class);
     public KeywordSearchServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String keyword = request.getParameter("keyword");
+		
+		PostService service = new PostService();
+		List<PostDTO> list = service.searchByKeyword(keyword);
+		System.out.println("키워드로 검색해서 가져온 list : " + list);
+		logr.info("Search_keyWord : {}", keyword);
+		
+		request.setAttribute("postList", list);
+		request.setAttribute("keyword", keyword);
+		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
+		dis.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

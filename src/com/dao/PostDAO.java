@@ -52,6 +52,12 @@ public class PostDAO {
 	}
 
 
+	public List<PostDTO> searchByKeyword(SqlSession session, String keyword) {
+		List<PostDTO> list = session.selectList("PostMapper.searchByKeyword", keyword);
+		return list;
+	}
+
+
 
 
 }
