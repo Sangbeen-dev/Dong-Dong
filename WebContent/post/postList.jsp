@@ -7,7 +7,6 @@
 
 
 
-
  <%
  	List<PostDTO> list = (List<PostDTO>)request.getAttribute("postList");
 	for(int i=1;i<=list.size();i++){
@@ -20,7 +19,7 @@
 		String addr = dto.getAddr();
 		int pNum = dto.getpNum();
 		
-		
+		// 게시물올린시간 과거로 계산하는 코드
 		int pDateDiff = Integer.parseInt(dto.getpDateDiff());
 		String pDateResult = null;
 		
@@ -53,7 +52,20 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" 
 		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <style type="text/css"> 
+ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
 
+li {
+	display:inline;
+	float: left;
+	width: 25%;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border: 0;
+}
 
 a {
  text-decoration:none
@@ -78,15 +90,14 @@ $(document).ready(function(){
 <!-- Bootstrap js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
 	 integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
-
-
-<div class="container" id="card<%=pNum %>" style="width:30%">
-<div style="background-color: white; padding:15px; width: auto; height: auto; cursor: pointer;">
+<ul>
+<li>
+<div class="container" id="card<%=pNum %>" style="width:25%;">
+<div style="background-color: white; padding:15px; width: 320px; height: auto; cursor: pointer;">
     <div class="card">
-      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Card image" style="width:450px">
+      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Card image" style="max-width:288px; height:285px;" >
       <div class="card-body">
-        <h5 class="card-title"><%=pTitle%></h5>
+        <h5 class="card-title" style="height:50px;"><%=pTitle%></h5>
         <!-- <img src="/Dong-Dong/images/util/favorite1.png" align="right"width="30" height="30"> -->
       </div>
       <div class="card-footer">
@@ -95,8 +106,9 @@ $(document).ready(function(){
     </div>
     </div>
   </div>
-</body>
-</html>     
+</li>
+</ul>   
+</body> 
 
 
 
