@@ -22,6 +22,10 @@
 		$("#transaction").on("click", function() {
 			location.href ="TransactionListServlet";
 		});
+		//내 게시물 보기 버튼
+		$("#mypost").on("click", function() {
+			location.href ="MyPostListServlet";
+		});
 		// 수정 정보 보내기
 		$("#submit").click(function() {
 			$("#myForm").attr("action","MemberUpdateServlet");		
@@ -75,8 +79,10 @@
   System.out.print(dto.getUserimage());
 
 %>
+<button type="button" class="btn btn-outline-primary" id="mypost" >내가 쓴 글 보기</button> &nbsp;
 <button type="button" class="btn btn-outline-success" id="favorite">관심목록</button>&nbsp;
 <button type="button" class="btn btn-outline-danger" id="transaction" >거래내역</button> &nbsp;
+
 <br><br><br>
 <form id="myForm" action="#" method="post" enctype="multipart/form-data"> 
   <div class="container">

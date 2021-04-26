@@ -60,4 +60,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES (POST_NUM.NEXTVAL, #{userid}, #{addr}, #{pCategory}, #{pTitle}, #{pContent}, #{pPrice}, #{pImage}
 		,#{pHit}, SYSDATE, #{pStatus} )
 	</insert>
+	
+	<select id="mypostList" parameterType="string" resultType="PostDTO">
+		select *
+       	from post
+       	where userid = #{userid}
+	</select>
+	
+	<delete id="postAllDel" parameterType="arraylist">
+	delete from post
+	where pNum in
+	<foreach item="item"  collection="list" open="(" separator="," close=")">
+		#{item}
+	</foreach>
+	</delete>
 </mapper>

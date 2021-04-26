@@ -1,4 +1,3 @@
-<%@page import="java.util.HashMap"%>
 <%@page import="com.dto.FavoriteDTO"%>
 <%@page import="com.dto.PostDTO"%>
 <%@page import="java.util.List"%>
