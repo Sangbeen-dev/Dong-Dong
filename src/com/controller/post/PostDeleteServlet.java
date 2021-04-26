@@ -44,7 +44,7 @@ public class PostDeleteServlet extends HttpServlet {
 		    		// 삭제한 게시글의 저장된 이미지 삭제
 					File deleteImage = new File("c://images//"+pDTO.getpImage());
 					deleteImage.delete();
-					logr.info("Delete Post & Favorate : postNumber - {}", pNum);
+					logr.info("Delete Post : pNum - {} , loginUser - {}", pNum, dto.getUserid());
 					session.setAttribute("mesg", "게시글이 삭제되었습니다.");
 		    	}
 			} else { // 삭제할 게시글과 로그인 유저 정보가 일치하지 않는 경우
