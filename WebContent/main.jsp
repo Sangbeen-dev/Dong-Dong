@@ -24,11 +24,11 @@
 		right : 0;
 		z-index : 1;
 		background-color : white;
+		text-align : center;
 	}
 	
 	main{
-		positin : relative;
-		padding-top : 140px;
+		padding-top : 180px;
 		z-index : 2;
 	}
 </style>
