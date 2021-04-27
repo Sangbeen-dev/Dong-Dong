@@ -52,11 +52,20 @@
 			<div class="col-md-6 col-sm-8 mb-3">
 				<select class="form-select" aria-label="Default select example" name="category">
   					<option selected>카테고리 선택</option>
-  					<option value="D">[Digital]: 디지털, 가전, 게임</option>
-					<option value="L">[Living]: 가구, 인테리어, 생활, 가공식품, 반려동물 용품</option>
-					<option value="F">[Fashion]: 여성의류, 남성의류, 잡화</option>
-					<option value="C">[Culture]: 도서, 티켓, 음반, 스포츠, 레저</option>
-					<option value="E">[ETC] : 기타, 뷰티, 미용,식물</option>
+  					<option value="D">[Digital]: 디지털, 가전</option>
+					<option value="H">[House]: 가구, 인테리어</option>
+					<option value="BY">[BABY]: 유아동</option>
+					<option value="L">[Living]: 생활, 가공식품</option>
+					<option value="S">[Sports]: 스포츠, 레저</option>
+					<option value="W">[Woman]: 여성의류, 여성잡화</option>
+					<option value="M">[Man]: 남성의류, 남성잡화</option>
+					<option value="G">[Game]: 게임,취미</option>
+					<option value="BT">[Beauty]: 뷰티,미용</option>
+					<option value="PET">[Pet]: 반려동물용품</option>
+					<option value="BK">[Book]: 도서</option>
+					<option value="T">[Tickets]: 티켓</option>
+					<option value="P">[Plant]: 식물</option>
+					<option value="E">[ETC] : 기타</option>
 				</select>
 			</div>
   			<div class="col-md-3 col-sm-2"></div>

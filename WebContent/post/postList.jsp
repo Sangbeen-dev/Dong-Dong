@@ -9,6 +9,13 @@
 
  <%
  	List<PostDTO> list = (List<PostDTO>)request.getAttribute("postList");
+
+	String keyword = (String)request.getAttribute("keyword");
+	if(keyword != null){
+%>
+	<b><%= keyword %></b>로 검색한 결과 <b><%=list.size() %></b>개가 검색되었습니다.
+<%
+	}
 	for(int i=1;i<=list.size();i++){
 		PostDTO dto = list.get(i-1);
 		String pTitle = dto.getpTitle();
@@ -41,16 +48,11 @@
 		 
 	
 		%>
-
-
-
-
-		
-		
 <head>	
 <!-- Bootstrap css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" 
 		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
 <style type="text/css"> 
 
 ul {
@@ -71,7 +73,6 @@ li {
 a {
  text-decoration:none
 } 
-
 </style> 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -81,8 +82,6 @@ $(document).ready(function(){
 	})
 	
 })
-
-
 
 </script>
 
