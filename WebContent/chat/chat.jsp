@@ -12,7 +12,7 @@
 	String userid = dto.getUserid();
 
 %>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <body>
 	<c:set var="userid" value="<%=userid %>" />
     <!-- 로그인한 상태일 경우와 비로그인 상태일 경우의 chat_id설정 -->
@@ -24,29 +24,15 @@
             id='chat_id' />
     </c:if>
     <!--     채팅창 -->
-    <div id="_chatbox" style="display: none">
+    <div id="_chatbox"> <!-- style="display: none" -->
         <fieldset>
             <div id="messageWindow"></div>
             <br /> <input id="inputMessage" type="text" onkeyup="enterkey()" />
             <input type="submit" value="send" onclick="send()" />
         </fieldset>
     </div>
-    <img class="chat" src="/Dong-Dong/images/util/chat.png" />
 </body>
-<!-- 말풍선아이콘 클릭시 채팅창 열고 닫기 -->
-<script>
-    $(".chat").on({
-        "click" : function() {
-            if ($(this).attr("src") == "/Dong-Dong/images/util/chat.png") {
-                $(".chat").attr("src", "./img/chathide.png");
-                $("#_chatbox").css("display", "block");
-            } else if ($(this).attr("src") == "./img/chathide.png") {
-                $(".chat").attr("src", "/Dong-Dong/images/util/chat.png");
-                $("#_chatbox").css("display", "none");
-            }
-        }
-    });
-</script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     var textarea = document.getElementById("messageWindow");
     var webSocket = new WebSocket('ws://localhost:8079/broadcasting');
