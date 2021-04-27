@@ -57,11 +57,8 @@
 <!-- content추가예정 -->
 <main>
 <jsp:include page="post/postList.jsp" flush="true"></jsp:include><br>
-<<<<<<< HEAD
 
-
-=======
 </main>
->>>>>>> 3f1a49a139755a28d5f134cf5e28b0e2f995faac
+
 </body>
 </html>
