@@ -192,7 +192,7 @@
       					<%if(cDTO.getcNum()!=cDTO.getParentnum()) {%>
       						
       					<%} %>
-      					<span><%=pDate.substring(0, cDTO.getcDate().length()-3) %></span>&nbsp;&nbsp;
+      					<span><%=(cDTO.getcDate()).substring(0, cDTO.getcDate().length()-3) %></span>&nbsp;&nbsp;
       					<%if(dto!=null && !(cDTO.getUserid().equals(dto.getUserid()))) {%>
       					<a href="javascript:" class="reply_comment" id="<%=cDTO.getcNum()%>">답글</a>&nbsp;&nbsp;
       					<%} %>
@@ -223,7 +223,7 @@
     </ul>
     <%} %>
     <%if(dto==null) {%>
-     	대충 댓글 달고 싶으면 로그인 하라는 안내 메세지
+     	로그인 후 댓글 작성이 가능합니다.
     <%} else  {%>
     <div>
       <div class="comment-form">
