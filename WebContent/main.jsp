@@ -37,5 +37,7 @@
 <jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
 <!-- content추가예정 -->
 <jsp:include page="post/postList.jsp" flush="true"></jsp:include><br>
+
+
 </body>
 </html>

@@ -75,6 +75,7 @@ a {
 } 
 </style> 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../js/jquery.twbsPagination.js" type="text/javascript"></script>
 <script>
 $(document).ready(function(){
 	$("#card"+<%=pNum %>).on("click",function(){
@@ -82,6 +83,12 @@ $(document).ready(function(){
 	})
 	
 })
+    $('.sync-pagination').twbsPagination({
+        totalPages: 20,
+        onPageClick: function (evt, page) {
+            $('#content').text('Page ' + page);
+        }
+    });
 
 </script>
 
@@ -94,13 +101,13 @@ $(document).ready(function(){
 	 integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <ul>
 <li>
-<div class="container" id="card<%=pNum %>" style="width:25%;">
+<div class="container" id="card<%=pNum %>" style="width:23%;">
 <div style="background-color: white; padding:15px; width: 320px; height: auto; cursor: pointer;">
     <div class="card">
-      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Card image" style="max-width:288px; height:285px;" >
+      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Responsive image" style="max-width:288px; height:285px;" >
       <div class="card-body">
-        <h5 class="card-title" style="height:50px;"><%=pTitle%></h5>
-        <!-- <img src="/Dong-Dong/images/util/favorite1.png" align="right"width="30" height="30"> -->
+        <h6 class="card-title" style="height:50px;"><%=pTitle%></h6>
+        <h4><%=pPrice %>원</h4>
       </div>
       <div class="card-footer">
         <small class="text-muted"><%=pDateResult%></small>
@@ -108,8 +115,9 @@ $(document).ready(function(){
     </div>
     </div>
   </div>
+  </div>
 </li>
-</ul>   
+</ul>  
 </body> 
 
 
@@ -122,3 +130,16 @@ $(document).ready(function(){
 %>
 
 
+
+
+<!--   페이지네이션 부트스트랩 코드
+	<div class="text-center"
+	<ul class="pagination justify-content-end">
+	<li class="page-item"><a class="page-link" href="#">이전</a></li>
+	<li class="page-item"><a class="page-link" href="#">1</a></li>
+	<li class="page-item"><a class="page-link" href="page-content">2</a></li>
+	<li class="page-item"><a class="page-link" href="#">3</a></li>
+	<li class="page-item"><a class="page-link" href="#">다음</a></li>
+</ul>
+	</div> 
+-->
