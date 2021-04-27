@@ -82,5 +82,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{item}
 		</foreach>
 	</delete>
+	
+	<select id="searchByCategory" resultType="PostDTO" parameterType="string">
+		SELECT pNum, userid, addr, pCategory, pTitle, pContent, pPrice, pImage, pHit, pDate
+    		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff 
+    		FROM post 
+			WHERE pCategory = #{category}
+	</select>
 
 </mapper>

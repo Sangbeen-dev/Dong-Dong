@@ -175,5 +175,19 @@ public class PostService {
 		return n;
 
 	}
+
+	public List<PostDTO> searchByCategory(String category) {
+		SqlSession session = MySqlSessionFactory.getSession();
+        List<PostDTO> list = null;
+        try {
+            PostDAO dao = new PostDAO();
+            list = dao.searchByCategory(session, category);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+	}
 }// end class
 

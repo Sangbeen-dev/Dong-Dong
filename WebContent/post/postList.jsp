@@ -3,7 +3,6 @@
 <%@page import="com.dto.PostDTO"%>
 <%@page import="java.util.List"%>
 
-<a href="PostWriteUIServlet">글쓰기</a>
 
 
 

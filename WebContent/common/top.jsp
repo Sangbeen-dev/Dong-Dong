@@ -11,6 +11,8 @@
 	안녕하세요. 
 	<a href="LogoutServlet">로그아웃</a>
 	<a href="MyPageServlet">mypage</a><!--수정  -->
+	<a href="PostWriteUIServlet">글쓰기</a>
+	
 <%
 	} else{ //아닌경우
 %>
