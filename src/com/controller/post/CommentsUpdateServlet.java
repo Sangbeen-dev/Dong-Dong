@@ -22,6 +22,7 @@ public class CommentsUpdateServlet extends HttpServlet {
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 		MemberDTO dto = (MemberDTO)session.getAttribute("login");
 		String pNum = request.getParameter("pNum");
 		String cNum = request.getParameter("cNum");

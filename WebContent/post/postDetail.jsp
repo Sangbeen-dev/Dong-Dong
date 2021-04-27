@@ -227,7 +227,7 @@
     <%} else  {%>
     <div>
       <div class="comment-form">
-      	<form action="CommentsWriteServlet" method="get">
+      	<form action="CommentsWriteServlet" method="post">
       	  <input type="hidden" name="pNum" value="<%=pNum%>"/>
       	  <textarea rows="3" cols="30" name="cContent"></textarea>
       	  <input type="submit" value="댓글달기"/>
