@@ -21,7 +21,8 @@
 	String pDate = (String)request.getAttribute("pDate");
 	String pStatus = (String)request.getAttribute("pStatus");
 	boolean favorite = (boolean)request.getAttribute("favorite");
-	
+    List<CommentsDTO> comments = (List<CommentsDTO>)request.getAttribute("comments");
+
 	// 가격에 1000단위에 쉼표를 붙여 줍니다.
     DecimalFormat formatter = new DecimalFormat("###,###");
     String price = formatter.format(Integer.parseInt(pPrice));
@@ -46,12 +47,7 @@
     		break;
     	default :
     		break;
-    }
-    
-    // 임시 값, 삭제 예정
-    List<CommentsDTO> comments = (List<CommentsDTO>)request.getAttribute("comments");
-    
-    
+    } 
 %>
 
 <!-- Bootstrap css -->
@@ -70,6 +66,9 @@
 #mainImage{
 	max-height: initial;
 	margin-top: -10%;
+}
+.comment form{
+	display: none;
 }
 </style>
 
@@ -102,6 +101,14 @@
 					$("#result").append(status);
 				} //error
 			});//ajax
+		});//on
+		
+		$(".update_comment").on("click", function() {
+			$(this).parent().parent().parent().find(".comment-update-form").slideToggle(200);
+		});//on
+		
+		$(".reply_comment").on("click", function() {
+			$(this).parent().parent().parent().find(".comment-reply-form").slideToggle(200);
 		});//on
 	});//ready()
 <%}%>
@@ -169,26 +176,14 @@
 		카테고리 : <%=category%>, 조회 수 : <%=pHit%><br>
       </div>
     </div>
-    <%if(dto==null) {%>
-     	대충 댓글 달고 싶으면 로그인 하라는 안내 메세지
-    <%} else  {%>
-    <div>
-      <div class="comment_form">
-      	<form action="CommentsWriteServlet" method="get">
-      	  <input type="hidden" name="pNum" value="<%=pNum%>"/>
-      	  <textarea rows="3" cols="30" name="cContent"></textarea>
-      	  <input type="submit" value="댓글달기"/>
-      	</form>
-      </div>
-    </div>
-    <%} %><br>
+    
     
     <% if(comments==null){ %>
     	댓글 없음....
    	<%} else { %> 
     <ul>
       <%for(CommentsDTO cDTO : comments) {%>
-      		<li>
+      		<li class="comment">
       			<%if(cDTO.getcNum()!=cDTO.getParentnum()) {%> <!-- 답글일 경우 -->
       			<%} %>
       			<dl>
@@ -199,10 +194,10 @@
       					<%} %>
       					<span><%=pDate.substring(0, cDTO.getcDate().length()-3) %></span>&nbsp;&nbsp;
       					<%if(dto!=null && !(cDTO.getUserid().equals(dto.getUserid()))) {%>
-      					<a href="#">답글</a>&nbsp;&nbsp;
+      					<a href="javascript:" class="reply_comment" id="<%=cDTO.getcNum()%>">답글</a>&nbsp;&nbsp;
       					<%} %>
       					<%if(dto!=null && cDTO.getUserid().equals(dto.getUserid())) {%>
-      						<a href="#">수정</a>&nbsp;&nbsp;
+      						<a href="javascript:" class="update_comment" id="<%=cDTO.getcNum()%>">수정</a>&nbsp;&nbsp;
       						<a href="CommentsDeleteServlet?pNum=<%=pNum%>&cNum=<%=cDTO.getcNum()%>">삭제</a>
       					<%} %>
       				</dt>
@@ -210,10 +205,36 @@
       					<h3><%=cDTO.getcContent() %></h3>
       				</dd>
       			</dl>
+      			<form class="comment-reply-form" action="#" method="post">
+      				<input type="hidden" name="pNum" value="<%=pNum%>"/>
+      				<input type="hidden" name="parentnum" value="<%=cDTO.getcNum()%>"/>
+      	  			<textarea rows="3" cols="30" name="cContent"></textarea>
+      	  			<input type="submit" value="답글"/>
+      			</form>
+      			<%if(dto!=null && dto.getUserid().equals(cDTO.getUserid())) %>
+      			<form class="comment-update-form" action="CommentsUpdateServlet" method="post">
+      				<input type="hidden" name="pNum" value="<%=pNum%>"/>
+      				<input type="hidden" name="cNum" value="<%=cDTO.getcNum()%>"/>
+      	  			<textarea rows="3" cols="30" name="cContent"></textarea>
+      	  			<input type="submit" value="수정"/>
+      			</form>
       		</li>
       <%}%>
     </ul>
     <%} %>
+    <%if(dto==null) {%>
+     	대충 댓글 달고 싶으면 로그인 하라는 안내 메세지
+    <%} else  {%>
+    <div>
+      <div class="comment-form">
+      	<form action="CommentsWriteServlet" method="get">
+      	  <input type="hidden" name="pNum" value="<%=pNum%>"/>
+      	  <textarea rows="3" cols="30" name="cContent"></textarea>
+      	  <input type="submit" value="댓글달기"/>
+      	</form>
+      </div>
+    </div>
+    <%} %><br>
   </div>
   <!-- /.container -->
 
