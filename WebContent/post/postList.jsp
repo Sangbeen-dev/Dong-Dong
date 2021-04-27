@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.dto.PostDTO"%>
 <%@page import="java.util.List"%>
-
+<%@page import="java.text.DecimalFormat"%>
 
 
 
@@ -25,6 +25,10 @@
 		String addr = dto.getAddr();
 		int pNum = dto.getpNum();
 		
+		// 가격에 1000단위에 쉼표를 붙여 줍니다.
+	    DecimalFormat formatter = new DecimalFormat("###,###");
+	    String price = formatter.format(pPrice);
+	    
 		// 게시물올린시간 과거로 계산하는 코드
 		int pDateDiff = Integer.parseInt(dto.getpDateDiff());
 		String pDateResult = null;
@@ -82,13 +86,6 @@ $(document).ready(function(){
 	})
 	
 })
-    $('.sync-pagination').twbsPagination({
-        totalPages: 20,
-        onPageClick: function (evt, page) {
-            $('#content').text('Page ' + page);
-        }
-    });
-
 </script>
 
 </head>
@@ -106,14 +103,13 @@ $(document).ready(function(){
       <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Responsive image" style="max-width:288px; height:285px;" >
       <div class="card-body">
         <h6 class="card-title" style="height:50px;"><%=pTitle%></h6>
-        <h4><%=pPrice %>원</h4>
+        <h4><%=price %>원</h4>
       </div>
       <div class="card-footer">
         <small class="text-muted"><%=pDateResult%></small>
       </div>
     </div>
     </div>
-  </div>
   </div>
 </li>
 </ul>  
