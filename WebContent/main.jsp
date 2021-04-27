@@ -57,6 +57,8 @@
 <!-- content추가예정 -->
 <main>
 <jsp:include page="post/postList.jsp" flush="true"></jsp:include><br>
+
 </main>
+
 </body>
 </html>
