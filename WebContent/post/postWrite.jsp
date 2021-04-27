@@ -15,9 +15,44 @@
 				}
 			}
 			$(document).ready(function(){
+				$("form").on("submit",function(event){
+					var title = $("#title").val();
+					var content = $("#content").val();
+					var price = $("#price").val();
+					var file = $("#photo").val();
+					var category = $("#category option:selected").val();		
+					console.log("title"+title);
+					console.log("content"+content);
+					console.log("price"+price);
+					console.log("file"+file);
+					console.log("category"+category);
+					if(title.length == 0){
+						alert("글제목은 필수입니다.");
+						$("#title").focus();
+						event.preventDefault();	
+					} else if(category.length == 4){
+						alert("카테고리 선택은 필수입니다.");
+						$("#category").focus();
+						event.preventDefault();	
+					} else if(!file){
+						alert("사진첨부는 필수입니다.");
+						$("#photo").focus();
+						event.preventDefault();	
+					} else if(content.length == 0){
+						alert("글내용은 필수입니다.");
+						$("#content").focus();
+						event.preventDefault();
+					} else if(price.length == 0){
+						alert("가격은 필수입니다.");
+						$("#price").focus();
+						event.preventDefault();	
+					}
+				});
+				
 				$("#back").on("click", function() {
 					location.href ="main";
 				});
+				
 			});
 	</script>
 	<!-- Bootstrap css -->
@@ -50,8 +85,8 @@
   		<div class="row">
   			<div class="col-md-3 col-sm-2"></div>
 			<div class="col-md-6 col-sm-8 mb-3">
-				<select class="form-select" aria-label="Default select example" name="category">
-  					<option selected>카테고리 선택</option>
+				<select class="form-select" aria-label="Default select example" name="category" id="category">
+  					<option value="none" selected>카테고리 선택</option>
   					<option value="D">[Digital]: 디지털, 가전</option>
 					<option value="H">[House]: 가구, 인테리어</option>
 					<option value="BY">[BABY]: 유아동</option>
@@ -92,7 +127,7 @@
 		<div class="row">
  			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
-  				<textarea class="form-control" name="content" rows="10"
+  				<textarea class="form-control" name="content" id="content" rows="10"
   					placeholder="자세한 상품 설명과 거래 방법을 작성하세요"></textarea>
 			</div>
 			<div class="col-md-3 col-sm-2"></div>
@@ -104,7 +139,7 @@
  			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
     			<input type="text" name="price" id="price" class="form-control"
-    				aria-describedby="price" placeholder="상품가격">
+    				aria-describedby="price" placeholder="상품가격" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
   			</div>
   			<div class="col-md-3 col-sm-2"></div>
   		</div>

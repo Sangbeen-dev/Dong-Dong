@@ -30,7 +30,7 @@ public class KeywordSearchServlet extends HttpServlet {
 		
 		PostService service = new PostService();
 		List<PostDTO> list = service.searchByKeyword(keyword);
-		System.out.println("키워드로 검색해서 가져온 list : " + list);
+		
 		logr.info("Search_keyWord : {}", keyword);
 		
 		request.setAttribute("postList", list);

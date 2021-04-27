@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.dto.CommentsDTO;
 import com.dto.MemberDTO;
 import com.dto.PostDTO;
@@ -17,11 +20,13 @@ import com.service.PostService;
 
 @WebServlet("/CommentsWriteServlet")
 public class CommentsWriteServlet extends HttpServlet {
+	private static final Logger logr  = LoggerFactory.getLogger(CommentsWriteServlet.class);
 	private static final long serialVersionUID = 1L;
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	// 기본적인 설정 & 세션 등 생성
     			HttpSession session = request.getSession();
+    			request.setCharacterEncoding("UTF-8");
     			MemberDTO dto = (MemberDTO)session.getAttribute("login");
     			String pNum = request.getParameter("pNum");
     			String nextPage = "main";
@@ -41,6 +46,7 @@ public class CommentsWriteServlet extends HttpServlet {
     					session.setAttribute("mesg", "게시물 수정 중 오류가 발생하였습니다.");
     		    	} else {
     		    		session.setAttribute("mesg", "댓글 쓰기 성공");
+    		    		logr.info("write Comment : pNum - {} , loginUser - {}", pNum, dto.getUserid());
     		    		nextPage="PostDetailServlet?pNum="+pNum;
     		    	}
     			}

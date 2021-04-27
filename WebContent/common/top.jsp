@@ -1,6 +1,7 @@
 <%@page import="com.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%
  MemberDTO dto =(MemberDTO)session.getAttribute("login");
 %>   
@@ -11,6 +12,8 @@
 	안녕하세요. 
 	<a href="LogoutServlet">로그아웃</a>
 	<a href="MyPageServlet">mypage</a><!--수정  -->
+	<a href="PostWriteUIServlet">글쓰기</a>
+	
 <%
 	} else{ //아닌경우
 %>
