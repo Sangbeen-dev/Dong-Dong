@@ -3,14 +3,34 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CommentsMapper">
-
+	<select id="getCommentsByPNum" parameterType="int" resultType="CommentsDTO">
+		SELECT * 
+		FROM comments 
+		WHERE pNum=#{pNum} 
+		ORDER BY cNum ASC
+	</select>
+	
+	<select id="getCommentByCNum" parameterType="int" resultType="CommentsDTO">
+		SELECT * 
+		FROM comments 
+		WHERE cNum=#{cNum}
+	</select>
+	
 	<insert id="insertComments" parameterType="CommentsDTO">
-		insert into comments (pNum, cNum, userid, cContent, cDate)
-		values (#{pNum},COMMENTS_NUM.NEXTVAL,#{userid},#{cContent},SYSDATE)
+		INSERT 
+		INTO comments (pNum, cNum, userid, cContent, cDate)
+		VALUES (#{pNum},comments_num.NEXTVAL,#{userid},#{cContent},SYSDATE)
 	</insert>
 	
+	<update id="updateComment" parameterType="CommentsDTO">
+		UPDATE comments 
+		SET cContents=#{cContent}
+		WHERE cNum=${cNum}
+	</update>
 	
-	<select id="getCommentsByPNum" parameterType="int" resultType="CommentsDTO">
-		select * from comments where pnum=#{pnum} ORDER BY cnum desc
-	</select>
+	<delete id="deleteCommentByCNum" parameterType="int">
+		DELETE
+		FROM comments
+		WHERE cNum=#{cNum}
+	</delete>
 </mapper>

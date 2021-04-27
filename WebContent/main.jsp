@@ -46,8 +46,10 @@
 	session.removeAttribute("mesg");
 	}
 %>
+
 <header>
-<img id="main" src="/Dong-Dong/images/util/DongDonglogo.png" width="222" height="52" /><br><br>
+
+<img id="main" src="/Dong-Dong/images/util/DongDonglogo.png" width="222" height="52" style="cursor: pointer;"/><br><br>
 
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 <jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>

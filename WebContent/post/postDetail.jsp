@@ -136,13 +136,16 @@
 		 </tbody> 
 		
 		</table>
+		<% 	if(dto!=null)  {%>
+		  <a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=500,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">채팅</a>
+		<%	} %>
 		<% 	if(dto==null)  {%>
 		  <a href="">구매시 로그인이 필요합니다.</a><br>
 		<%	} else if(userid.equals(dto.getUserid())) { %>
 		  <a class="btn btn-primary" href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a>
 		  <a class="btn btn-primary" href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
 		<% 	} else  {%>
-          <a class="btn btn-primary" href="ChatServerServlet?userid=<%=dto.getUserid()%>">판매자와 채팅</a>
+		  
           <a id="favorite"  class="btn">
 		    <%if(favorite==true) {%>
     	    	<img id="favoriteImg" src="/Dong-Dong/images/util/favorite1.png"  width="50" height="50"/>
@@ -199,7 +202,8 @@
       					<a href="#">답글</a>&nbsp;&nbsp;
       					<%} %>
       					<%if(dto!=null && cDTO.getUserid().equals(dto.getUserid())) {%>
-      						<a href="#">수정</a>&nbsp;&nbsp;<a href="#">삭제</a>
+      						<a href="#">수정</a>&nbsp;&nbsp;
+      						<a href="CommentsDeleteServlet?pNum=<%=pNum%>&cNum=<%=cDTO.getcNum()%>">삭제</a>
       					<%} %>
       				</dt>
       				<dd>
