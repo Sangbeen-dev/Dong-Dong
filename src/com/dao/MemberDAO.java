@@ -61,5 +61,9 @@ public class MemberDAO {
 		return n;
 	}//end nickUpdate
 
+	public void withdrawal(SqlSession session, String userid) {
+		session.delete("MemberMapper.withdrawal", userid);
+	}
+
 }//end MemberDAO
 

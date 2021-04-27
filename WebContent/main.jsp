@@ -20,6 +20,21 @@
 </head>
 <body>
 <%
+	String withdrawal = (String)session.getAttribute("withdrawal");
+	if(withdrawal != null){
+%>
+	<script type = "text/javascript">
+		alert('<%=withdrawal %>');
+	</script>
+<%
+	//
+	session.removeAttribute("withdrawal");
+	session.removeAttribute("login");
+	}
+%>
+
+
+<%
 	String mesg = (String)session.getAttribute("mesg");
 	if(mesg != null){
 %>

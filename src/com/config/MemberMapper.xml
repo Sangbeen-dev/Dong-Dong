@@ -65,5 +65,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	nickName = #{nickName}
 	where userid = #{userid}
 	</update>
+	
+	<delete id="withdrawal" parameterType="String">
+	delete from member
+	where userid = #{userid}
+	</delete>
 
 </mapper>

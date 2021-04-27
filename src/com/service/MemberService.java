@@ -163,5 +163,19 @@ public class MemberService {
 		}
 		return n;
 	}//mypage에서 닉네임 중복검사후 변경
+
+
+	public void withdrawal(String userid) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			MemberDAO dao = new MemberDAO();
+			dao.withdrawal(session, userid);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+		} finally {
+			session.close();
+		}
+	}//end withdrawal
 	
 }

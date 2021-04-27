@@ -30,7 +30,27 @@
 		$("#submit").click(function() {
 			$("#myForm").attr("action","MemberUpdateServlet");		
 		})
-		
+		//회원탈퇴 버튼
+		$("#withdrawal").on("click", function() {
+			location.href ="WithdrawalServlet";
+		})
+		//동네인증 클릭시 이동할 페이지와 자식창 크기 조정 함수
+		function addrcheck() {
+			// 자식창 중앙 정렬
+			var popupWidth = 500;
+			var popupHeight = 500;
+			//오류 주의...
+			var popupX = (window.screen.width / 2) - (popupWidth / 2);
+			// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼줌
+			var popupY= (window.screen.height / 2) - (popupHeight / 2);
+			// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼줌
+			url = "addrcheck.jsp"
+			open(url,"addrcheck", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+			}
+		//동네 인증
+		$("#addrcheck").click(function() {
+			addrcheck();
+		})
 		//닉네임 중복체크 버튼시 이동할 페이지와 자식창 크기 조정 함수
 		function confirmNick() {
 			// 자식창 중앙 정렬
@@ -82,7 +102,7 @@
 <button type="button" class="btn btn-outline-primary" id="mypost" >내가 쓴 글 보기</button> &nbsp;
 <button type="button" class="btn btn-outline-success" id="favorite">관심목록</button>&nbsp;
 <button type="button" class="btn btn-outline-danger" id="transaction" >거래내역</button> &nbsp;
-
+<button type="button" class="btn btn-outline-success" id="addrcheck" >우리동네 인증하기</button> &nbsp;
 <br><br><br>
 <form id="myForm" action="#" method="post" enctype="multipart/form-data"> 
   <div class="container">
@@ -147,7 +167,10 @@
 <div class="mb-3">
 	<button id="submit" type="submit" class="btn btn-info">수정</button>
 	<button type="reset" class="btn btn-danger" >취소</button>
+	<button type="button" class="btn btn-outline-danger" id="withdrawal" style="float: right;">회원탈퇴</button> &nbsp;
 </div>
+
+
 
 </div>
 </form>
