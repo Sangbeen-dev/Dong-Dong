@@ -69,4 +69,10 @@ public class PostDAO {
 	}
 
 
+	public List<PostDTO> searchByCategory(SqlSession session, String category) {
+		List<PostDTO> list = session.selectList("PostMapper.searchByCategory", category);
+		return list;
+	}
+
+
 }

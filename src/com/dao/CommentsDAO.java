@@ -16,4 +16,17 @@ public class CommentsDAO {
 		List<CommentsDTO> list = session.selectList("CommentsMapper.getCommentsByPNum", pNum);
 		return list;
 	}
+
+	public CommentsDTO getCommentByCNum(SqlSession session, int cNum) {
+		CommentsDTO dto = session.selectOne("CommentsMapper.getCommentByCNum", cNum);
+		return dto;
+	}
+
+	public int deleteCommentByCNum(SqlSession session, int cNum) {
+		return session.delete("CommentsMapper.deleteCommentByCNum",cNum);
+	}
+
+	public int updateComment(SqlSession session, CommentsDTO dto) {
+		return session.update("CommentsMapper.updateComment",dto);
+	}
 }
