@@ -35,9 +35,9 @@ public class PostDeleteServlet extends HttpServlet {
 			PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum));
 			
 			if(dto.getUserid().equals(pDTO.getUserid())){ // 삭제할 게시글과 로그인 유저 정보가 일치하는 경우
-				int DeleteResult = pService.deletePostByPNum(Integer.parseInt(pNum));
+				int deleteResult = pService.deletePostByPNum(Integer.parseInt(pNum));
 				
-				if(DeleteResult!=1) { // 게시글 삭제가 실패했을 경우 
+				if(deleteResult!=1) { // 게시글 삭제가 실패했을 경우 
 					session.setAttribute("mesg", "게시물 삭제 중 오류가 발생하였습니다.");
 					nextPage="PostDetailServlet?pNum="+pNum;
 		    	} else {

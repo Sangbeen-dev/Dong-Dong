@@ -40,4 +40,48 @@ public class CommentsService {
 		}
 		return list;
 	}
+	
+	public CommentsDTO getCommentByCNum(int cNum) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		CommentsDTO dto = null;
+		try {
+			CommentsDAO dao = new CommentsDAO();
+			dto = dao.getCommentByCNum(session, cNum);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+
+	public int deleteCommentByCNum(int cNum) {
+		SqlSession session = MySqlSessionFactory.getSession();
+	    int deleteResult = 0;
+	    try {
+	    	CommentsDAO dao = new CommentsDAO();
+	    	deleteResult = dao.deleteCommentByCNum(session, cNum);
+	    	session.commit();
+	    } catch (Exception e) {
+	    	session.rollback();
+	    	e.printStackTrace();
+	    } finally {
+	    	session.close();
+	    }
+	    return deleteResult;
+	}
+
+	public int updateComment(CommentsDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSession();
+	    int updateResult = 0;
+	    try {
+	    	CommentsDAO dao = new CommentsDAO();
+	    	updateResult = dao.updateComment(session, dto);
+	    	session.commit();
+	    } catch (Exception e) {
+	    	session.rollback();
+	    	e.printStackTrace();
+	    } finally {
+	    	session.close();
+	    }
+	    return updateResult;
+	}
 }
