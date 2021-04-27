@@ -17,7 +17,7 @@ public class BroadSocket {
     
     @OnMessage
     public void onMessage(String message, Session session) throws IOException {
-        System.out.println(message);
+        //System.out.println(message);
         synchronized(clients) {
             for(Session client : clients) {
                 if(!client.equals(session)) {

@@ -46,34 +46,7 @@
     webSocket.onmessage = function(event) {
         onMessage(event)
     };
-    function onMessage(event) {
-        var message = event.data.split("|");
-        var sender = message[0];
-        var content = message[1];
-        if (content == "") {
-            
-        } else {
-            if (content.match("/")) {
-                if (content.match(("/" + $("#chat_id").val()))) {
-                    var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
-                    if (temp[1].trim() == "") {
-                    } else {
-                        $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
-                            + sender + content.replace("/" + $("#chat_id").val(), "(귓속말) :") + "</p>");
-                    }
-                } else {
-                }
-            } else {
-                if (content.match("!")) {
-                    $("#messageWindow").html($("#messageWindow").html()
-                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
-                } else {
-                    $("#messageWindow").html($("#messageWindow").html()
-                        + "<p class='chat_content'>" + sender + " : " + content + "</p>");
-                }
-            }
-        }
-    }
+    
     function onOpen(event) {
         $("#messageWindow").html("<p class='chat_content'>채팅에 참여하였습니다.</p>");
     }
