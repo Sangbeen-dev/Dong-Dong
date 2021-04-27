@@ -1,17 +1,26 @@
+<%@page import="com.dto.MemberDTO"%>
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%-- <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%> --%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page session="true"%>
- 
+<%
+
+	MemberDTO dto = (MemberDTO) session.getAttribute("login");
+	String userid = dto.getUserid();
+
+%>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <body>
+	<c:set var="userid" value="<%=userid %>" />
     <!-- 로그인한 상태일 경우와 비로그인 상태일 경우의 chat_id설정 -->
-    <c:if test="${(login.id ne '') and !(empty login.id)}">
-        <input type="hidden" value='${login.id }' id='chat_id' />
+    <c:if test="${(userid ne '') and !(empty userid)}">
+        <input type="hidden" value='${userid}' id='chat_id' />
     </c:if>
-    <c:if test="${(login.id eq '') or (empty login.id)}">
-        <input type="hidden" value='<%=session.getId().substring(0, 6)%>'
+    <c:if test="${(userid eq '') or (empty userid)}">
+        <input type="hidden" value='<%=userid %>'
             id='chat_id' />
     </c:if>
     <!--     채팅창 -->
@@ -22,17 +31,17 @@
             <input type="submit" value="send" onclick="send()" />
         </fieldset>
     </div>
-    <img class="chat" src="./img/chat.png" />
+    <img class="chat" src="/Dong-Dong/images/util/chat.png" />
 </body>
 <!-- 말풍선아이콘 클릭시 채팅창 열고 닫기 -->
 <script>
     $(".chat").on({
         "click" : function() {
-            if ($(this).attr("src") == "./img/chat.png") {
+            if ($(this).attr("src") == "/Dong-Dong/images/util/chat.png") {
                 $(".chat").attr("src", "./img/chathide.png");
                 $("#_chatbox").css("display", "block");
             } else if ($(this).attr("src") == "./img/chathide.png") {
-                $(".chat").attr("src", "./img/chat.png");
+                $(".chat").attr("src", "/Dong-Dong/images/util/chat.png");
                 $("#_chatbox").css("display", "none");
             }
         }
@@ -40,7 +49,7 @@
 </script>
 <script type="text/javascript">
     var textarea = document.getElementById("messageWindow");
-    var webSocket = new WebSocket('ws://localhost:8090/project0509Final/broadcasting');
+    var webSocket = new WebSocket('ws://localhost:8079/broadcasting');
     var inputMessage = document.getElementById('inputMessage');
     webSocket.onerror = function(event) {
         onError(event)
