@@ -32,6 +32,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteCommentByCNum" parameterType="int">
 		DELETE
 		FROM comments
-		WHERE cNum=#{cNum}
+		WHERE cNum IN (
+			SELECT cNum
+			FROM comments
+			START WITH cNum=#{cNum}
+			CONNECT BY PRIOR cNum = parentNum)
 	</delete>
 </mapper>
