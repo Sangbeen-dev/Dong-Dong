@@ -46,7 +46,17 @@
     webSocket.onmessage = function(event) {
         onMessage(event)
     };
-    
+    function onMessage(event) {
+        var message = event.data.split("|");
+        var sender = message[0];
+        var content = message[1];
+        if (content == "") {
+        
+        } else {
+        	$("#messageWindow").html($("#messageWindow").html()
+                    + "<p class='chat_content'>" + sender + " : " + content + "</p>");
+        }
+    }
     function onOpen(event) {
         $("#messageWindow").html("<p class='chat_content'>채팅에 참여하였습니다.</p>");
     }

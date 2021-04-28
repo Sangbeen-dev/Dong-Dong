@@ -21,11 +21,11 @@
 					var price = $("#price").val();
 					var file = $("#photo").val();
 					var category = $("#category option:selected").val();		
-					console.log("title"+title);
+					/* console.log("title"+title);
 					console.log("content"+content);
 					console.log("price"+price);
 					console.log("file"+file);
-					console.log("category"+category);
+					console.log("category"+category); */
 					if(title.length == 0){
 						alert("글제목은 필수입니다.");
 						$("#title").focus();

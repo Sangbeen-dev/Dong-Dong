@@ -21,6 +21,7 @@ public class BroadSocket {
         synchronized(clients) {
             for(Session client : clients) {
                 if(!client.equals(session)) {
+                	System.out.println(message);
                     client.getBasicRemote().sendText(message);
                 }
             }
