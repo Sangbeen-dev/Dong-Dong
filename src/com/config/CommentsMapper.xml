@@ -6,8 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getCommentsByPNum" parameterType="int" resultType="CommentsDTO">
 		SELECT * 
 		FROM comments 
-		WHERE pNum=#{pNum} 
-		ORDER BY cNum ASC
+		WHERE pNum=#{pNum}
+		START WITH cLevel = 1
+		CONNECT BY PRIOR cNum = parentNum
 	</select>
 	
 	<select id="getCommentByCNum" parameterType="int" resultType="CommentsDTO">
@@ -18,13 +19,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="insertComments" parameterType="CommentsDTO">
 		INSERT 
-		INTO comments (pNum, cNum, userid, cContent, cDate)
-		VALUES (#{pNum},comments_num.NEXTVAL,#{userid},#{cContent},SYSDATE)
+		INTO comments (pNum, cNum, userid, cContent, createDate, parentNum, cLevel)
+		VALUES (#{pNum},comments_num.NEXTVAL,#{userid},#{cContent},SYSDATE,#{parentNum},#{cLevel})
 	</insert>
 	
 	<update id="updateComment" parameterType="CommentsDTO">
 		UPDATE comments 
-		SET cContent=#{cContent}
+		SET cContent=#{cContent}, updateDate=SYSDATE
 		WHERE cNum=${cNum}
 	</update>
 	

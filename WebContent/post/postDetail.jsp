@@ -177,22 +177,22 @@
       </div>
     </div>
     
-    
+    <!-- 댓글 기능 표시 시작 지점 --------------------------------------- -->
     <% if(comments==null){ %>
     	댓글 없음....
    	<%} else { %> 
     <ul>
       <%for(CommentsDTO cDTO : comments) {%>
       		<li class="comment">
-      			<%if(cDTO.getcNum()!=cDTO.getParentnum()) {%> <!-- 답글일 경우 -->
+      			<%if(cDTO.getcNum()!=cDTO.getParentNum()) {%> <!-- 답글일 경우 -->
       			<%} %>
       			<dl>
       				<dt>
       					작성자 : <%=cDTO.getUserid() %>&nbsp;&nbsp;
-      					<%if(cDTO.getcNum()!=cDTO.getParentnum()) {%>
+      					<%if(cDTO.getcNum()!=cDTO.getParentNum()) {%>
       						
       					<%} %>
-      					<span><%=(cDTO.getcDate()).substring(0, cDTO.getcDate().length()-3) %></span>&nbsp;&nbsp;
+      					<span><%=(cDTO.getCreateDate()).substring(0, cDTO.getCreateDate().length()-3) %></span>&nbsp;&nbsp;
       					<%if(dto!=null && !(cDTO.getUserid().equals(dto.getUserid()))) {%>
       					<a href="javascript:" class="reply_comment" id="<%=cDTO.getcNum()%>">답글</a>&nbsp;&nbsp;
       					<%} %>
@@ -205,9 +205,9 @@
       					<h3><%=cDTO.getcContent() %></h3>
       				</dd>
       			</dl>
-      			<form class="comment-reply-form" action="#" method="post">
+      			<form class="comment-reply-form" action="CommentsWriteServlet" method="post">
       				<input type="hidden" name="pNum" value="<%=pNum%>"/>
-      				<input type="hidden" name="parentnum" value="<%=cDTO.getcNum()%>"/>
+      				<input type="hidden" name="parentNum" value="<%=cDTO.getcNum()%>"/>
       	  			<textarea rows="3" cols="30" name="cContent"></textarea>
       	  			<input type="submit" value="답글"/>
       			</form>
