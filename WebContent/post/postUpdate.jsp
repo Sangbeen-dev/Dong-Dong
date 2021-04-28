@@ -14,6 +14,37 @@
 			}
 		}
 		$(document).ready(function(){
+			$("form").on("submit",function(event){
+				var pTitle = $("#pTitle").val();
+				var pContent = $("#pContent").val();
+				var pPrice = $("#pPrice").val();
+				var file = $("#photo").val();
+				var pCategory = $("#pCategory option:selected").val();		
+				console.log("pTitle"+pTitle);
+				console.log("pContent"+pContent);
+				console.log("pPrice"+pPrice);
+				console.log("file"+file);
+				console.log("pCategory"+pCategory);
+
+				if(pTitle.length == 0){
+					alert("글제목은 필수입니다.");
+					$("#pTitle").focus();
+					event.preventDefault();	
+				} else if(pCategory.length == 4){
+					alert("카테고리 선택은 필수입니다.");
+					$("#pCategory").focus();
+					event.preventDefault();	
+				} else if(pContent.length == 0){
+					alert("글내용은 필수입니다.");
+					$("#pContent").focus();
+					event.preventDefault();
+				} else if(pPrice.length == 0){
+					alert("가격은 필수입니다.");
+					$("#pPrice").focus();
+					event.preventDefault();	
+				}
+			});
+		
 			$("#back").on("click", function() {
 				location.href ="PostDetailServlet?pNum="+$("#pNum").val();
 			});
@@ -41,7 +72,7 @@
 			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
     			<input type="text" name="pTitle" id="pTitle" class="form-control"
-    				aria-describedby="emailHelp" value="<%=dto.getpTitle()%>" readonly="readonly">
+    				aria-describedby="emailHelp" value="<%=dto.getpTitle()%>">
   			</div>
   			<div class="col-md-3 col-sm-2"></div>
   		</div>
@@ -49,7 +80,7 @@
   		<div class="row">
   			<div class="col-md-3 col-sm-2"></div>
 			<div class="col-md-6 col-sm-8 mb-3">
-				<select class="form-select" aria-label="Default select example" name="pCategory">
+				<select class="form-select" aria-label="Default select example" name="pCategory" id="pCategory">
   					<option value="D" <%if(dto.getpCategory().equals("D")){%> Selected <%} %>>[Digital]: 디지털, 가전, 게임</option>
 					<option value="L" <%if(dto.getpCategory().equals("L")){%> Selected <%} %>>[Living]: 가구, 인테리어, 생활, 가공식품, 반려동물 용품</option>
 					<option value="F" <%if(dto.getpCategory().equals("F")){%> Selected <%} %>>[Fashion]: 여성의류, 남성의류, 잡화</option>
@@ -81,7 +112,7 @@
 		<div class="row">
  			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
-  				<textarea class="form-control" name="pContent" rows="10"
+  				<textarea class="form-control" name="pContent" rows="10" id="pContent"
   					placeholder="자세한 상품 설명과 거래 방법을 작성하세요"><%= dto.getpContent() %></textarea>
 			</div>
 			<div class="col-md-3 col-sm-2"></div>

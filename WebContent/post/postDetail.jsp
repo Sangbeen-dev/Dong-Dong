@@ -189,16 +189,13 @@
       			<dl>
       				<dt>
       					작성자 : <%=cDTO.getUserid() %>&nbsp;&nbsp;
-      					<%if(cDTO.getcNum()!=cDTO.getParentNum()) {%>
-      						
-      					<%} %>
       					<span><%=(cDTO.getCreateDate()).substring(0, cDTO.getCreateDate().length()-3) %></span>&nbsp;&nbsp;
-      					<%if(dto!=null && !(cDTO.getUserid().equals(dto.getUserid()))) {%>
-      					<a href="javascript:" class="reply_comment" id="<%=cDTO.getcNum()%>">답글</a>&nbsp;&nbsp;
-      					<%} %>
-      					<%if(dto!=null && cDTO.getUserid().equals(dto.getUserid())) {%>
-      						<a href="javascript:" class="update_comment" id="<%=cDTO.getcNum()%>">수정</a>&nbsp;&nbsp;
-      						<a href="CommentsDeleteServlet?pNum=<%=pNum%>&cNum=<%=cDTO.getcNum()%>">삭제</a>
+      					<%if(dto!=null) {%>
+      						<a href="javascript:" class="reply_comment" id="<%=cDTO.getcNum()%>">답글</a>&nbsp;&nbsp;
+      						<%if(cDTO.getUserid().equals(dto.getUserid())) {%>
+      							<a href="javascript:" class="update_comment" id="<%=cDTO.getcNum()%>">수정</a>&nbsp;&nbsp;
+      							<a href="CommentsDeleteServlet?pNum=<%=pNum%>&cNum=<%=cDTO.getcNum()%>">삭제</a>
+      						<%} %>
       					<%} %>
       				</dt>
       				<dd>

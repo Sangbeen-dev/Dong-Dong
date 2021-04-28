@@ -51,6 +51,7 @@ public class PostUpdateServlet extends HttpServlet {
 				
 				// 수정할 정보 설정
 				uDTO.setpNum(Integer.parseInt(pNum));
+				uDTO.setpTitle(multi.getParameter("pTitle"));
 				uDTO.setpCategory(multi.getParameter("pCategory"));
 				uDTO.setpContent(multi.getParameter("pContent"));
 				uDTO.setpPrice(Integer.parseInt(multi.getParameter("pPrice")));
