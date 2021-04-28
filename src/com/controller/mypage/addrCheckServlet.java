@@ -1,6 +1,7 @@
 package com.controller.mypage;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,37 +12,42 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dto.MemberDTO;
+import com.dto.PostDTO;
 import com.service.MemberService;
+import com.service.PostService;
 
 /**
- * Servlet implementation class nickUpdateServlet
+ * Servlet implementation class addrCheckServlet
  */
-@WebServlet("/nickUpdateServlet")
-public class nickUpdateServlet extends HttpServlet {
+@WebServlet("/addrCheckServlet")
+public class addrCheckServlet extends HttpServlet {
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
-		//System.out.println(dto); 
-		String nextPage =null;
-		if(dto != null) {
-			nextPage = "okNick.jsp";
+		String nextPage = null;
+		if(dto!=null) {
 			String userid = dto.getUserid();
-			String nickName = request.getParameter("nickName");
+			String dong = request.getParameter("dong");
+			System.out.println(dong);
 			MemberService service = new MemberService();
-			MemberDTO dto2 = new MemberDTO();
-			dto2.setUserid(userid);
-			dto2.setNickName(nickName);
-			int n = service.nickUpdate(dto2);
-			request.setAttribute("okNick", n);
-			request.setAttribute("nickDto", dto2);
-			//request.setAttribute("nickDTO", nickName);
-		}else{
-			nextPage= "LoginUIServlet";
+			int n = service.addrAuth1(userid, dong);
+			if(n==1) {
+				request.setAttribute("auth1", n);
+			}else {
+				 n = service.addrAuth2(userid, dong);
+				request.setAttribute("auth2", n);
+			}
+			nextPage = "addrauth.jsp";
+			
+			
+		}else {
+			nextPage = "LoginUIServlet";
 			session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		}
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
-		
 	}
 
 	/**

@@ -2,8 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-MemberDTO dto = (MemberDTO)request.getAttribute("nickDto");
-String nickName = dto.getNickName();
+ MemberDTO dto = (MemberDTO)request.getAttribute("nickDto"); 
+ String nickName = dto.getNickName(); 
+System.out.print(nickName);
 %>
 
 <!DOCTYPE html>
@@ -24,8 +25,9 @@ div{
     $(document).ready(function(){
 		$("button").click(function() {
 			var nickName = <%= nickName %>;
-			console.log(nickName);
+			console.log(nickName.length);
 			opener.$("#resultNick").val(nickName);
+			console.log("여기"+nickName);
 			window.close();
 		});
  });

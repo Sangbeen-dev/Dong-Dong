@@ -128,6 +128,8 @@ public class MemberService {
 			System.out.println("서비스==="+dto2);
 			session.commit();
 		}catch (Exception e) {
+			System.out.println("롤백=====");
+			e.printStackTrace();
 			session.rollback();
 		}finally {
 			session.close();
@@ -177,5 +179,33 @@ public class MemberService {
 			session.close();
 		}
 	}//end withdrawal
+
+
+	public int addrAuth1(String userid, String dong) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+			//dao.addrAuth1(session, userid, dong);
+		} finally {
+			session.close();
+		}
+		return n;
+	}
+	
+	public int addrAuth2(String userid, String dong) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+		//	dao.addrAuth2(session, userid, dong);
+			session.commit();
+		}catch (Exception e) {
+			session.rollback();
+		}finally {
+			session.close();
+		}
+		return n;
+	}
 	
 }

@@ -33,13 +33,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where username = #{username} and userid = #{userid} and phone = #{phone} and email1 = #{email1} and email2 = #{email2}
 	</select>
 	
-	<update id="memberUpdate" parameterType="MemberDTO">
+	<update id="memberUpdate"  parameterType="MemberDTO" >
 	update member set
 	addr = #{addr},
 	phone = #{phone},
 	email1 = #{email1},
 	email2 = #{email2},
-	userImage = #{userImage}
+	userimage = #{userimage}
 	where userid = #{userid}
 	</update>
    

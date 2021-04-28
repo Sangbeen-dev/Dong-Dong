@@ -65,5 +65,6 @@ public class MemberDAO {
 		session.delete("MemberMapper.withdrawal", userid);
 	}
 
+	
 }//end MemberDAO
 
