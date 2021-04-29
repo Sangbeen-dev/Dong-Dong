@@ -45,24 +45,31 @@ public class MemberDAO {
 
 	public int memberUpdate(SqlSession session, MemberDTO dto2) {
 		int num = session.update("MemberMapper.memberUpdate", dto2);
-		System.out.println("업데이트dao"+dto2);
 		return num;
 	}//end memberUpdate
 
 	public int nickCheck(SqlSession session, String nickName) {
 		int n = session.selectOne("MemberMapper.nickCheck", nickName);
-		System.out.println("dao=="+n);
 		return n;
 	}//end nickCHeck
 
 	public int nickUpdate(SqlSession session, MemberDTO dto2) {
 		int n = session.update("MemberMapper.nickUpdate", dto2);
-		System.out.println(dto2);
 		return n;
 	}//end nickUpdate
 
 	public void withdrawal(SqlSession session, String userid) {
 		session.delete("MemberMapper.withdrawal", userid);
+	}
+
+	public int addrAuth1(SqlSession session, MemberDTO dto2) {
+		int n = session.selectOne("MemberMapper.addrAuth1", dto2);
+		return n;
+	}
+	
+	public int addrAuth2(SqlSession session, MemberDTO dto2) {
+		int n = session.update("MemberMapper.addrAuth2", dto2);
+		return n;
 	}
 
 	

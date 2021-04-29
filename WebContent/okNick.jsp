@@ -24,10 +24,8 @@ div{
 <script type="text/javascript">
     $(document).ready(function(){
 		$("button").click(function() {
-			var nickName = <%= nickName %>;
-			console.log(nickName.length);
+			var nickName = $("#nick").text();
 			opener.$("#resultNick").val(nickName);
-			console.log("여기"+nickName);
 			window.close();
 		});
  });
@@ -35,7 +33,7 @@ div{
 </head>
 <body>
 <div>
-<h4><%= nickName %> 으로 변경되었습니다</h4>
+<h4><span id="nick"><%= nickName %></span> 으로 변경되었습니다</h4>
 <button>확인</button>
 </div>
 </body>

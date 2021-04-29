@@ -69,7 +69,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			System.out.println(num);
 			//세션에 mesg '회원정보가 수정되었습니다.' 저장
 			session.setAttribute("mesg", "회원정보가 수정되었습니다.");
-			nextPage="main"; 
+			nextPage="mypage.jsp"; 
 		} else {
 			nextPage = "LoginUIServlet";
 			request.setAttribute("mesg", "로그인이 필요한 작업입니다.");

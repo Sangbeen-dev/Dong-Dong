@@ -27,17 +27,23 @@ public class addrCheckServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
 		String nextPage = null;
+		
 		if(dto!=null) {
 			String userid = dto.getUserid();
-			String dong = request.getParameter("dong");
-			System.out.println(dong);
+			String userName = dto.getUsername();
+			String addr = request.getParameter("dong");
+			//System.out.println("주소"+addr);
+			MemberDTO dto2 = new MemberDTO();
+			dto2.setUsername(userName);
+			dto2.setUserid(userid);
+			dto2.setAddr(addr);
 			MemberService service = new MemberService();
-			int n = service.addrAuth1(userid, dong);
+			int n = service.addrAuth1(dto2);//db에저장된 주소랑 같은지 확인
 			if(n==1) {
-				request.setAttribute("auth1", n);
+				request.setAttribute("auth1", addr);
 			}else {
-				 n = service.addrAuth2(userid, dong);
-				request.setAttribute("auth2", n);
+				 n = service.addrAuth2(dto2);//현재위치로 주소 변경
+				request.setAttribute("auth2", addr);
 			}
 			nextPage = "addrauth.jsp";
 			

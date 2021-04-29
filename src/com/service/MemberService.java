@@ -181,24 +181,24 @@ public class MemberService {
 	}//end withdrawal
 
 
-	public int addrAuth1(String userid, String dong) {
+	public int addrAuth1(MemberDTO dto2) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		try {
 			MemberDAO dao = new MemberDAO();
-			//dao.addrAuth1(session, userid, dong);
+			n = dao.addrAuth1(session, dto2);
 		} finally {
 			session.close();
 		}
 		return n;
-	}
+	}//동 같은지 체크
 	
-	public int addrAuth2(String userid, String dong) {
+	public int addrAuth2(MemberDTO dto2) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		try {
 			MemberDAO dao = new MemberDAO();
-		//	dao.addrAuth2(session, userid, dong);
+			n = dao.addrAuth2(session, dto2);
 			session.commit();
 		}catch (Exception e) {
 			session.rollback();
@@ -206,6 +206,6 @@ public class MemberService {
 			session.close();
 		}
 		return n;
-	}
+	}//동 달라서 현재위치로 addr 수정
 	
 }

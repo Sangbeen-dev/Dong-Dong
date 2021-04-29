@@ -20,6 +20,7 @@
 		$("#addrcheck").click(function() {
 			console.log("이벤트"+$("#dong").text());
 			var dong = $("#dong").text();
+			console.log(dong);
 			location.href ="addrCheckServlet?dong="+dong;
 		});
 	})//end ready
@@ -51,7 +52,7 @@ if (navigator.geolocation) {
             
             // 마커와 인포윈도우를 표시합니다
         displayMarker(locPosition, message, lat, lon);
-        console.log(message);
+        //console.log(message);
            // displayMarker(locPosition, function() {
            
                   
@@ -91,10 +92,10 @@ function displayMarker(locPosition, message, lat, lon) {
 			y: lon
 		},    */
 		success: function(data, status, xhr) {
-			console.log(data);
-			console.log(status);
+			//console.log(data);
+			//console.log(status);
 			var address =data.documents[0].address;
-			console.log(data.documents[0]);
+			//console.log(data.documents[0]);
 			message = '<div id="addr1"><span class="title">지번 주소 :</span> ' + address.address_name +
 			'</div>'+'<div id="dong" style="display:block">'+address.region_3depth_name+'</div>';
 			
