@@ -28,24 +28,49 @@
     String price = formatter.format(Integer.parseInt(pPrice));
     
     String category = "";
-    // 카테고리 설정
-    switch (pCategory) {
-    	case "D" :
-    		category = "Digital";
+    // 카테고리 설정	
+	switch (pCategory) {
+    	case "H" :
+    		category = "가구, 인테리어";
+    		break;
+    	case "BY" :
+    		category = "유아동";
     		break;
     	case "L" :
-    		category = "Living";
+    		category = "생활, 가공식품";
     		break;
-    	case "F" :
-    		category = "Fashion";
+    	case "S" :
+    		category = "스포츠, 레저";
     		break;
-    	case "C" :
-    		category = "Culture";
+    	case "W" :
+    		category = "여성의류, 여성잡화";
+    		break;
+    	case "M" :
+    		category = "남성의류, 남성잡화";
+    		break;
+    	case "G" :
+    		category = "게임, 취미";
+    		break;
+    	case "BT" :
+    		category = "뷰티, 미용";
+    		break;
+    	case "PET" :
+    		category = "반려동물용품";
+    		break;
+    	case "BK" :
+    		category = "도서";
+    		break;
+    	case "T" :
+    		category = "티켓";
+    		break;
+    	case "P" :
+    		category = "식물";
     		break;
     	case "E" :
-    		category = "ETC";
+    		category = "기타";
     		break;
     	default :
+    		category = "오류...";
     		break;
     } 
 %>
@@ -203,7 +228,13 @@
       				<dt>
       					<img id="profileImage" class="img-fluid rounded mb-4 mb-lg-0" src="/Dong-Dong/images/profile/<%=cDTO.getUserimage()%>" width="70px" height="">
       					&nbsp;&nbsp;작성자 : <%=cDTO.getNickName()%>&nbsp;&nbsp;
-      					<span><%=(cDTO.getCreateDate()).substring(0, cDTO.getCreateDate().length()-3) %></span>&nbsp;&nbsp;
+      					<span>
+      						<%if(cDTO.getUpdateDate()==null){%>
+      							<%=(cDTO.getCreateDate()).substring(0, cDTO.getCreateDate().length()-3) %>
+      						<%} else {%>
+      							<%=(cDTO.getUpdateDate()).substring(0, cDTO.getCreateDate().length()-3) %>(수정됨)
+      						<%} %>
+      					</span>&nbsp;&nbsp;
       					<%if(dto!=null) {%>
       						<a href="javascript:" class="reply_comment" id="<%=cDTO.getcNum()%>">답글</a>&nbsp;&nbsp;
       						<%if(cDTO.getUserid().equals(dto.getUserid())) {%>
