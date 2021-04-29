@@ -70,6 +70,9 @@
 .comment form{
 	display: none;
 }
+#profileImage{
+	vertical-align: middle;
+}
 </style>
 
 
@@ -110,7 +113,17 @@
 		$(".reply_comment").on("click", function() {
 			$(this).parent().parent().parent().find(".comment-reply-form").slideToggle(200);
 		});//on
-	});//ready()
+		
+		$("form").on("submit",function(event){
+			var cContent = $(this).find("textarea").val();
+
+			if(cContent.length == 0){
+				alert("댓글을 입력하세요.");
+				$(this).find("textarea").focus();
+				event.preventDefault();	
+			}  
+		});
+	});
 <%}%>
 </script>
 
@@ -188,7 +201,8 @@
       			<%} %>
       			<dl>
       				<dt>
-      					작성자 : <%=cDTO.getUserid() %>&nbsp;&nbsp;
+      					<img id="profileImage" class="img-fluid rounded mb-4 mb-lg-0" src="/Dong-Dong/images/profile/<%=cDTO.getUserimage()%>" width="70px" height="">
+      					&nbsp;&nbsp;작성자 : <%=cDTO.getNickName()%>&nbsp;&nbsp;
       					<span><%=(cDTO.getCreateDate()).substring(0, cDTO.getCreateDate().length()-3) %></span>&nbsp;&nbsp;
       					<%if(dto!=null) {%>
       						<a href="javascript:" class="reply_comment" id="<%=cDTO.getcNum()%>">답글</a>&nbsp;&nbsp;

@@ -5,8 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="CommentsMapper">
 	<select id="getCommentsByPNum" parameterType="int" resultType="CommentsDTO">
 		SELECT * 
-		FROM comments 
-		WHERE pNum=#{pNum}
+		FROM (SELECT c.userid "USERID", pNum, cNum, cContent, createDate, 
+					 updateDate, parentNum, cLevel, nickname, userimage 
+			  FROM comments c 
+			  JOIN member m ON c.userid=m.userid) 
+		WHERE pNum=#{pNim}
 		START WITH cLevel = 1
 		CONNECT BY PRIOR cNum = parentNum
 	</select>

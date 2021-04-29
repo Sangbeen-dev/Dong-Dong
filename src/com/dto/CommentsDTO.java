@@ -9,12 +9,17 @@ public class CommentsDTO {
 	private String updateDate;
 	private int parentNum;
 	private int cLevel;
+	
+	// 세부 페이지에 뿌릴때 필요한 유저정보를 저장할 변수
+	private String nickName;
+	private String userimage;
+	
 	public CommentsDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public CommentsDTO(int pNum, int cNum, String userid, String cContent, String createDate, String updateDate,
-			int parentNum, int clevel) {
+			int parentNum, int cLevel, String nickName, String userimage) {
 		super();
 		this.pNum = pNum;
 		this.cNum = cNum;
@@ -23,14 +28,18 @@ public class CommentsDTO {
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 		this.parentNum = parentNum;
-		this.cLevel = clevel;
+		this.cLevel = cLevel;
+		this.nickName = nickName;
+		this.userimage = userimage;
 	}
+	
 	@Override
 	public String toString() {
 		return "CommentsDTO [pNum=" + pNum + ", cNum=" + cNum + ", userid=" + userid + ", cContent=" + cContent
 				+ ", createDate=" + createDate + ", updateDate=" + updateDate + ", parentNum=" + parentNum + ", cLevel="
-				+ cLevel + "]";
+				+ cLevel + ", nickName=" + nickName + ", userimage=" + userimage + "]";
 	}
+	
 	public int getpNum() {
 		return pNum;
 	}
@@ -78,5 +87,17 @@ public class CommentsDTO {
 	}
 	public void setcLevel(int cLevel) {
 		this.cLevel = cLevel;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	public String getUserimage() {
+		return userimage;
+	}
+	public void setUserimage(String userimage) {
+		this.userimage = userimage;
 	}
 }
