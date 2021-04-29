@@ -36,6 +36,7 @@ public class SendMailServlet extends HttpServlet {
 	    String to = mailTo; //받는 사람 메일 주소
 	    String content = "";
 	    String mesg = "";
+	    
 	    if(userid != null) {
 	    	content = "귀하의 아이디:" + userid;//메일 내용
 	    	subject = "동동에서 보내는 아이디 확인 메일입니다.";

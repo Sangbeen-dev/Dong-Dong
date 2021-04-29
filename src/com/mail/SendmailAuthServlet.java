@@ -31,9 +31,10 @@ public class SendmailAuthServlet extends HttpServlet {
 	    String to = mailTo; //받는 사람 메일 주소
 	    String content = "";
 	    String mesg = "";
+	    String 메일인증= "";
 	    
 	    if(mailTo != null) {
-	    	content = "이메일 인증 링크입니다 : "  ;
+	    	content = "이메일 인증 링크입니다 : " + 메일인증;
 	    	subject = "동동이 메일 인증 입니다.";
 	    	mesg = "인증번호 발송되었습니다.";
 	    }
@@ -80,13 +81,10 @@ public class SendmailAuthServlet extends HttpServlet {
 	       e.printStackTrace();
 	     }
 	   		
-	     //response.sendRedirect("");
-	   
+	     response.sendRedirect("emailAuth.jsp");
+	       // link = new response.sendRedirect("Authlink.jsp");
 	}//end doGet
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

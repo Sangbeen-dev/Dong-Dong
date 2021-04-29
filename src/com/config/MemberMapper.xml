@@ -55,9 +55,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="nickNameCheck" parameterType="string"  resultType="int">
-     select count(*)
-     from member
-     where nickName = #{nickName}
+	select count(*) from member
+	where nickName = #{nickName} 
 	</select>
 
 	<update id="nickUpdate" parameterType="MemberDTO" >

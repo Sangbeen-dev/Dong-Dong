@@ -5,12 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-// 여기에 인증 버튼 클릭시에 -> 이메일1,이메일 2를 이메일 처리하는 서블릿으로 넘겨줘야 하는 걸 만들어야함.
+//여기에 인증 버튼 클릭시에 -> 이메일1,이메일 2를 이메일 처리하는 서블릿으로 넘겨줘야 하는 걸 만들어야함.
+//확인버튼 눌렀을때 보내졌다고 알림 나옴 
+$(document).ready(function(){
+	
+	$("#emailAuth").click(function() {
+			if ($("#email1").val().length == 0) {
+				alert("이메일을 입력해주세요");
+				return false;
+			}else if ($("#email2").val().length == 0) {
+				alert("이메일을 입력해주세요.");
+				return false;
+			};
+		});// end 인증클릭
 
- });//end ready -->
+	});//end ready
 </script>    
 <style type="text/css">
 form {
@@ -25,10 +36,12 @@ form {
 <form action="emailAuthServlet" method="post">
 <!-- <form action="#"> -->
 <h3> 이메일 인증</h3>
-<input type="text" id="email1" name="email1" placeholder="이메일 입력" >@
+<input type="text" id="email1" name="email1" placeholder="이메일 입력">@
 <input type="text" id="email2" name="email2" >
 
-<button id="eamilAuth">인증하기</button>
+<button id="emailAuth">인증하기</button>
 </form>
+
+
 </body>
 </html>
