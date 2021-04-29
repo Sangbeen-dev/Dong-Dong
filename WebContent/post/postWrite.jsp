@@ -90,8 +90,8 @@
 					<option value="S">[Sports]: 스포츠, 레저</option>
 					<option value="W">[Woman]: 여성의류, 여성잡화</option>
 					<option value="M">[Man]: 남성의류, 남성잡화</option>
-					<option value="G">[Game]: 게임,취미</option>
-					<option value="BT">[Beauty]: 뷰티,미용</option>
+					<option value="G">[Game]: 게임, 취미</option>
+					<option value="BT">[Beauty]: 뷰티, 미용</option>
 					<option value="PET">[Pet]: 반려동물용품</option>
 					<option value="BK">[Book]: 도서</option>
 					<option value="T">[Tickets]: 티켓</option>
