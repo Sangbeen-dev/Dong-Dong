@@ -4,32 +4,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!--부트스트랩 css cdn  -->
+<jsp:include page="../layout/toplayout.jsp" flush="true"></jsp:include>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <style>
-/* .form-control {
-  width: 50%;
-  
-} */
+.container c1 {
+ 	 border-radius: 30px; 
+} 
 </style>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-		//관심목록 버튼
-		$("#favorite").on("click", function() {
-			location.href ="FavoriteListServlet";
-		});
-		//거래내역 버튼
-		$("#transaction").on("click", function() {
-			location.href ="TransactionListServlet";
-		});
-		//내 게시물 보기 버튼
-		$("#mypost").on("click", function() {
-			location.href ="MyPostListServlet";
-		});
-		// 수정 정보 보내기
-		$("#submit").click(function() {
-			$("#myForm").attr("action","MemberUpdateServlet");		
-		})
+	
 		//회원탈퇴 버튼
 		$("#withdrawal").on("click", function() {
 			location.href ="WithdrawalServlet";
@@ -99,13 +84,16 @@
   System.out.print(dto.getUserimage());
 
 %>
+<!-- 
 <button type="button" class="btn btn-outline-primary" id="mypost" >내가 쓴 글 보기</button> &nbsp;
 <button type="button" class="btn btn-outline-success" id="favorite">관심목록</button>&nbsp;
 <button type="button" class="btn btn-outline-danger" id="transaction" >거래내역</button> &nbsp;
 <button type="button" class="btn btn-outline-success" id="addrcheck" >우리동네 인증하기</button> &nbsp;
 <br><br><br>
+
+ -->
 <form id="myForm" action="#" method="post" enctype="multipart/form-data"> 
-  <div class="container">
+  <div class="container c1" >
         <div class="py-5 text-center">
             <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
             <h2>회원정보</h2>
@@ -132,15 +120,16 @@
 </div>
 
 <div class="mb-3">
-	<label for="resultNick">닉네임 (nickName)</label>
+	<label for="resultNick">닉네임 (nickName)</label>&nbsp;&nbsp;
+	<button type="button" class="btn btn-outline-success" id="nickCheck">닉네임 변경하기</button>
  	<input type="text" class="form-control" id="resultNick" name="resultNick" value="<%= dto.getNickName() %>" readonly>
-	<button id="nickCheck">닉네임 변경하기</button>
+	
 </div>
 
 <div class="mb-3">
-<label for="addr">주소 (address)</label>
- <input type="text" class="form-control" id="addr" name="addr" value="<%= dto.getAddr() %>" readonly>
-<!-- <span id="guide" style="color:#999"></span> -->
+	<label for="addr">주소 (address)</label>&nbsp;&nbsp;
+	<button type="button" class="btn btn-outline-success" id="addrcheck" >우리동네 인증하기</button>
+ 	<input type="text" class="form-control" id="addr" name="addr" value="<%= dto.getAddr() %>" readonly>
 </div>
 
 <div class="mb-3">
@@ -164,9 +153,10 @@
         <option value="hanmail.net">hanmail.net</option>
        </select>
 </div>
+<br>
 <div class="mb-3">
-	<button id="submit" type="submit" class="btn btn-info">수정</button>
-	<button type="reset" class="btn btn-danger" >취소</button>
+	<button id="submit" type="submit" class="btn btn-outline-success">수정</button>
+	<button type="reset" class="btn btn-outline-danger" >취소</button>
 	<button type="button" class="btn btn-outline-danger" id="withdrawal" style="float: right;">회원탈퇴</button> &nbsp;
 </div>
 
@@ -174,5 +164,5 @@
 
 </div>
 </form>
-
+<jsp:include page="../layout/bottomLayout.jsp" flush="true"></jsp:include>
 
