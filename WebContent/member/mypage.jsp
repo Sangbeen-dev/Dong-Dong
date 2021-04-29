@@ -94,8 +94,8 @@
  -->
 <form id="myForm" action="#" method="post" enctype="multipart/form-data"> 
   <div class="container c1" >
-        <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <div class="py-3 text-center">
+            <img class="d-block mx-auto mb-4" src="/Dong-Dong/images/util/DongDonglogo2.png" alt="" width="200" height="200">
             <h2>회원정보</h2>
         </div>
 <!--프로필 이미지 -->
