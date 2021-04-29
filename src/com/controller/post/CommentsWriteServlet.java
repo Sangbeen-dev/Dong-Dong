@@ -46,7 +46,7 @@ public class CommentsWriteServlet extends HttpServlet {
     					cDTO.setcLevel(1);
     				}
     				cDTO.setpNum(Integer.parseInt(pNum));
-    				cDTO.setcContent(request.getParameter("cContent"));
+    				cDTO.setcContent(request.getParameter("cContent").replaceAll("\r\n", "<br>"));
     				cDTO.setUserid(dto.getUserid());
     				
     				int insertResult = service.insertComments(cDTO);
