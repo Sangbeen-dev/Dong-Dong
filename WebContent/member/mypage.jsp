@@ -139,7 +139,7 @@
 
 <div class="mb-3">
 <label for="addr">주소 (address)</label>
- <input type="text" class="form-control" id="addr" name="addr" value="<%= dto.getAddr() %>">
+ <input type="text" class="form-control" id="addr" name="addr" value="<%= dto.getAddr() %>" readonly>
 <!-- <span id="guide" style="color:#999"></span> -->
 </div>
 

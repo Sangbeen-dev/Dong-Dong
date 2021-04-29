@@ -5,12 +5,26 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>우리동네 Dong-Dong</title>
+	<style type="text/css">
+	 .title {font-weight:bold;display:block;}
+	</style>
 </head>
 <body>
 	<div id="map" style="width:500px;height:400px;"></div>
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7fb0b36aa207b6f570e9463049bd9682"></script>
 	<script>
+	
+
+	$(document).ready(function() {
+		$("#addrcheck").click(function() {
+			console.log("이벤트"+$("#dong").text());
+			var dong = $("#dong").text();
+			console.log(dong);
+			location.href ="addrCheckServlet?dong="+dong;
+		});
+	})//end ready
+	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -29,35 +43,21 @@ if (navigator.geolocation) {
             lon = position.coords.longitude; // 경도
         
         var locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-        var message = '<div style="padding:5px;">여기가 우리집!!!!</div>'; // 인포윈도우에 표시될 내용입니다
-     /* 
-        $.ajax
-		({
-		type:"get",
-		url:"/v2/local/geo/coord2address.json?x="+lat+"&y="+lon+"&input_coord=WGS84",
-		H {"Authorization": "KakaoAK 44cab8379502678da5179dc3b2ba3ba7"},	
-		dataType:"json", 
-		data:{
-			x: lat,
-			y: lon
-		},
-		success: function(data, status, xhr) {
-			var dong = data.region_3depth_name;
-			console.log(dong);
-			var message = dong;
-		},
-		error: function(xhr, status, error) {
-			var message = "주소를 불러오지 못했습니다."
-		}
-	})//end ajax
-         */
+        //var message = '<div style="padding:5px;">여기가 우리집!!!!</div>'; // 인포윈도우에 표시될 내용입니다
+        var message =""; // 인포윈도우에 표시될 내용입니다
+   
         
         
             console.log(locPosition);
             
             // 마커와 인포윈도우를 표시합니다
-        displayMarker(locPosition, message);
-            
+        displayMarker(locPosition, message, lat, lon);
+        //console.log(message);
+           // displayMarker(locPosition, function() {
+           
+                  
+		//});
+        
       });
     
 } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -69,17 +69,45 @@ if (navigator.geolocation) {
 }
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-function displayMarker(locPosition, message) {
-
+function displayMarker(locPosition, message, lat, lon) {
+	
+	
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
         map: map, 
         position: locPosition
     }); 
     
+    $.ajax
+	({
+		type:"get",
+		url:"https://dapi.kakao.com/v2/local/geo/coord2address.json?x="+lon+"&y="+lat,
+		//url:"https://dapi.kakao.com/v2/local/geo/coord2address.json?x=127.1136256&y=37.2768768",
+		headers: {"Authorization": "KakaoAK 44cab8379502678da5179dc3b2ba3ba7"},	
+		async:false,//false하면 전역변수로 사용가능
+		
+		/*  dataType:"json", 
+		   data:{
+			x: lat,
+			y: lon
+		},    */
+		success: function(data, status, xhr) {
+			//console.log(data);
+			//console.log(status);
+			var address =data.documents[0].address;
+			//console.log(data.documents[0]);
+			message = '<div id="addr1"><span class="title">지번 주소 :</span> ' + address.address_name +
+			'</div>'+'<div id="dong" style="display:block">'+address.region_3depth_name+'</div>';
+			
+		},
+		error: function(xhr, status, error) {
+			var message = "주소를 불러오지 못했습니다."
+		}
+	})//end ajax
+    
     var iwContent = message, // 인포윈도우에 표시할 내용
         iwRemoveable = true;
-
+    
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({
         content : iwContent,
@@ -90,9 +118,12 @@ function displayMarker(locPosition, message) {
     infowindow.open(map, marker);
     
     // 지도 중심좌표를 접속위치로 변경합니다
-    map.setCenter(locPosition);      
+    map.setCenter(locPosition);
+    console.log(lat);
+    console.log(lon);
+
 }    
 	</script>
-
+<button id="addrcheck" >동네 인증하기</button>
 </body>
 </html>

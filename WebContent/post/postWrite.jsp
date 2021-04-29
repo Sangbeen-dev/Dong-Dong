@@ -21,11 +21,7 @@
 					var price = $("#price").val();
 					var file = $("#photo").val();
 					var category = $("#category option:selected").val();		
-					/* console.log("title"+title);
-					console.log("content"+content);
-					console.log("price"+price);
-					console.log("file"+file);
-					console.log("category"+category); */
+					
 					if(title.length == 0){
 						alert("글제목은 필수입니다.");
 						$("#title").focus();
@@ -76,7 +72,7 @@
 			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
     			<input type="text" name="title" id="title" class="form-control"
-    				aria-describedby="emailHelp" placeholder="상품명을 포함한 글 제목">
+    				aria-describedby="emailHelp" placeholder="상품명을 포함한 글 제목" maxlength="30">
   			</div>
   			<div class="col-md-3 col-sm-2"></div>
   		</div>
@@ -94,8 +90,8 @@
 					<option value="S">[Sports]: 스포츠, 레저</option>
 					<option value="W">[Woman]: 여성의류, 여성잡화</option>
 					<option value="M">[Man]: 남성의류, 남성잡화</option>
-					<option value="G">[Game]: 게임,취미</option>
-					<option value="BT">[Beauty]: 뷰티,미용</option>
+					<option value="G">[Game]: 게임, 취미</option>
+					<option value="BT">[Beauty]: 뷰티, 미용</option>
 					<option value="PET">[Pet]: 반려동물용품</option>
 					<option value="BK">[Book]: 도서</option>
 					<option value="T">[Tickets]: 티켓</option>
@@ -128,7 +124,7 @@
  			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
   				<textarea class="form-control" name="content" id="content" rows="10"
-  					placeholder="자세한 상품 설명과 거래 방법을 작성하세요"></textarea>
+  					placeholder="자세한 상품 설명과 거래 방법을 작성하세요" maxlength="300"></textarea>
 			</div>
 			<div class="col-md-3 col-sm-2"></div>
 		</div>	
@@ -139,7 +135,7 @@
  			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
     			<input type="text" name="price" id="price" class="form-control"
-    				aria-describedby="price" placeholder="상품가격" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+    				aria-describedby="price" placeholder="상품가격" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="10">
   			</div>
   			<div class="col-md-3 col-sm-2"></div>
   		</div>

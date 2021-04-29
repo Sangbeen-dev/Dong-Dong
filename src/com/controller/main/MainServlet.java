@@ -36,6 +36,7 @@ public class MainServlet extends HttpServlet {
 		
 		request.setAttribute("postList", list);
 		
+		
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 		dis.forward(request, response);
 	}

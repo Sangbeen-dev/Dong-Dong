@@ -44,7 +44,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			String passwd = dto.getPasswd(); // mypage.jsp에서 넘겨주는 값이 없어서 dto에서 뽑아왔어요!(어차피 수정되는부분이아니라 null들어가도 상관없긴함)
 			String username = multi.getParameter("username");
 			
-			String nickName = multi.getParameter("nickName");
+			String nickName = multi.getParameter("resultNick");
 			String addr = multi.getParameter("addr");
 			String phone = multi.getParameter("phone");
 			String email1 = multi.getParameter("email1");
@@ -57,17 +57,19 @@ public class MemberUpdateServlet extends HttpServlet {
 				// 새로들어온 파일이 있는경우 --> user가 프로필사진을 변경한 경우
 				userImage = fileName;
 			}
-			
+			System.out.println(userImage);
 			MemberDTO dto2 =
 					new MemberDTO(userid,passwd,username,nickName,
 							addr,phone,email1,email2,userImage);
 			
 			//update실행
+			System.out.println(dto2);
 			MemberService service = new MemberService();
 			int num = service.memberUpdate(dto2);
+			System.out.println(num);
 			//세션에 mesg '회원정보가 수정되었습니다.' 저장
 			session.setAttribute("mesg", "회원정보가 수정되었습니다.");
-			nextPage="main"; //MainServlet => db => top => main.jsp goodsList.jsp에서 출력
+			nextPage="mypage.jsp"; 
 		} else {
 			nextPage = "LoginUIServlet";
 			request.setAttribute("mesg", "로그인이 필요한 작업입니다.");

@@ -24,12 +24,13 @@ public class confirmNickServlet extends HttpServlet {
 		//System.out.println(dto); 
 		String nextPage =null;
 		if(dto != null) {
-			nextPage = "confirmNick.jsp";
+			
 			String nickName = request.getParameter("nickName");
 			MemberService service = new MemberService();
 			int n = service.nickCheck(nickName);
 			request.setAttribute("nickCheck", n);
 			request.setAttribute("nickName", nickName);
+			nextPage = "confirmNick.jsp";
 		}else{
 			nextPage= "LoginUIServlet";
 			session.setAttribute("mesg", "로그인이 필요한 작업입니다.");

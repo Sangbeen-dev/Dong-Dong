@@ -38,6 +38,11 @@ public class PostUpdateUIServlet extends HttpServlet {
 			PostDTO pDTO = service.getPostByPNum(Integer.parseInt(pNum));
 			
 			if(mDTO.getUserid().equals(pDTO.getUserid())){ // 현재 게시글과 로그인 정보의 유저가 일치하는지 확인
+				// db에 들어있는 글내용 -> 엔터값이 <br>태그로 변환돼서 들어가있음
+				// 사용자가 글 수정을 할 때 <br>태그로 보이는게 아니라 엔터값으로 처리돼서 보이게한다.
+				String pContent = pDTO.getpContent();
+				pContent = pContent.replaceAll("<br>", "\r\n");
+				pDTO.setpContent(pContent);
 				request.setAttribute("post", pDTO);
 				nextPage = "postUpdate.jsp";
 				

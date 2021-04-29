@@ -20,11 +20,6 @@
 				var pPrice = $("#pPrice").val();
 				var file = $("#photo").val();
 				var pCategory = $("#pCategory option:selected").val();		
-				console.log("pTitle"+pTitle);
-				console.log("pContent"+pContent);
-				console.log("pPrice"+pPrice);
-				console.log("file"+file);
-				console.log("pCategory"+pCategory);
 
 				if(pTitle.length == 0){
 					alert("글제목은 필수입니다.");
@@ -81,11 +76,20 @@
   			<div class="col-md-3 col-sm-2"></div>
 			<div class="col-md-6 col-sm-8 mb-3">
 				<select class="form-select" aria-label="Default select example" name="pCategory" id="pCategory">
-  					<option value="D" <%if(dto.getpCategory().equals("D")){%> Selected <%} %>>[Digital]: 디지털, 가전, 게임</option>
-					<option value="L" <%if(dto.getpCategory().equals("L")){%> Selected <%} %>>[Living]: 가구, 인테리어, 생활, 가공식품, 반려동물 용품</option>
-					<option value="F" <%if(dto.getpCategory().equals("F")){%> Selected <%} %>>[Fashion]: 여성의류, 남성의류, 잡화</option>
-					<option value="C" <%if(dto.getpCategory().equals("C")){%> Selected <%} %>>[Culture]: 도서, 티켓, 음반, 스포츠, 레저</option>
-					<option value="E" <%if(dto.getpCategory().equals("E")){%> Selected <%} %>>[ETC] : 기타, 뷰티, 미용,식물</option>
+  					<option value="D" <%if(dto.getpCategory().equals("D")){%> Selected <%} %>>[Digital]: 디지털, 가전</option>
+  					<option value="H" <%if(dto.getpCategory().equals("H")){%> Selected <%} %>>[House]: 가구, 인테리어</option>
+  					<option value="BY" <%if(dto.getpCategory().equals("BY")){%> Selected <%} %>>[BABY]: 유아동</option>
+  					<option value="L" <%if(dto.getpCategory().equals("L")){%> Selected <%} %>>[Living]: 생활, 가공식품</option>
+  					<option value="S" <%if(dto.getpCategory().equals("S")){%> Selected <%} %>>[Sports]: 스포츠, 레저</option>
+  					<option value="W" <%if(dto.getpCategory().equals("W")){%> Selected <%} %>>[Woman]: 여성의류, 여성잡화</option>
+					<option value="M" <%if(dto.getpCategory().equals("M")){%> Selected <%} %>>[Man]: 남성의류, 남성잡화</option>
+					<option value="G" <%if(dto.getpCategory().equals("G")){%> Selected <%} %>>[Game]: 게임, 취미</option>
+					<option value="BT" <%if(dto.getpCategory().equals("BT")){%> Selected <%} %>>[Beauty]: 뷰티, 미용</option>
+					<option value="PET" <%if(dto.getpCategory().equals("PET")){%> Selected <%} %>>[Pet]: 반려동물 용품</option>
+					<option value="BK" <%if(dto.getpCategory().equals("BK")){%> Selected <%} %>>[Book]: 도서</option>
+					<option value="T" <%if(dto.getpCategory().equals("T")){%> Selected <%} %>>[Tickets]: 티켓</option>
+					<option value="P" <%if(dto.getpCategory().equals("P")){%> Selected <%} %>>[Plant]: 식물</option>
+					<option value="E" <%if(dto.getpCategory().equals("E")){%> Selected <%} %>>[ETC] : 기타</option>
 				</select>
 			</div>
   			<div class="col-md-3 col-sm-2"></div>

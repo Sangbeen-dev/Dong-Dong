@@ -3,6 +3,7 @@
 <%
 int n = (Integer)request.getAttribute("nickCheck");
 String nickName = (String)request.getAttribute("nickName");
+System.out.print(n);
 %>
 
 <!DOCTYPE html>
@@ -26,8 +27,9 @@ form {
 			//중복아닐시 UpdateServlet으로 이동하여 db 적용!
 		});
 		$("#noNick").click(function() {
-			opener.$("#nickName").focus();
-			window.close();
+			$("#renick").attr("action", "checkNick.jsp");
+			//opener.$("#nickName").focus();
+			//window.close();
 		});
  });//end ready
 </script>
@@ -41,7 +43,7 @@ if(n==0){ %>
 <button id=okNick>사용하기</button>
 </form>
 <%} else {%>
-<form>
+<form id=renick>
 <h4 align="center">이미 사용중인 닉네임 입니다. </h4>
 <button id=noNick>돌아가기</button>
 </form>
