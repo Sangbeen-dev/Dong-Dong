@@ -36,7 +36,7 @@ public class CommentsDeleteServlet extends HttpServlet {
 			if(dto.getUserid().equals(cDTO.getUserid())){ // 삭제할 댓글과 로그인 유저 정보가 일치하는 경우
 				int deleteResult = cService.deleteCommentByCNum(Integer.parseInt(cNum));
 				
-				if(deleteResult!=1) { // 댓글 삭제가 실패했을 경우 
+				if(deleteResult==0) { // 댓글 삭제가 실패했을 경우 
 					session.setAttribute("mesg", "댓글 삭제 중 오류가 발생하였습니다.");
 					nextPage="PostDetailServlet?pNum="+pNum;
 		    	} else {
