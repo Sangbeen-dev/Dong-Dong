@@ -13,7 +13,9 @@
 						class="list-group-item list-group-item-info text-center font-weight-bold border border-dark">회원정보</a>
 					<a href="FavoriteListServlet"
 						class="list-group-item list-group-item-action text-center font-weight-bold border border-dark">
-						관심목록</a> <a href="TransactionListServlet"
+						관심목록</a> <a href="MyPostListServlet"
+						class="list-group-item list-group-item-action text-center font-weight-bold border border-dark">
+						내 게시물 보기</a><a href="TransactionListServlet"
 						class="list-group-item list-group-item-action text-center font-weight-bold border border-dark">
 						거래내역</a>
 						<a href="#"
