@@ -20,8 +20,6 @@ String addr2 = (String)request.getAttribute("auth2");
 </style>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-<%-- var addr1 = <%= addr1 %>;
-var addr2 = <%= addr2 %>; --%>
     $(document).ready(function(){
     	$("#auth1").click(function() {
     		 var addr11 = $("#addrA1").text();

@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>상품 세부 페이지</title>
+		<title>상품 상세 페이지</title>
 		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -12,6 +12,17 @@
 					location.href="main";
 				});
 			});//end ready
+			
+			<%
+			String mesg = (String)session.getAttribute("mesg");
+			if(mesg != null){
+			%>
+				alert('<%=mesg %>');
+			<%
+				session.removeAttribute("mesg");
+			}
+			%>
+
 		</script>
 		<style type="text/css">
 			header{
@@ -29,6 +40,7 @@
 				z-index : 2;
 			}
 		</style>
+		
 	</head>
 	<body>
 		<header>
@@ -39,6 +51,7 @@
 		<hr>
 		<main>
 			<jsp:include page="post/postDetail.jsp" flush="true"/>
+			<jsp:include page="post/postComments.jsp" flush="true"/>
 		</main>
 	</body>
 </html>
