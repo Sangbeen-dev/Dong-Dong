@@ -32,10 +32,10 @@
     $(document).ready(function(){
 	
 		//회원탈퇴 버튼
-	 	$("#withdrawal").on("click", function() {
-	 		if($("#check").attr("checked")){
-	 			location.href ="WithdrawalServlet";
-	 			//$("#myForm").attr("action","WithdrawalServlet");
+	 	$("#myForm").on("submit", function() {	
+	 		var chk = $('input:checkbox[id="check"]').is(":checked");
+	 		if(chk == true){
+	 			$("#myForm").attr("action","WithdrawalServlet");
 	 		}else{
 	 			alert("약관에 동의해주세요.");
 	 			return false;
@@ -58,7 +58,7 @@
 &nbsp;&nbsp;1. 계약 또는 청약철회 등에 관한 기록 보존 이유: 전자상거래 등에서의 소비자보호에 관한 법률 / 보존 기간:5년<br>
 &nbsp;&nbsp;2. 결제 및 공급에 관한 기록 보존 이유: 전자상거래 등에서의 소비자보호에 관한 법률 / 보존 기간:5년<br>
 &nbsp;&nbsp;3. 전자금융 거래에 관한 기록 보존 이유: 전자금융거래법 보존 기간 / 5년<br>
-&nbsp;&nbsp;4. 해당 회원의 관한 신고처리에 관한 기록 보존 이유: 전자상거래 등에서의 소비자보호에 관한 법률 / 보존 기간:3년<br> 
+&nbsp;&nbsp;4. 해당 회원의 관한 신고처리 기록 보존 이유: 전자상거래 등에서의 소비자보호에 관한 법률 / 보존 기간:3년<br> 
 </div>
 
 <div id=info1-2>
@@ -83,7 +83,7 @@
 </div>
 
 <div id="checkbox">
-<input type="checkbox" name="check" id="check" class="chk11" >&nbsp;해당 내용을 모두 확인했으며, 회원탈퇴에 동의합니다.
+<input type="checkbox" name="check" id="check"  >&nbsp;해당 내용을 모두 확인했으며, 회원탈퇴에 동의합니다.
 </div>
 
 <div style="text-align: center;">
