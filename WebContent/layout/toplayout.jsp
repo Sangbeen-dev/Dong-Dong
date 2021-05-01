@@ -20,7 +20,7 @@
 						거래내역</a>
 						<a href="withdrawal.jsp"
 						class="list-group-item list-group-item-action text-center font-weight-bold border border-dark">
-						회원탈퇴 고민중</a>	
+						회원탈퇴</a>	
 				</div>
 
 			</div>

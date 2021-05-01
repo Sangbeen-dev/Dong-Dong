@@ -39,7 +39,7 @@ MemberDTO dto = (MemberDTO)session.getAttribute("login");
 							<%= nickName %> </a>
 						</li>
 						<li>
-							<a href="#" target="_blank">
+							<a href="#" >
 							<i class="glyphicon glyphicon-ok"></i>
 							거래량  ??개 </a>
 						</li>

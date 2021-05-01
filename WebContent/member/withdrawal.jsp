@@ -35,6 +35,7 @@
 	 	$("#withdrawal").on("click", function() {
 	 		if($("#check").attr("checked")){
 	 			location.href ="WithdrawalServlet";
+	 			//$("#myForm").attr("action","WithdrawalServlet");
 	 		}else{
 	 			alert("약관에 동의해주세요.");
 	 			return false;
