@@ -26,4 +26,4 @@
 			</div>
 			<!-- /.col-lg-3 -->
 
-			<div class="col-lg-10 my-4 mb-4 border border-dark rounded-lg">
+			<div class="col-lg-10 my-4 mb-4">

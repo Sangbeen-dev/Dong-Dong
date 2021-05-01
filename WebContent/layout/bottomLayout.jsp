@@ -12,14 +12,15 @@
 <!-- /.container -->
 
 <!-- Footer -->
+<!-- 
 <footer class="py-5 bg-dark" style="background-color: #65A8C4;">
 	<div class="container">
 		<p class="m-0 text-center text-white">Copyright &copy; Dong-Dong
 			2021</p>
 	</div>
-	<!-- /.container -->
+	/.container
 </footer>
-
+ -->
 <!-- Bootstrap core JavaScript -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script

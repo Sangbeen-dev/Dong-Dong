@@ -122,6 +122,19 @@
 		});//on
 	});
 <%}%>
+	$(document).ready(function(){
+			function userprofile() {
+				var popupWidth = 300;
+				var popupHeight = 500;
+				var popupX = (window.screen.width / 2) - (popupWidth / 2);
+				var popupY= (window.screen.height / 2) - (popupHeight / 2);
+				url = "userprofile.jsp"
+				open(url,"userprofile", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+				}//end userprofile
+				$("#userprofile").click(function() {
+				userprofile();
+				});;
+	});//end ready
 </script>
 
 
@@ -145,6 +158,7 @@
 		   <tr>
 		      <th>유저</th>
 		      <td><%=username%></td>
+		      <td><button id="userprofile" class="btn btn-primary">프로필보기</button></td>
 		   </tr>
 		   <tr>
 		      <th>거래지역</th>

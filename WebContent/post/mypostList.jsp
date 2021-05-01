@@ -39,9 +39,7 @@
 	
 </script>
 <style>
-.container {
-	border: 2px solid; #444444;
-}
+
 
 
 </style>
@@ -107,7 +105,7 @@
 	<hr>
 	</tbody>
 	<tr class="button">
-		<td colspan="2">
+		<td colspan="3" >
 			<a class="text-center" href="#" id="delAllpost"> 게시글 삭제하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="main"> 계속 둘러보기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
