@@ -164,7 +164,6 @@ float:right;
 	<button type="button" class="btn btn-outline-danger" id="withdrawal" style="float: right;">회원탈퇴</button> &nbsp;
 </div>
 
-
 </div>
 
 </form>
