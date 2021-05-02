@@ -41,7 +41,7 @@ public class CommentsDeleteServlet extends HttpServlet {
 					nextPage="PostDetailServlet?pNum="+pNum;
 		    	} else {
 					logr.info("Delete Comment : cNum - {} , loginUser - {}", cNum, dto.getUserid());
-					session.setAttribute("mesg", "댓글이 삭제되었습니다.");
+					//session.setAttribute("mesg", "댓글이 삭제되었습니다.");
 		    	}
 			} else {
 				session.setAttribute("mesg", "자신이 쓴 댓글만 삭제가 가능합니다.");

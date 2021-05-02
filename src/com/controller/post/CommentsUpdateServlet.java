@@ -44,7 +44,7 @@ public class CommentsUpdateServlet extends HttpServlet {
 					nextPage="PostDetailServlet?pNum="+pNum;
 		    	} else {
 					logr.info("update Comment : cNum - {} , loginUser - {}", cNum, dto.getUserid());
-					session.setAttribute("mesg", "댓글이 수정되었습니다.");
+					//session.setAttribute("mesg", "댓글이 수정되었습니다.");
 		    	}
 			} else {
 				session.setAttribute("mesg", "자신이 쓴 댓글만 수정이 가능합니다.");
