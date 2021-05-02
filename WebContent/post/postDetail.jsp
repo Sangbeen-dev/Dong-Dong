@@ -79,7 +79,7 @@
 <!-- Bootstrap js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <style type="text/css">
-*{
+.container{
 	text-align : center;
 }
 #mainImgDiv{
@@ -182,7 +182,7 @@
 		  <a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=500,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">채팅</a>
 		<%	} %>
 		<% 	if(dto==null)  {%>
-		  <a href="">구매시 로그인이 필요합니다.</a><br>
+		  <a href="LoginUIServlet">구매시 로그인이 필요합니다.</a><br>
 		<%	} else if(userid.equals(dto.getUserid())) { %>
 		  <a class="btn btn-primary" href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a>
 		  <a class="btn btn-primary" href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>

@@ -68,9 +68,9 @@
     <div id="comments_div">
       <%for(CommentsDTO cDTO : comments) {%>
       	<%if(cDTO.getcLevel()==1) {%>
-      		<div class="comment my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px; margin-left: 100px">
+      		<div class="comment my-3 p-3 bg-white rounded shadow-sm" style="margin-left: 100px">
       	<%} else {%>
-      		<div class="comment my-3 p-3 alert-secondary rounded shadow-sm" style="padding-top: 10px; margin-left: <%=100*cDTO.getcLevel()%>px">
+      		<div class="comment my-3 p-3 alert-secondary rounded shadow-sm" style="padding-top: 10px; margin-left: <%=100+(20*cDTO.getcLevel())%>px">
       	<%} %>
       			<dl>
       				<dt>
@@ -93,24 +93,30 @@
       				</dt>
       				<dd>
       					
-      					<h3>
+      					<h5>
       						<%=cDTO.getcContent() %>
-      					</h3>
+      					</h5>
       				</dd>
       			</dl>
-      			<form class="comment-reply-form" action="CommentsWriteServlet" method="post">
+      			<div class="comment-form well">
+     			  <form class="comment-reply-form" action="CommentsWriteServlet" method="post">
+      			  	<label for="contactComment">답글</label> 
       				<input type="hidden" name="pNum" value="<%=pNum%>"/>
       				<input type="hidden" name="parentNum" value="<%=cDTO.getcNum()%>"/>
-      	  			<textarea rows="3" cols="30" name="cContent"></textarea>
-      	  			<input type="submit" value="답글"/>
-      			</form>
+    			  	<textarea rows="3" class="form-control" name="cContent"></textarea> 
+      			  	<input type="submit" class="btn btn-primary btn-block" value="답글"/>
+      			  </form>
+   			    </div>
       			<%if(dto!=null && dto.getUserid().equals(cDTO.getUserid())) %>
-      			<form class="comment-update-form" action="CommentsUpdateServlet" method="post">
+      			<div class="comment-form well">
+     			  <form class="comment-update-form" action="CommentsUpdateServlet" method="post">
+      			  	<label for="contactComment">수정</label> 
       				<input type="hidden" name="pNum" value="<%=pNum%>"/>
       				<input type="hidden" name="cNum" value="<%=cDTO.getcNum()%>"/>
-      	  			<textarea rows="3" cols="30" name="cContent"></textarea>
-      	  			<input type="submit" value="수정"/>
-      			</form>
+    			  	<textarea rows="3" class="form-control" name="cContent"></textarea> 
+      			  	<input type="submit" class="btn btn-primary btn-block" value="수정"/>
+      			  </form>
+   			    </div>
       		</div>
       <%}%>
     </div>
@@ -118,14 +124,13 @@
     <%if(dto==null) {%>
     	<a href="LoginUIServlet">로그인 후 댓글 작성이 가능합니다.</a><br>
     <%} else  {%>
-    <div>
-      <div class="comment-form">
-      	<form action="CommentsWriteServlet" method="post">
-      	  <input type="hidden" name="pNum" value="<%=pNum%>"/>
-      	  <textarea rows="3" cols="30" name="cContent"></textarea>
-      	  <input type="submit" value="댓글달기"/>
-      	</form>
-      </div>
+    <div class="comment-form well" style="margin-left: 100px; margin-right: 100px">
+     <form action="CommentsWriteServlet" method="post">
+      	<label for="contactComment">댓글</label> 
+      	<input type="hidden" name="pNum" value="<%=pNum%>"/>
+    	<textarea rows="3" class="form-control" name="cContent"></textarea> 
+      	<input type="submit" class="btn btn-primary btn-block" value="댓글"/>
+      </form>
     </div>
     <%} %>
 
