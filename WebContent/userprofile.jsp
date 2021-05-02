@@ -3,10 +3,17 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+
+
 MemberDTO dto = (MemberDTO)session.getAttribute("login");
  String userImage = dto.getUserimage();
  String nickName = dto.getNickName();
  //거래량 추가해야함
+/*  String userImage = (String)request.getAttribute("userImage");
+ String nickName = (String)request.getAttribute("nickName");
+ System.out.println("jsp에서=="+userImage);
+ System.out.print("jsp에서=="+nickName); */
+ 
 %>
 <html>
 <head>
@@ -15,7 +22,11 @@ MemberDTO dto = (MemberDTO)session.getAttribute("login");
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+ });//end ready
+</script>
 </head>
 <body>
 
@@ -56,6 +67,5 @@ MemberDTO dto = (MemberDTO)session.getAttribute("login");
             </div>
 		</div>
 	</div>
-
 </body>
 </html>

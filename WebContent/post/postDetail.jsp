@@ -17,8 +17,10 @@
 	String pHit = (String)request.getAttribute("pHit");
 	String pDate = (String)request.getAttribute("pDate");
 	String pStatus = (String)request.getAttribute("pStatus");
+	String userImage = (String)request.getAttribute("userImage");
+	String nickName = (String)request.getAttribute("nickName");
 	boolean favorite = (boolean)request.getAttribute("favorite");
-
+	
 	// 가격에 1000단위에 쉼표를 붙여 줍니다.
     DecimalFormat formatter = new DecimalFormat("###,###");
     String price = formatter.format(Integer.parseInt(pPrice));
@@ -128,12 +130,17 @@
 				var popupHeight = 500;
 				var popupX = (window.screen.width / 2) - (popupWidth / 2);
 				var popupY= (window.screen.height / 2) - (popupHeight / 2);
-				url = "userprofile.jsp"
+				//var userImage = $("userprofile").attr("data-xxx");
+				//console.log(userImage);
+				url = "userprofile.jsp";
+				//url = "userprofileServlet?nickName="+nickName;
 				open(url,"userprofile", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 				}//end userprofile
 				$("#userprofile").click(function() {
 				userprofile();
 				});;
+				
+				
 	});//end ready
 </script>
 
@@ -158,7 +165,11 @@
 		   <tr>
 		      <th>유저</th>
 		      <td><%=username%></td>
-		      <td><button id="userprofile" class="btn btn-primary">프로필보기</button></td>
+		      <td>
+		      <%-- 	<input type="hidden" value="<%= userImage %>" name="userImage" id="userImage">
+			  	<input type="hidden" value="<%= nickName %>" name="nickName">  --%>
+		      	<button id="userprofile" class="btn btn-primary" data-xxx="<%=userImage %>" data-yyy="<%=nickName %>">프로필보기</button>
+		      </td>
 		   </tr>
 		   <tr>
 		      <th>거래지역</th>

@@ -26,10 +26,16 @@ float:right;
 <script type="text/javascript">
     $(document).ready(function(){
 	
-		//회원탈퇴 버튼
+/* 		//회원탈퇴 버튼
 		$("#withdrawal").on("click", function() {
 			location.href ="WithdrawalServlet";
+		}) */
+		
+		// 수정 정보 보내기
+		$("#submit").click(function() {
+			$("#myForm").attr("action","MemberUpdateServlet");		
 		})
+		
 		//동네인증 클릭시 이동할 페이지와 자식창 크기 조정 함수
 		function addrcheck() {
 			// 자식창 중앙 정렬
@@ -161,7 +167,7 @@ float:right;
 <div class="mb-4">
 	<button id="submit" type="submit" class="btn btn-outline-success">수정</button>
 	<button type="reset" class="btn btn-outline-danger" >취소</button>
-	<button type="button" class="btn btn-outline-danger" id="withdrawal" style="float: right;">회원탈퇴</button> &nbsp;
+<!-- 	<button type="button" class="btn btn-outline-danger" id="withdrawal" style="float: right;">회원탈퇴</button> &nbsp; -->
 </div>
 
 </div>
