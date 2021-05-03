@@ -65,7 +65,7 @@ float:right;
 			// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼줌
 			url = "checkNick.jsp"
 			open(url,"confirm", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-			}
+		}
 		//닉네임 체크 
 		$("#nickCheck").click(function() {
 			confirmNick();
