@@ -132,13 +132,14 @@
 				var popupY= (window.screen.height / 2) - (popupHeight / 2);
 				//var userImage = $("userprofile").attr("data-xxx");
 				//console.log(userImage);
-				url = "userprofile.jsp";
-				//url = "userprofileServlet?nickName="+nickName;
+				//url = "userprofile.jsp";
+				url = "userprofile.jsp?nickName="+"<%=nickName%>"+"&userImage="+"<%=userImage%>";
+				<%--  url = "userprofileServlet?userImage="+<%=userImage%>;  --%>
 				open(url,"userprofile", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 				}//end userprofile
 				$("#userprofile").click(function() {
 				userprofile();
-				});;
+				});
 				
 				
 	});//end ready
