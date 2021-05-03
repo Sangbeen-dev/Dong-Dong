@@ -27,7 +27,7 @@ public class SendmailAuthServlet extends HttpServlet {
 
 		String host = "smtp.naver.com"; // 호스트 네이버 메일
 		String subject = ""; // 메일제목
-		String from = "qkrtmdtn3520@naver.com"; // 보내는 사람 메일 주소 //이부분 채워주셔야 합니다.
+		String from = "***@naver.com"; // 보내는 사람 메일 주소 //이부분 채워주셔야 합니다.
 		String fromName = "DongDong"; // 송신자명
 		String to = mailTo; // 받는 사람 메일 주소
 		String content = "";
@@ -38,9 +38,8 @@ public class SendmailAuthServlet extends HttpServlet {
 		// 서블릿은 그 값을 파싱하면 -> 인증될수 있게
 
 		if (mailTo != null) {
-			content =  "<a href='http://localhost:8077/main?='>인증링크</a>"+" 를 클릭해주세요." ;// localhost 포트번호 확인하기
+			content =  "<a href='http://localhost:8077/emailAuth'>인증링크</a>"+" 를 클릭해주세요." ;// localhost 포트번호 확인하기//?=
 			subject = "동동 이메일 인증 입니다.";
-			mesg = "인증번호 전송되었습니다.";
 		}
 		try {
 			// 프로퍼티 값 인스턴스 생성과 기본세션(SMTP 서버 호스트 지정)
