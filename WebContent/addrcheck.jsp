@@ -82,7 +82,6 @@ function displayMarker(locPosition, message, lat, lon) {
 	({
 		type:"get",
 		url:"https://dapi.kakao.com/v2/local/geo/coord2address.json?x="+lon+"&y="+lat,
-		//url:"https://dapi.kakao.com/v2/local/geo/coord2address.json?x=127.1136256&y=37.2768768",
 		headers: {"Authorization": "KakaoAK 44cab8379502678da5179dc3b2ba3ba7"},	
 		async:false,//false하면 전역변수로 사용가능
 		

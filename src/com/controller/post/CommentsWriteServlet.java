@@ -54,7 +54,7 @@ public class CommentsWriteServlet extends HttpServlet {
     				if(insertResult!=1) { // 게시글 업데이트가 실패했을 경우 
     					session.setAttribute("mesg", "댓글 수정 중 오류가 발생하였습니다.");
     		    	} else {
-    		    		session.setAttribute("mesg", "댓글 쓰기 성공");
+    		    		//session.setAttribute("mesg", "댓글 쓰기 성공");
     		    		logr.info("write Comment : pNum - {} , loginUser - {}", pNum, dto.getUserid());
     		    		nextPage="PostDetailServlet?pNum="+pNum;
     		    	}

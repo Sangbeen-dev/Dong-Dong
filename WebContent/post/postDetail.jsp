@@ -17,8 +17,10 @@
 	String pHit = (String)request.getAttribute("pHit");
 	String pDate = (String)request.getAttribute("pDate");
 	String pStatus = (String)request.getAttribute("pStatus");
+	String userImage = (String)request.getAttribute("userImage");
+	String nickName = (String)request.getAttribute("nickName");
 	boolean favorite = (boolean)request.getAttribute("favorite");
-
+	
 	// 가격에 1000단위에 쉼표를 붙여 줍니다.
     DecimalFormat formatter = new DecimalFormat("###,###");
     String price = formatter.format(Integer.parseInt(pPrice));
@@ -77,7 +79,7 @@
 <!-- Bootstrap js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <style type="text/css">
-*{
+.container{
 	text-align : center;
 }
 #mainImgDiv{
@@ -122,6 +124,25 @@
 		});//on
 	});
 <%}%>
+	$(document).ready(function(){
+			function userprofile() {
+				var popupWidth = 300;
+				var popupHeight = 500;
+				var popupX = (window.screen.width / 2) - (popupWidth / 2);
+				var popupY= (window.screen.height / 2) - (popupHeight / 2);
+				//var userImage = $("userprofile").attr("data-xxx");
+				//console.log(userImage);
+				//url = "userprofile.jsp";
+				url = "userprofile.jsp?nickName="+"<%=nickName%>"+"&userImage="+"<%=userImage%>";
+				<%--  url = "userprofileServlet?userImage="+<%=userImage%>;  --%>
+				open(url,"userprofile", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+				}//end userprofile
+				$("#userprofile").click(function() {
+				userprofile();
+				});
+				
+				
+	});//end ready
 </script>
 
 
@@ -145,6 +166,11 @@
 		   <tr>
 		      <th>유저</th>
 		      <td><%=username%></td>
+		      <td>
+		      <%-- 	<input type="hidden" value="<%= userImage %>" name="userImage" id="userImage">
+			  	<input type="hidden" value="<%= nickName %>" name="nickName">  --%>
+		      	<button id="userprofile" class="btn btn-primary" data-xxx="<%=userImage %>" data-yyy="<%=nickName %>">프로필보기</button>
+		      </td>
 		   </tr>
 		   <tr>
 		      <th>거래지역</th>
@@ -157,7 +183,7 @@
 		  <a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=500,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">채팅</a>
 		<%	} %>
 		<% 	if(dto==null)  {%>
-		  <a href="">구매시 로그인이 필요합니다.</a><br>
+		  <a href="LoginUIServlet">구매시 로그인이 필요합니다.</a><br>
 		<%	} else if(userid.equals(dto.getUserid())) { %>
 		  <a class="btn btn-primary" href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a>
 		  <a class="btn btn-primary" href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
