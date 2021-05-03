@@ -112,7 +112,7 @@
 	</tr>
 	
 </table>
-</div> <!--컨테이너 -->
+</div> <!--컨테이너  -->
 <jsp:include page="../layout/bottomLayout.jsp" flush="true"></jsp:include>
 
 
