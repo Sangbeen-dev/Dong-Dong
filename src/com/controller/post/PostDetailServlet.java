@@ -64,8 +64,8 @@ public class PostDetailServlet extends HttpServlet {
         	request.setAttribute("username", mDTO.getUsername());
         	
         	//확인할라고 잠깐 추가했어요 두줄 
-        	//request.setAttribute("userImage", mDTO.getUserimage());
-        	//request.setAttribute("nickName", mDTO.getNickName());
+        	request.setAttribute("userImage", mDTO.getUserimage());
+        	request.setAttribute("nickName", mDTO.getNickName());
         	
         	// 게시글 내용 전달을 위해 설정
         	request.setAttribute("comments", comments);

@@ -79,6 +79,8 @@
 	<select class="form-control" id="reason">
         <option selected="selected">더 이상 이용하지 않음</option>
         <option>아이디변경 / 재가입 목적</option>
+        <option>서비스가 마음에 들지 않음</option>
+        <option>타 중고거래 사이트 이용</option>
 	</select>
 </div>
 

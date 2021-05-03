@@ -4,15 +4,11 @@
 <!DOCTYPE html>
 <%
 
-
-MemberDTO dto = (MemberDTO)session.getAttribute("login");
- String userImage = dto.getUserimage();
- String nickName = dto.getNickName();
  //거래량 추가해야함
-/*  String userImage = (String)request.getAttribute("userImage");
- String nickName = (String)request.getAttribute("nickName");
+ String userImage = (String)request.getParameter("userImage");
+ String nickName = (String)request.getParameter("nickName");
  System.out.println("jsp에서=="+userImage);
- System.out.print("jsp에서=="+nickName); */
+ System.out.print("jsp에서=="+nickName);
  
 %>
 <html>
@@ -25,6 +21,8 @@ MemberDTO dto = (MemberDTO)session.getAttribute("login");
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
+    	
+    	
  });//end ready
 </script>
 </head>
@@ -47,7 +45,7 @@ MemberDTO dto = (MemberDTO)session.getAttribute("login");
 						<li>
 							<a href="#">
 							<i class="glyphicon glyphicon-user"></i>
-							<%= nickName %> </a>
+							<%= nickName %></a>
 						</li>
 						<li>
 							<a href="#" >
