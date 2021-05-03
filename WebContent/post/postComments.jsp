@@ -62,9 +62,6 @@
 <%}%>
 </script>
     <!-- 댓글 기능 표시 시작 지점 --------------------------------------- -->
-    <% if(comments==null){ %>
-    	댓글 없음....
-   	<%} else { %> 
     <div id="comments_div">
       <%for(CommentsDTO cDTO : comments) {%>
       	<%if(cDTO.getcLevel()==1) {%>
@@ -72,55 +69,66 @@
       	<%} else {%>
       		<div class="comment my-3 p-3 alert-secondary rounded shadow-sm" style="padding-top: 10px; margin-left: <%=100+(20*cDTO.getcLevel())%>px">
       	<%} %>
-      			<dl>
-      				<dt>
-      					<img id="profileImage" class="img-fluid rounded mb-4 mb-lg-0" src="/Dong-Dong/images/profile/<%=cDTO.getUserimage()%>" width="70px" height="">
-      					작성자 : <%=cDTO.getNickName()%>
-      					<span>
-      						<%if(cDTO.getUpdateDate()==null){%>
-      							<%=(cDTO.getCreateDate()).substring(0, cDTO.getCreateDate().length()-3) %>
-      						<%} else {%>
-      							<%=(cDTO.getUpdateDate()).substring(0, cDTO.getCreateDate().length()-3) %>(수정됨)
-      						<%} %>
-      					</span>
-      					<%if(dto!=null) {%>
-      						<a href="javascript:" class="reply_comment" id="<%=cDTO.getcNum()%>">답글</a>&nbsp;&nbsp;
-      						<%if(cDTO.getUserid().equals(dto.getUserid())) {%>
-      							<a href="javascript:" class="update_comment" id="<%=cDTO.getcNum()%>">수정</a>&nbsp;&nbsp;
-      							<a href="CommentsDeleteServlet?pNum=<%=pNum%>&cNum=<%=cDTO.getcNum()%>">삭제</a>
-      						<%} %>
-      					<%} %>
-      				</dt>
-      				<dd>
-      					
-      					<h5>
-      						<%=cDTO.getcContent() %>
-      					</h5>
-      				</dd>
-      			</dl>
-      			<div class="comment-form well">
-     			  <form class="comment-reply-form" action="CommentsWriteServlet" method="post">
-      			  	<label for="contactComment">답글</label> 
-      				<input type="hidden" name="pNum" value="<%=pNum%>"/>
-      				<input type="hidden" name="parentNum" value="<%=cDTO.getcNum()%>"/>
-    			  	<textarea rows="3" class="form-control" name="cContent"></textarea> 
-      			  	<input type="submit" class="btn btn-primary btn-block" value="답글"/>
-      			  </form>
-   			    </div>
-      			<%if(dto!=null && dto.getUserid().equals(cDTO.getUserid())) %>
-      			<div class="comment-form well">
-     			  <form class="comment-update-form" action="CommentsUpdateServlet" method="post">
-      			  	<label for="contactComment">수정</label> 
-      				<input type="hidden" name="pNum" value="<%=pNum%>"/>
-      				<input type="hidden" name="cNum" value="<%=cDTO.getcNum()%>"/>
-    			  	<textarea rows="3" class="form-control" name="cContent"></textarea> 
-      			  	<input type="submit" class="btn btn-primary btn-block" value="수정"/>
-      			  </form>
-   			    </div>
+	      	<div id="userInfo_div">
+	      	  <table>
+	      	    <tr>
+	      		  <td>
+	      			<img id="profileImage" class="img-fluid rounded mb-4 mb-lg-0" src="/Dong-Dong/images/profile/<%=cDTO.getUserimage()%>" width="70px" height="">
+	      		  </td>
+	      		  <td >
+	      			<div style="margin-left: 10px;"><h5><%=cDTO.getNickName()%></h5></div>
+	      			<div style="margin-left: 10px;">
+					  <%if(cDTO.getUpdateDate()==null){%>
+	      				<%=(cDTO.getCreateDate()).substring(0, cDTO.getCreateDate().length()-3) %>
+	      			  <%} else {%>
+	      				<%=(cDTO.getUpdateDate()).substring(0, cDTO.getCreateDate().length()-3) %>(수정됨)
+	      			  <%} %>
+					</div>
+	      		  </td>
+	      		</tr>
+	      	  </table>
+	      	</div>
+	      	<div id="comment_div" style="margin-left: 10px">
+	      		<div>
+	      			<h5>
+      				  <%=cDTO.getcContent() %>
+      				</h5>
+	      		</div>
+	      		<div style="text-align : right">
+	      			<%if(dto!=null) {%>
+      					<a class="btn reply_comment btn-outline-primary" href="javascript:" id="<%=cDTO.getcNum()%>">답글</a>
+      				  <%if(cDTO.getUserid().equals(dto.getUserid())) {%>
+      					<a class="btn update_comment btn-outline-primary" href="javascript:" id="<%=cDTO.getcNum()%>">수정</a>
+      					<a class="btn btn-outline-danger" href="CommentsDeleteServlet?pNum=<%=pNum%>&cNum=<%=cDTO.getcNum()%>">삭제</a>
+      				  <%} %>
+      				<%} %>
+	      		</div>
+	      		<div>
+	      		  <div class="comment-form well">
+     			    <form class="comment-reply-form" action="CommentsWriteServlet" method="post">
+      			  	  <label for="contactComment">답글</label> 
+      				  <input type="hidden" name="pNum" value="<%=pNum%>"/>
+      				  <input type="hidden" name="parentNum" value="<%=cDTO.getcNum()%>"/>
+    			  	  <textarea rows="3" class="form-control" name="cContent"></textarea> 
+      			  	  <input type="submit" class="btn btn-outline-primary btn-block" value="답글"/>
+      			    </form>
+   			      </div>
+      			  <%if(dto!=null && dto.getUserid().equals(cDTO.getUserid())) %>
+      			  <div class="comment-form well">
+     			    <form class="comment-update-form" action="CommentsUpdateServlet" method="post">
+      			  	  <label for="contactComment">수정</label> 
+      				  <input type="hidden" name="pNum" value="<%=pNum%>"/>
+      				  <input type="hidden" name="cNum" value="<%=cDTO.getcNum()%>"/>
+    			  	  <textarea rows="3" class="form-control" name="cContent"></textarea> 
+      			  	  <input type="submit" class="btn btn-outline-primary btn-block" value="수정"/>
+      			    </form>
+   			      </div>
+	      		</div>
+	      	</div>
+      			
       		</div>
       <%}%>
     </div>
-    <%} %>
     <%if(dto==null) {%>
     	<a href="LoginUIServlet">로그인 후 댓글 작성이 가능합니다.</a><br>
     <%} else  {%>
@@ -129,7 +137,7 @@
       	<label for="contactComment">댓글</label> 
       	<input type="hidden" name="pNum" value="<%=pNum%>"/>
     	<textarea rows="3" class="form-control" name="cContent"></textarea> 
-      	<input type="submit" class="btn btn-primary btn-block" value="댓글"/>
+      	<input type="submit" class="btn btn-outline-primary btn-block" value="댓글"/>
       </form>
     </div>
     <%} %>
