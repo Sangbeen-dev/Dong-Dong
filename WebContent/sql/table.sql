@@ -32,7 +32,9 @@ CREATE TABLE post(
         pPrice NUMBER(10) NOT NULL,
         pImage VARCHAR2(100) NOT NULL,
         pHit NUMBER(5) NOT NULL,
-        pDate DATE DEFAULT SYSDATE
+        pDate DATE DEFAULT SYSDATE,
+        pStatus VARCHAR2(1) DEFAULT '0',
+        pPull VARCHAR2(3) DEFAULT '3'
 );
 ALTER TABLE post
 ADD CONSTRAINT post_userid_fk FOREIGN KEY(userid)
