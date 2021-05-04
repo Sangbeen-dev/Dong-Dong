@@ -33,7 +33,9 @@ public class OrderSheetAddServlet extends HttpServlet {
 		
 		OrderSheetService service = new OrderSheetService();
 		int num = service.OrderSheetAdd(dto);
-		System.out.println(num);
+		
+		response.sendRedirect("orderSheet/orderEndSheet.jsp");
+		
 		
 	}
 	

@@ -8,7 +8,7 @@ public class OrderSheetDAO {
 
 	public int OrderSheetAdd(SqlSession session, OrderSheetDTO dto) {
 		
-		int num = session.insert("OrderSheetAdd", dto);
+		int num = session.insert("OrderSheetMapper.OrderSheetAdd", dto);
 		
 		return num;
 	}
