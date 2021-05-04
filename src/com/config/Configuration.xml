@@ -11,6 +11,7 @@
 	<typeAlias type="com.dto.PurchaseDTO" alias="PurchaseDTO"></typeAlias>
 	<typeAlias type="com.dto.SaleDTO" alias="SaleDTO"></typeAlias>
 	<typeAlias type="com.dto.CommentsDTO" alias="CommentsDTO"></typeAlias>
+	<typeAlias type="com.dto.OrderSheetDTO" alias="OrderSheetDTO"></typeAlias>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -29,5 +30,6 @@
     <mapper resource="com/config/FavoriteMapper.xml"/>
     <mapper resource="com/config/TransactionMapper.xml"/>
     <mapper resource="com/config/CommentsMapper.xml"/>
+    <mapper resource="com/config/OrderSheetMapper.xml"/>
   </mappers>
 </configuration>
