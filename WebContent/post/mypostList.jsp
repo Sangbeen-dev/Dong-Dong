@@ -7,6 +7,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+	window.name = "parent";
 	$(document).ready(function() {
 		//전체 체크
 		$("#allCheck").click(function() {
@@ -26,7 +27,7 @@
 		
 		// 끌올
 		// 끌올 버튼시 이동할 페이지와 자식창 크기 조정 함수
-		function pullPost() {
+		function pullPost(num) {
 			// 자식창 중앙 정렬
 			var popupWidth = 500;
 			var popupHeight = 200;
@@ -37,13 +38,14 @@
 			// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼줌
 			
 			// 해당 버튼에 저장되어있는 pNum값을 뽑아서 PostPullUIServlet에 같이 넘겨준다.
-			var num = $(".pullBtn").attr("data-xxx");
+			
 			url = "PostPullUIServlet?pNum="+num;
-			open(url,"pull", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+			open(url,"child_pull", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 		}
 		// 끌올 버튼 클릭 시 자식창(pullPost.jsp)가 뜨게한다
 		$(".pullBtn").click(function() {
-			pullPost();
+			var num = $(this).attr("data-xxx");
+			pullPost(num);
 		})
 		
 		//체크한 게시글 삭제

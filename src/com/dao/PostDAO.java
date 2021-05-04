@@ -75,4 +75,9 @@ public class PostDAO {
 	}
 
 
+	public int pullPost(SqlSession session, int pNum) {
+		return session.update("PostMapper.pullPost",pNum);
+	}
+
+
 }

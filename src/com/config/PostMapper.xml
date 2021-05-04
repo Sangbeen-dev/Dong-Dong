@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
    
 	<select id="postListByAddr" parameterType="string" resultType="PostDTO">
-		select pNum,userid,addr,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate,TRUNC((SYSDATE-PDATE) * 24 * 60) AS PDATEDIFF
+		select pNum,userid,addr,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate,TRUNC((SYSDATE-PDATE) * 24 * 60) AS PDATEDIFF, pPull
        	from post
        	where addr = #{addr}
        	order by pDate desc 
@@ -26,6 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     , PHIT
     , PDATE 
     ,TRUNC((SYSDATE-PDATE) * 24 * 60) AS PDATEDIFF
+    , pPull
        from post
        order by pDate desc
         
@@ -39,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updatePost" parameterType="PostDTO">
 		update post 
-		set pTitle=#{pTitle},pContent=#{pContent},pPrice=#{pPrice},pImage=#{pImage},pCategory=#{pCategory},pDate=SYSDATE
+		set pTitle=#{pTitle},pContent=#{pContent},pPrice=#{pPrice},pImage=#{pImage},pCategory=#{pCategory}
 		where pNum=#{pNum}
 	</update>
 	
@@ -64,7 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="searchByKeyword" resultType="PostDTO" parameterType="string">
 		SELECT pNum, userid, addr, pCategory, pTitle, pContent, pPrice, pImage, pHit, pDate
-    		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff 
+    		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff, pPull
     		FROM post 
 			WHERE pTitle LIKE '%'||#{keyword}||'%'
 	</select>
@@ -85,9 +86,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="searchByCategory" resultType="PostDTO" parameterType="string">
 		SELECT pNum, userid, addr, pCategory, pTitle, pContent, pPrice, pImage, pHit, pDate
-    		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff 
+    		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff, pPull
     		FROM post 
 			WHERE pCategory = #{category}
 	</select>
+	
+	<update id="pullPost" parameterType="int">
+		UPDATE post SET pDate=SYSDATE WHERE pNum=#{pNum}
+	</update>
 
 </mapper>

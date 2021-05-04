@@ -28,26 +28,25 @@ public class PostPullServlet extends HttpServlet {
 		// 기본적인 설정 & 세션 등 생성
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO)session.getAttribute("login");
-		String pNum = request.getParameter("pNum");
+		String pNum = request.getParameter("pNum"); // form에서 넘어오는 pNum값
 		String nextPage = "main";
 		
 		if(dto==null) { // 로그인 정보가 없는 경우
 			session.setAttribute("mesg", "로그인 정보가 없습니다.");
 		} else { // 로그인 정보가 있는 경우
-			PostService pService = new PostService();
+			PostService service = new PostService();
 			
-			PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum));
+			PostDTO pDTO = service.getPostByPNum(Integer.parseInt(pNum)); // 끌올 할 글을 작성한 회원정보
 			
-			if(dto.getUserid().equals(pDTO.getUserid())){ // 삭제할 게시글과 로그인 유저 정보가 일치하는 경우
-				int deleteResult = pService.deletePostByPNum(Integer.parseInt(pNum));
-				
-				if(deleteResult!=1) { // 게시글 삭제가 실패했을 경우 
-					session.setAttribute("mesg", "게시물 끌올 중 오류가 발생하였습니다.");
-					nextPage="PostDetailServlet?pNum="+pNum;
+			if(dto.getUserid().equals(pDTO.getUserid())){ // 끌올할 게시글과 로그인 유저 정보가 일치하는 경우
+				int pullResult = service.pullPost(Integer.parseInt(pNum));
+				System.out.println("끌올했냐? " + pullResult);
+				if(pullResult!=1) { // 게시글 삭제가 실패했을 경우 
+					session.setAttribute("mesg", "게시물 끌올 중 오류가 발생하였습니다. 다시시도하세요.");
+					nextPage="PostDetailServlet?pNum="+pNum; // 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		    	} else {
-		    		// 끌올 가능여부조회 -> pPull이 몇인지? 자식창을 띄워서 화면에서 보여줄 것
-		    		
-					logr.info("Delete Post : pNum - {} , loginUser - {}", pNum, dto.getUserid());
+		    		// 끌올했음!
+					logr.info("Pull Post : pNum - {} , loginUser - {}", pNum, dto.getUserid());
 					session.setAttribute("mesg", "게시글이 끌올되었습니다.");
 		    	}
 			} else { // 삭제할 게시글과 로그인 유저 정보가 일치하지 않는 경우
