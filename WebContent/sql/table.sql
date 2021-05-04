@@ -71,3 +71,21 @@ CREATE table Sale(
     CONSTRAINT SALE_USERID_FK FOREIGN KEY (userid) REFERENCES member (userid) ON DELETE CASCADE,
     CONSTRAINT SALE_PK Primary Key(pnum,userid)
 );
+
+
+주문서
+
+create table orderSheet
+(
+oNUM varchar2(20) primary key,
+pNum NUMBER(10) not null,
+sUserid varchar2(20) not null,
+bUserid varchar2(20) not null,
+oAddr varchar2(50) not null,
+oPrice NUMBER(10) not null,
+oMessage varchar(200) not null
+);
+
+ALTER TABLE orderSheet
+ADD CONSTRAINT orderSheet_pNum_fk FOREIGN KEY(pNum)
+REFERENCES post(pNum) ON DELETE CASCADE;
