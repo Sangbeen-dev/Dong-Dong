@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					 updateDate, parentNum, cLevel, nickname, userimage 
 			  FROM comments c 
 			  JOIN member m ON c.userid=m.userid) 
-		WHERE pNum=#{pNim}
+		WHERE pNum=#{pNum}
 		START WITH cLevel = 1
 		CONNECT BY PRIOR cNum = parentNum
 	</select>
@@ -35,10 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteCommentByCNum" parameterType="int">
 		DELETE
 		FROM comments
-		WHERE cNum IN (
-			SELECT cNum
-			FROM comments
-			START WITH cNum=#{cNum}
-			CONNECT BY PRIOR cNum = parentNum)
+		WHERE cNum IN (SELECT cNum
+					   FROM comments
+					   START WITH cNum=#{cNum}
+					   CONNECT BY PRIOR cNum = parentNum)
 	</delete>
 </mapper>
