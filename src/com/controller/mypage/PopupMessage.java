@@ -13,26 +13,25 @@ import javax.servlet.http.HttpSession;
 
 import com.dto.MemberDTO;
 import com.dto.MyOrderSheetDTO;
-import com.dto.OrderSheetDTO;
-import com.dto.PostDTO;
 import com.service.OrderSheetService;
-import com.service.PostService;
 
 /**
- * Servlet implementation class OrdersheetList
+ * Servlet implementation class PopupMessage
  */
-@WebServlet("/OrdersheetList")
-public class OrdersheetList extends HttpServlet {
+@WebServlet("/PopupMessage")
+public class PopupMessage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
 		String nextPage = null;
 		if(dto!=null) {
-			String userid = dto.getUserid();
+			String oNum = request.getParameter("oNum");
 			OrderSheetService service = new OrderSheetService();
-			List<MyOrderSheetDTO> list = service.ordersheetList(userid);
-			request.setAttribute("ordersheetList", list);
-			nextPage = "ordersheetList.jsp";
+			List<MyOrderSheetDTO> list = service.message(oNum);
+			request.setAttribute("message", list);
+			System.out.println("팝업리스트"+list);
+			nextPage = "popupmessage.jsp";
+			
 			
 		}else {
 			nextPage = "LoginUIServlet";
@@ -40,7 +39,7 @@ public class OrdersheetList extends HttpServlet {
 		}
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
-	
+		
 	}
 
 	/**

@@ -26,9 +26,6 @@
 #profileImage{
 	vertical-align: middle;
 }
-.comment{
-	margin-right: 100px;
-}
 </style>
 
 
@@ -62,14 +59,15 @@
 <%}%>
 </script>
     <!-- 댓글 기능 표시 시작 지점 --------------------------------------- -->
-    <div id="comments_div">
+    <div id="comments_div" class="container"> <!-- 댓글 전체 div -->
       <%for(CommentsDTO cDTO : comments) {%>
+      	<!-- 댓글 하나 하나 반복 동작 -->
       	<%if(cDTO.getcLevel()==1) {%>
-      		<div class="comment my-3 p-3 bg-white rounded shadow-sm" style="margin-left: 100px">
+      		<div class="comment my-3 p-3 bg-white rounded shadow-sm">
       	<%} else {%>
-      		<div class="comment my-3 p-3 alert-secondary rounded shadow-sm" style="padding-top: 10px; margin-left: <%=100+(20*cDTO.getcLevel())%>px">
+      		<div class="comment my-3 p-3 alert-secondary rounded shadow-sm" style="padding-top: 10px; margin-left: <%=40*(cDTO.getcLevel()-1)%>px">
       	<%} %>
-	      	<div id="userInfo_div">
+	      	<div id="userInfo_div"> <!-- 상단 유저 정보 div -->
 	      	  <table>
 	      	    <tr>
 	      		  <td>
@@ -88,8 +86,10 @@
 	      		</tr>
 	      	  </table>
 	      	</div>
-	      	<div id="comment_div" style="margin-left: 10px">
-	      		<div>
+	      	
+	      	
+	      	<div id="comment_div"> <!-- 하단 내용 & 버튼 div -->
+	      		<div style="margin-top:10px; margin-left:5px">
 	      			<h5>
       				  <%=cDTO.getcContent() %>
       				</h5>
@@ -125,21 +125,22 @@
    			      </div>
 	      		</div>
 	      	</div>
-      			
-      		</div>
+      	</div>
       <%}%>
-    </div>
-    <%if(dto==null) {%>
+      <%if(dto==null) {%>
     	<a href="LoginUIServlet">로그인 후 댓글 작성이 가능합니다.</a><br>
-    <%} else  {%>
-    <div class="comment-form well" style="margin-left: 100px; margin-right: 100px">
-     <form action="CommentsWriteServlet" method="post">
-      	<label for="contactComment">댓글</label> 
-      	<input type="hidden" name="pNum" value="<%=pNum%>"/>
-    	<textarea rows="3" class="form-control" name="cContent"></textarea> 
-      	<input type="submit" class="btn btn-outline-primary btn-block" value="댓글"/>
-      </form>
+	    <%} else  {%>
+	    <div class="comment-form well">
+	     <form action="CommentsWriteServlet" method="post">
+	      	<label for="contactComment">댓글</label> 
+	      	<input type="hidden" name="pNum" value="<%=pNum%>"/>
+	    	<textarea rows="3" class="form-control" name="cContent"></textarea> 
+	      	<input type="submit" class="btn btn-outline-primary btn-block" value="댓글"/>
+	      </form>
+	    </div>
+	    <%} %>
     </div>
-    <%} %>
+    
+    
 
     

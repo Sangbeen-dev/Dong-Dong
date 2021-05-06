@@ -10,7 +10,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 #{oPrice}, #{oMessage}, SYSDATE)
 	</insert>
    
+    <select id="ordersheetList" resultType="MyOrderSheetDTO" parameterType="string">
+	select oNum, o.pNum pNum, sUserid, bUserid, oAddr, oPrice, oMessage, oDate, pTitle, pImage from 
+	ordersheet o, post p
+	where 
+	o.pnum = p.pnum and suserid = #{userid}
+	</select>
     
+	<delete id="orderDel" parameterType="int">
+	delete
+	from
+	ordersheet
+	where oNum = #{oNum}
+	</delete>
+	
+	<delete id="orderAllDel" parameterType="arraylist">
+	delete from ordersheet
+	where oNum in
+	<foreach item="item"  collection="list" open="(" separator="," close=")">
+		#{item}
+	</foreach>
+	</delete>
+	
+	<select id="message" resultType="MyOrderSheetDTO" parameterType="string">
+	select oNum, sUserid, o.bUserid, oAddr, oPrice, oMessage, oDate, userImage, nickName from 
+	ordersheet o, member m
+	where 
+	o.buserid = m.userid and oNum = #{oNum}
+	</select>
+	
 	
 
 </mapper>

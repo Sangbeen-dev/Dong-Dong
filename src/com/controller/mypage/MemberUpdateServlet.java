@@ -57,16 +57,13 @@ public class MemberUpdateServlet extends HttpServlet {
 				// 새로들어온 파일이 있는경우 --> user가 프로필사진을 변경한 경우
 				userImage = fileName;
 			}
-			System.out.println(userImage);
 			MemberDTO dto2 =
 					new MemberDTO(userid,passwd,username,nickName,
 							addr,phone,email1,email2,userImage);
 			
 			//update실행
-			System.out.println(dto2);
 			MemberService service = new MemberService();
 			int num = service.memberUpdate(dto2);
-			System.out.println(num);
 			//세션에 mesg '회원정보가 수정되었습니다.' 저장
 			session.setAttribute("mesg", "회원정보가 수정되었습니다.");
 			nextPage="MyPageServlet"; 

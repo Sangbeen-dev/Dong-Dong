@@ -92,59 +92,66 @@
 }
 </style>
 
-
 <script type="text/javascript">
 	var favorite = <%=favorite%>;
-<%if(dto!=null) {%>
 	$(function() {
-		$("#favorite").on("click", function(){
-			$.ajax({
-				type: "get",
-				url: "FavorateSwitchServlet",
-				data: {
-					pNum: <%=pNum%>,
-					favorite : favorite
-				}, //data
-				dataType: "text",
-				success: function(data, status, xhr) {
-					if(data=="true"){
-						$("#favoriteImg").attr("src","/Dong-Dong/images/util/favorite1.png");
-						favorite = true;
-					} else {
-
-						$("#favoriteImg").attr("src","/Dong-Dong/images/util/favorite2.png");
-						favorite = false;
-					}//if_else
-				}, //success
-				error: function(xhr, status, error) {
-					$("#result").append(error);
-					$("#result").append(status);
-				} //error
-			});//ajax
-		});//on
-	});
-<%}%>
-	$(document).ready(function(){
-			function userprofile() {
-				var popupWidth = 300;
-				var popupHeight = 500;
+		
+		<%if(dto!=null) {%> // 비 로그인 시 비활성화
+		
+			$("#favorite").on("click", function(){
+				$.ajax({
+					type: "get",
+					url: "FavorateSwitchServlet",
+					data: {
+						pNum: <%=pNum%>,
+						favorite : favorite
+					}, //data
+					dataType: "text",
+					success: function(data, status, xhr) {
+						if(data=="true"){
+							$("#favoriteImg").attr("src","/Dong-Dong/images/util/favorite1.png");
+							favorite = true;
+						} else {
+	
+							$("#favoriteImg").attr("src","/Dong-Dong/images/util/favorite2.png");
+							favorite = false;
+						}//if_else
+					}, //success
+					error: function(xhr, status, error) {
+						$("#result").append(error);
+						$("#result").append(status);
+					} //error
+				});//ajax
+			});//on
+		
+		
+			function complaintPost() {
+				var popupWidth = 600;
+				var popupHeight = 800;
 				var popupX = (window.screen.width / 2) - (popupWidth / 2);
 				var popupY= (window.screen.height / 2) - (popupHeight / 2);
-				//var userImage = $("userprofile").attr("data-xxx");
-				//console.log(userImage);
-				//url = "userprofile.jsp";
-				url = "userprofile.jsp?nickName="+"<%=nickName%>"+"&userImage="+"<%=userImage%>";
-				<%--  url = "userprofileServlet?userImage="+<%=userImage%>;  --%>
-				open(url,"userprofile", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-				}//end userprofile
-				$("#userprofile").click(function() {
-				userprofile();
-				});
-				
-				
+				url = "complaint/complaintPost.jsp?pNum="+"<%=pNum%>";
+				open(url,"complaintPost", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+			}//end compliantPost
+			$("#complaintPost").click(function() {
+				complaintPost();
+			});
+
+		<%}%>// 위쪽 영역 : 로그인시 사라짐, 아래쪽 영역 : 비 로그인 시에도 동작
+		function userprofile() {
+			var popupWidth = 300;
+			var popupHeight = 500;
+			var popupX = (window.screen.width / 2) - (popupWidth / 2);
+			var popupY= (window.screen.height / 2) - (popupHeight / 2);
+			url = "userprofile.jsp?nickName="+"<%=nickName%>"+"&userImage="+"<%=userImage%>";
+			open(url,"userprofile", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+		}//end userprofile
+			
+			$("#userprofile").click(function() {
+			userprofile();
+		});
 	});//end ready
 </script>
-
 
 <!-- --------------------------------페이지 표시 시작 지점--------------------------------- -->  
 <!-- Page Content -->
@@ -167,9 +174,7 @@
 		      <th>유저</th>
 		      <td><%=username%></td>
 		      <td>
-		      <%-- 	<input type="hidden" value="<%= userImage %>" name="userImage" id="userImage">
-			  	<input type="hidden" value="<%= nickName %>" name="nickName">  --%>
-		      	<button id="userprofile" class="btn btn-primary" data-xxx="<%=userImage %>" data-yyy="<%=nickName %>">프로필보기</button>
+		      	<button id="userprofile" class="btn btn-primary">프로필</button>
 		      </td>
 		   </tr>
 		   <tr>
@@ -201,6 +206,7 @@
 		  	%>
 		  </a>
 		<%} %>
+
       </div>
       <!-- /.col-md-4 -->
     </div>
