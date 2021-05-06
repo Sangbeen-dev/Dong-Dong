@@ -74,7 +74,6 @@ CREATE table Sale(
 
 
 주문서
-
 create table orderSheet
 (
 oNUM varchar2(20) primary key,
@@ -83,9 +82,11 @@ sUserid varchar2(20) not null,
 bUserid varchar2(20) not null,
 oAddr varchar2(50) not null,
 oPrice NUMBER(10) not null,
-oMessage varchar(200) not null
+oMessage varchar(200) not null,
+oDate DATE DEFAULT SYSDATE
 );
-
 ALTER TABLE orderSheet
 ADD CONSTRAINT orderSheet_pNum_fk FOREIGN KEY(pNum)
 REFERENCES post(pNum) ON DELETE CASCADE;
+
+Create SEQUENCE ORDERSHEET_NUM;
