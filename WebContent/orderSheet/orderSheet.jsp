@@ -35,6 +35,7 @@ String pPrice = (String) request.getParameter("pPrice");
 
 			var oPrice = $("#oPrice").val();
 			var oAddr = $("#oAddr").val();
+			var oMessage = $("#oMessage").val();
 
 			if (oPrice.length == 0) {
 				alert("희망가격을 입력하세요")
@@ -67,7 +68,7 @@ String pPrice = (String) request.getParameter("pPrice");
 			<div class="row">
 				<div class="col-md-offset-5 col-md-3">
 					<div class="form-login">
-						<h4>주문서 작성</h4>
+						<h4 style ="text-align:center">주문서 작성</h4>
 						희망 가격 
 						<input type="text" name="oPrice" id="oPrice" value="<%=pPrice%>" class="form-control input-sm chat-input" />
 						</br> 

@@ -180,10 +180,10 @@
 		
 		</table>
 		<% 	if(dto!=null)  {%>
-		  <a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=500,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">채팅</a>
+		  <a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=400,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">채팅</a>
 		<%	} %>
 		<% 	if(dto!=null)  {%>
-		  <a class="btn btn-primary" onclick="window.open('orderSheet/orderSheet.jsp?sUserid=<%=userid %>&pNum=<%=pNum %>&pPrice=<%=pPrice %>','window_name','width=400,height=500,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">주문서작성</a>
+		  <a class="btn btn-primary" onclick="window.open('orderSheet/orderSheet.jsp?sUserid=<%=userid %>&pNum=<%=pNum %>&pPrice=<%=pPrice %>','window_name','width=400,height=300,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">주문서작성</a>
 		<%	} %>
 		<% 	if(dto==null)  {%>
 		  <a href="LoginUIServlet">구매시 로그인이 필요합니다.</a><br>
