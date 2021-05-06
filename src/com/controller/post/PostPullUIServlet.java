@@ -31,11 +31,10 @@ public class PostPullUIServlet extends HttpServlet {
 		PostService service = new PostService();
 		PostDTO pDto = service.getPostByPNum(Integer.parseInt(pNum));
 		String pPull = pDto.getpPull();
-		request.setAttribute("pPull", pPull); // 끌올 횟수를 자식창에게 넘겨준다.
+		request.setAttribute("pDto", pDto);
 		
 		// 끌올 가능 여부를 계산해서 pullPost로 넘겨준다.
 		String pDate = pDto.getpDate();
-		request.setAttribute("pDate", pDate); // 글 작성 시간을 자식창에게 넘겨준다.
 		
 		// String타입인 pDate를 Date형식으로 바꿔주는 SimpleDateFormat
 		SimpleDateFormat fDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -57,11 +56,9 @@ public class PostPullUIServlet extends HttpServlet {
 		
 		request.setAttribute("calDateDay", Long.toString(calDateDay));
 		if(calDateDay < 3 || Integer.parseInt(pPull) == 0) { // 글작성시간과 현재시간의 차이가 3일 이내라면 끌올불가능
-			System.out.println("끌올불가능");
 			request.setAttribute("pullAvailable", "F");
 			
 		} else { // 3일 이상이라면 끌올 가능
-			System.out.println("끌올가능");
 			request.setAttribute("pullAvailable", "T");
 		}
 		

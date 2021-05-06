@@ -28,6 +28,10 @@
       		text-align: center;
       		font-weight: 700;
     	}
+
+		img {
+			cursor : pointer;
+		}
   	</style>
 	
 </head>
