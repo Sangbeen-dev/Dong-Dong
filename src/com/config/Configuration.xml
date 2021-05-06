@@ -12,6 +12,7 @@
 	<typeAlias type="com.dto.SaleDTO" alias="SaleDTO"></typeAlias>
 	<typeAlias type="com.dto.CommentsDTO" alias="CommentsDTO"></typeAlias>
 	<typeAlias type="com.dto.OrderSheetDTO" alias="OrderSheetDTO"></typeAlias>
+	<typeAlias type="com.dto.MyOrderSheetDTO" alias="MyOrderSheetDTO"></typeAlias>
 </typeAliases>
   <environments default="development">
     <environment id="development">
