@@ -38,7 +38,7 @@ public class SendmailAuthServlet extends HttpServlet {
 		// 서블릿은 그 값을 파싱하면 -> 인증될수 있게
 
 		if (mailTo != null) {
-			content =  "<a href='http://localhost:8077/emailAuth'>인증링크</a>"+" 를 클릭해주세요." ;// localhost 포트번호 확인하기//?=
+			content = /* "<a href='http://localhost:8077/emailAuth'>인증링크</a>" */" 인증창에 '인증완료'라고 입력해주세요. 그리고 이메일 한번 더 입력해주세요.  ";// localhost 포트번호 확인하기//?=
 			subject = "동동 이메일 인증 입니다.";
 		}
 		try {
@@ -86,7 +86,7 @@ public class SendmailAuthServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		response.sendRedirect("emailAuth.jsp");
+		response.sendRedirect("CheckmailAuth.jsp");
 
 	}// end doGet
 
