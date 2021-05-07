@@ -163,12 +163,27 @@ $(document).ready(function(){
 	<div class="page_nation">	
 <%
 	for (int j=1; j<=totalPage; j++) {
-%> 
+		if (keyword != null){
+%>
+			<a href='CategorySearchServlet?curPage=<%=j %>'><%=j %></a>			
+<% 
+		}
+%>
 
+<%				
+		if (category != null){
+%>			
+		<a href='KeywordSearchServlet?curPage=<%=j %>'><%=j %></a>
+		
+<% 
+		}
+%> 
+	
 		<a href='main?curPage=<%=j %>'><%=j %></a>
 
+
 <%		 
-}
+}	
 %>
 		</div>
 </div>
