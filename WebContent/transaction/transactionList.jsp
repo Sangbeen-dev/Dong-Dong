@@ -32,7 +32,6 @@ h2{
 	
 	<thead>
 		<tr>
-			<th scope="col" class="text-center" >
 			<th scope="col" class="text-center">상품번호</th>
 			<th scope="col" class="text-center">상품정보</th><!--pImage 랑 pTitle 같이 출력  -->
 			<th scope="col" class="text-center">작성일</th><!--pDate  -->
@@ -62,10 +61,10 @@ h2{
 			href="PostDetailServlet?pNum=<%= pNum%>">
 				<%--여기 해당상품 이동될 페이지  --%> <img src="/Dong-Dong/images/<%= pImage %>"
 				border="0"  width="80" /></a>
-				<div>
-				<%= pTitle %>
+			<!-- 	<div> -->
+				<%= pTitle %><br>
 				<font size="2" color="#665b5f">[분류 :<%= pCategory %>]</font>
-				</div></td>
+				<!-- </div> --></td>
 		<td class="text-center" width="80"><%= pPrice %></td>
 		<td class="text-center" width="40"><%= pDate %></td>
 	</tr>	
@@ -89,7 +88,6 @@ h2{
 
 	<thead>
 		<tr>
-			<th scope="col" class="text-center" >
 			<th scope="col" class="text-center">상품번호</th>
 			<th scope="col" class="text-center">상품정보</th><!--pImage 랑 pTitle 같이 출력  -->
 			<th scope="col" class="text-center">작성일</th><!--pDate  -->
@@ -113,18 +111,19 @@ h2{
 %>	    
 	  		
 
-			  	<tr>
+	<tr>
 		<td class="text-center" width="1"><%= pNum %></td>	
 		<td class="text-center" width="120"><a
 			href="PostDetailServlet?pNum=<%= pNum%>">
 				<%--여기 해당상품 이동될 페이지  --%> <img src="/Dong-Dong/images/<%= pImage %>"
 				border="0"  width="80" /></a>
-				<div>
-				<%= pTitle %>
+				<!-- <div> -->
+				<%= pTitle %><br>
 				<font size="2" color="#665b5f">[분류 :<%= pCategory %>]</font>
-				</div></td>
-		<td class="text-center" width="80"><%= pPrice %></td>
+				<!-- </div> --></td>
+		
 		<td class="text-center" width="40"><%= pDate %></td>
+		<td class="text-center" width="80"><%= pPrice %></td>
 	</tr>	
 
 <%
