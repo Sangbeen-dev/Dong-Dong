@@ -7,12 +7,11 @@
 <%@page import="com.dto.PageDTO"%>
 
  <%
- 	List<PostDTO> list = (List<PostDTO>)request.getAttribute("postList");
- 	//List<PageDTO> pDTO = (List<PageDTO>)request.getAttribute("pDTO");
+ 	List<PostDTO> list = (List<PostDTO>)request.getAttribute("postList");	
  
 	int curPage = 1;
  	int totalPage = (int)request.getAttribute("totalPage");
-  
+
  	if(request.getParameter("curPage") != null) {
  		curPage = Integer.parseInt((String)request.getAttribute("curPage"));
  	}
@@ -163,12 +162,27 @@ $(document).ready(function(){
 	<div class="page_nation">	
 <%
 	for (int j=1; j<=totalPage; j++) {
-%> 
+		if (keyword != null){
+%>
+			<a href='CategorySearchServlet?curPage=<%=j %>'><%=j %></a>			
+<% 
+		}
+%>
 
+<%				
+		if (category != null){
+%>			
+		<a href='KeywordSearchServlet?curPage=<%=j %>'><%=j %></a>
+		
+<% 
+		}
+%> 
+	
 		<a href='main?curPage=<%=j %>'><%=j %></a>
 
+
 <%		 
-}
+}	
 %>
 		</div>
 </div>

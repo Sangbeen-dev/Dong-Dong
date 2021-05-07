@@ -8,6 +8,8 @@
 <% 
 	MemberDTO dto = (MemberDTO)session.getAttribute("login");
 	String pNum = (String)request.getAttribute("pNum");
+	String pStatus = (String)request.getAttribute("pStatus");
+	boolean status = (pStatus.charAt(0)=='1'?true:false);
     List<CommentsDTO> comments = (List<CommentsDTO>)request.getAttribute("comments");
 %>
 
@@ -55,6 +57,18 @@
 				event.preventDefault();	
 			}  
 		});
+		
+		function complaintComment(id) {
+			var popupWidth = 300;
+			var popupHeight = 500;
+			var popupX = (window.screen.width/2)-(popupWidth/2);
+			var popupY= (window.screen.height/2)-(popupHeight/2);
+			url = "complaint/complaintComment.jsp?cNum="+id;
+			open(url,"complaintComment", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+		}//end complaintComment
+		$(".complaintComment").click(function() {
+			complaintComment(this.id);
+		});
 	});
 <%}%>
 </script>
@@ -94,7 +108,9 @@
       				  <%=cDTO.getcContent() %>
       				</h5>
 	      		</div>
+	      		
 	      		<div style="text-align : right">
+	      		<%if(!status) {%>
 	      			<%if(dto!=null) {%>
       					<a class="btn reply_comment btn-outline-primary" href="javascript:" id="<%=cDTO.getcNum()%>">답글</a>
       				  <%if(cDTO.getUserid().equals(dto.getUserid())) {%>
@@ -102,11 +118,16 @@
       					<a class="btn btn-outline-danger" href="CommentsDeleteServlet?pNum=<%=pNum%>&cNum=<%=cDTO.getcNum()%>">삭제</a>
       				  <%} %>
       				<%} %>
+     			<%} %>
+     			<%if(dto!=null && !cDTO.getUserid().equals(dto.getUserid())) {%>
+     				<a class="btn complaintComment btn-outline-danger" href="javascript:" id="<%=cDTO.getcNum()%>">신고</a>
+     			<%} %>
 	      		</div>
+     			<%if(!status) {%>
 	      		<div>
 	      		  <div class="comment-form well">
      			    <form class="comment-reply-form" action="CommentsWriteServlet" method="post">
-      			  	  <label for="contactComment">답글</label> 
+      			  	  <label for="contactComment"></label> 
       				  <input type="hidden" name="pNum" value="<%=pNum%>"/>
       				  <input type="hidden" name="parentNum" value="<%=cDTO.getcNum()%>"/>
     			  	  <textarea rows="3" class="form-control" name="cContent"></textarea> 
@@ -116,7 +137,7 @@
       			  <%if(dto!=null && dto.getUserid().equals(cDTO.getUserid())) %>
       			  <div class="comment-form well">
      			    <form class="comment-update-form" action="CommentsUpdateServlet" method="post">
-      			  	  <label for="contactComment">수정</label> 
+      			  	  <label for="contactComment"></label> 
       				  <input type="hidden" name="pNum" value="<%=pNum%>"/>
       				  <input type="hidden" name="cNum" value="<%=cDTO.getcNum()%>"/>
     			  	  <textarea rows="3" class="form-control" name="cContent"></textarea> 
@@ -124,15 +145,18 @@
       			    </form>
    			      </div>
 	      		</div>
+	      		<%} %>
 	      	</div>
       	</div>
       <%}%>
-      <%if(dto==null) {%>
+      <%if(status) {
+      }
+      else if(dto==null) {%>
     	<a href="LoginUIServlet">로그인 후 댓글 작성이 가능합니다.</a><br>
 	    <%} else  {%>
 	    <div class="comment-form well">
 	     <form action="CommentsWriteServlet" method="post">
-	      	<label for="contactComment">댓글</label> 
+	      	<label for="contactComment"></label> 
 	      	<input type="hidden" name="pNum" value="<%=pNum%>"/>
 	    	<textarea rows="3" class="form-control" name="cContent"></textarea> 
 	      	<input type="submit" class="btn btn-outline-primary btn-block" value="댓글"/>

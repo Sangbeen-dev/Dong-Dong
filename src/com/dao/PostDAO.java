@@ -55,9 +55,20 @@ public class PostDAO {
 
 
 
-	public List<PostDTO> searchByKeyword(SqlSession session, String keyword) {
-		List<PostDTO> list = session.selectList("PostMapper.searchByKeyword", keyword);
-		return list;
+	public PageDTO searchByKeyword(SqlSession session, String keyword,int curPage) {
+		PageDTO pDTO = new PageDTO();//List, curPage, totalCount, perPage
+		int perPage = 16;//db에서 몇개를 읽어올지
+		int offset = (curPage-1)*perPage;//db레코드 select 시작번호
+		List<PostDTO> list = session.selectList("PostMapper.searchByKeyword", keyword,new RowBounds(offset,perPage));
+		pDTO.setPerPage(perPage);//한페이지당 페이지 개수
+		pDTO.setCurPage(curPage);//현재페이지
+		pDTO.setOffset(offset);//시작페이지
+		pDTO.setList(list);//0~15 16개
+		pDTO.setTotalCount(totalCount(session,keyword));//전체 레코드 갯수
+		
+		//PDTO에 모든 데이터 저장완료
+		return pDTO;
+		
 	}	
 
 	public List<PostDTO> mypostList(SqlSession session, String userid) {
@@ -71,9 +82,19 @@ public class PostDAO {
 	}
 
 
-	public List<PostDTO> searchByCategory(SqlSession session, String category) {
-		List<PostDTO> list = session.selectList("PostMapper.searchByCategory", category);
-		return list;
+	public PageDTO searchByCategory(SqlSession session, String category,int curPage) {
+		PageDTO pDTO = new PageDTO();//List, curPage, totalCount, perPage
+		int perPage = 16;//db에서 몇개를 읽어올지
+		int offset = (curPage-1)*perPage;//db레코드 select 시작번호
+		List<PostDTO> list = session.selectList("PostMapper.searchByCategory", category,new RowBounds(offset,perPage));
+		pDTO.setPerPage(perPage);//한페이지당 페이지 개수
+		pDTO.setCurPage(curPage);//현재페이지
+		pDTO.setOffset(offset);//시작페이지
+		pDTO.setList(list);//0~15 16개
+		pDTO.setTotalCount(totalCount(session,category));//전체 레코드 갯수
+		
+		//PDTO에 모든 데이터 저장완료
+		return pDTO;
 	}
 
 	public int totalCount(SqlSession session,String addr) {
