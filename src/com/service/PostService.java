@@ -140,18 +140,18 @@ public class PostService {
 	}
 
 
-	public List<PostDTO> searchByKeyword(String keyword) {
+	public PageDTO searchByKeyword(int curPage,String keyword) {
 		SqlSession session = MySqlSessionFactory.getSession();
-        List<PostDTO> list = null;
+		PageDTO pDTO = null;
         try {
             PostDAO dao = new PostDAO();
-            list = dao.searchByKeyword(session, keyword);
+            pDTO = dao.searchByKeyword(session, keyword,curPage);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return list;
+        return pDTO;
 	}
 	public List<PostDTO> mypostList(String userid) {
 		SqlSession session = MySqlSessionFactory.getSession();
@@ -181,18 +181,18 @@ public class PostService {
 
 	}
 
-	public List<PostDTO> searchByCategory(String category) {
+	public PageDTO searchByCategory(int curPage,String category) {
 		SqlSession session = MySqlSessionFactory.getSession();
-        List<PostDTO> list = null;
+		PageDTO pDTO = null;
         try {
             PostDAO dao = new PostDAO();
-            list = dao.searchByCategory(session, category);
+            pDTO = dao.searchByCategory(session, category,curPage);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return list;
+        return pDTO;
 	}
 
 

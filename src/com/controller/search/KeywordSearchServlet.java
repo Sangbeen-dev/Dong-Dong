@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.controller.post.PostWriteServlet;
+import com.dto.PageDTO;
 import com.dto.PostDTO;
 import com.service.PostService;
 
@@ -26,15 +28,23 @@ public class KeywordSearchServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String curPage = request.getParameter("curPage");
 		String keyword = request.getParameter("keyword");
-		
+		if(curPage == null) {
+			curPage = "1";
+		}
 		PostService service = new PostService();
-		List<PostDTO> list = service.searchByKeyword(keyword);
+		PageDTO pDTO = service.searchByKeyword(Integer.parseInt(curPage),keyword);
 		
 		logr.info("Search_keyWord : {}", keyword);
 		
-		request.setAttribute("postList", list);
+		request.setAttribute("postList",pDTO.getList());
 		request.setAttribute("keyword", keyword);
+		request.setAttribute("perPage", pDTO.getPerPage());
+		request.setAttribute("offset", pDTO.getOffset());
+		request.setAttribute("curPage",curPage);
+		request.setAttribute("totalPage",pDTO.getTotalCount()/pDTO.getPerPage());
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 		dis.forward(request, response);
 	}

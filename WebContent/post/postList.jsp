@@ -7,15 +7,12 @@
 <%@page import="com.dto.PageDTO"%>
 
  <%
- 	List<PostDTO> list = (List<PostDTO>)request.getAttribute("postList");
- 	//List<PageDTO> pDTO = (List<PageDTO>)request.getAttribute("pDTO");
+ 	List<PostDTO> list = (List<PostDTO>)request.getAttribute("postList");	
  
 	int curPage = 1;
  	int totalPage = (int)request.getAttribute("totalPage");
 
-	
-    
-    
+	 
  	if(request.getParameter("curPage") != null) {
  		curPage = Integer.parseInt((String)request.getAttribute("curPage"));
  	}
