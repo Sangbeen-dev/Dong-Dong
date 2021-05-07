@@ -33,12 +33,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="message" resultType="MyOrderSheetDTO" parameterType="string">
-	select oNum, sUserid, o.bUserid, oAddr, oPrice, oMessage, oDate, userImage, nickName from 
+	select oNum, sUserid, o.bUserid, oAddr, oPrice, oMessage, oDate, userImage, nickName, pNum from 
 	ordersheet o, member m
 	where 
 	o.buserid = m.userid and oNum = #{oNum}
 	</select>
 	
+	<insert id="purchase"  parameterType="PurchaseDTO" >
+	INSERT INTO purchase 
+	VALUES (#{pNum}, #{userid})
+	</insert>
 	
+	<insert id="sale"  parameterType="SaleDTO" >
+	INSERT INTO sale 
+	VALUES (#{pNum}, #{userid})
+	</insert>
+	
+	<delete id="ordercomplete" parameterType="int">
+	delete
+	from
+	ordersheet
+	where pNum = #{pNum}
+	</delete>
 
 </mapper>

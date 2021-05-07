@@ -16,21 +16,23 @@ import com.dto.MyOrderSheetDTO;
 import com.service.OrderSheetService;
 
 /**
- * Servlet implementation class PopupMessage
+ * Servlet implementation class SaleServlet
  */
-@WebServlet("/PopupMessage")
-public class PopupMessage extends HttpServlet {
+@WebServlet("/SaleServlet")
+public class SaleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
 		String nextPage = null;
 		if(dto!=null) {
-			String oNum = request.getParameter("oNum");
+			String bUserid = request.getParameter("bUserid");
+			String sUserid = request.getParameter("sUserid");
+			int pNum = Integer.parseInt(request.getParameter("pNum"));
 			OrderSheetService service = new OrderSheetService();
-			List<MyOrderSheetDTO> list = service.message(oNum);
-			request.setAttribute("message", list);
-			nextPage = "popupmessage.jsp";
-			
+			int n = service.sale(bUserid, sUserid, pNum);
+			request.setAttribute("sale", n);
+			nextPage = "salecomplete.jsp";
 			
 		}else {
 			nextPage = "LoginUIServlet";
@@ -38,7 +40,7 @@ public class PopupMessage extends HttpServlet {
 		}
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
-		
+	
 	}
 
 	/**

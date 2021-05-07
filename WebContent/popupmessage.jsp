@@ -1,3 +1,4 @@
+<%@page import="sun.net.www.content.image.png"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dto.MyOrderSheetDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,12 +8,12 @@
 List<MyOrderSheetDTO> list = (List<MyOrderSheetDTO>)request.getAttribute("message");
 String oMessage1 = list.get(0).getoMessage();
 int oNum = list.get(0).getoNum();
+int pNum = list.get(0).getpNum();
 String bUserid = list.get(0).getbUserid();
 String sUserid = list.get(0).getsUserid();
 String oMessage = list.get(0).getoMessage();
 String nickName = list.get(0).getNickName();
 String userImage = list.get(0).getUserImage();
-
 
 %>
 <html>
@@ -44,6 +45,11 @@ String userImage = list.get(0).getUserImage();
 			console.log(num);
 			location.href="OrderDelServlet?oNum="+num; 
 		});//end delBtn
+		
+		//구매확정 버튼
+		$("#confirm").click(function() {
+			location.href="SaleServlet?oNum="+"<%=oNum%>"+"&pNum="+"<%=pNum%>"+"&bUserid="+"<%=bUserid%>"+"&sUserid="+"<%=sUserid%>";
+		})
 		
  });//end ready
 </script>

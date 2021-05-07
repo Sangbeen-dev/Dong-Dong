@@ -94,5 +94,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="pullPost" parameterType="int">
 		UPDATE post SET pDate=SYSDATE WHERE pNum=#{pNum}
 	</update>
+	
+	<update id="poststatus" parameterType="int">
+		update post 
+		set pStatus= '1'
+		where pNum=#{pNum}
+	</update>
+	
 
 </mapper>

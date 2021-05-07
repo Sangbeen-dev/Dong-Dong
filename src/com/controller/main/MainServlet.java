@@ -20,7 +20,6 @@ import com.service.PostService;
 public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("login");
 		PostService service = new PostService();
@@ -33,7 +32,6 @@ public class MainServlet extends HttpServlet {
 			String addr = member.getAddr();
 			list = service.postListByAddr(addr);
 		}
-		
 		request.setAttribute("postList", list);
 		
 		

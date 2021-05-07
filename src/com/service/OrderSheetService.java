@@ -5,10 +5,12 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
-import com.dao.FavoriteDAO;
 import com.dao.OrderSheetDAO;
+import com.dao.PostDAO;
 import com.dto.MyOrderSheetDTO;
 import com.dto.OrderSheetDTO;
+import com.dto.PurchaseDTO;
+import com.dto.SaleDTO;
 
 public class OrderSheetService {
 	public int OrderSheetAdd(OrderSheetDTO dto) {
@@ -80,5 +82,32 @@ public class OrderSheetService {
 		}
 		return list;
 	}
+
+	public int sale(String bUserid, String sUserid, int pNum) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		PurchaseDTO dto1 = new PurchaseDTO();
+		SaleDTO dto2 = new SaleDTO();
+		int n = 0;
+		try {
+			OrderSheetDAO dao = new OrderSheetDAO();
+			dto1.setUserid(bUserid);
+			dto1.setpNum(pNum);
+			dto2.setUserid(sUserid);
+			dto2.setpNum(pNum);
+			n = dao.purchase(session, dto1);
+			n = dao.sale(session, dto2);
+			n = dao.ordercomplete(session, pNum);
+			PostDAO dao2 = new PostDAO();
+			n = dao2.poststatus(session, pNum);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("rollback==");
+			e.printStackTrace();
+			session.rollback();
+		} finally {
+			session.close();
+		}
+		return n;
+	}//end sale
 	
 }

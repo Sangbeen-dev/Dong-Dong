@@ -80,4 +80,10 @@ public class PostDAO {
 	}
 
 
+	public int poststatus(SqlSession session, int pNum) {
+		int n = session.update("PostMapper.poststatus", pNum);
+		return n;
+	}
+
+
 }
