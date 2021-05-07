@@ -2,13 +2,15 @@ package com.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
+import com.dto.PageDTO;
 import com.dto.PostDTO;
 
 public class PostDAO {
 
-   public List<PostDTO> postListByAddr(SqlSession session, String addr) {
+   public List<PostDTO> postListByAddr(SqlSession session, String addr) { 
 	   List<PostDTO> list = session.selectList("PostMapper.postListByAddr", addr);
 	   return list;
    }
@@ -74,5 +76,34 @@ public class PostDAO {
 		return list;
 	}
 
+	public int totalCount(SqlSession session,String addr) {
+		return session.selectOne("totalCount",addr);
+	}
+	
+	public PageDTO selectAllPostPage(SqlSession session, int curPage,boolean login,String addr) {
+		
+		
+		PageDTO pDTO = new PageDTO();//List, curPage, totalCount, perPage
+		int perPage = 16;//db에서 몇개를 읽어올지
+		int offset = (curPage-1)*perPage;//db레코드 select 시작번호
+		List<PostDTO> list = session.selectList("postListAll",null,new RowBounds(offset,perPage));
+		//최초 offset=0, perPage=16
+		//데이터를 주고 받는 것 PageDTO
+		if(login) { 
+			list = session.selectList("postListByAddr",addr,new RowBounds(offset,perPage));
+		}else {
+			list = session.selectList("postListAll",null,new RowBounds(offset,perPage));
+		}
+		pDTO.setPerPage(perPage);//한페이지당 페이지 개수
+		pDTO.setCurPage(curPage);//현재페이지
+		pDTO.setOffset(offset);//시작페이지
+		pDTO.setList(list);//0~15 16개
+		pDTO.setTotalCount(totalCount(session,addr));//전체 레코드 갯수
+		
+		//PDTO에 모든 데이터 저장완료
+		return pDTO;
+		
+		
+	}
 
 }

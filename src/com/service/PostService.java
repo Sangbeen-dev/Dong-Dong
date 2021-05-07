@@ -8,11 +8,16 @@ import org.apache.ibatis.session.SqlSession;
 import com.config.MySqlSessionFactory;
 import com.dao.FavoriteDAO;
 import com.dao.PostDAO;
+import com.dto.PageDTO;
 import com.dto.PostDTO;
 
 public class PostService {
 
-
+	private PostDAO dao;
+	
+	public PostService() {
+	   dao = new PostDAO();
+	}
 	public List<PostDTO> postListAll() {
 		SqlSession session = MySqlSessionFactory.getSession();
 		List<PostDTO> list = null;
@@ -188,6 +193,19 @@ public class PostService {
             session.close();
         }
         return list;
+	}
+
+public PageDTO selectAllPostPage(int curPage, boolean login,String addr){
+		
+		SqlSession session = MySqlSessionFactory.getSession();
+		PageDTO pDTO = null;
+		try {
+			PostDAO dao = new PostDAO();
+			pDTO = dao.selectAllPostPage(session, curPage,login,addr);
+		}finally {
+			session.close();
+		}
+		 return pDTO;
 	}
 }// end class
 

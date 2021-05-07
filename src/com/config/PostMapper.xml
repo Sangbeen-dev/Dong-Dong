@@ -4,18 +4,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="PostMapper">   
   
-	
+	<select id="totalCount" parameterType="string" resultType="int">
+	select count(*)
+	from post
+	<if test="addr != null">
+		where addr = #{addr}
+	</if> 
+	</select>
    
 	<select id="postListByAddr" parameterType="string" resultType="PostDTO">
-		select pNum,userid,addr,pCategory,pTitle,pContent,pPrice,pImage,pHit,pDate,TRUNC((SYSDATE-PDATE) * 24 * 60) AS PDATEDIFF
-       	from post
-       	where addr = #{addr}
-       	order by pDate desc 
-       	
+		select PNUM
+    , USERID
+    , ADDR
+    , PCATEGORY
+    , PTITLE
+    , PCONTENT
+    , PPRICE
+    , PIMAGE
+    , PHIT
+    , PDATE 
+    ,TRUNC((SYSDATE-PDATE) * 24 * 60) AS PDATEDIFF
+       from post
+       where addr = #{addr}
+       order by pDate desc
+	
 	</select>
 	
-	<select id="postListAll" resultType="PostDTO">
-       select PNUM
+	<select id="postListAll"  resultType="PostDTO">
+	select PNUM
     , USERID
     , ADDR
     , PCATEGORY
