@@ -25,10 +25,10 @@ $(function() {
 			dataType: "text",
 			success: function(data, status, xhr) {
 				if(data=="true"){
-					alert("유저 신고가 완료되었습니다.");
+					opener.alert("유저 신고가 완료되었습니다.");
 					window.close();
 				} else {
-					alert("유저 신고가 실패하였습니다.");
+					opener.alert("유저 신고가 실패하였습니다.");
 					window.close();
 				}//if_else
 			}, //success

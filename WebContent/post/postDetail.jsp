@@ -20,7 +20,7 @@
 	String userImage = (String)request.getAttribute("userImage");
 	String nickName = (String)request.getAttribute("nickName");
 	boolean favorite = (boolean)request.getAttribute("favorite");
-	
+	boolean status = (pStatus.charAt(0)=='1'?true:false);
 	// 가격에 1000단위에 쉼표를 붙여 줍니다.
     DecimalFormat formatter = new DecimalFormat("###,###");
     String price = formatter.format(Integer.parseInt(pPrice));
@@ -123,13 +123,12 @@
 					} //error
 				});//ajax
 			});//on
-		
-		
+			
 			function complaintPost() {
-				var popupWidth = 600;
-				var popupHeight = 800;
-				var popupX = (window.screen.width / 2) - (popupWidth / 2);
-				var popupY= (window.screen.height / 2) - (popupHeight / 2);
+				var popupWidth = 300;
+				var popupHeight = 500;
+				var popupX = (window.screen.width/2)-(popupWidth/2);
+				var popupY= (window.screen.height/2)-(popupHeight/2);
 				url = "complaint/complaintPost.jsp?pNum="+"<%=pNum%>";
 				open(url,"complaintPost", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 			}//end compliantPost
@@ -143,7 +142,7 @@
 			var popupHeight = 500;
 			var popupX = (window.screen.width / 2) - (popupWidth / 2);
 			var popupY= (window.screen.height / 2) - (popupHeight / 2);
-			url = "userprofile.jsp?nickName="+"<%=nickName%>"+"&userImage="+"<%=userImage%>";
+			url = "userprofile.jsp?nickName="+"<%=nickName%>"+"&userImage="+"<%=userImage%>"+"&userid="+"<%=userid%>";
 			open(url,"userprofile", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 		}//end userprofile
 			
@@ -166,7 +165,11 @@
       <div class="col-lg-5">
         <br>
         <h1 class="font-weight-light"><%=pTitle%></h1><br>
+        <%if(!status) {%>
         <h2 class="font-weight-light"><%=price%>원</h2><br>
+        <%} else { %>
+        <h2 class="font-weight-light">판매완료</h2><br>
+        <%} %>
         <h6 class="font-weight-light"><%=pDate.substring(0, pDate.length()-3)%></h6>
         
 		<table class="table">
@@ -184,29 +187,31 @@
 		 </tbody> 
 		
 		</table>
-		<% 	if(dto!=null)  {%>
-		  <a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=400,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">채팅</a>
-		<%	} %>
-		<% 	if(dto!=null)  {%>
-		  <a class="btn btn-primary" onclick="window.open('orderSheet/orderSheet.jsp?sUserid=<%=userid %>&pNum=<%=pNum %>&pPrice=<%=pPrice %>','window_name','width=400,height=300,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">주문서작성</a>
-		<%	} %>
-		<% 	if(dto==null)  {%>
-		  <a href="LoginUIServlet">구매시 로그인이 필요합니다.</a><br>
-		<%	} else if(userid.equals(dto.getUserid())) { %>
-		  <a class="btn btn-primary" href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a>
-		  <a class="btn btn-primary" href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
-		<% 	} else  {%>
-		  
-          <a id="favorite"  class="btn">
-		    <%if(favorite==true) {%>
-    	    	<img id="favoriteImg" src="/Dong-Dong/images/util/favorite1.png"  width="50" height="50"/>
-    	    <% } else {%>
-    	    	<img id="favoriteImg" src="/Dong-Dong/images/util/favorite2.png"  width="50" height="50"/>
-    	    <% }
-		  	%>
-		  </a>
+		
+		<%if(status){%>
+			<!-- 아무것도 안띄움 -->
+		<%} else if(dto==null){%>
+			<a href="LoginUIServlet">구매시 로그인이 필요합니다.</a><br>
+		<% } else {%>
+			<a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=400,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">채팅</a>
+			<%if(!userid.equals(dto.getUserid())){%>
+				<a class="btn btn-primary" onclick="window.open('orderSheet/orderSheet.jsp?sUserid=<%=userid %>&pNum=<%=pNum %>&pPrice=<%=pPrice %>','window_name','width=400,height=300,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">주문서작성</a>
+				<a id="favorite"  class="btn">
+		    	<%if(favorite==true) {%>
+    	    		<img id="favoriteImg" src="/Dong-Dong/images/util/favorite1.png"  width="50" height="50"/>
+    	    	<% } else {%>
+    	    		<img id="favoriteImg" src="/Dong-Dong/images/util/favorite2.png"  width="50" height="50"/>
+    	    	<% } %>
+		  		</a>
+		  			
+			<%} else {%>
+				<a class="btn btn-primary" href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a>
+		  		<a class="btn btn-primary" href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
+			<%}
+		}%>
+		<%if(dto!=null && !userid.equals(dto.getUserid())){%>
+		<a id="complaintPost" class="btn btn-danger">신고</a>
 		<%} %>
-
       </div>
       <!-- /.col-md-4 -->
     </div>
