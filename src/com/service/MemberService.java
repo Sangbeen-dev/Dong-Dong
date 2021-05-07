@@ -128,6 +128,8 @@ public class MemberService {
 			System.out.println("서비스==="+dto2);
 			session.commit();
 		}catch (Exception e) {
+			System.out.println("롤백=====");
+			e.printStackTrace();
 			session.rollback();
 		}finally {
 			session.close();
@@ -163,5 +165,47 @@ public class MemberService {
 		}
 		return n;
 	}//mypage에서 닉네임 중복검사후 변경
+
+
+	public void withdrawal(String userid) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			MemberDAO dao = new MemberDAO();
+			dao.withdrawal(session, userid);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+		} finally {
+			session.close();
+		}
+	}//end withdrawal
+
+
+	public int addrAuth1(MemberDTO dto2) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+			n = dao.addrAuth1(session, dto2);
+		} finally {
+			session.close();
+		}
+		return n;
+	}//동 같은지 체크
+	
+	public int addrAuth2(MemberDTO dto2) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+			n = dao.addrAuth2(session, dto2);
+			session.commit();
+		}catch (Exception e) {
+			session.rollback();
+		}finally {
+			session.close();
+		}
+		return n;
+	}//동 달라서 현재위치로 addr 수정
 	
 }

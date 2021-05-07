@@ -20,7 +20,6 @@ import com.dao.PostDAO;
 public class MainServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("login");
 		String curPage = request.getParameter("curPage");
@@ -32,6 +31,7 @@ public class MainServlet extends HttpServlet {
 		if(member != null) {
 			 	addr = member.getAddr();
 		}
+
 		PageDTO pDTO = service.selectAllPostPage(Integer.parseInt(curPage),(member==null?false:true),addr);
 
 		List<PostDTO> list = null;//0~2 학생객체 저장한 list
@@ -49,6 +49,7 @@ public class MainServlet extends HttpServlet {
 		request.setAttribute("postList", list);
 		request.setAttribute("curPage",curPage);
 		request.setAttribute("totalPage",totalPage);
+		
 		
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 		dis.forward(request, response);

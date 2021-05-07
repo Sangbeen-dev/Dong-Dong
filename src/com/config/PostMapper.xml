@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        from post
        where addr = #{addr}
        order by pDate desc
-	
+
 	</select>
 	
 	<select id="postListAll"  resultType="PostDTO">
@@ -42,6 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     , PHIT
     , PDATE 
     ,TRUNC((SYSDATE-PDATE) * 24 * 60) AS PDATEDIFF
+    , pPull
        from post
        order by pDate desc
         
@@ -55,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updatePost" parameterType="PostDTO">
 		update post 
-		set pTitle=#{pTitle},pContent=#{pContent},pPrice=#{pPrice},pImage=#{pImage}, pDate=SYSDATE
+		set pTitle=#{pTitle},pContent=#{pContent},pPrice=#{pPrice},pImage=#{pImage},pCategory=#{pCategory}
 		where pNum=#{pNum}
 	</update>
 	
@@ -74,13 +75,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="newPost" parameterType="PostDTO">
 		INSERT INTO post
 		VALUES (POST_NUM.NEXTVAL, #{userid}, #{addr}, #{pCategory}, #{pTitle}, #{pContent}, #{pPrice}, #{pImage}
-		,#{pHit}, SYSDATE, #{pStatus} )
+		,#{pHit}, SYSDATE, #{pStatus}, #{pPull})
 	</insert>
 	
 
 	<select id="searchByKeyword" resultType="PostDTO" parameterType="string">
 		SELECT pNum, userid, addr, pCategory, pTitle, pContent, pPrice, pImage, pHit, pDate
-    		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff 
+    		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff, pPull
     		FROM post 
 			WHERE pTitle LIKE '%'||#{keyword}||'%'
 	</select>
@@ -101,9 +102,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="searchByCategory" resultType="PostDTO" parameterType="string">
 		SELECT pNum, userid, addr, pCategory, pTitle, pContent, pPrice, pImage, pHit, pDate
-    		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff 
+    		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff, pPull
     		FROM post 
 			WHERE pCategory = #{category}
 	</select>
+	
+	<update id="pullPost" parameterType="int">
+		UPDATE post SET pDate=SYSDATE WHERE pNum=#{pNum}
+	</update>
+	
+	<update id="poststatus" parameterType="int">
+		update post 
+		set pStatus= '1'
+		where pNum=#{pNum}
+	</update>
+	
 
 </mapper>

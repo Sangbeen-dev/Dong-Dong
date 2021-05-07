@@ -15,9 +15,40 @@
 				}
 			}
 			$(document).ready(function(){
+				$("form").on("submit",function(event){
+					var title = $("#title").val();
+					var content = $("#content").val();
+					var price = $("#price").val();
+					var file = $("#photo").val();
+					var category = $("#category option:selected").val();		
+					
+					if(title.length == 0){
+						alert("글제목은 필수입니다.");
+						$("#title").focus();
+						event.preventDefault();	
+					} else if(category.length == 4){
+						alert("카테고리 선택은 필수입니다.");
+						$("#category").focus();
+						event.preventDefault();	
+					} else if(!file){
+						alert("사진첨부는 필수입니다.");
+						$("#photo").focus();
+						event.preventDefault();	
+					} else if(content.length == 0){
+						alert("글내용은 필수입니다.");
+						$("#content").focus();
+						event.preventDefault();
+					} else if(price.length == 0){
+						alert("가격은 필수입니다.");
+						$("#price").focus();
+						event.preventDefault();	
+					}
+				});
+				
 				$("#back").on("click", function() {
 					location.href ="main";
 				});
+				
 			});
 	</script>
 	<!-- Bootstrap css -->
@@ -41,7 +72,7 @@
 			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
     			<input type="text" name="title" id="title" class="form-control"
-    				aria-describedby="emailHelp" placeholder="상품명을 포함한 글 제목">
+    				aria-describedby="emailHelp" placeholder="상품명을 포함한 글 제목" maxlength="30">
   			</div>
   			<div class="col-md-3 col-sm-2"></div>
   		</div>
@@ -50,8 +81,8 @@
   		<div class="row">
   			<div class="col-md-3 col-sm-2"></div>
 			<div class="col-md-6 col-sm-8 mb-3">
-				<select class="form-select" aria-label="Default select example" name="category">
-  					<option selected>카테고리 선택</option>
+				<select class="form-select" aria-label="Default select example" name="category" id="category">
+  					<option value="none" selected>카테고리 선택</option>
   					<option value="D">[Digital]: 디지털, 가전</option>
 					<option value="H">[House]: 가구, 인테리어</option>
 					<option value="BY">[BABY]: 유아동</option>
@@ -59,8 +90,8 @@
 					<option value="S">[Sports]: 스포츠, 레저</option>
 					<option value="W">[Woman]: 여성의류, 여성잡화</option>
 					<option value="M">[Man]: 남성의류, 남성잡화</option>
-					<option value="G">[Game]: 게임,취미</option>
-					<option value="BT">[Beauty]: 뷰티,미용</option>
+					<option value="G">[Game]: 게임, 취미</option>
+					<option value="BT">[Beauty]: 뷰티, 미용</option>
 					<option value="PET">[Pet]: 반려동물용품</option>
 					<option value="BK">[Book]: 도서</option>
 					<option value="T">[Tickets]: 티켓</option>
@@ -92,8 +123,8 @@
 		<div class="row">
  			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
-  				<textarea class="form-control" name="content" rows="10"
-  					placeholder="자세한 상품 설명과 거래 방법을 작성하세요"></textarea>
+  				<textarea class="form-control" name="content" id="content" rows="10"
+  					placeholder="자세한 상품 설명과 거래 방법을 작성하세요" maxlength="300"></textarea>
 			</div>
 			<div class="col-md-3 col-sm-2"></div>
 		</div>	
@@ -104,7 +135,7 @@
  			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
     			<input type="text" name="price" id="price" class="form-control"
-    				aria-describedby="price" placeholder="상품가격">
+    				aria-describedby="price" placeholder="상품가격" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="10">
   			</div>
   			<div class="col-md-3 col-sm-2"></div>
   		</div>

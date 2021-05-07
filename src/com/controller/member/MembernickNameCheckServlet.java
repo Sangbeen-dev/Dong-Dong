@@ -18,6 +18,7 @@ public class MembernickNameCheckServlet extends HttpServlet {
 		String nickName = request.getParameter("nickName");
 		MemberService service = new MemberService();
 		int count = service.nickNameCheck(nickName);
+		
 		String mesg = "닉네임 사용가능";
 		if(count==1) {
 		  mesg = "닉네임 중복";	
@@ -25,8 +26,9 @@ public class MembernickNameCheckServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(mesg); 
-	}
+		}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

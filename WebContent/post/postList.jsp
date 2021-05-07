@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.dto.PostDTO"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.dto.PageDTO"%>
 
@@ -21,12 +22,21 @@
 	
 	
 	String keyword = (String)request.getAttribute("keyword");
+	String category = (String)request.getAttribute("category");
+	HashMap categoryMap = (HashMap)request.getAttribute("categoryMap");
 	if(keyword != null){
 %>
 
 
 
 	<b><%= keyword %></b>로 검색한 결과 <b><%=list.size() %></b>개가 검색되었습니다.
+<%
+	}
+
+	if(category != null){
+		String value = (String)categoryMap.get(category);
+%>
+	<b><%= value %></b> 카테고리 - <b><%=list.size() %></b>개가 검색되었습니다.
 <%
 	}
 %>

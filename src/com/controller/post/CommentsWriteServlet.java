@@ -29,23 +29,32 @@ public class CommentsWriteServlet extends HttpServlet {
     			request.setCharacterEncoding("UTF-8");
     			MemberDTO dto = (MemberDTO)session.getAttribute("login");
     			String pNum = request.getParameter("pNum");
+    			String parentNum = request.getParameter("parentNum");
     			String nextPage = "main";
     			if(dto==null) { // 로그인 정보가 없는 경우
     				session.setAttribute("mesg", "로그인 정보가 없습니다.");
     			} else { // 로그인 정보가 있는 경우
     				CommentsService service = new CommentsService();
     				CommentsDTO cDTO = new CommentsDTO();
+    				
+    				if(parentNum!=null) {
+    					CommentsDTO parentDTO = service.getCommentByCNum(Integer.parseInt(parentNum));
+    					cDTO.setParentNum(Integer.parseInt(parentNum));
+    					cDTO.setcLevel(parentDTO.getcLevel()+1);
+    				} else {
+    					cDTO.setParentNum(0);
+    					cDTO.setcLevel(1);
+    				}
     				cDTO.setpNum(Integer.parseInt(pNum));
-    				//cDTO.setParentnum(Integer.parseInt("parentnum"));
-    				cDTO.setcContent(request.getParameter("cContent"));
+    				cDTO.setcContent(request.getParameter("cContent").replaceAll("\r\n", "<br>"));
     				cDTO.setUserid(dto.getUserid());
     				
     				int insertResult = service.insertComments(cDTO);
     				
     				if(insertResult!=1) { // 게시글 업데이트가 실패했을 경우 
-    					session.setAttribute("mesg", "게시물 수정 중 오류가 발생하였습니다.");
+    					session.setAttribute("mesg", "댓글 수정 중 오류가 발생하였습니다.");
     		    	} else {
-    		    		session.setAttribute("mesg", "댓글 쓰기 성공");
+    		    		//session.setAttribute("mesg", "댓글 쓰기 성공");
     		    		logr.info("write Comment : pNum - {} , loginUser - {}", pNum, dto.getUserid());
     		    		nextPage="PostDetailServlet?pNum="+pNum;
     		    	}

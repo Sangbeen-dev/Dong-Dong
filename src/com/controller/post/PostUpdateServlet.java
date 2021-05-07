@@ -51,8 +51,12 @@ public class PostUpdateServlet extends HttpServlet {
 				
 				// 수정할 정보 설정
 				uDTO.setpNum(Integer.parseInt(pNum));
+				uDTO.setpTitle(multi.getParameter("pTitle"));
 				uDTO.setpCategory(multi.getParameter("pCategory"));
-				uDTO.setpContent(multi.getParameter("pContent"));
+				// 사용자가 입력한 글내용에서 엔터값 파싱해서 uDTO에 넣어줌
+				String pContent = multi.getParameter("pContent");
+				pContent = pContent.replaceAll("\r\n", "<br>");
+				uDTO.setpContent(pContent);
 				uDTO.setpPrice(Integer.parseInt(multi.getParameter("pPrice")));
 				uDTO.setpImage(fileName!=null?fileName:pDTO.getpImage()); // 이미지 변경 여부에 따라 3항 선택
 				

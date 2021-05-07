@@ -106,4 +106,15 @@ public class PostDAO {
 		
 	}
 
+	public int pullPost(SqlSession session, int pNum) {
+		return session.update("PostMapper.pullPost",pNum);
+	}
+
+
+	public int poststatus(SqlSession session, int pNum) {
+		int n = session.update("PostMapper.poststatus", pNum);
+		return n;
+	}
+
+
 }

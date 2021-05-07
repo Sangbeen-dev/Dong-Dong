@@ -34,6 +34,7 @@ public class nickUpdateServlet extends HttpServlet {
 			int n = service.nickUpdate(dto2);
 			request.setAttribute("okNick", n);
 			request.setAttribute("nickDto", dto2);
+			//request.setAttribute("nickDTO", nickName);
 		}else{
 			nextPage= "LoginUIServlet";
 			session.setAttribute("mesg", "로그인이 필요한 작업입니다.");

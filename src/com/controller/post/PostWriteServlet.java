@@ -53,7 +53,8 @@ public class PostWriteServlet extends HttpServlet {
 		String pImage = fileName; // 경로는 다 똑같아서 설정된 파일이름으로만 지정
 		String pCategory = multi.getParameter("category");
 		String pStatus = "0";
-		PostDTO post = new PostDTO(0,userid,addr,pCategory,pTitle,pContent,pPrice,pImage,0,null, null,pStatus);
+		String pPull = "3";
+		PostDTO post = new PostDTO(0,userid,addr,pCategory,pTitle,pContent,pPrice,pImage,0,null, null,pStatus,pPull);
 
 		PostService service = new PostService();
 		int n = service.newPost(post);

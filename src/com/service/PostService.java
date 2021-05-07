@@ -195,6 +195,7 @@ public class PostService {
         return list;
 	}
 
+
 public PageDTO selectAllPostPage(int curPage, boolean login,String addr){
 		
 		SqlSession session = MySqlSessionFactory.getSession();
@@ -206,6 +207,26 @@ public PageDTO selectAllPostPage(int curPage, boolean login,String addr){
 			session.close();
 		}
 		 return pDTO;
+}
+	public int pullPost(int pNum) {
+		SqlSession session = MySqlSessionFactory.getSession();
+        int pullResult = 0;
+        try {
+            PostDAO pDAO = new PostDAO();
+            pullResult = pDAO.pullPost(session, pNum);
+            if(pullResult==1) {
+            	session.commit();
+            } else {
+            	session.rollback();
+            }
+        } catch (Exception e) {
+        	session.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return pullResult;
+
 	}
 }// end class
 
