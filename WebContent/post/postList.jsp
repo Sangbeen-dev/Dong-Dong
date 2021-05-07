@@ -12,10 +12,7 @@
  
 	int curPage = 1;
  	int totalPage = (int)request.getAttribute("totalPage");
-
-	
-    
-    
+  
  	if(request.getParameter("curPage") != null) {
  		curPage = Integer.parseInt((String)request.getAttribute("curPage"));
  	}
