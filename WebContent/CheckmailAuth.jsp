@@ -13,10 +13,9 @@
 			var authnum = $("#Authnum").val();
 			var mailAuth = "인증완료"
 			
-			if ( authnum != "인증완료") {
+			if ( authnum != "p1s45asd8zxc") {
 				alert("인증 실패");
 				event.preventDefault();	
-				
 				window.close(); 
 			}else {
 				alert("인증되었습니다.")
