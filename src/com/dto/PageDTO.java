@@ -9,6 +9,8 @@ public class PageDTO {
 	private int curPage;  //현재 또는 요청 페이지 
 	private int perPage = 16;  //한페이지에 보여질 갯수 
 	private int totalCount;   //전체 레코드 갯수 
+	private int totalCountCategory;
+	private int totalCountKeyword;
 	private int offset;
 	
 	
@@ -16,7 +18,7 @@ public class PageDTO {
 	@Override
 	public String toString() {
 		return "PageDTO [list=" + list + ", curPage=" + curPage + ", perPage=" + perPage + ", totalCount=" + totalCount
-				+ ", offset=" + offset + "]";
+				+ ", totalCountCategory=" + totalCountCategory + ", totalCountKeyword=" + totalCountKeyword+ ", offset=" + offset + "]";
 	}
 	public int getOffset() {
 		return offset;
@@ -52,8 +54,18 @@ public class PageDTO {
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
-	
-	
+	public int getTotalCountCategory() {
+		return totalCountCategory;
+	}
+	public void setTotalCountCategory(int totalCountCategory) {
+		this.totalCountCategory = totalCountCategory;
+	}
+	public int getTotalCountKeyword() {
+		return totalCountKeyword;
+	}
+	public void setTotalCountKeyword(int totalCountKeyword) {
+		this.totalCountKeyword = totalCountKeyword;
+	}
 	
 	
 	

@@ -64,7 +64,7 @@ public class PostDAO {
 		pDTO.setCurPage(curPage);//현재페이지
 		pDTO.setOffset(offset);//시작페이지
 		pDTO.setList(list);//0~15 16개
-		pDTO.setTotalCount(totalCount(session,keyword));//전체 레코드 갯수
+		pDTO.setTotalCount(totalCountKeyword(session,keyword));//전체 레코드 갯수
 		
 		//PDTO에 모든 데이터 저장완료
 		return pDTO;
@@ -91,8 +91,7 @@ public class PostDAO {
 		pDTO.setCurPage(curPage);//현재페이지
 		pDTO.setOffset(offset);//시작페이지
 		pDTO.setList(list);//0~15 16개
-		pDTO.setTotalCount(totalCount(session,category));//전체 레코드 갯수
-		
+		pDTO.setTotalCount(totalCountCategory(session,category));//전체 레코드 갯수
 		//PDTO에 모든 데이터 저장완료
 		return pDTO;
 	}
@@ -101,6 +100,13 @@ public class PostDAO {
 		return session.selectOne("totalCount",addr);
 	}
 	
+	public int totalCountKeyword(SqlSession session,String keyword) {
+		return session.selectOne("totalCountKeyword",keyword);
+	}
+	
+	public int totalCountCategory(SqlSession session,String category) {
+		return session.selectOne("totalCountCategory",category);
+	}
 	public PageDTO selectAllPostPage(SqlSession session, int curPage,boolean login,String addr) {
 		
 		

@@ -44,7 +44,7 @@ public class KeywordSearchServlet extends HttpServlet {
 		request.setAttribute("perPage", pDTO.getPerPage());
 		request.setAttribute("offset", pDTO.getOffset());
 		request.setAttribute("curPage",curPage);
-		request.setAttribute("totalPage",pDTO.getTotalCount()/pDTO.getPerPage());
+		request.setAttribute("totalPage",pDTO.getTotalCount()/pDTO.getPerPage()+1);
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 		dis.forward(request, response);
 	}
