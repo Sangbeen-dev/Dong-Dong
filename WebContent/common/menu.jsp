@@ -28,6 +28,8 @@
 		#imgBox {
 			padding : 0;
 		}
+		
+		
 	</style>
 </head>
 <body>
