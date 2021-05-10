@@ -28,6 +28,9 @@
     String category = "";
     // 카테고리 설정	
 	switch (pCategory) {
+		case "D" :
+		category = "디지털, 가전";
+			break;
     	case "H" :
     		category = "가구, 인테리어";
     		break;
@@ -129,7 +132,7 @@
 				var popupHeight = 500;
 				var popupX = (window.screen.width/2)-(popupWidth/2);
 				var popupY= (window.screen.height/2)-(popupHeight/2);
-				url = "complaint/complaintPost.jsp?pNum="+"<%=pNum%>";
+				url = "complaint/complaintDetail.jsp?pNum="+"<%=pNum%>"+"&coType=2";
 				open(url,"complaintPost", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 			}//end compliantPost
 			$("#complaintPost").click(function() {
@@ -170,15 +173,12 @@
         <%} else { %>
         <h2 class="font-weight-light">판매완료</h2><br>
         <%} %>
-        <h6 class="font-weight-light"><%=pDate.substring(0, pDate.length()-3)%></h6>
+        
         
 		<table class="table">
 		   <tr>
 		      <th>유저</th>
 		      <td><%=username%></td>
-		      <td>
-		      	<button id="userprofile" class="btn btn-primary">프로필</button>
-		      </td>
 		   </tr>
 		   <tr>
 		      <th>거래지역</th>
@@ -191,11 +191,10 @@
 		<%if(status){%>
 			<!-- 아무것도 안띄움 -->
 		<%} else if(dto==null){%>
-			<a href="LoginUIServlet">구매시 로그인이 필요합니다.</a><br>
+			<a class="btn btn-primary" href="LoginUIServlet">구매시 로그인이 필요합니다.</a><br>
 		<% } else {%>
-			<a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=400,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">채팅</a>
+			
 			<%if(!userid.equals(dto.getUserid())){%>
-				<a class="btn btn-primary" onclick="window.open('orderSheet/orderSheet.jsp?sUserid=<%=userid %>&pNum=<%=pNum %>&pPrice=<%=pPrice %>','window_name','width=400,height=300,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">주문서작성</a>
 				<a id="favorite"  class="btn">
 		    	<%if(favorite==true) {%>
     	    		<img id="favoriteImg" src="/Dong-Dong/images/util/favorite1.png"  width="50" height="50"/>
@@ -203,13 +202,16 @@
     	    		<img id="favoriteImg" src="/Dong-Dong/images/util/favorite2.png"  width="50" height="50"/>
     	    	<% } %>
 		  		</a>
-		  			
-			<%} else {%>
+				<a class="btn btn-primary" onclick="window.open('orderSheet/orderSheet.jsp?sUserid=<%=userid %>&pNum=<%=pNum %>&pPrice=<%=pPrice %>','window_name','width=400,height=300,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">주문서작성</a>	
+			<%} %>
+			<a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=400,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">채팅</a>
+			<% if(userid.equals(dto.getUserid())){%>
 				<a class="btn btn-primary" href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a>
 		  		<a class="btn btn-primary" href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
 			<%}
 		}%>
 		<%if(dto!=null && !userid.equals(dto.getUserid())){%>
+		<button id="userprofile" class="btn btn-primary">프로필</button>
 		<a id="complaintPost" class="btn btn-danger">신고</a>
 		<%} %>
       </div>
@@ -218,12 +220,28 @@
     <!-- /.row -->
 
     <!-- Call to Action Well -->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
-      <div class="card-body">
-        <p class="text-white m-0"><%=pContent%></p>
+     <!-- Call to Action Well -->	
+    <div class="card text-dark bg-white my-5 py-4" style="border: none">
+      <div style="text-align : left; font-weight: bolder;"><h3>상세 설명</h3></div>
+      <div class="card-body" style="text-align : left; min-height : 200px ">
+        <h6><%=pContent%></h6>
       </div>
-      <div>
-		카테고리 : <%=category%>, 조회 수 : <%=pHit%><br>
+      <div class="text-secondary font-weight-bold" style="text-align : left; margin-right: 20px">
+		<table>
+			<tr>
+				<td><img src="/Dong-Dong/images/util/time.svg" width="20"/></td>
+				
+				<td>&nbsp;<%=pDate.substring(0, pDate.length()-3)%></td>
+			</tr>
+			<tr>
+				<td><img src="/Dong-Dong/images/util/categories.svg" width="20"/></td>
+				<td>&nbsp;<%=category%></td>
+			</tr>
+			<tr>
+				<td><img src="/Dong-Dong/images/util/cursor.svg" width="20"/></td>
+				<td>&nbsp;<%=pHit%></td>
+			</tr>
+		</table>
       </div>
     </div>
   </div>

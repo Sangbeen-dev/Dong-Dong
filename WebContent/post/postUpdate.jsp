@@ -98,7 +98,7 @@
 		
 		<br>
 		
-		<img id="thumbnail" src="/Dong-Dong/images/<%=dto.getpImage()%>"/><br>
+		<img id="thumbnail" src="/Dong-Dong/images/<%=dto.getpImage()%>" width="400px"/><br>
 	
  		<div class="row">
  			<div class="col-md-3 col-sm-2"></div>
@@ -117,7 +117,7 @@
  			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
   				<textarea class="form-control" name="pContent" rows="10" id="pContent"
-  					placeholder="자세한 상품 설명과 거래 방법을 작성하세요"><%= dto.getpContent() %></textarea>
+  					placeholder="자세한 상품 설명과 거래 방법을 작성하세요" style="resize: none;"><%= dto.getpContent() %></textarea>
 			</div>
 			<div class="col-md-3 col-sm-2"></div>
 		</div>	
