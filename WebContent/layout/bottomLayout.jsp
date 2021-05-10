@@ -2,14 +2,13 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <style>
-/* #footer{
-	position: absolute; 
-	bottom: 0;
-}
-.container c2 {
-	position: relative;
-}
- */
+
+/* footer {
+   width:100%;
+
+   position:absolute;
+   bottom:0;
+}  */
 
 #bottom {
 	margin-left: 30px;
