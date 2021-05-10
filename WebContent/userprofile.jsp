@@ -8,8 +8,6 @@
  String userid = (String)request.getParameter("userid");
  String userImage = (String)request.getParameter("userImage");
  String nickName = (String)request.getParameter("nickName");
- System.out.println("jsp에서=="+userImage);
- System.out.print("jsp에서=="+nickName);
  
 %>
 <html>

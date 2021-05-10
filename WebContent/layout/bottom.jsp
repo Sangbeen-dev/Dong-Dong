@@ -1,37 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<style>
-/* #footer{
-	position: absolute; 
-	bottom: 0;
-}
-.container c2 {
-	position: relative;
-}
- */
-
-#bottom {
-	margin-left: 30px;
-} 
-.bold{
-	font-weight: bold;
-}
-</style>
-</div>
-<!-- /.col-lg-9 -->
-
-
-</div>
-<!-- /.row -->
-
-</div>
-<!-- /.container -->
-
-<!-- Footer -->
- 
-<footer id="footer" class="py-5" style="background-color: #495057;">
-	<div class="container c2">
+<footer class="py-5" style="background-color: #495057;">
+	<div class="container">
 	<div id="bottom">
 		 <p class="m-0 text-left" style="color: #D3D2C9"> 
 <span class="bold">고객문의</span> [cs@dongdong.com]&nbsp;
@@ -50,8 +21,3 @@
 	</div>
 	</div>
 </footer>
-
-<!-- Bootstrap core JavaScript -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

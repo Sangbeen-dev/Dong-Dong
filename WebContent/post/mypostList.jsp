@@ -110,7 +110,7 @@
 				border="0"  width="80" /></a>
 				<div>
 				<%= pTitle %>
-				<font size="2" color="#665b5f">[분류 :<%= pCategory %>]</font>
+				<%-- <font size="2" color="#665b5f">[분류 :<%= pCategory %>]</font> --%>
 				</div></td>
 		<td class="text-center" width="80"><%= pPrice %></td>
 		<td class="text-center" width="40"><%= pDate %></td>
@@ -130,7 +130,7 @@
 	<%
 	} 
 	%>
-	<hr>
+	<!-- <hr> -->
 	</tbody>
 	<tr class="button">
 		<td colspan="3" >

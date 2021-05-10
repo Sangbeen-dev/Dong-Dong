@@ -14,18 +14,22 @@
 
 				<h3 class="my-4 text-center">MyPage</h3>
 				<div class="list-group mb-4">
-					<a href="mypage.jsp"
+						<a id="menu1" href="mypage.jsp"
 						class="list-group-item list-group-item-info text-center font-weight-bold border border-dark">
-						회원정보</a><a href="FavoriteListServlet"
+						회원정보</a>
+						<a id="menu2" href="FavoriteListServlet"
 						class="list-group-item list-group-item-action text-center font-weight-bold border border-dark">
-						관심목록</a><a href="MyPostListServlet"
+						관심목록</a>
+						<a id="menu3" href="MyPostListServlet"
 						class="list-group-item list-group-item-action text-center font-weight-bold border border-dark">
-						내 게시물 보기</a><a href="OrdersheetList"
+						내 게시물 보기</a>
+						<a id="menu4" href="OrdersheetList"
 						class="list-group-item list-group-item-action text-center font-weight-bold border border-dark">
-						주문 요청함 보기</a><a href="TransactionListServlet"
+						주문 요청함 보기</a>
+						<a id="menu5" href="TransactionListServlet"
 						class="list-group-item list-group-item-action text-center font-weight-bold border border-dark">
 						거래내역</a>
-						<a href="withdrawal.jsp"
+						<a id="menu6" href="withdrawal.jsp"
 						class="list-group-item list-group-item-action text-center font-weight-bold border border-dark">
 						회원탈퇴</a>	
 				</div>

@@ -134,3 +134,4 @@ h2{
 </table> 
 </div>
     
+<jsp:include page="../layout/bottomLayout.jsp" flush="true"></jsp:include>    

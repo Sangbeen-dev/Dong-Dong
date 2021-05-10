@@ -59,7 +59,6 @@
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 
 </header>
-
 <main>
 <jsp:include page="member/mypage.jsp" flush="true"></jsp:include>
 </main>

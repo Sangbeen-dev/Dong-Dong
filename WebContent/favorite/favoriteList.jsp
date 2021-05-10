@@ -8,17 +8,19 @@
 <!--부트스트랩 css cdn  -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <style>
+
+
 ul {
     list-style:none;
-    margin:0;
+    margin:10px;
     padding:0;
 }
 
 li {
 	display:inline;
 	float: left;
-	width: 21%;
-    margin: 30px;
+	width: 30%;
+    margin: auto;
     padding: 0 0 0 0;
     border: 0;
 } 
@@ -42,7 +44,9 @@ h6 {
 	
 </script>	
 <body>
-<h2>관심목록</h2>    
+<h2>&nbsp;찜</h2>   
+<br>
+<div class="container">
 <%  
    //데이터 가져오기 //for문 작성 
     
@@ -63,18 +67,18 @@ h6 {
 
 <ul>
 <li>
-<div class="container" id="card<%=pNum %>" style="width:23%;">
-<div style="background-color: white; padding:15px; width: 300px; height: auto; cursor: pointer;">
-    <div class="card">
+<%-- <div class="card" id="card<%=pNum %>" style="width:23%;"> --%>
+<!-- <div style="background-color: black; padding:15px; margin:30px; width: 500px; height: auto; cursor: pointer;"> -->
+   	 <div class="card" style="margin: 5px; "> 
       <a href="PostDetailServlet?pNum=<%=pNum %>">
-      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Responsive image" style="max-width:200px; height:205px; display: block; margin: 0px auto;" ></a>
+      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Responsive image" style="max-width:250px; height:205px; display: block; margin: auto;" ></a>
       <div class="card-body">
         <h6 class="card-title" style="height:25px;"><%=pTitle%></h6>
         <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=pPrice %>원<button data-xxx="<%=pNum %>" class="btn btn-outline-danger" id="delBtn" style="float: right;">삭제</button></h6>
       </div>
-    </div>
-    </div>
-  </div>
+   </div>
+    <!-- </div> -->
+  <!-- </div> -->
 </li>
 </ul>  	
 
@@ -82,8 +86,9 @@ h6 {
 <%
 	}//end for
 %>
+</div>
 </body>
-			
+<jsp:include page="../layout/bottomLayout.jsp" flush="true"></jsp:include>
 			
 
     
