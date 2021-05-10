@@ -49,7 +49,6 @@ public class MainServlet extends HttpServlet {
 		request.setAttribute("curPage",curPage);
 		request.setAttribute("totalPage",totalPage);
 		
-		
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 		dis.forward(request, response);
 	}

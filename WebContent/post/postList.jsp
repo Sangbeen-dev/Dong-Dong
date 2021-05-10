@@ -164,7 +164,7 @@ $(document).ready(function(){
 	for (int j=1; j<=totalPage; j++) {
 		if (keyword != null){
 %>
-			<a href='CategorySearchServlet?curPage=<%=j %>'><%=j %></a>			
+			<a href='KeywordSearchServlet?keyword=<%=keyword %>&curPage=<%=j %>'><%=j %></a>	
 <% 
 		}
 %>
@@ -172,16 +172,19 @@ $(document).ready(function(){
 <%				
 		if (category != null){
 %>			
-		<a href='KeywordSearchServlet?curPage=<%=j %>'><%=j %></a>
-		
+		<a href='CategorySearchServlet?category=<%=category %>&curPage=<%=j %>'><%=j %></a>	
 <% 
 		}
 %> 
-	
+<% 
+		if (category == null && keyword == null) {
+			%>
+		
 		<a href='main?curPage=<%=j %>'><%=j %></a>
 
 
-<%		 
+<%	
+		}
 }	
 %>
 		</div>

@@ -63,7 +63,7 @@
 		</div>
 		<%if(dto!=null && !dto.getUserid().equals(userid)) { %>
 		<div style="text-align : right">
-			<a class="btn btn-danger" href="complaint/complaintUser.jsp?userid=<%=userid%>" id="complaintUser">신고</a>
+			<a class="btn btn-danger" href="complaint/complaintDetail.jsp?userid=<%=userid%>&coType=1" id="complaintUser">신고</a>
 		</div>
 		<%}%>
 	</div>

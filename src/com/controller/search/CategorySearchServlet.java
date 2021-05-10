@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.controller.post.PostWriteServlet;
+import com.dto.MemberDTO;
 import com.dto.PageDTO;
 import com.dto.PostDTO;
 import com.service.PostService;
@@ -57,13 +58,14 @@ public class CategorySearchServlet extends HttpServlet {
 		categoryMap.put("P","식물");
 		categoryMap.put("E","기타");
 		
+		
 		request.setAttribute("postList",pDTO.getList());
 		request.setAttribute("category", category);
 		request.setAttribute("categoryMap", categoryMap);
 		request.setAttribute("perPage", pDTO.getPerPage());
 		request.setAttribute("offset", pDTO.getOffset());
 		request.setAttribute("curPage",curPage);
-		request.setAttribute("totalPage",pDTO.getTotalCount()/pDTO.getPerPage());
+		request.setAttribute("totalPage",pDTO.getTotalCount()/pDTO.getPerPage()+1);
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 		dis.forward(request, response);
 	}

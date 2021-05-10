@@ -23,4 +23,20 @@ public class ComplaintService {
 	    }
 	    return insertResult;
 	}
+	
+	public boolean checkDuplication(ComplaintDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		ComplaintDTO queryDTO = null;
+		boolean result = false;
+	    try {
+	    	ComplaintDAO dao = new ComplaintDAO();
+	    	queryDTO = dao.checkDuplication(session, dto);
+	    	if(queryDTO!=null) { 	result = true;	}
+	    } catch (Exception e) {
+	    	e.printStackTrace();
+	    } finally {
+	    	session.close();
+	    }
+	    return result;
+	}
 }
