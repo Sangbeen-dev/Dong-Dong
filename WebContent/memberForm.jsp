@@ -5,15 +5,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	
+	main{
+		padding-top : 100px;
+		z-index : 2;
+	}
+	
+	header {
+		/* background-image : url('/Dong-Dong/images/util/main.jpg');
+		background-repeat : no-repeat;
+		background-size : cover; */
+		margin : 0;
+		padding : 0;
+		position : fixed;
+		top : 0;
+		left : 0;
+		right : 0;
+		z-index : 1;
+		text-align : center;
+		height : 80px;
+		background-color : skyblue;
+	}
+</style>
 </head>
 <body>
-<h1>회원가입</h1>
 
+<header>
 <jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
-<jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
-<hr>
+</header>
 
+<main>
 <jsp:include page="/member/memberForm.jsp"  flush="false"></jsp:include>
-
+</main>
 </body>
 </html>

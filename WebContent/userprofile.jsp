@@ -3,8 +3,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-
+ MemberDTO dto = (MemberDTO)session.getAttribute("login");
  //거래량 추가해야함
+ String userid = (String)request.getParameter("userid");
  String userImage = (String)request.getParameter("userImage");
  String nickName = (String)request.getParameter("nickName");
  System.out.println("jsp에서=="+userImage);
@@ -16,13 +17,11 @@
 <meta charset="UTF-8">
 <title>프로필 보기</title>
 
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-    	
-    	
  });//end ready
 </script>
 </head>
@@ -64,6 +63,11 @@
 			   안녕하세요.
             </div>
 		</div>
+		<%if(dto!=null && !dto.getUserid().equals(userid)) { %>
+		<div style="text-align : right">
+			<a class="btn btn-danger" href="complaint/complaintDetail.jsp?userid=<%=userid%>&coType=1" id="complaintUser">신고</a>
+		</div>
+		<%}%>
 	</div>
 </body>
 </html>

@@ -9,5 +9,9 @@ public class ComplaintDAO {
 	public int insertComplaint(SqlSession session, ComplaintDTO dto) {
 		return session.insert("ComplaintMapper.insertComplaint",dto);
 	}
+
+	public ComplaintDTO checkDuplication(SqlSession session, ComplaintDTO dto) {
+		return session.selectOne("ComplaintMapper.checkDuplication",dto);
+	}
 	
 }

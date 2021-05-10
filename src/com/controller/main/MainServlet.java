@@ -15,7 +15,6 @@ import com.dto.MemberDTO;
 import com.dto.PageDTO;
 import com.dto.PostDTO;
 import com.service.PostService;
-import com.dao.PostDAO;
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
 	
@@ -50,7 +49,6 @@ public class MainServlet extends HttpServlet {
 		request.setAttribute("curPage",curPage);
 		request.setAttribute("totalPage",totalPage);
 		
-		System.out.println("list size()"+list.size());
 		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
 		dis.forward(request, response);
 	}

@@ -14,11 +14,36 @@
 		
 			});//end ready
 		</script>
+		<style type="text/css">
+			main{
+				padding-top : 100px;
+				z-index : 2;
+			}
+	
+			header {
+				/* background-image : url('/Dong-Dong/images/util/main.jpg');
+				background-repeat : no-repeat;
+				background-size : cover; */
+				margin : 0;
+				padding : 0;
+				position : fixed;
+				top : 0;
+				left : 0;
+				right : 0;
+				z-index : 1;
+				text-align : center;
+				height : 80px;
+				background-color : skyblue;
+			}
+		</style>
 	</head>
 	<body>
-		<img id="main" src="/Dong-Dong/images/util/DongDonglogo.png" width="222" height="52" style="cursor: pointer;"/><br><br>
-		<jsp:include page = "common/top.jsp" flush="true" /><br>
-		<hr>
-		<jsp:include page = "post/postWrite.jsp" flush="true" />
+		<header>
+			<jsp:include page = "common/top.jsp" flush="true" /><br>
+		</header>
+		
+		<main>
+			<jsp:include page = "post/postWrite.jsp" flush="true" />
+		</main>
 </body>
 </html>

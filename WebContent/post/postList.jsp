@@ -12,7 +12,6 @@
 	int curPage = 1;
  	int totalPage = (int)request.getAttribute("totalPage");
 
-	 
  	if(request.getParameter("curPage") != null) {
  		curPage = Integer.parseInt((String)request.getAttribute("curPage"));
  	}
@@ -162,7 +161,6 @@ $(document).ready(function(){
 <div class="page_wrap">
 	<div class="page_nation">	
 <%
-	System.out.println("totalPage"+totalPage);
 	for (int j=1; j<=totalPage; j++) {
 		if (keyword != null){
 %>

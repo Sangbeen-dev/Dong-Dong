@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	from post p, purchase p2
 	where p.pnum = p2.pnum
 	and
-	f.userid = #{userid}
+	p2.userid = #{userid}
 	</select>
 	
 	<select id="saleList" resultType="PostDTO" parameterType="string">
@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	from post p, sale s
 	where p.pnum = s.pnum
 	and
-	f.userid = #{userid}
+	s.userid = #{userid}
 	</select>
 
 </mapper>

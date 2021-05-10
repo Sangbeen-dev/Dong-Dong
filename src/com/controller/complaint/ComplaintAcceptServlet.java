@@ -1,4 +1,4 @@
-package com.complaint;
+package com.controller.complaint;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,19 +41,24 @@ public class ComplaintAcceptServlet extends HttpServlet {
 			ComplaintDTO coDTO = new ComplaintDTO();
 			coDTO.setCoTarget(coTarget);
 			coDTO.setUserid(userid);
-			coDTO.setCoContent(coContent);
-			coDTO.setCoType(coType);
 			
-			int insertResult = coService.insertComplaint(coDTO);
-			
-			if(insertResult!=1) { // 게시글 업데이트가 실패했을 경우 
-				session.setAttribute("mesg", ComplaintName[coType]+" 신고 중 오류가 발생하였습니다.");
-				out.print(false); 
-	    	} else {
-	    		//session.setAttribute("mesg", "댓글 쓰기 성공");
-	    		//logr.info("write Comment : pNum - {} , loginUser - {}", pNum, dto.getUserid());
-	    		out.print(true); 
-	    	}	
+			if(coService.checkDuplication(coDTO)) {
+				out.print("dup"); 
+			} else {
+				coDTO.setCoContent(coContent);
+				coDTO.setCoType(coType);
+				
+				int insertResult = coService.insertComplaint(coDTO);
+				
+				if(insertResult!=1) { // 게시글 업데이트가 실패했을 경우 
+					System.out.println("2");
+					out.print("false"); 
+		    	} else {
+					System.out.println("3");
+		    		//logr.info("write Comment : pNum - {} , loginUser - {}", pNum, dto.getUserid());
+		    		out.print("true"); 
+		    	}	
+			}	
 		}
     }
 

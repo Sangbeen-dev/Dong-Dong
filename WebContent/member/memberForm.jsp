@@ -14,6 +14,8 @@ $("form").on("submit",function(event){
  var nickName = $("#nickName").val();
  var result = $("#result").text();
  var resul3t = $("#result3").text();
+ var result4 = $("#result4").text();
+ 
  		if(nickName.length==0){
 			alert("nickName 필수입니다.")
 			$("#nickName").focus();
@@ -43,7 +45,13 @@ $("form").on("submit",function(event){
 			alert("비밀번호가 일치하지 않습니다.")
 			$("#passwd").focus();
 			event.preventDefault();
+		}if (result4 !="인증완료"){
+			alert("이메일 인증 필수 입니다.")
+			event.preventDefault();
 		}
+		
+		
+		
 	});
 	
 	
@@ -140,7 +148,7 @@ $("#passwd2").on("keyup",function(){
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
        </select> -->
-	<button type="button" id="mailAuth">메일 인증</button><span id="result4"></span>
+	<button type="button" id="mailAuth">메일 인증</button><span id="result4" text=""></span>
        
 <br>
 <input type="submit" value="회원가입">
