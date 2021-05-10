@@ -16,7 +16,7 @@
 			};
 			if($("#nickName").val().length>=20){
 					console.log($("nickName").text().length);
-					alert("닉네임이 너무 길어요");
+					alert("닉네임은 20자를 넘어갈 수 없습니다.");
 					return false;
 			};
 		});//end 중복체크클릭
