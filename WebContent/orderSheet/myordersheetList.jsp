@@ -67,7 +67,7 @@ h2{
 
 </style>
 
-<h2>수신함</h2>
+<h2>발신함</h2>
 
 <div class="container footerfix">
 
@@ -116,7 +116,7 @@ h2{
 				</div></td>
 		<td class="text-center" width="20">
 		<div>
-		<font size="2">[아이디 :<%= bUserid %>]</font><br>
+		<font size="2">[아이디 :<%= sUserid %>]</font><br>
 		<font size="2"><%= oMessage %></font><br>
 		<button id="message" data-oNum="<%= oNum %>" class="btn btn-outline-primary btn-sm">더보기</button>
 		</div>

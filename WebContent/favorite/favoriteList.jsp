@@ -8,13 +8,7 @@
 <!--부트스트랩 css cdn  -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <style>
-#bb {
-	padding-bottom:100px;
-	min-height: 100%;
-}
-#b {
-	padding-bottom: 200px;
-}
+
 
 ul {
     list-style:none;
@@ -33,6 +27,10 @@ li {
 h6 {
 	text-align: center;
 }
+.footerfix{
+	padding-bottom: 500px;
+}
+
 </style>
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -52,7 +50,7 @@ h6 {
 <body id="bb">
 <h2>&nbsp;찜</h2>   
 <br>
-<div class="container">
+<div class="container footerfix">
 <%  
    //데이터 가져오기 //for문 작성 
     
@@ -92,7 +90,9 @@ h6 {
 <%
 	}//end for
 %>
-</div>
+
+</div><!--컨테이너  -->
+
 
 </body>
 <jsp:include page="../layout/bottomLayout.jsp" flush="true"></jsp:include>

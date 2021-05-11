@@ -19,8 +19,8 @@ import com.service.TransactionService;
 /**
  * Servlet implementation class TransactionListServlet
  */
-@WebServlet("/TransactionListServlet")
-public class TransactionListServlet extends HttpServlet {
+@WebServlet("/SaleListServlet")
+public class SaleListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
@@ -28,17 +28,11 @@ public class TransactionListServlet extends HttpServlet {
 		if(dto!=null) {
 			String userid = dto.getUserid();
 			System.out.println(userid);
-			//구매내역
 			TransactionService service = new TransactionService();
-			List<PostDTO> plist = service.purchaseList(userid);
-			//System.out.println("구매내역(서블릿)===="+plist); 
-			request.setAttribute("purchaseList", plist);
 			//판매내역 
 			List<PostDTO> slist = service.saleList(userid);
-			//System.out.println("판매내역(서블릿)===="+slist); 
 			request.setAttribute("saleList", slist);
-			
-			nextPage = "transactionList.jsp";
+			nextPage = "SaleList.jsp";
 			
 		}else {
 			nextPage = "LoginUIServlet";

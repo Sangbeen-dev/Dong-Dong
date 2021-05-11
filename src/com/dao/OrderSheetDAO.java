@@ -53,4 +53,9 @@ public class OrderSheetDAO {
 		  return n; 
 	}
 
+	public List<MyOrderSheetDTO> myordersheetList(SqlSession session, String userid) {
+		List<MyOrderSheetDTO> list = session.selectList("OrderSheetMapper.myordersheetList", userid);
+		return list;
+	}
+
 }

@@ -187,9 +187,11 @@ $(document).ready(function(){
 		}
 }	
 %>
-		</div>
+		</div>		
 </div>
-</body>	 
+
+</body>
+
  <%--  페이지네이션 부트스트랩 코드
 	<div class="text-center">
 	<ul class="pagination justify-content-end">

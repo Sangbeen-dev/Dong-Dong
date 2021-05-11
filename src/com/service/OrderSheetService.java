@@ -109,5 +109,17 @@ public class OrderSheetService {
 		}
 		return n;
 	}//end sale
+
+	public List<MyOrderSheetDTO> myordersheetList(String userid) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		List<MyOrderSheetDTO> list = null;
+		try {
+			OrderSheetDAO dao = new OrderSheetDAO();
+			list = dao.myordersheetList(session, userid);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 	
 }

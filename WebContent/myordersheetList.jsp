@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>거래내역</title>
+<title>주문서 함</title>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -39,13 +39,12 @@
 </style>
 </head>
 <body>
-
 <header>
-	<jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
+<jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
 </header>
 
 <main>
-	<jsp:include page="transaction/transactionList.jsp" flush="true"></jsp:include>
+<jsp:include page="orderSheet/myordersheetList.jsp" flush="true"></jsp:include>
 </main>
 
 </body>

@@ -17,6 +17,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	o.pnum = p.pnum and suserid = #{userid}
 	</select>
     
+    <select id="myordersheetList" resultType="MyOrderSheetDTO" parameterType="string">
+	select oNum, o.pNum pNum, sUserid, bUserid, oAddr, oPrice, oMessage, oDate, pTitle, pImage from 
+	ordersheet o, post p
+	where 
+	o.pnum = p.pnum and buserid = #{userid}
+	</select>
+    
 	<delete id="orderDel" parameterType="int">
 	delete
 	from
