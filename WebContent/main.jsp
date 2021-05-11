@@ -24,7 +24,7 @@
 	}
 	
 	main{
-		padding-top : 100px;
+		padding-top : 130px;
 		z-index : 2;
 	}
 	
@@ -41,8 +41,8 @@
 		right : 0;
 		z-index : 1;
 		text-align : center;
-		height : 80px;
-		background-color : skyblue;
+		height : 114px;
+		background-color : white;
 	}
 </style>
 </head>

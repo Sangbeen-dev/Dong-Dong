@@ -35,11 +35,19 @@
 		}
 		
 		#main{
-			margin-top : 10px;
+			margin-top : 30px;
 		}
 		
-		#keyword, #search, #user_section{
-			margin-top:20px;
+		#keyword, #search{
+			margin-top:40px;
+		}
+		#user_section{
+			margin-top : 45px;
+		}
+		
+		#keyword{
+			
+			border : 2px solid #8db0d7;
 		}
 		
 	</style>
