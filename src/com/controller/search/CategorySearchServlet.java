@@ -33,13 +33,23 @@ public class CategorySearchServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		MemberDTO mDto = (MemberDTO)session.getAttribute("login");
+		String addr = "null";
+		if(mDto != null) {
+			addr = mDto.getAddr();
+		}
 		String category = (String)request.getParameter("category");
 		String curPage = request.getParameter("curPage");
 		if(curPage == null) {
 			curPage = "1";
 		}
+		
+		HashMap<String,String> map = new HashMap<>();
+		map.put("addr", addr);
+		map.put("category", category);
+		
 		PostService service = new PostService();
-		PageDTO pDTO = service.searchByCategory(Integer.parseInt(curPage),category);
+		PageDTO pDTO = service.searchByCategory(Integer.parseInt(curPage),map);
 		
 		logr.info("Search_Category : {}", category);
 		HashMap<String,String> categoryMap = new HashMap<>();

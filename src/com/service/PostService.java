@@ -140,12 +140,12 @@ public class PostService {
 	}
 
 
-	public PageDTO searchByKeyword(int curPage,String keyword) {
+	public PageDTO searchByKeyword(int curPage,HashMap<String, String> map) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		PageDTO pDTO = null;
         try {
             PostDAO dao = new PostDAO();
-            pDTO = dao.searchByKeyword(session, keyword,curPage);
+            pDTO = dao.searchByKeyword(session, map,curPage);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -181,12 +181,12 @@ public class PostService {
 
 	}
 
-	public PageDTO searchByCategory(int curPage,String category) {
+	public PageDTO searchByCategory(int curPage,HashMap<String, String> map) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		PageDTO pDTO = null;
         try {
             PostDAO dao = new PostDAO();
-            pDTO = dao.searchByCategory(session, category,curPage);
+            pDTO = dao.searchByCategory(session, map,curPage);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

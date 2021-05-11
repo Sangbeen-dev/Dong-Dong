@@ -1,7 +1,7 @@
 package com.controller.search;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,8 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.controller.post.PostWriteServlet;
+import com.dto.MemberDTO;
 import com.dto.PageDTO;
-import com.dto.PostDTO;
 import com.service.PostService;
 
 @WebServlet("/KeywordSearchServlet")
@@ -29,13 +29,24 @@ public class KeywordSearchServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		MemberDTO mDto = (MemberDTO)session.getAttribute("login");
+		String addr = "null";
+		if(mDto != null) {
+			addr = mDto.getAddr();
+		}
+		
 		String curPage = request.getParameter("curPage");
 		String keyword = request.getParameter("keyword");
 		if(curPage == null) {
 			curPage = "1";
 		}
+		
+		HashMap<String,String> map = new HashMap<>();
+		map.put("addr", addr);
+		map.put("keyword", keyword);
+		
 		PostService service = new PostService();
-		PageDTO pDTO = service.searchByKeyword(Integer.parseInt(curPage),keyword);
+		PageDTO pDTO = service.searchByKeyword(Integer.parseInt(curPage),map);
 		
 		logr.info("Search_keyWord : {}", keyword);
 		
