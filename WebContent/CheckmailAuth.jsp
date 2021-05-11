@@ -25,6 +25,15 @@
 		});
  });
 </script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">	
+<style type="text/css">
+	* {
+		font-family: 'Nanum Gothic', sans-serif;
+		font-size: 15px;
+		font-weight : 400;
+	}
+</style>
 </head>
 <body>
 

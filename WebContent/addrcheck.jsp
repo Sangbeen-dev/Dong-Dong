@@ -5,8 +5,19 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>우리동네 Dong-Dong</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 	<style type="text/css">
-	 .title {font-weight:bold;display:block;}
+	 * {
+		font-family: 'Nanum Gothic', sans-serif;
+		font-size: 15px;
+		font-weight : 400;
+	}
+	 
+	 .title {
+	 	font-weight:bold;
+	 	display:block;
+	 }
 	</style>
 </head>
 <body>
