@@ -71,7 +71,6 @@ public class PostDetailServlet extends HttpServlet {
         	
         	// 게시글 내용 전달을 위해 설정
         	request.setAttribute("comments", comments);
-        	System.out.println(favoriteCount);
         	request.setAttribute("favoriteCount", String.valueOf(favoriteCount));
         	
         	//게시글의 관심 설정 정보 전달을 위해 request에 설정
