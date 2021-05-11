@@ -94,6 +94,7 @@
 	max-height: initial;
 	margin-top: -10%;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -239,5 +240,6 @@
     </div>
   </div>
   <!-- /.container -->
+  
 
     
