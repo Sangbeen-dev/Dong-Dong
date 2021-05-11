@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -55,16 +56,16 @@ public class PostDAO {
 
 
 
-	public PageDTO searchByKeyword(SqlSession session, String keyword,int curPage) {
+	public PageDTO searchByKeyword(SqlSession session, HashMap<String, String> map,int curPage) {
 		PageDTO pDTO = new PageDTO();//List, curPage, totalCount, perPage
 		int perPage = 16;//db에서 몇개를 읽어올지
 		int offset = (curPage-1)*perPage;//db레코드 select 시작번호
-		List<PostDTO> list = session.selectList("PostMapper.searchByKeyword", keyword,new RowBounds(offset,perPage));
+		List<PostDTO> list = session.selectList("PostMapper.searchByKeyword", map,new RowBounds(offset,perPage));
 		pDTO.setPerPage(perPage);//한페이지당 페이지 개수
 		pDTO.setCurPage(curPage);//현재페이지
 		pDTO.setOffset(offset);//시작페이지
 		pDTO.setList(list);//0~15 16개
-		pDTO.setTotalCount(totalCountKeyword(session,keyword));//전체 레코드 갯수
+		pDTO.setTotalCount(totalCountKeyword(session,map));//전체 레코드 갯수
 		
 		//PDTO에 모든 데이터 저장완료
 		return pDTO;
@@ -82,16 +83,16 @@ public class PostDAO {
 	}
 
 
-	public PageDTO searchByCategory(SqlSession session, String category,int curPage) {
+	public PageDTO searchByCategory(SqlSession session, HashMap<String, String> map,int curPage) {
 		PageDTO pDTO = new PageDTO();//List, curPage, totalCount, perPage
 		int perPage = 16;//db에서 몇개를 읽어올지
 		int offset = (curPage-1)*perPage;//db레코드 select 시작번호
-		List<PostDTO> list = session.selectList("PostMapper.searchByCategory", category,new RowBounds(offset,perPage));
+		List<PostDTO> list = session.selectList("PostMapper.searchByCategory", map,new RowBounds(offset,perPage));
 		pDTO.setPerPage(perPage);//한페이지당 페이지 개수
 		pDTO.setCurPage(curPage);//현재페이지
 		pDTO.setOffset(offset);//시작페이지
 		pDTO.setList(list);//0~15 16개
-		pDTO.setTotalCount(totalCountCategory(session,category));//전체 레코드 갯수
+		pDTO.setTotalCount(totalCountCategory(session,map));//전체 레코드 갯수
 		//PDTO에 모든 데이터 저장완료
 		return pDTO;
 	}
@@ -100,12 +101,12 @@ public class PostDAO {
 		return session.selectOne("totalCount",addr);
 	}
 	
-	public int totalCountKeyword(SqlSession session,String keyword) {
-		return session.selectOne("totalCountKeyword",keyword);
+	public int totalCountKeyword(SqlSession session,HashMap<String, String> map) {
+		return session.selectOne("totalCountKeyword",map);
 	}
 	
-	public int totalCountCategory(SqlSession session,String category) {
-		return session.selectOne("totalCountCategory",category);
+	public int totalCountCategory(SqlSession session,HashMap<String, String> map) {
+		return session.selectOne("totalCountCategory",map);
 	}
 	public PageDTO selectAllPostPage(SqlSession session, int curPage,boolean login,String addr) {
 		

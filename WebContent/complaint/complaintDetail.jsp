@@ -16,6 +16,8 @@
  	String cNum = request.getParameter("cNum");
  	String userid = request.getParameter("userid");
  	String coType = request.getParameter("coType");
+ 	
+ 	String [] coTypeName = {"회원","게시글","댓글"};
 %>
 
 <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
@@ -44,13 +46,13 @@ $(function() {
 			dataType: "text",
 			success: function(data, status, xhr) {
 				if(data=="true"){
-					opener.alert("신고가 성공적으로 완료되었습니다.");
+					opener.alert("<%=coTypeName[Integer.parseInt(coType)-1]%> 신고가 성공적으로 완료되었습니다.");
 					window.close();
 				} else if(data=="false") {
-					opener.alert("신고가 실패하였습니다.");
+					opener.alert("<%=coTypeName[Integer.parseInt(coType)-1]%> 신고가 실패하였습니다.");
 					window.close();
 				}else if(data=="dup") {
-					opener.alert("이미 신고를 하셨습니다.");
+					opener.alert("이미 신고한 <%=coTypeName[Integer.parseInt(coType)-1]%> 입니다.");
 					window.close();
 				}//if_elseif_elseif
 			}, //success

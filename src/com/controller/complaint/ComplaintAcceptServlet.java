@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.controller.post.PostDeleteServlet;
 import com.dto.ComplaintDTO;
 import com.dto.MemberDTO;
 import com.service.ComplaintService;
@@ -17,6 +21,7 @@ import com.service.ComplaintService;
 @WebServlet("/ComplaintAcceptServlet")
 public class ComplaintAcceptServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logr  = LoggerFactory.getLogger(ComplaintAcceptServlet.class);
 	
     private String[] ComplaintName = {"회원","게시글","댓글"};
     
@@ -51,11 +56,9 @@ public class ComplaintAcceptServlet extends HttpServlet {
 				int insertResult = coService.insertComplaint(coDTO);
 				
 				if(insertResult!=1) { // 게시글 업데이트가 실패했을 경우 
-					System.out.println("2");
 					out.print("false"); 
 		    	} else {
-					System.out.println("3");
-		    		//logr.info("write Comment : pNum - {} , loginUser - {}", pNum, dto.getUserid());
+					logr.info("complaint Accept : coType - {}, coTarget - {}, User - {}", coType, coTarget, dto.getUserid());
 		    		out.print("true"); 
 		    	}	
 			}	

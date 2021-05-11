@@ -74,7 +74,8 @@
 </script>
     <!-- 댓글 기능 표시 시작 지점 --------------------------------------- -->
     <div id="comments_div" class="container"> <!-- 댓글 전체 div -->
-       <div style="text-align : left; font-weight: bolder;"><h3>댓글 (<%=comments.size()%>)</h3></div>
+       <div style="text-align : left; font-weight: bolder; margin-left: 20px"><h2>댓글 (<%=comments.size()%>)</h2></div>
+       <hr>
       <%for(CommentsDTO cDTO : comments) {%>
       	<!-- 댓글 하나 하나 반복 동작 -->
       	<%if(cDTO.getcLevel()==1) {%>

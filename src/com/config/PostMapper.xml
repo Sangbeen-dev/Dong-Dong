@@ -4,16 +4,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="PostMapper">   
   	
-  	<select id="totalCountCategory" parameterType="string" resultType="int">
+  	<select id="totalCountCategory" parameterType="hashMap" resultType="int">
 	select count(*)
 	from post
 	where pCategory = #{category}
+	<if test="addr != null">
+		AND addr = #{addr}
+	</if>
 	</select>
 	
-  	<select id="totalCountKeyword" parameterType="string" resultType="int">
+  	<select id="totalCountKeyword" parameterType="hashMap" resultType="int">
 	select count(*)
 	from post
 	WHERE pTitle LIKE '%'||#{keyword}||'%'
+	<if test="addr != 'null'">
+		AND addr = #{addr}
+	</if>
 	</select>
 	
 	
@@ -92,11 +98,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 
-	<select id="searchByKeyword" resultType="PostDTO" parameterType="string">
+	<select id="searchByKeyword" resultType="PostDTO" parameterType="hashMap">
 		SELECT pNum, userid, addr, pCategory, pTitle, pContent, pPrice, pImage, pHit, pDate
     		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff, pPull
-    		FROM post 
-			WHERE pTitle LIKE '%'||#{keyword}||'%'
+    	FROM post 
+		WHERE pTitle LIKE '%'||#{keyword}||'%'
+		<if test="addr != 'null'">
+			AND addr = #{addr}
+		</if>
 	</select>
 
 	<select id="mypostList" parameterType="string" resultType="PostDTO">
@@ -113,11 +122,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</foreach>
 	</delete>
 	
-	<select id="searchByCategory" resultType="PostDTO" parameterType="string">
+	<select id="searchByCategory" resultType="PostDTO" parameterType="hashMap">
 		SELECT pNum, userid, addr, pCategory, pTitle, pContent, pPrice, pImage, pHit, pDate
     		,TRUNC((SYSDATE-pDate) * 24 * 60) AS pDateDiff, pPull
-    		FROM post 
-			WHERE pCategory = #{category}
+    	FROM post 
+		WHERE pCategory = #{category}
+		<if test="addr != 'null'">
+			AND addr = #{addr}
+		</if>
 	</select>
 	
 	<update id="pullPost" parameterType="int">
