@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+ 
+<head>
+<jsp:include page="Header.jsp" />
+</head>
+
+
+
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 
@@ -127,30 +133,93 @@ $("#passwd2").on("keyup",function(){
 }); //end doc
  
 </script>    
+
+
+	<div class="container">
+	<div class="row">
+	<div class="col-sm-100 text-center" >
+	<div class="col-sm-50"><!--가로 넓이 -->
+	<div class="col-sm-50"><!--세로 길이 -->
+	
+	
 <form action="MemberAddServlet" method="get">
-*닉네임 : <input type="text" name="nickName" id="nickName" placeholder="닉네임 입력"><span id="result3"></span>
-<br>
-*아이디 : <input type="text" name="userid" id="userid" placeholder="아이디 입력"><span id="result"></span>
-<br>
-*비밀번호 : <input type="text" name="passwd" id="passwd" placeholder="비밀번호 입력">
-<br>
-비빌번호확인 : <input type="text" name="passwd2" id="passwd2"><span id="result2"></span>
-<br>
-이름 : <input type="text" name="username" placeholder="이름"><br> 
-전화번호 : <input type="text" name="phone" id = "phone" >
-<br>
-주소 : <input type="text" name="addr" id="sample4_roadAddress" placeholder="주소입력">
-<span id="guide" style="color:#999"></span>
-<br>
+  <div class="container" >
+        <div class="py-3 text-center">
+            <!-- <img class="d-block mx-auto mb-2" src="/Dong-Dong/images/util/DongDonglogo2.png" alt="" width="200" height="200"> -->
+            <h2>회원가입</h2>
+        </div>
+        
+<table class="table table-boardered">
+<tr>
+<th>닉네임 </th>
+<td><input type="text" class="form-control" name="nickName" id="nickName" placeholder="닉네임 입력"><span id="result3"/></td>
+</tr>
+
+<tr>
+<th> 아이디</th>
+<td><input type="text" class="form-control"  name="userid" id="userid" placeholder="아이디 입력"><span id="result"/></td>
+</tr>
+
+<tr>
+<th>패스워드</th>
+<td><input type="text" class="form-control" name="passwd" id="passwd" placeholder="비밀번호 입력"></td>
+</tr>
+
+<tr>
+<th>패스워드확인</th>
+<td><input type="password" class="form-control" name="passwd2" id="passwd2"><span id="result2"/></td>		
+</tr>
+
+<tr>
+<th>이름</th>
+<td><input type="text" class="form-control" name="username" placeholder="id를 넣으세요"></td>		
+</tr>
+
+<tr>
+<th>전화번호</th>
+<td><input type="tel" class="form-control" name="phone" id ="phone" ></td>		
+</tr>
+
+<tr>
+<th>주소</th>
+<td><input type="email" class="form-control"name="addr" id="sample4_roadAddress" placeholder="주소입력"></td>		
+</tr>
+
+<tr>
+<th>이메일</th>
+<td><input type="email" class="form-control" name="email1"></td>
+<td>@</td>
+<td><input type="email" class="form-control" name="email2"></td>
+<td><button type="button" id="mailAuth"class="btn btn-info">메일 인증</button><span id="result4" text=""></span></td>		
+</tr>
+			
+	<tr>
+	<td colspan="2">
+	<input type="submit" class="btn btn-info" value="회원가입"> 
+	<input type="reset" class="btn btn-info" value="취소">
+	</td>
+	</tr>
+
+
+
+
+
+
+<!-- <span id="guide" style="color:#999"></span>
+
 이메일 : <input type="text" name="email1" >@
        <input type="text" name="email2"  placeholder="직접입력">
-<!--        <select>
+       <select>
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
-       </select> -->
+       </select>
 	<button type="button" id="mailAuth">메일 인증</button><span id="result4" text=""></span>
-       
-<br>
+      
 <input type="submit" value="회원가입">
 <input type="reset" value="취소">
+-->
+
+
+</table>
 </form>
+</div></div></div></div></div>
