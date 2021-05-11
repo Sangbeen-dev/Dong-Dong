@@ -42,6 +42,8 @@ public class PostDetailServlet extends HttpServlet {
     	//게시글 조회수 증가
     	pDTO.setpHit(pDTO.getpHit()+1);
     	int updateResult = pService.updatePHit(pDTO);
+    	// 좋아요 카운트
+    	int favoriteCount = fService.getFavoriteCountByPNum(Integer.parseInt(pNum));
     	
     	if(updateResult!=1) { // 조회수 업데이트가 실패했을 경우 
 			session.setAttribute("mesg", "게시물 접근 중 오류가 발생하였습니다.");
@@ -69,6 +71,8 @@ public class PostDetailServlet extends HttpServlet {
         	
         	// 게시글 내용 전달을 위해 설정
         	request.setAttribute("comments", comments);
+        	System.out.println(favoriteCount);
+        	request.setAttribute("favoriteCount", String.valueOf(favoriteCount));
         	
         	//게시글의 관심 설정 정보 전달을 위해 request에 설정
         	if(uDTO!=null) { // 로그인 정보가 있을 경우

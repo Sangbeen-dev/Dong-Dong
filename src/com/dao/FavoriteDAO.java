@@ -36,4 +36,9 @@ public class FavoriteDAO {
 		int n = session.delete("FavoriteMapper.favoriteAllDel", list);
 		return n;
 	}
+
+	public int getFavoriteCountByPNum(SqlSession session, int pNum) {
+		int n = session.selectOne("FavoriteMapper.getFavoriteCountByPNum", pNum);
+		return n;
+	}
 }
