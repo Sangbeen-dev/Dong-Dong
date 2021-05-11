@@ -98,4 +98,16 @@ public class FavoriteService {
 		return n;
 	}
 
+	public int getFavoriteCountByPNum(int pNum) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int count = 0;
+		try {
+			FavoriteDAO dao = new FavoriteDAO();
+			count = dao.getFavoriteCountByPNum(session, pNum);
+		} finally {
+			session.close();
+		}
+		return count;
+	}
+
 }

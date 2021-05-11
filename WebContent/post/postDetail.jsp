@@ -24,6 +24,7 @@
 	// 가격에 1000단위에 쉼표를 붙여 줍니다.
     DecimalFormat formatter = new DecimalFormat("###,###");
     String price = formatter.format(Integer.parseInt(pPrice));
+    String favoriteCount = (String)request.getAttribute("favoriteCount");
     
     String category = "";
     // 카테고리 설정	
@@ -221,25 +222,30 @@
 
     <!-- Call to Action Well -->
      <!-- Call to Action Well -->	
-    <div class="card text-dark bg-white my-5 py-4" style="border: none">
-      <div style="text-align : left; font-weight: bolder;"><h3>상세 설명</h3></div>
-      <div class="card-body" style="text-align : left; min-height : 200px ">
-        <h6><%=pContent%></h6>
+    <div class="card text-dark my-5 py-4" style="border: none; ">
+      <div style="text-align : left; font-weight: bolder; margin-left: 20px"><h2>상세 설명</h2></div>
+      <hr>
+      <div class="card-body" style="text-align : left; min-height : 200px; margin-left: 20px">
+        <h4><%=pContent%></h4>
       </div>
-      <div class="text-secondary font-weight-bold" style="text-align : left; margin-right: 20px">
+      <div class="text-secondary font-weight-bold" style="text-align : left; margin-left: 20px">
 		<table>
 			<tr>
-				<td><img src="/Dong-Dong/images/util/time.svg" width="20"/></td>
+				<td><img src="/Dong-Dong/images/util/time.svg" width="30"/></td>
 				
-				<td>&nbsp;<%=pDate.substring(0, pDate.length()-3)%></td>
+				<td><h5>&nbsp;<%=pDate.substring(0, pDate.length()-3)%></h5></td>
 			</tr>
 			<tr>
-				<td><img src="/Dong-Dong/images/util/categories.svg" width="20"/></td>
-				<td>&nbsp;<%=category%></td>
+				<td><img src="/Dong-Dong/images/util/categories.svg" width="30"/></td>
+				<td><h5>&nbsp;<%=category%></h5></td>
 			</tr>
 			<tr>
-				<td><img src="/Dong-Dong/images/util/cursor.svg" width="20"/></td>
-				<td>&nbsp;<%=pHit%></td>
+				<td><img src="/Dong-Dong/images/util/cursor.svg" width="30"/></td>
+				<td><h5>&nbsp;<%=pHit%></h5></td>
+			</tr>
+			<tr>
+				<td><img src="/Dong-Dong/images/util/favorite.svg" width="30"/></td>
+				<td><h5>&nbsp;<%=favoriteCount%></h5></td>
 			</tr>
 		</table>
       </div>
