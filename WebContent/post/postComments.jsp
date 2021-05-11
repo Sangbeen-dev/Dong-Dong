@@ -28,6 +28,9 @@
 #profileImage{
 	vertical-align: middle;
 }
+.footerfix{
+padding-bottom: 300px;
+}
 </style>
 
 
@@ -73,7 +76,7 @@
 <%}%>
 </script>
     <!-- 댓글 기능 표시 시작 지점 --------------------------------------- -->
-    <div id="comments_div" class="container"> <!-- 댓글 전체 div -->
+    <div id="comments_div" class="container footerfix"> <!-- 댓글 전체 div -->
        <div style="text-align : left; font-weight: bolder; margin-left: 20px"><h2>댓글 (<%=comments.size()%>)</h2></div>
        <hr>
       <%for(CommentsDTO cDTO : comments) {%>
@@ -175,6 +178,7 @@
 	    <%} %>
     </div>
     
+    <jsp:include page="../layout/bottom.jsp" flush="true"></jsp:include>
     
 
     
