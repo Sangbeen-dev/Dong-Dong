@@ -68,14 +68,17 @@
 	
 </script>
 <style>
-
+h2{
+	margin: 30px;
+	margin-left: 10px;
+}
 
 
 </style>
 
 
 <div class="container footerfix">
-
+<h2>내 게시물 보기</h2>
 <table class="table table-hover" >
 
 	<thead>
