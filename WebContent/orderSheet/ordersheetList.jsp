@@ -88,7 +88,6 @@ h2{
 	<tbody>
 	<%
 	List<MyOrderSheetDTO> list =(List<MyOrderSheetDTO>)request.getAttribute("ordersheetList");
-	System.out.print(list);
 	for(int i=0; i<list.size(); i++){
 		MyOrderSheetDTO dto = list.get(i);
 		String pImage = dto.getpImage();
