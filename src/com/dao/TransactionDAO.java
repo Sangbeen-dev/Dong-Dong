@@ -20,4 +20,8 @@ public class TransactionDAO {
 		return slist;
 	}
 
+	public int saleCount(SqlSession session, String userid) {
+		return session.selectOne("TransactionMapper.saleCount", userid);
+	}
+
 }

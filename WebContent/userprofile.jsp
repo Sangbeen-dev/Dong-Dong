@@ -8,6 +8,7 @@
  String userid = (String)request.getParameter("userid");
  String userImage = (String)request.getParameter("userImage");
  String nickName = (String)request.getParameter("nickName");
+ String saleCount = (String)request.getParameter("saleCount");
  
 %>
 <html>
@@ -56,7 +57,7 @@
 						<li>
 							<a href="#" >
 							<i class="glyphicon glyphicon-ok"></i>
-							거래량  ??개 </a>
+							거래량  <%=saleCount%>개 </a>
 						</li>
 					
 					</ul>
