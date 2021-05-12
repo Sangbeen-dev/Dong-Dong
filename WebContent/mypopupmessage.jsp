@@ -48,13 +48,10 @@ String userImage = list.get(0).getUserImage();
 			var num = $(this).attr("data-xxx");
 			var popup = "1";
 			console.log(num);
-			location.href="OrderDelServlet?oNum="+num+"&popup="+popup; 
+			location.href="myOrderDelServlet?oNum="+num+"&popup="+popup; 
 		});//end delBtn
 		
-		//구매확정 버튼
-		$("#confirm").click(function() {
-			location.href="SaleServlet?oNum="+"<%=oNum%>"+"&pNum="+"<%=pNum%>"+"&bUserid="+"<%=bUserid%>"+"&sUserid="+"<%=sUserid%>";
-		})
+		
 		
  });//end ready
 </script>
@@ -95,7 +92,7 @@ String userImage = list.get(0).getUserImage();
 		</div>
 		<br>
 		<div style="text-align: center;">
-		<button id="confirm">구매확정</button>&nbsp;<button id="chat">채팅</button>&nbsp;<button id="delete" data-xxx=<%=oNum %>>메세지 삭제</button>
+		<button id="chat">채팅</button>&nbsp;<button id="delete" data-xxx=<%=oNum %>>메세지 삭제</button>
 		</div>
 	</div>
 </body>

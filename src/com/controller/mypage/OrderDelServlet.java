@@ -25,10 +25,15 @@ public class OrderDelServlet extends HttpServlet {
 		String nextPage=null;
 		if(dto!=null) {
 			int num = Integer.parseInt(request.getParameter("oNum"));
+			String popup = request.getParameter("popup");
 			System.out.println("파싱한데이터"+num);
 			OrderSheetService service = new OrderSheetService();
 			int n = service.orderDel(num);
-			nextPage ="OrdersheetList";
+			if(popup == null) {
+				nextPage ="OrdersheetList";
+			}else {
+				nextPage ="popupclose.jsp.jsp";
+			}
 			
 		}else {
 			nextPage = "LoginUISevlet";

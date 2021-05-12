@@ -27,17 +27,11 @@ public class BuyListServlet extends HttpServlet {
 		String nextPage = null;
 		if(dto!=null) {
 			String userid = dto.getUserid();
-			System.out.println(userid);
 			//구매내역
 			TransactionService service = new TransactionService();
 			List<PostDTO> plist = service.purchaseList(userid);
-			//System.out.println("구매내역(서블릿)===="+plist); 
 			request.setAttribute("purchaseList", plist);
-			//판매내역 
-			List<PostDTO> slist = service.saleList(userid);
-			//System.out.println("판매내역(서블릿)===="+slist); 
-			request.setAttribute("saleList", slist);
-			
+		
 			nextPage = "BuyList.jsp";
 			
 		}else {

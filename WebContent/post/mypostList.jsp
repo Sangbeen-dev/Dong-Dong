@@ -5,7 +5,9 @@
 <jsp:include page="../layout/toplayout.jsp" flush="true"></jsp:include>
 <!--부트스트랩 css cdn  -->
 <style>
-
+.footerfix{
+	padding-bottom: 300px;
+}
 </style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -72,7 +74,7 @@
 </style>
 
 
-<div class="container">
+<div class="container footerfix">
 
 <table class="table table-hover" >
 
@@ -109,11 +111,10 @@
 		<td class="text-center" width="1"><%= pNum %></td>	
 		<td class="text-center" width="120"><a
 			href="PostDetailServlet?pNum=<%= pNum%>">
-				<%--여기 해당상품 이동될 페이지  --%> <img src="/Dong-Dong/images/<%= pImage %>"
+				<img src="/Dong-Dong/images/<%= pImage %>"
 				border="0"  width="80" /></a>
 				<div>
 				<%= pTitle %>
-				<%-- <font size="2" color="#665b5f">[분류 :<%= pCategory %>]</font> --%>
 				</div></td>
 		<td class="text-center" width="80"><%= pPrice %></td>
 		<td class="text-center" width="40"><%= pDate %></td>

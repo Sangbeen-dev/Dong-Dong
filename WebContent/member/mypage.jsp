@@ -99,7 +99,6 @@ float:right;
 <%
   MemberDTO dto = (MemberDTO)session.getAttribute("login");
   String nickName = dto.getNickName();
-  System.out.print(dto.getUserimage());
 
 %>
 <form id="myForm" action="#" method="post" enctype="multipart/form-data"> 
@@ -124,10 +123,7 @@ float:right;
  	<input type="text" class="form-control" name="username" value="<%= dto.getUsername() %>"  readonly>
 </div>
 
-<!--지도  --><!--에러남  -->
-<%-- <div class="map">
-<jsp:include page="../addrcheck.jsp" flush="true"></jsp:include>
-</div> --%>
+
 <!--528px  -->
 <div class="mb-4" >
 	<label for="userId">아이디 (Id)</label>
@@ -154,9 +150,9 @@ float:right;
 
 <div>
 <label for="email1">이메일 (email)</label><br>
- <input display="block" type="text"  id="email1" name="email1" value="<%= dto.getEmail1() %>">@
- <input display="block" type="text"  id="email2" name="email2" value="<%= dto.getEmail2() %>">
-       <select id="emailSelect">
+ <input style="width: 42%; height: 36px;" type="text"  id="email1" name="email1" value="<%= dto.getEmail1() %>">&nbsp;@
+ <input style="width: 42%; height: 36px;" type="text"  id="email2" name="email2" value="<%= dto.getEmail2() %>">
+       <select style="width: 13.5%; height: 36px;" id="emailSelect">
         <option value="daum.net">daum.net</option>
         <option value="naver.com">naver.com</option>
         <option value="gmail.com">gmail.com</option>
@@ -174,5 +170,6 @@ float:right;
 </div>
 
 </form>
+
 <jsp:include page="../layout/bottomLayout.jsp" flush="true"></jsp:include>
 
