@@ -46,7 +46,6 @@
 		}
 		
 		#keyword{
-			
 			border : 2px solid #8db0d7;
 		}
 		
@@ -80,19 +79,19 @@
 %>	
 	
 	안녕하세요. 
-		<a href="LogoutServlet">로그아웃</a>
-		<a href="MyPageServlet">mypage</a><!--수정  -->
-		<a href="PostWriteUIServlet">글쓰기</a>
+			<a href="LogoutServlet">로그아웃</a>
+			<a href="MyPageServlet">mypage</a><!--수정  -->
+			<a href="PostWriteUIServlet">글쓰기</a>
 	
 <%
 	} else{ //아닌경우
 %>
-		<a href="LoginUIServlet">로그인</a>
-		<a href="MemberAddUIServlet">회원가입</a><!--MVC 패턴 -->
+			<a href="LoginUIServlet">로그인</a>
+			<a href="MemberAddUIServlet">회원가입</a><!--MVC 패턴 -->
 <%
 	}//end if~else
 %>
-	</div>
+		</div>
 	</div>
 
 </div>

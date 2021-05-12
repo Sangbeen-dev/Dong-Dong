@@ -107,8 +107,8 @@ int calDateDay = Integer.parseInt((String)request.getAttribute("calDateDay"));
 							<br>
 							현재 해당 글에대한 끌올 가능 횟수는 <%=pPull %>회 입니다.<br>
 							<br>
-							<input type="button" id="pullT" class="btn" value="끌올하기">
-							<button class="btn" onclick="window.close()">취소</button>
+							<input type="button" id="pullT" class="btn" value="끌올하기" style="cursor: pointer;">
+							<button class="btn" onclick="window.close()" style="cursor: pointer;">취소</button>
 						</form>
 					</div>
 		<%
@@ -128,8 +128,8 @@ int calDateDay = Integer.parseInt((String)request.getAttribute("calDateDay"));
 							<br>
 							현재 해당 글에대한 끌올 가능 횟수는 <%=pPull %>회 입니다.<br>
 							최근 끌올 날짜 : <%= pDate %>(<%=calDateDay %>일전)<br>
-							<input type="submit" class="btn" value="끌올하기">
-							<button class="btn" onclick="window.close()">취소</button>
+							<input type="submit" class="btn" value="끌올하기" style="cursor: pointer;">
+							<button class="btn" onclick="window.close()" style="cursor: pointer;">취소</button>
 						</form>
 					</div>
 		<%
@@ -150,7 +150,7 @@ int calDateDay = Integer.parseInt((String)request.getAttribute("calDateDay"));
 						최근 끌올 날짜 : <%= pDate %>(<%=calDateDay %>일전)<br>
 						끌올이 <b>불가능</b>합니다!<br>
 						<br>
-						<button class="btn" onclick="window.close()">확인</button>
+						<button class="btn" onclick="window.close()" style="cursor: pointer;">확인</button>
 					</div>
 		<%
 				} else {
@@ -170,8 +170,8 @@ int calDateDay = Integer.parseInt((String)request.getAttribute("calDateDay"));
 						<br>
 						새로 글을 작성하고 싶으시다면 글쓰기 버튼을 클릭해주세요<br>
 						<form action="PostWriteUIServlet" name="pullF">
-						<input type="button" class="btn" id="pullFWrite" value="글쓰기">
-						<button class="btn" id="pullFCancel" onclick="window.close()">확인</button>
+						<input type="button" class="btn" id="pullFWrite" value="글쓰기" style="cursor: pointer;">
+						<button class="btn" id="pullFCancel" onclick="window.close()" style="cursor: pointer;">확인</button>
 						</form>
 					</div>
 		<%
