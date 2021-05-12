@@ -19,6 +19,7 @@ import com.service.CommentsService;
 import com.service.FavoriteService;
 import com.service.MemberService;
 import com.service.PostService;
+import com.service.TransactionService;
 
 @WebServlet("/PostDetailServlet")
 public class PostDetailServlet extends HttpServlet {
@@ -34,6 +35,7 @@ public class PostDetailServlet extends HttpServlet {
     	MemberService mService = new MemberService();
     	FavoriteService fService = new FavoriteService();
     	CommentsService sService = new CommentsService();
+    	TransactionService tService = new TransactionService();
     	
     	PostDTO pDTO = pService.getPostByPNum(Integer.parseInt(pNum));
     	MemberDTO mDTO = mService.mypage(pDTO.getUserid());
@@ -44,7 +46,8 @@ public class PostDetailServlet extends HttpServlet {
     	int updateResult = pService.updatePHit(pDTO);
     	// 좋아요 카운트
     	int favoriteCount = fService.getFavoriteCountByPNum(Integer.parseInt(pNum));
-    	
+    	int saleCount = tService.saleCount(pDTO.getUserid());
+    			
     	if(updateResult!=1) { // 조회수 업데이트가 실패했을 경우 
 			session.setAttribute("mesg", "게시물 접근 중 오류가 발생하였습니다.");
 			nextPage="main";
@@ -72,6 +75,7 @@ public class PostDetailServlet extends HttpServlet {
         	// 게시글 내용 전달을 위해 설정
         	request.setAttribute("comments", comments);
         	request.setAttribute("favoriteCount", String.valueOf(favoriteCount));
+        	request.setAttribute("saleCount", String.valueOf(saleCount));
         	
         	//게시글의 관심 설정 정보 전달을 위해 request에 설정
         	if(uDTO!=null) { // 로그인 정보가 있을 경우

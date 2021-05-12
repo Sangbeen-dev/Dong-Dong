@@ -76,15 +76,15 @@ padding-bottom: 300px;
 <%}%>
 </script>
     <!-- 댓글 기능 표시 시작 지점 --------------------------------------- -->
-    <div id="comments_div" class="container footerfix"> <!-- 댓글 전체 div -->
+    <div id="comments_div" class="container footerfix" style="max-width: 1100px"> <!-- 댓글 전체 div -->
        <div style="text-align : left; font-weight: bolder; margin-left: 20px"><h2>댓글 (<%=comments.size()%>)</h2></div>
        <hr>
       <%for(CommentsDTO cDTO : comments) {%>
       	<!-- 댓글 하나 하나 반복 동작 -->
       	<%if(cDTO.getcLevel()==1) {%>
-      		<div class="comment my-2 p-2 bg-white rounded shadow-sm">
+      		<div class="comment my-3 p-2 bg-white rounded shadow-sm">
       	<%} else {%>
-      		<div class="comment my-2 p-2 alert-secondary rounded shadow" style="padding-top: 10px; margin-left: <%=40*(cDTO.getcLevel()-1)%>px">
+      		<div class="comment my-3 p-2 alert-secondary rounded shadow" style="padding-top: 10px; margin-left: <%=40*(cDTO.getcLevel()-1)%>px">
       	<%} %>
 	      	<div id="userInfo_div"> <!-- 상단 유저 정보 div -->
 	      	  <table>

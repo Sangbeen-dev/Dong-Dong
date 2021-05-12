@@ -35,5 +35,16 @@ public class TransactionService {
 		}
 		return slist;
 	}
-
+	
+	public int saleCount(String userid) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int count = 0;
+		try {
+			TransactionDAO dao = new TransactionDAO();
+			count = dao.saleCount(session, userid);
+		} catch (Exception e) {
+			session.close();
+		}
+		return count;
+	}
 }

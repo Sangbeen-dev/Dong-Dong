@@ -25,7 +25,7 @@
     DecimalFormat formatter = new DecimalFormat("###,###");
     String price = formatter.format(Integer.parseInt(pPrice));
     String favoriteCount = (String)request.getAttribute("favoriteCount");
-    
+    String saleCount = (String)request.getAttribute("saleCount");
     String category = "";
     // 카테고리 설정	
 	switch (pCategory) {
@@ -83,9 +83,6 @@
 <!-- Bootstrap js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <style type="text/css">
-.container{
-	text-align : center;
-}
 #mainImgDiv{
 	max-height: 700px;
 	overflow: hidden;
@@ -147,7 +144,7 @@
 			var popupHeight = 500;
 			var popupX = (window.screen.width / 2) - (popupWidth / 2);
 			var popupY= (window.screen.height / 2) - (popupHeight / 2);
-			url = "userprofile.jsp?nickName="+"<%=nickName%>"+"&userImage="+"<%=userImage%>"+"&userid="+"<%=userid%>";
+			url = "userprofile.jsp?nickName="+"<%=nickName%>"+"&userImage="+"<%=userImage%>"+"&userid="+"<%=userid%>"+"&saleCount="+"<%=saleCount%>";
 			open(url,"userprofile", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 		}//end userprofile
 			
@@ -158,15 +155,11 @@
 </script>
 
 <!-- --------------------------------페이지 표시 시작 지점--------------------------------- -->  
-<!-- Page Content -->
-  <div class="container">
-
-    <!-- Heading Row -->
+  <div class="container" style="max-width: 1100px">
     <div class="row align-items-center my-5">
       <div id="mainImgDiv" class="col-lg-7">
         <img id="mainImage" class="img-fluid rounded mb-4 mb-lg-0" src="/Dong-Dong/images/<%=pImage%>" width="700px" height="">
       </div>
-      <!-- /.col-lg-8 -->
       <div class="col-lg-5 font-weight-bold" style="text-align: left">
         <br>
         <h7 class="font-weight-light text-secondary">><%=category%></h7>
@@ -176,7 +169,7 @@
         <%} else { %>
         <h3 class="font-weight-light">판매완료</h3><br>
         <%} %>
-        <div class="text-secondary font-weight-bold" style="text-align : left;">
+        <div class="text-secondary font-weight-bold flex-nowrap" style="text-align : left;">
 
 					<span style="margin-left: 2px"><img src="/Dong-Dong/images/util/heart.png" width="20"/></span>
 					<span style="margin-left: 2px"><%=favoriteCount%></span>
@@ -187,59 +180,63 @@
 
 	    </div>
         <hr>
-		<table class="table">
+		<table class="table table-borderless">
 		   <tr>
 		      <th>유저</th>
 		      <td><%=username%></td>
+		      <td><div style="width: 70px"></div><td>
 		   </tr>
 		   <tr>
 		      <th>거래지역</th>
 		      <td><%=addr %></td>
+		      <td></td>
 		   </tr>
-		 </tbody> 
-		
 		</table>
+		<div>
+		<!-- 버튼 표시 시작 -->
+		<%if(dto==null){%>
+			<a class="btn btn-primary" href="LoginUIServlet">&nbsp;구매시 로그인이 필요합니다.&nbsp;</a>&nbsp;
+		<%}%>
 		
-		<%if(status){%>
-			<!-- 아무것도 안띄움 -->
-		<%} else if(dto==null){%>
-			<a class="btn btn-primary" href="LoginUIServlet">구매시 로그인이 필요합니다.</a><br>
-		<% } else {%>
-			<a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=400,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">채팅</a>
-			<% if(userid.equals(dto.getUserid())){%>
-				<a class="btn btn-primary" href="PostUpdateUIServlet?pNum=<%=pNum%>">상품 정보 수정</a>
-		  		<a class="btn btn-primary" href="PostDeleteServlet?pNum=<%=pNum%>">상품 삭제</a>
-			<%}
-		}%>
-		<%if(dto!=null && !userid.equals(dto.getUserid())){%>
-			<button id="userprofile" class="btn btn-primary">프로필</button>
-			<a class="btn btn-primary" onclick="window.open('orderSheet/orderSheet.jsp?sUserid=<%=userid %>&pNum=<%=pNum %>&pPrice=<%=pPrice %>','window_name','width=400,height=300,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">주문서작성</a>	
-			<a id="complaintPost" class="btn btn-danger">신고</a>
+		<%if(dto!=null&&!status){%>
+			<a class="btn btn-primary" onclick="window.open('chat/chat.jsp','window_name','width=400,height=400,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">&nbsp;채팅&nbsp;</a>&nbsp;
+		<%}%>
+		
+		<%if(dto!=null&&!status&&dto.getUserid().equals(userid)){%>
+			<a class="btn btn-primary" href="PostUpdateUIServlet?pNum=<%=pNum%>">&nbsp;상품 정보 수정&nbsp;</a>&nbsp;
+			<a class="btn btn-primary" href="PostDeleteServlet?pNum=<%=pNum%>">&nbsp;상품 삭제&nbsp;</a>&nbsp;
+		<%}%>
+		
+		<%if(dto!=null&&!status&&!dto.getUserid().equals(userid)){%>
+			<a class="btn btn-primary" onclick="window.open('orderSheet/orderSheet.jsp?sUserid=<%=userid %>&pNum=<%=pNum %>&pPrice=<%=pPrice %>','window_name','width=400,height=300,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">&nbsp;주문서작성&nbsp;</a>&nbsp;
+		<%}%>
+		
+		<button id="userprofile" class="btn btn-primary">&nbsp;프로필&nbsp;</button>&nbsp;
+		<%if(dto!=null&&!dto.getUserid().equals(userid)){%>
+			<a id="complaintPost" class="btn btn-danger">&nbsp;신고&nbsp;</a>
+		<%}%>
+		
+		<%if(dto!=null&&!status&&!dto.getUserid().equals(userid)){%>
 			<a id="favorite"  class="btn">
 			<%if(favorite==true) {%>
 	    	    <img id="favoriteImg" src="/Dong-Dong/images/util/favorite1.png"  width="50" height="50"/>
 	    	<% } else {%>
 	    	    <img id="favoriteImg" src="/Dong-Dong/images/util/favorite2.png"  width="50" height="50"/>
 	    	   <% } %>
-			</a>
-		<%} %>
-	      
+			</a> 
+		<%}%> 
+		</div>
       </div>
-      <!-- /.col-md-4 -->
     </div>
-    <!-- /.row -->
 
-    <!-- Call to Action Well -->
-     <!-- Call to Action Well -->	
     <div class="card text-dark my-5 py-4" style="border: none; ">
       <div style="text-align : left; font-weight: bolder; margin-left: 20px"><h2>상세 설명</h2></div>
       <hr>
       <div class="card-body" style="text-align : left; min-height : 200px; margin-left: 20px">
-        <h4><%=pContent%></h4>
+        <h5><%=pContent%></h5>
       </div>
     </div>
   </div>
-  <!-- /.container -->
   
 
     
