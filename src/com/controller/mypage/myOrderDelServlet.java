@@ -11,28 +11,35 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dto.MemberDTO;
-import com.service.MemberService;
+import com.service.FavoriteService;
+import com.service.OrderSheetService;
 
 /**
- * Servlet implementation class MyPageServlet
+ * Servlet implementation class FavoriteDelServlet
  */
-@WebServlet("/MyPageServlet")
-public class MyPageServlet extends HttpServlet {
+@WebServlet("/myOrderDelServlet")
+public class myOrderDelServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
-		String nextPage =null;
-		if(dto != null) { 
-			nextPage = "mypage.jsp";
-			MemberService service = new MemberService();
-			dto = service.mypage(dto.getUserid());
-			session.setAttribute("login", dto);
+		String nextPage=null;
+		if(dto!=null) {
+			int num = Integer.parseInt(request.getParameter("oNum"));
+			String popup = request.getParameter("popup");
+			OrderSheetService service = new OrderSheetService();
+			int n = service.orderDel(num);
+			if(popup == null) {
+				nextPage ="MyOrdersheetList";
+			}else {
+				nextPage ="popupclose.jsp";
+			}
 		}else {
-			nextPage= "LoginUIServlet";
+			nextPage = "LoginUISevlet";
 			session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		}
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
+		
 	}
 
 	/**

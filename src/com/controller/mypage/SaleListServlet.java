@@ -27,7 +27,6 @@ public class SaleListServlet extends HttpServlet {
 		String nextPage = null;
 		if(dto!=null) {
 			String userid = dto.getUserid();
-			System.out.println(userid);
 			TransactionService service = new TransactionService();
 			//판매내역 
 			List<PostDTO> slist = service.saleList(userid);
