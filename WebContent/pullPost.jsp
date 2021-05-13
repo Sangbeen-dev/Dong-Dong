@@ -122,13 +122,13 @@ int calDateDay = Integer.parseInt((String)request.getAttribute("calDateDay"));
 								<b><%=pDto.getpTitle() %></b>
 							</p>
 						</div>
-						<form action="PostPullServlet">
+						<form action="PostPullServlet" name="pullForm">
 							<input type="hidden" value="<%=pNum %>" name="pNum">
 							끌올 기능은 <b>3일 간격 3회</b>로 제한됩니다.<br>
 							<br>
 							현재 해당 글에대한 끌올 가능 횟수는 <%=pPull %>회 입니다.<br>
 							최근 끌올 날짜 : <%= pDate %>(<%=calDateDay %>일전)<br>
-							<input type="submit" class="btn" value="끌올하기" style="cursor: pointer;">
+							<input type="button" id="pullT" class="btn" value="끌올하기" style="cursor: pointer;">
 							<button class="btn" onclick="window.close()" style="cursor: pointer;">취소</button>
 						</form>
 					</div>
