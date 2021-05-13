@@ -24,7 +24,7 @@
 	}
 	
 	main{
-		padding-top : 130px;
+		padding-top : 10px;
 		z-index : 2;
 	}
 	
@@ -53,7 +53,7 @@
 		background-size : cover;
 		z-index : 1;
 		width : 100%;
-		height : 700px;
+		height : 500px;
 	}
 </style>
 </head>
