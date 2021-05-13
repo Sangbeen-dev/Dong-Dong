@@ -37,8 +37,9 @@ h2{
 		<tr>
 			<th scope="col" class="text-center">상품번호</th>
 			<th scope="col" class="text-center">상품정보</th><!--pImage 랑 pTitle 같이 출력  -->
-			<th scope="col" class="text-center">작성일</th><!--pDate  -->
 			<th scope="col" class="text-center">가격</th>
+			<th scope="col" class="text-center">작성일</th><!--pDate  -->
+			
 		</tr>
 	</thead>
 	<tbody>
