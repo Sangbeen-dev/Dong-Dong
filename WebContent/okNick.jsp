@@ -4,7 +4,6 @@
 <%
  MemberDTO dto = (MemberDTO)request.getAttribute("nickDto"); 
  String nickName = dto.getNickName(); 
-System.out.print(nickName);
 %>
 
 <!DOCTYPE html>

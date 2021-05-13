@@ -14,9 +14,9 @@
 				alert("닉네임을 입력하세요");
 				return false;
 			};
-			if($("#nickName").val().length>=20){
+			if($("#nickName").val().length>=10){
 					console.log($("nickName").text().length);
-					alert("닉네임은 20자를 넘어갈 수 없습니다.");
+					alert("닉네임은 10자를 넘어갈 수 없습니다.");
 					return false;
 			};
 		});//end 중복체크클릭

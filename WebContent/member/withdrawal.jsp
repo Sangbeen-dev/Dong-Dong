@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../layout/toplayout.jsp" flush="true"></jsp:include>
+
 <style>
 .info1 {
 	border: solid 0.5px;;
@@ -27,6 +28,7 @@
 
 
 </style>
+
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -76,7 +78,7 @@
 <ul><li><h5 id="info-2">탈퇴사유</h5></li></ul>
 </div>
 <div>
-	<select class="form-control" id="reason">
+	<select style="width: 100%; height: 30px;" id="reason">
         <option selected="selected">더 이상 이용하지 않음</option>
         <option>아이디변경 / 재가입 목적</option>
         <option>서비스가 마음에 들지 않음</option>
@@ -90,7 +92,7 @@
 
 <div style="text-align: center;">
 <br>
-<button  class="btn btn-primary btn-lg" id="withdrawal">회원탈퇴</button>
+<button  class="btn btn-outline-danger btn-lg" id="withdrawal">회원탈퇴</button>
 </div>
 </div><!--container  -->
 </form>
