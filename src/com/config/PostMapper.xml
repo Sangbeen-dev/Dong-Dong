@@ -106,6 +106,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="addr != 'null'">
 			AND addr = #{addr}
 		</if>
+		 order by pDate desc
 	</select>
 
 	<select id="mypostList" parameterType="string" resultType="PostDTO">
@@ -130,6 +131,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="addr != 'null'">
 			AND addr = #{addr}
 		</if>
+		order by pDate desc
 	</select>
 	
 	<update id="pullPost" parameterType="int">
