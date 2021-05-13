@@ -25,42 +25,49 @@
 
 $(function() {
 	$("#ComplaintForm").on("submit", function(event){
-		event.preventDefault();
-		var coType = <%=coType%>;
-		if(coType == "1"){
-			var coTarget = <%=userid%>;
-		} else if(coType == "2") {
-			var coTarget = <%=pNum%>;
-		} else if(coType == "3") {
-			var coTarget = <%=cNum%>;
-		}
-		$.ajax({
-			type: "post",
-			url: "/ComplaintAcceptServlet",
-			data: {
-				coTarget: coTarget,
-				userid : <%=dto.getUserid()%>,
-				coType : <%=coType%>,
-				coContent : $("#coContent").val()
-			}, //data
-			dataType: "text",
-			success: function(data, status, xhr) {
-				if(data=="true"){
-					opener.alert("<%=coTypeName[Integer.parseInt(coType)-1]%> 신고가 성공적으로 완료되었습니다.");
-					window.close();
-				} else if(data=="false") {
-					opener.alert("<%=coTypeName[Integer.parseInt(coType)-1]%> 신고가 실패하였습니다.");
-					window.close();
-				}else if(data=="dup") {
-					opener.alert("이미 신고한 <%=coTypeName[Integer.parseInt(coType)-1]%> 입니다.");
-					window.close();
-				}//if_elseif_elseif
-			}, //success
-			error: function(xhr, status, error) {
-				$("#result").append(error);
-				$("#result").append(status);
-			} //error
-		});//ajax
+		var cContent = $(this).find("textarea").val();
+		if(cContent.length == 0){
+			event.preventDefault();	
+			opener.alert("내용을 입력하세요.");
+			window.close();
+		} else {
+			event.preventDefault();
+			var coType = <%=coType%>;
+			if(coType == "1"){
+				var coTarget = <%=userid%>;
+			} else if(coType == "2") {
+				var coTarget = <%=pNum%>;
+			} else if(coType == "3") {
+				var coTarget = <%=cNum%>;
+			}
+			$.ajax({
+				type: "post",
+				url: "/ComplaintAcceptServlet",
+				data: {
+					coTarget: coTarget,
+					userid : <%=dto.getUserid()%>,
+					coType : <%=coType%>,
+					coContent : $("#coContent").val()
+				}, //data
+				dataType: "text",
+				success: function(data, status, xhr) {
+					if(data=="true"){
+						opener.alert("<%=coTypeName[Integer.parseInt(coType)-1]%> 신고가 성공적으로 완료되었습니다.");
+						window.close();
+					} else if(data=="false") {
+						opener.alert("<%=coTypeName[Integer.parseInt(coType)-1]%> 신고가 실패하였습니다.");
+						window.close();
+					}else if(data=="dup") {
+						opener.alert("이미 신고한 <%=coTypeName[Integer.parseInt(coType)-1]%> 입니다.");
+						window.close();
+					}//if_elseif_elseif
+				}, //success
+				error: function(xhr, status, error) {
+					$("#result").append(error);
+					$("#result").append(status);
+				} //error
+			});//ajax
+		}//if_else
 	});//on
 });//end ready
 </script>

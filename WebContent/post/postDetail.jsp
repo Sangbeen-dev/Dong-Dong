@@ -111,11 +111,14 @@
 					dataType: "text",
 					success: function(data, status, xhr) {
 						if(data=="true"){
+							var favoriteCountTemp = $("#favoriteCountSpan").text();
 							$("#favoriteImg").attr("src","/Dong-Dong/images/util/favorite1.png");
+							$("#favoriteCountSpan").text(Number(favoriteCountTemp)+1);
 							favorite = true;
 						} else {
-	
+							var favoriteCountTemp = $("#favoriteCountSpan").text();
 							$("#favoriteImg").attr("src","/Dong-Dong/images/util/favorite2.png");
+							$("#favoriteCountSpan").text(favoriteCountTemp-1);
 							favorite = false;
 						}//if_else
 					}, //success
@@ -163,7 +166,7 @@
       <div class="col-lg-5 font-weight-bold" style="text-align: left">
         <br>
         <h7 class="font-weight-light text-secondary">><%=category%></h7>
-        <h2 class="font-weight-light"><%=pTitle%></h2><br>
+        <h2 class="font-weight-light" style="line-height: 1.5;"><%=pTitle%></h2>
         <%if(!status) {%>
         <h3 class="font-weight-light"><%=price%>원</h3><br>
         <%} else { %>
@@ -172,7 +175,7 @@
         <div class="text-secondary font-weight-bold flex-nowrap" style="text-align : left;">
 
 					<span style="margin-left: 2px"><img src="/Dong-Dong/images/util/heart.png" width="20"/></span>
-					<span style="margin-left: 2px"><%=favoriteCount%></span>
+					<span style="margin-left: 2px" id="favoriteCountSpan"><%=favoriteCount%></span>
 					<span style="margin-left: 15px"><img src="/Dong-Dong/images/util/eye.png" width="20"/></span>
 					<span style="margin-left: 2px"><%=pHit%></span>
 					<span style="margin-left: 15px"><img src="/Dong-Dong/images/util/time.png" width="20"/></span>
@@ -183,7 +186,7 @@
 		<table class="table table-borderless">
 		   <tr>
 		      <th>유저</th>
-		      <td><%=username%></td>
+		      <td><%=nickName%></td>
 		      <td><div style="width: 70px"></div><td>
 		   </tr>
 		   <tr>
@@ -211,7 +214,7 @@
 			<a class="btn btn-primary" onclick="window.open('orderSheet/orderSheet.jsp?sUserid=<%=userid %>&pNum=<%=pNum %>&pPrice=<%=pPrice %>','window_name','width=400,height=300,location=no,status=no,scrollbars=yes,left='+((window.screen.width/2)-200)+',top='+((window.screen.height/2)-250))">&nbsp;주문서작성&nbsp;</a>&nbsp;
 		<%}%>
 		
-		<button id="userprofile" class="btn btn-primary">&nbsp;프로필&nbsp;</button>&nbsp;
+			<a id="userprofile" class="btn btn-primary">&nbsp;프로필&nbsp;</a>&nbsp;
 		<%if(dto!=null&&!dto.getUserid().equals(userid)){%>
 			<a id="complaintPost" class="btn btn-danger">&nbsp;신고&nbsp;</a>
 		<%}%>
@@ -233,7 +236,7 @@
       <div style="text-align : left; font-weight: bolder; margin-left: 20px"><h2>상세 설명</h2></div>
       <hr>
       <div class="card-body" style="text-align : left; min-height : 200px; margin-left: 20px">
-        <h5><%=pContent%></h5>
+        <h5 style="line-height: 1.7;"><%=pContent%></h5>
       </div>
     </div>
   </div>
