@@ -127,8 +127,8 @@
 		 <div class="row">
  			<div class="col-md-3 col-sm-2"></div>
 			<div class="mb-3 col-md-6 col-sm-8">
-    			<input type="text" name="pPrice" id="pPrice" class="form-control"
-    				aria-describedby="price" placeholder="상품가격" value="<%=dto.getpPrice()%>" >
+    			<input type="text" name="pPrice" id="price" class="form-control"
+    				aria-describedby="price" placeholder="상품가격" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="10" value="<%=dto.getpPrice()%>">
   			</div>
   			<div class="col-md-3 col-sm-2"></div>
   		</div>
