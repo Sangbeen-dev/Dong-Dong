@@ -25,14 +25,14 @@
 
 
 
-	<b><%= keyword %></b>로 검색한 결과 <b><%=list.size() %></b>개가 검색되었습니다.
+	<div id="mesg"><b><%= keyword %></b>로 검색한 결과 <b><%=list.size() %></b>개가 검색되었습니다.</div>
 <%
 	}
 
 	if(category != null){
 		String value = (String)categoryMap.get(category);
 %>
-	<b><%= value %></b> 카테고리 - <b><%=list.size() %></b>개가 검색되었습니다.
+	<div id="mesg"><b><%= value %></b> 카테고리 - <b><%=list.size() %></b>개가 검색되었습니다.</div>
 <%
 	}
 %>
@@ -42,7 +42,9 @@
 		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <style type="text/css"> 
-
+#mesg{
+	text-align : center;
+}
 ul {
     list-style:none;
     margin:0;

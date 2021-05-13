@@ -29,25 +29,76 @@
 	<!-- Bootstrap css -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" 
 		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 	<style type="text/css">
-		#imgBox {
-			padding : 0;
+		*{
+			font-family: 'Nanum Gothic', sans-serif;
+			font-size: 15px;
+			font-weight : 400;
 		}
 		
+		#imgBox {
+			padding : 0;
+			margin : 0;
+		}
 		#main{
 			margin-top : 30px;
+			margin-left : 20px;
 		}
 		
 		#keyword, #search{
 			margin-top:40px;
 		}
+		#keyword{
+			border : 2px solid #8db0d7;
+		}
+		.ttt{
+			display : flex;
+		}
+
+		.user{
+			flex : left;
+		}
+		
 		#user_section{
 			margin-top : 45px;
 		}
 		
-		#keyword{
-			border : 2px solid #8db0d7;
+		#user_section a{
+			margin-left : 5px;
+			text-decoration: none;
+			color : #8db0d7;
+			font-weight : 700;
+			font-size: 17px;
 		}
+		
+		#user_section a:hover{
+			margin-left : 5px;
+			text-decoration: none;
+			color : #316ea5;
+			font-weight : 700;
+			font-size: 17px;
+		}
+		
+		
+		
+		#user_profile{
+			margin-top : 25px;
+			margin-left : 10px;
+			border : 2px solid #8db0d7;
+			border-radius : 10px;
+			padding-top : 9px;
+			padding-left : 5px;
+			padding-right : 5px;
+			height : 60px;
+			font-size : 20px;
+		}
+		
+		#user_profile img{
+			border-radius : 10px;
+		}
+		
 		
 	</style>
 </head>
@@ -72,28 +123,28 @@
 <%
  MemberDTO dto =(MemberDTO)session.getAttribute("login");
 %>
-	<div class="col-md-3">
-		<div id="user_section">
+	<div class="col-md-3 ttt">
+		<div id="user_section" class="user">
 <%
 	if(dto !=null){ //회원인 경우
 %>	
-	
-	안녕하세요. 
 			<a href="LogoutServlet">로그아웃</a>
 			<a href="MyPageServlet">mypage</a><!--수정  -->
 			<a href="PostWriteUIServlet">글쓰기</a>
-	
+		</div>
+		<div id="user_profile" class="user">
+			<%=dto.getNickName() %>
+			<img src="/Dong-Dong/images/profile/<%=dto.getUserimage() %>" id="user_profileImg" width="40px" height="40px">
+		</div>
 <%
 	} else{ //아닌경우
 %>
 			<a href="LoginUIServlet">로그인</a>
 			<a href="MemberAddUIServlet">회원가입</a><!--MVC 패턴 -->
-<%
-	}//end if~else
-%>
 		</div>
+<%		
+	}//end if~else
+%>		
 	</div>
-
-</div>
 
 </body>
