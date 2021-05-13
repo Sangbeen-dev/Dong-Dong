@@ -14,7 +14,7 @@ function oMessage(oNum) {
 	var popupHeight = 500;
 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-	url = "myPopupMessage?oNum="+oNum;
+	url = "PopupMessage?oNum="+oNum;
 	console.log(oNum);
 	open(url,"Message", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 } 
