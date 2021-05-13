@@ -8,7 +8,7 @@
 <%
 MemberDTO dto =(MemberDTO)session.getAttribute("login");
 String userid = dto.getUserid();
-
+int saleCount = (Integer)request.getAttribute("saleCount");
 List<MyOrderSheetDTO> list = (List<MyOrderSheetDTO>)request.getAttribute("message");
 String oMessage1 = list.get(0).getoMessage();
 int oNum = list.get(0).getoNum();
@@ -37,7 +37,7 @@ String userImage = list.get(0).getUserImage();
     $(document).ready(function(){
     	//상대프로필보기
     	$("#user").click(function() {
-			location.href="userprofile.jsp?nickName="+"<%=nickName%>"+"&userImage="+"<%=userImage%>";
+			location.href="userprofile.jsp?nickName="+"<%=nickName%>"+"&userImage="+"<%=userImage%>"+"&saleCount="+"<%=saleCount%>";
 		})
     	
     	$("#chat").click(function() {
