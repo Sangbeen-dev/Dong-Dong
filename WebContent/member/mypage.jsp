@@ -41,7 +41,7 @@ float:right;
 		function addrcheck() {
 			// 자식창 중앙 정렬
 			var popupWidth = 500;
-			var popupHeight = 500;
+			var popupHeight = 480;
 			//오류 주의...
 			var popupX = (window.screen.width / 2) - (popupWidth / 2);
 			// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼줌

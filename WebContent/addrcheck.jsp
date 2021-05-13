@@ -7,6 +7,7 @@
 	<title>우리동네 Dong-Dong</title>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 	<style type="text/css">
 	 * {
 		font-family: 'Nanum Gothic', sans-serif;
@@ -134,6 +135,7 @@ function displayMarker(locPosition, message, lat, lon) {
 
 }    
 	</script>
-<button id="addrcheck" >동네 인증하기</button>
+	<br>
+<button style="width: 100%;" class="btn btn-outline-primary" id="addrcheck" >동네 인증하기</button>
 </body>
 </html>

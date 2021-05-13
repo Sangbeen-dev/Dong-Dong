@@ -21,7 +21,6 @@ public class confirmNickServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
-		//System.out.println(dto); 
 		String nextPage =null;
 		if(dto != null) {
 			

@@ -5,68 +5,88 @@
 <jsp:include page="Header.jsp" />
 </head>
 
-
-
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
 //form 서브밋 - 아이디 중복( 닉네임 중복), 비밀번호 불일치
+//이름,전화번호,주소 입력바람 
 $("form").on("submit",function(event){
 	console.log("aaa");
  var userid = $("#userid").val();
  var passwd = $("#passwd").val();
  var passwd2 = $("#passwd2").val();
  var nickName = $("#nickName").val();
+ var username =$("#username").val();
+ var phone =$("#phone").val();
+ var addr =$("#addr").val();
+ 
  var result = $("#result").text();
- var resul3t = $("#result3").text();
+ var result3 = $("#result3").text();
  var result4 = $("#result4").text();
  
  		if(nickName.length==0){
-			alert("nickName 필수입니다.")
+			alert("닉네임을 입력해주세요.")
 			$("#nickName").focus();
 			event.preventDefault();	
 			
- 		}if(result3 != "닉네임 사용가능"){
+ 		}else if(result3 != "닉네임 사용가능"){
 			alert("닉네임 중복되었습니다.")
  			$("#nickName").focus();
  			event.preventDefault();		
 		
- 		}if(userid.length==0){
- 			alert("userid 필수")
+ 		}else if(userid.length==0){
+ 			alert("아이디 입력해주세요.")
  			$("#userid").focus();
  			event.preventDefault();		
 			
- 		}if(result != "아이디 사용 가능"){
+ 		}else if(result != "아이디 사용 가능"){
 			alert("아이디가 중복되었습니다.")
  			$("#userid").focus();
  			event.preventDefault();		
 		
-		} if(passwd.length==0){
-			alert("passwd 필수")
+		}else if(passwd.length==0){
+			alert("패스워드 입력해주세요.")
 			$("#passwd").focus();
 			event.preventDefault();
 		
-		} if(passwd!=passwd2){
-			alert("비밀번호가 일치하지 않습니다.")
+		}else if(passwd!=passwd2){
+			alert("패스워드가 일치하지 않습니다.")
 			$("#passwd").focus();
 			event.preventDefault();
-		}if (result4 !="인증완료"){
-			alert("이메일 인증 필수 입니다.")
+		
+		}else if (result4 !="인증완료"){
+			alert("이메일 인증해 주세요.")
+			event.preventDefault();
+		
+		}else if(username.length==0){
+			alert("이름을 입력해주세요.")
+			$("#username").focus();
+			event.preventDefault();
+		
+		}else if(phone.length==0){
+			alert("전화번호 입력해주세요.")
+			$("#phone").focus();
+			event.preventDefault();
+		
+		}else if(addr.length==0){
+			alert("주소를 입력해주세요.")
+			$("#addr").focus();
 			event.preventDefault();
 		}
-		
-		
+
+ 		
+ 		
+ 		
 		
 	});
-	
 	
 //비번확인
 $("#passwd2").on("keyup",function(){
 	var passwd = $("#passwd").val();
-	var mesg = "비번 불일치";
+	var mesg = "패스워드 불일치";
 	if(passwd == $(this).val()){
-		mesg = "비번 일치";
+		mesg = "패스워드 일치";
 	}
 	$("#result2").text(mesg);
 });
@@ -90,9 +110,6 @@ $("#passwd2").on("keyup",function(){
 		});
 });
 
-// 아이디 중복되는경우 회원가입하면 500Error
-// 중복일떄 500이 아니라 , 이벤트를 막아야지 
- 
 //nickName체크 
  $("#nickName").on("keyup",function(event){
 	 $.ajax({
@@ -124,8 +141,8 @@ $("#passwd2").on("keyup",function(){
 		// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼줌
 		url = "emailAuth.jsp"
 		open(url,"confirm", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-		}
-	//닉네임 체크 
+	}
+	//닉네임 체크 //이메일 값 넘겨주기
 	$("#mailAuth").click(function() {
 		maileAuth();
 	})
@@ -145,58 +162,60 @@ $("#passwd2").on("keyup",function(){
 <form action="MemberAddServlet" method="get">
   <div class="container" >
         <div class="py-3 text-center">
-            <!-- <img class="d-block mx-auto mb-2" src="/Dong-Dong/images/util/DongDonglogo2.png" alt="" width="200" height="200"> -->
-            <h2>회원가입</h2>
+             <img class="d-block mx-auto mb-2" src="/Dong-Dong/images/util/DongDonglogo2.png" alt="" width="300" height="300"> 
+            <h1>회원가입</h1>
         </div>
         
 <table class="table table-boardered">
 <tr>
-<th>닉네임 </th>
-<td><input type="text" class="form-control" name="nickName" id="nickName" placeholder="닉네임 입력"><span id="result3"/></td>
+<th><h3>닉네임</h3></th>
+<td colspan="3"style="width:20%;"><input type="text" class="form-control" name="nickName" id="nickName" style="width:700px;height:50px" placeholder="닉네임 입력"><span id="result3"/></td>
 </tr>
 
 <tr>
-<th> 아이디</th>
-<td><input type="text" class="form-control"  name="userid" id="userid" placeholder="아이디 입력"><span id="result"/></td>
+<th><h3>아이디</h3></th>
+<td colspan="3"style="width:20%;"><input type="text" class="form-control"  name="userid" id="userid" style="width:700px;height:50px" placeholder="아이디 입력"><span id="result"/></td>
 </tr>
 
 <tr>
-<th>패스워드</th>
-<td><input type="text" class="form-control" name="passwd" id="passwd" placeholder="비밀번호 입력"></td>
+<th><h3>패스워드</h3></th>
+<td colspan="3"style="width:20%;"><input type="text" class="form-control" name="passwd" id="passwd" style="width:700px;height:50px" placeholder="비밀번호 입력"></td>
 </tr>
 
 <tr>
-<th>패스워드확인</th>
-<td><input type="password" class="form-control" name="passwd2" id="passwd2"><span id="result2"/></td>		
+<th><h3>패스워드 확인</th>
+<td colspan="3"style="width:20%;"><input type="password" class="form-control" name="passwd2" id="passwd2" style="width:700px;height:50px"><span id="result2"/></td>		
 </tr>
 
 <tr>
-<th>이름</th>
-<td><input type="text" class="form-control" name="username" placeholder="id를 넣으세요"></td>		
+<th><h3>이름</h3></th>
+<td colspan="3"style="width:20%;"><input type="text" class="form-control" name="username" id="username" style="width:700px;height:50px" placeholder="이름"></td>		
 </tr>
 
 <tr>
-<th>전화번호</th>
-<td><input type="tel" class="form-control" name="phone" id ="phone" ></td>		
+<th><h3>전화번호</h3></th>
+<td colspan="3"style="width:20%;"><input type="tel" class="form-control" name="phone" id ="phone" style="width:700px;height:50px"placeholder="전화번호" ></td>		
 </tr>
 
 <tr>
-<th>주소</th>
-<td><input type="email" class="form-control"name="addr" id="sample4_roadAddress" placeholder="주소입력"></td>		
+<th><h3>주소</h3></th>
+<td colspan="3" style="width:20%;" ><input type="text" class="form-control"name="addr" id="addr" style="width:700px;height:50px" placeholder="주소"></td>		
 </tr>
 
 <tr>
-<th>이메일</th>
-<td><input type="email" class="form-control" name="email1"></td>
+<th><h3>이메일</h3></th>
+<td  style="width:20%;"><input type="text" class="form-control" name="email1"style="width:315px;height:50px"></td>
 <td>@</td>
-<td><input type="email" class="form-control" name="email2"></td>
-<td><button type="button" id="mailAuth"class="btn btn-info">메일 인증</button><span id="result4" text=""></span></td>		
+<td><input type="text" class="form-control" name="email2"style="width:315px;height:50px">
+<button type="button" id="mailAuth"class="btn btn-info">메일 인증</button><span id="result4" text=""></span></td>		
 </tr>
 			
 	<tr>
-	<td colspan="2">
+	<th/>
+	<td colspan="3">
 	<input type="submit" class="btn btn-info" value="회원가입"> 
-	<input type="reset" class="btn btn-info" value="취소">
+	<input type="reset" class="btn btn-danger" value="취소">
+	<!-- <th/><th/> -->
 	</td>
 	</tr>
 

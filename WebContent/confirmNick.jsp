@@ -3,7 +3,6 @@
 <%
 int n = (Integer)request.getAttribute("nickCheck");
 String nickName = (String)request.getAttribute("nickName");
-System.out.print(n);
 %>
 
 <!DOCTYPE html>

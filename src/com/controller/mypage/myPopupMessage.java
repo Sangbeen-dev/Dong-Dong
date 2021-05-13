@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.dto.MemberDTO;
 import com.dto.MyOrderSheetDTO;
 import com.service.OrderSheetService;
+import com.service.TransactionService;
 
 /**
  * Servlet implementation class PopupMessage
@@ -26,8 +27,12 @@ public class myPopupMessage extends HttpServlet {
 		String nextPage = null;
 		if(dto!=null) {
 			String oNum = request.getParameter("oNum");
+			//int saleCount = Integer.parseInt(request.getParameter("saleCount"));
 			OrderSheetService service = new OrderSheetService();
 			List<MyOrderSheetDTO> list = service.message(oNum);
+			TransactionService service2 = new TransactionService();
+			int saleCount = service2.saleCount(list.get(0).getbUserid());
+			request.setAttribute("saleCount", saleCount);
 			request.setAttribute("message", list);
 			nextPage = "mypopupmessage.jsp";
 			

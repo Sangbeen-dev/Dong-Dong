@@ -125,10 +125,8 @@ public class MemberService {
 		try {
 			MemberDAO dao = new MemberDAO();
 			num = dao.memberUpdate(session, dto2);
-			System.out.println("서비스==="+dto2);
 			session.commit();
 		}catch (Exception e) {
-			System.out.println("롤백=====");
 			e.printStackTrace();
 			session.rollback();
 		}finally {

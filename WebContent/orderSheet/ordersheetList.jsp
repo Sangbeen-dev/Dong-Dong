@@ -9,6 +9,17 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+function oMessage(oNum) {
+	var popupWidth = 300;
+	var popupHeight = 500;
+	var popupX = (window.screen.width / 2) - (popupWidth / 2);
+	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+	url = "myPopupMessage?oNum="+oNum;
+	console.log(oNum);
+	open(url,"Message", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+} 
+
+	
 	$(document).ready(function() {
 		//전체 체크
 		$("#allCheck").click(function() {
@@ -117,7 +128,7 @@ h2{
 		<div>
 		<font size="2">[아이디 :<%= bUserid %>]</font><br>
 		<font size="2"><%= oMessage %></font><br>
-		<button id="message" data-oNum="<%= oNum %>" class="btn btn-outline-primary btn-sm">더보기</button>
+		<button id="message" data-oNum="<%= oNum %>" class="btn btn-outline-primary btn-sm" onclick = "oMessage(<%=oNum%>);">더보기</button>
 		</div>
 		</td><!--채팅메세지  --><!--미리보기 조금만  -->	
 		
@@ -126,7 +137,7 @@ h2{
 		
 		<td class="text-center" align="center" width="30" 
 			style='padding-left: 10px'>
-			<input type="button" value="삭제" id="xx<%=i %>" class="delBtn" data-xxx="<%= oNum %>"><!--주문서 삭제시 오더번호로  -->
+			<input type="button" value="삭제" id="xx<%=i %>" class="delBtn" data-xxx="<%= oNum %>" ><!--주문서 삭제시 오더번호로  -->
 		</td>
 		
 	</tr>
