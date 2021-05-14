@@ -49,22 +49,6 @@ function oMessage(oNum) {
 			location.href="myOrderDelAllServlet?data="+num; 
 		});//end delAllorder 
 		
-		//클릭시  이동할 페이지와 자식창 크기 조정 함수
-		/* function oMessage() {
-			var popupWidth = 300;
-			var popupHeight = 500;
-			var popupX = (window.screen.width / 2) - (popupWidth / 2);
-			var popupY= (window.screen.height / 2) - (popupHeight / 2);
-			var oNum = $("#message").attr("data-oNum");
-			url = "myPopupMessage?oNum="+oNum;
-			console.log(oNum);
-			open(url,"Message", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-		} 
-		//메세지창열기
-	 	$("#message").click(function() {
-			oMessage();
-			console.log($(this).attr("data-oNum"));
-		}) */
 		 
 		
 	})//end ready
@@ -132,7 +116,7 @@ h2{
 		<div>
 		<font size="2">[아이디 :<%= bUserid %>]</font><br>
 		<font size="2"><%= oMessage %></font><br>
-		<button id="message" data-oNum="<%= oNum %>" class="btn btn-outline-primary btn-sm" onclick = "oMessage(<%=oNum%>);">더보기</button>
+		<button  data-oNum="<%= oNum %>" class="btn btn-outline-primary btn-sm" onclick = "oMessage(<%=oNum%>);">더보기</button>
 		</div>
 		</td><!--채팅메세지  --><!--미리보기 조금만  -->	
 		
