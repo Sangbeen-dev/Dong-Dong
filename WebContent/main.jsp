@@ -17,6 +17,7 @@
 </script>
 <style type="text/css">
 	
+	footer
 	* {
 		font-family: 'Nanum Gothic', sans-serif;
 		font-size: 15px;
@@ -93,6 +94,8 @@
 <main>
 	<jsp:include page="post/postList.jsp" flush="true"></jsp:include><br>
 </main>
-
+<footer>
+	<jsp:include page="layout/bottom.jsp" flush="true"></jsp:include><br>
+	</footer>
 </body>
 </html>

@@ -42,6 +42,31 @@
 		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 <style type="text/css"> 
+
+.all {
+	width:1950px;
+	height:1700px;
+	margin: 0 auto;
+}
+.center {
+	text-align: center;
+	width:1430px;
+	height:1550px;
+	margin:0 auto;
+}
+.container {
+	margin: 0 auto;
+	 width:1220px;
+	height:1580px;
+	display:grid;
+	 grid-template-columns: 1fr 1fr 1fr 1fr;
+	 grid-template-rows: 390px 390px 390px 390px;
+}
+
+.card {
+	width: 288px; 
+	height: 380px;
+}
 #mesg{
 	text-align : center;
 }
@@ -88,7 +113,10 @@ li {
 
 </head>
 <body>
-<div>
+<div class="all">
+	<div class="center">
+		<div class="container ">
+			
 <!-- Bootstrap js -->
 	
 
@@ -136,30 +164,20 @@ $(document).ready(function(){
 	
 })
 </script>
-	<ul>
-		<li>
-			<div class="container" id="card<%=pNum %>" style="width:23%; width: 320px; height: auto;">
-				<div style="background-color: white; padding:15px; width: 320px; height: auto; cursor: pointer;">
-				    <div class="card">
-				      <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Responsive image" style="max-width:288px; height:285px;" >
-				      <div class="card-body">
-				        <h6 class="card-title" style="height:50px;"><%=pTitle%></h6>
-				        <h4><%=price %>원</h4>
-				      </div>
-				      <div class="card-footer">
-				        <small class="text-muted"><%=pDateResult%></small>
-				      </div>
-				    </div>
-				</div>
-			</div>
-		</li>
-	</ul>
-</div>
-
-<%
-    }//end for
-
+		
+		<div class="card col-lg-7" id="card<%=pNum %>" style="background-color: white; width: 288px; height: 380px; cursor: pointer;">
+			<img class="card-img-top rounded mb-4 mb-lg-0" src="/Dong-Dong/images/<%=pImage %>" alt="Responsive image" style="max-width:288px; height:285px;" >
+				<div class="card-body" style="width:288px; height:70px;">
+				      <h6 class="card-title" style="height:35px;"><%=pTitle%></h6>
+				        <h5 class="price"><%=price %>원</h5><small class="text-muted" style="position: absolute; right: 0px; bottom: 0px;"><%=pDateResult%></small>
+				</div><!-- card-body -->
+	    </div><!-- card -->
+<%  
+}//end for
 %>
+		</div><!-- container -->
+	</div><!-- center -->
+</div><!-- all  -->
 <div class="page_wrap">
 	<div class="page_nation">	
 <%
@@ -189,18 +207,6 @@ $(document).ready(function(){
 		}
 }	
 %>
-		</div>		
+		</div>
 </div>
-
-</body>
-
- <%--  페이지네이션 부트스트랩 코드
-	<div class="text-center">
-	<ul class="pagination justify-content-end">
-	<li class="page-item"><a class="page-link" href="">이전</a></li>
-	<li class="page-item"><a class="page-link" href='MainServlet?curPage="<%=curPage%>"'>1</a></li>
-	<li class="page-item"><a class="page-link" href="">2</a></li>
-	<li class="page-item"><a class="page-link" href="">3</a></li>
-	<li class="page-item"><a class="page-link" href="">다음</a></li>
-</ul> 
-	</div> --%>
+</body>	 
