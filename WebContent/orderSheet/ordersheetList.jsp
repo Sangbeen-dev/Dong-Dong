@@ -9,6 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+
 function oMessage(oNum) {
 	var popupWidth = 300;
 	var popupHeight = 500;
@@ -17,7 +18,7 @@ function oMessage(oNum) {
 	url = "PopupMessage?oNum="+oNum;
 	console.log(oNum);
 	open(url,"Message", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-} 
+}  
 
 	
 	$(document).ready(function() {
@@ -48,7 +49,7 @@ function oMessage(oNum) {
 		});//end delAllorder 
 		
 		//클릭시  이동할 페이지와 자식창 크기 조정 함수
-		function oMessage() {
+	 	 function oMessage() {
 			var popupWidth = 300;
 			var popupHeight = 400;
 			var popupX = (window.screen.width / 2) - (popupWidth / 2);
@@ -56,7 +57,7 @@ function oMessage(oNum) {
 			var oNum = $("#message").attr("data-oNum");
 			url = "PopupMessage?oNum="+oNum;
 			open(url,"Message", 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-		}
+		}  
 		//메세지창열기
 		$("#message").click(function() {
 			oMessage();

@@ -35,19 +35,15 @@ h6 {
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-	function del(num) {
-		location.href="FavoriteDelServlet?num="+num; 
-	}
-	
 	$(document).ready(function() {
-		/* 
+		
 		//개별 삭제
-		$("#delBtn").on("click", function() {
+		$(".delBtn").on("click", function() {
 			var num = $(this).attr("data-xxx");
 			console.log(num);
 			location.href="FavoriteDelServlet?num="+num; 
 		});//end delBtn
-		 */
+		
 		
 	})//end ready
 	
@@ -77,13 +73,12 @@ h6 {
 <ul>
 <li>
 <%-- <div class="card" id="card<%=pNum %>" style="width:23%;"> --%>
-<!-- <div style="background-color: black; padding:15px; margin:30px; width: 500px; height: auto; cursor: pointer;"> -->
    	 <div class="card" style="margin: 5px; "> 
       <a href="PostDetailServlet?pNum=<%=pNum %>">
       <img class="card-img-top" src="/Dong-Dong/images/<%=pImage %>" alt="Responsive image" style="max-width:250px; height:205px; display: block; margin: auto;" ></a>
       <div class="card-body">
         <h6 class="card-title" style="height:25px;"><%=pTitle%></h6>
-        <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=pPrice %>원<button data-xxx="<%=pNum %>" class="btn btn-outline-danger" id="delBtn" style="float: right;" onclick="del(<%=pNum %>);">삭제</button></h6>
+        <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=pPrice %>원<button data-xxx="<%=pNum %>" class="btn btn-outline-danger delBtn"  style="float: right;" >삭제</button></h6>
       </div>
    </div>
     <!-- </div> -->
