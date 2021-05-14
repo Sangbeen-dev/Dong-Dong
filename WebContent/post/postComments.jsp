@@ -8,6 +8,7 @@
 <% 
 	MemberDTO dto = (MemberDTO)session.getAttribute("login");
 	String pNum = (String)request.getAttribute("pNum");
+	String userid = (String)request.getAttribute("userid");
 	String pStatus = (String)request.getAttribute("pStatus");
 	boolean status = (pStatus.charAt(0)=='1'?true:false);
     List<CommentsDTO> comments = (List<CommentsDTO>)request.getAttribute("comments");
@@ -93,7 +94,11 @@ padding-bottom: 300px;
 	      			<img id="profileImage" class="img-fluid rounded mb-4 mb-lg-0" src="/Dong-Dong/images/profile/<%=cDTO.getUserimage()%>" width="70px" height="">
 	      		  </td>
 	      		  <td >
-	      			<div style="margin-left: 10px;"><h5><%=cDTO.getNickName()%></h5></div>
+	      			<div style="margin-left: 10px;">
+	      				<h5 style="display: inline;"><%=cDTO.getNickName()%>
+	      					<%if(cDTO.getUserid().equals(userid)){%><h5 class="text-primary" style="display: inline;"> (글쓴이)</h5><%}%>
+	      				</h5>
+	      			</div>
 	      			<div style="margin-left: 10px;">
 					  <%if(cDTO.getUpdateDate()==null){%>
 	      				<%=(cDTO.getCreateDate()).substring(0, cDTO.getCreateDate().length()-3) %>
@@ -115,16 +120,16 @@ padding-bottom: 300px;
 	      		</div>
 	      		
 	      		<div style="text-align : right">
-	      		<%if(!status) {%>
-	      			<%if(dto!=null) {%>
-      					<a class="btn reply_comment btn-outline-primary btn-sm" href="javascript:" id="<%=cDTO.getcNum()%>">답글</a>
-      				  <%if(cDTO.getUserid().equals(dto.getUserid())) {%>
-      					<a class="btn update_comment btn-outline-primary btn-sm" href="javascript:" id="<%=cDTO.getcNum()%>">수정</a>
-      					<a class="btn btn-outline-danger btn-sm" href="CommentsDeleteServlet?pNum=<%=pNum%>&cNum=<%=cDTO.getcNum()%>">삭제</a>
-      				  <%} %>
-      				<%} %>
-     			<%} %>
-     			<%if(dto!=null && !cDTO.getUserid().equals(dto.getUserid())) {%>
+	      		<%if(dto!=null&&!status) {%>
+      				<a class="btn reply_comment btn-outline-primary btn-sm" href="javascript:" id="<%=cDTO.getcNum()%>">답글</a>
+      			<%} %>
+      			<%if(dto!=null&&!status&&cDTO.getUserid().equals(dto.getUserid())) {%>
+      				<a class="btn update_comment btn-outline-primary btn-sm" href="javascript:" id="<%=cDTO.getcNum()%>">수정</a>
+      			<%} %>	
+      			<%if(dto!=null&&!status&&cDTO.getUserid().equals(dto.getUserid())||dto!=null&&userid.equals(dto.getUserid())) {%>
+      				<a class="btn btn-outline-danger btn-sm" href="CommentsDeleteServlet?pNum=<%=pNum%>&cNum=<%=cDTO.getcNum()%>">삭제</a>
+      			<%} %>
+     			<%if(dto!=null&&!cDTO.getUserid().equals(dto.getUserid())) {%>
      				<a class="btn complaintComment btn-outline-danger btn-sm" href="javascript:" id="<%=cDTO.getcNum()%>">신고</a>
      			<%} %>
 	      		</div>
